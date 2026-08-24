@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arte Expresso — Quadros Pintados à Mão Sob Medida | Ateliê Oficial</title>
+  <meta name="description" content="Quadros exclusivos pintados à mão sob medida para seu ambiente. Texturas 3D, folha de ouro, abstratos e retratos sob encomenda. Consultoria e orçamento no WhatsApp (11) 95793-4714.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              300: '#F3E5AB',
+              400: '#E5C378',
+              500: '#D4AF37',
+              600: '#AA820A',
+              700: '#856304'
+            },
+            charcoal: {
+              800: '#1F1F24',
+              900: '#141418',
+              950: '#0C0C0E'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-charcoal-950 text-stone-200 antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- ========================================================================
+       TOP ANNOUNCEMENT BAR
+       ======================================================================== -->
+  <div class="bg-gradient-to-r from-stone-900 via-amber-950/80 to-stone-900 border-b border-amber-500/20 py-2 px-4 text-center text-xs text-amber-200/90 font-medium">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+      <span class="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border border-amber-500/30">
+        <i data-lucide="sparkles" class="w-3 h-3 text-amber-400"></i>
+        Ateliê @arte.expresso
+      </span>
+      <span>Quadros 100% Pintados à Mão Sob Medida</span>
+      <span class="hidden sm:inline opacity-40">•</span>
+      <span class="hidden sm:inline">Envio com Seguro Total para Todo o Brasil</span>
+      <span class="hidden md:inline opacity-40">•</span>
+      <a href="https://wa.me/5511957934714" target="_blank" class="text-amber-400 hover:text-amber-300 underline font-semibold flex items-center gap-1">
+        <i data-lucide="phone" class="w-3 h-3"></i>
+        WhatsApp: (11) 95793-4714
+      </a>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       HEADER / NAVBAR
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 glass-panel border-b border-stone-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-stone-950 shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
+          <i data-lucide="palette" class="w-6 h-6 stroke-[2.2]"></i>
+        </div>
+        <div>
+          <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-stone-100 group-hover:text-amber-300 transition-colors">
+            ARTE EXPRESSO
+          </span>
+          <span class="block text-[10px] tracking-widest text-amber-400 uppercase font-medium">
+            Ateliê & Quadros Sob Medida
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-300">
+        <button onclick="scrollToSection('simulador-section')" class="hover:text-amber-300 transition-colors flex items-center gap-1.5">
+          <i data-lucide="sliders" class="w-4 h-4 text-amber-400"></i>
+          Simulador Sob Medida
+        </button>
+        <button onclick="scrollToSection('catalogo-section')" class="hover:text-amber-300 transition-colors">
+          Catálogo de Obras
+        </button>
+        <button onclick="scrollToSection('visualizador-section')" class="hover:text-amber-300 transition-colors">
+          Veja na Parede
+        </button>
+        <button onclick="scrollToSection('como-funciona-section')" class="hover:text-amber-300 transition-colors">
+          Como Funciona
+        </button>
+        <button onclick="scrollToSection('depoimentos-section')" class="hover:text-amber-300 transition-colors">
+          Depoimentos
+        </button>
+        <a href="https://www.instagram.com/arte.expresso/" target="_blank" class="text-stone-400 hover:text-pink-400 transition-colors flex items-center gap-1">
+          <i data-lucide="instagram" class="w-4 h-4"></i>
+          @arte.expresso
+        </a>
+      </nav>
+
+      <!-- Header CTA -->
+      <div class="flex items-center gap-3">
+        <a 
+          href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20um%20quadro%20sob%20medida%20com%20o%20ateli%C3%AA%20Arte%20Expresso." 
+          target="_blank"
+          class="btn-shimmer hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wide shadow-lg shadow-emerald-950/50 transition-all"
+        >
+          <i data-lucide="message-circle" class="w-4 h-4 fill-white/20"></i>
+          <span>Orçamento WhatsApp</span>
+        </a>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-xl bg-stone-900 border border-stone-800 text-stone-300 hover:text-white">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu-dropdown" class="hidden lg:hidden glass-panel border-t border-stone-800/80 px-4 py-6 space-y-4">
+      <button onclick="scrollToSection('simulador-section')" class="w-full text-left py-2 text-stone-200 hover:text-amber-300 flex items-center gap-2">
+        <i data-lucide="sliders" class="w-4 h-4 text-amber-400"></i>
+        Simulador Sob Medida
+      </button>
+      <button onclick="scrollToSection('catalogo-section')" class="w-full text-left py-2 text-stone-200 hover:text-amber-300">
+        Catálogo de Inspirações
+      </button>
+      <button onclick="scrollToSection('visualizador-section')" class="w-full text-left py-2 text-stone-200 hover:text-amber-300">
+        Simulador de Parede Virtual
+      </button>
+      <button onclick="scrollToSection('como-funciona-section')" class="w-full text-left py-2 text-stone-200 hover:text-amber-300">
+        Como Funciona o Processo
+      </button>
+      <button onclick="scrollToSection('depoimentos-section')" class="w-full text-left py-2 text-stone-200 hover:text-amber-300">
+        Depoimentos de Clientes
+      </button>
+      <button onclick="scrollToSection('faq-section')" class="w-full text-left py-2 text-stone-200 hover:text-amber-300">
+        Dúvidas Frequentes
+      </button>
+      <div class="pt-4 border-t border-stone-800 flex flex-col gap-3">
+        <a 
+          href="https://wa.me/5511957934714" 
+          target="_blank"
+          class="w-full py-3 rounded-xl bg-emerald-600 text-white font-bold text-center flex items-center justify-center gap-2"
+        >
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          WhatsApp (11) 95793-4714
+        </a>
+        <a 
+          href="https://www.instagram.com/arte.expresso/" 
+          target="_blank"
+          class="w-full py-2.5 rounded-xl bg-stone-900 border border-stone-800 text-stone-300 font-medium text-center flex items-center justify-center gap-2"
+        >
+          <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i>
+          Instagram @arte.expresso
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION
+       ======================================================================== -->
+  <section class="relative min-h-[85vh] flex items-center justify-center overflow-hidden py-16 lg:py-24">
+    <!-- Ambient Background Elements -->
+    <div class="absolute inset-0 bg-gold-subtle pointer-events-none"></div>
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold backdrop-blur-md">
+            <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+            Arte Contemporânea Exclusiva & Retratos Realistas
+          </div>
+
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-stone-100 leading-[1.15]">
+            Quadros Exclusivos <br class="hidden sm:inline">
+            <span class="text-gold-gradient">Pintados à Mão</span> <br>
+            Sob Medida para Seu Espaço
+          </h1>
+
+          <p class="text-sm sm:text-base md:text-lg text-stone-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+            Transforme a sua sala, quarto ou escritório com obras autênticas feitas por artistas. 
+            <strong>Texturas 3D em relevo, folha de ouro 24k e molduras flutuantes premium</strong> 
+            feitas nas dimensões perfeitas para a sua parede.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+            <button 
+              onclick="scrollToSection('simulador-section')"
+              class="btn-shimmer w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 transition-all flex items-center justify-center gap-2.5"
+            >
+              <i data-lucide="sliders" class="w-5 h-5 stroke-[2.5]"></i>
+              <span>Personalizar Meu Quadro Agora</span>
+            </button>
+
+            <a 
+              href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Gostaria%20de%20uma%20consultoria%20de%20medidas%20para%20minha%20parede%20com%20a%20Arte%20Expresso."
+              target="_blank"
+              class="w-full sm:w-auto px-6 py-4 rounded-xl bg-stone-900/90 hover:bg-stone-800 text-stone-200 font-semibold text-sm border border-stone-700/80 transition-all flex items-center justify-center gap-2.5"
+            >
+              <i data-lucide="message-circle" class="w-5 h-5 text-emerald-400"></i>
+              <span>Consultoria no WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-stone-800/80">
+            <div class="p-3 rounded-xl bg-stone-900/50 border border-stone-800 text-center lg:text-left">
+              <span class="block font-serif text-lg font-bold text-amber-400">+1.500</span>
+              <span class="text-[11px] text-stone-400">Quadros Entregues</span>
+            </div>
+            <div class="p-3 rounded-xl bg-stone-900/50 border border-stone-800 text-center lg:text-left">
+              <span class="block font-serif text-lg font-bold text-amber-400">100%</span>
+              <span class="text-[11px] text-stone-400">Pintado à Mão</span>
+            </div>
+            <div class="p-3 rounded-xl bg-stone-900/50 border border-stone-800 text-center lg:text-left">
+              <span class="block font-serif text-lg font-bold text-amber-400">Vídeo</span>
+              <span class="text-[11px] text-stone-400">Aprovação Prévia</span>
+            </div>
+            <div class="p-3 rounded-xl bg-stone-900/50 border border-stone-800 text-center lg:text-left">
+              <span class="block font-serif text-lg font-bold text-amber-400">Até 12x</span>
+              <span class="text-[11px] text-stone-400">Sem Burocracia</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Visual (Artwork Mockup Showcase) -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            
+            <!-- Glow circle -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-amber-300/10 rounded-3xl filter blur-2xl"></div>
+
+            <div class="relative glass-panel rounded-3xl p-4 sm:p-5 border border-amber-500/30 shadow-2xl space-y-4">
+              
+              <!-- Featured Artwork Showcase Frame -->
+              <div class="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-stone-950 border-4 border-amber-500/80">
+                <img 
+                  src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Quadro Texturizado Ouro Arte Expresso" 
+                  class="w-full h-full object-cover"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent"></div>
+                
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs">
+                  <div class="flex items-center gap-1.5 text-stone-200">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-medium">Obra Sob Medida: 180 x 100 cm</span>
+                  </div>
+                  <span class="text-amber-400 font-bold">Folha de Ouro 24k</span>
+                </div>
+              </div>
+
+              <!-- Floating Live Mini Card -->
+              <div class="p-3.5 rounded-xl bg-stone-900/90 border border-stone-800 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
+                    <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h6 class="text-xs font-bold text-stone-100">Consultoria Visual Inclusa</h6>
+                    <p class="text-[11px] text-stone-400">Ajudamos a escolher o tamanho exato da tela</p>
+                  </div>
+                </div>
+                <button 
+                  onclick="scrollToSection('simulador-section')"
+                  class="text-xs font-bold text-amber-400 hover:text-amber-300 underline"
+                >
+                  Simular
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION: INTERACTIVE CUSTOMIZER / SIMULATOR (FUNIL DE ALTA CONVERSÃO)
+       ======================================================================== -->
+  <section id="simulador-section" class="py-20 bg-charcoal-900 border-y border-stone-800 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+          <i data-lucide="wand-2" class="w-3.5 h-3.5"></i>
+          Simulador Interativo
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100">
+          Crie o Seu Quadro <span class="text-gold-gradient">Sob Medida</span>
+        </h2>
+        <p class="text-sm sm:text-base text-stone-400">
+          Escolha o estilo, formato, moldura e envie diretamente para o nosso artista no WhatsApp com 1 clique para receber a proposta visual.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Step Form Controls (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Step Progress Indicators -->
+          <div class="glass-panel p-4 rounded-2xl border border-stone-800 flex items-center justify-between gap-2 overflow-x-auto">
+            <button onclick="goToCustomizerStep(1)" class="step-dot active flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold border border-stone-700 transition-all flex-shrink-0">
+              <span>1</span>
+              <span class="hidden sm:inline">Estilo</span>
+            </button>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-stone-600 flex-shrink-0"></i>
+            <button onclick="goToCustomizerStep(2)" class="step-dot flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold border border-stone-700 transition-all flex-shrink-0">
+              <span>2</span>
+              <span class="hidden sm:inline">Tamanho</span>
+            </button>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-stone-600 flex-shrink-0"></i>
+            <button onclick="goToCustomizerStep(3)" class="step-dot flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold border border-stone-700 transition-all flex-shrink-0">
+              <span>3</span>
+              <span class="hidden sm:inline">Moldura</span>
+            </button>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-stone-600 flex-shrink-0"></i>
+            <button onclick="goToCustomizerStep(4)" class="step-dot flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold border border-stone-700 transition-all flex-shrink-0">
+              <span>4</span>
+              <span class="hidden sm:inline">Ambiente</span>
+            </button>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-stone-600 flex-shrink-0"></i>
+            <button onclick="goToCustomizerStep(5)" class="step-dot flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold border border-stone-700 transition-all flex-shrink-0">
+              <span>5</span>
+              <span class="hidden sm:inline">Enviar</span>
+            </button>
+          </div>
+
+          <!-- Wizard Container -->
+          <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-stone-800 shadow-xl relative min-h-[440px]">
+            
+            <h3 id="customizer-step-title" class="font-serif text-lg font-bold text-amber-300 mb-6 flex items-center gap-2">
+              Passo 1 de 5: Escolha o Estilo Artístico
+            </h3>
+
+            <!-- STEP 1: STYLES -->
+            <div id="customizer-step-1" class="space-y-6">
+              <div id="customizer-styles-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Dynamically generated styles -->
+              </div>
+              <div class="flex justify-end pt-4">
+                <button 
+                  onclick="goToCustomizerStep(2)"
+                  class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs flex items-center gap-2 transition-all"
+                >
+                  <span>Próximo: Escolher Medidas</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 2: SIZES & ORIENTATION -->
+            <div id="customizer-step-2" class="hidden space-y-6">
+              <div>
+                <label class="block text-xs font-semibold text-stone-400 mb-3 uppercase tracking-wider">
+                  Tamanhos Populares Recomendados:
+                </label>
+                <div id="customizer-sizes-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <!-- Dynamically generated sizes -->
+                </div>
+              </div>
+
+              <!-- Custom Dimensions Input -->
+              <div class="p-4 rounded-2xl bg-stone-950/60 border border-stone-800 space-y-3">
+                <span class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                  <i data-lucide="ruler" class="w-4 h-4"></i>
+                  Precisa de uma medida exata para a sua parede?
+                </span>
+                <div class="grid grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-[11px] text-stone-400 mb-1">Largura (cm):</label>
+                    <input 
+                      type="number" 
+                      id="custom-width-input" 
+                      placeholder="Ex: 165" 
+                      oninput="handleCustomSizeInput()"
+                      class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-xs focus:border-amber-500 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-[11px] text-stone-400 mb-1">Altura (cm):</label>
+                    <input 
+                      type="number" 
+                      id="custom-height-input" 
+                      placeholder="Ex: 95" 
+                      oninput="handleCustomSizeInput()"
+                      class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-xs focus:border-amber-500 focus:outline-none"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex justify-between pt-4">
+                <button 
+                  onclick="goToCustomizerStep(1)"
+                  class="px-5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-semibold flex items-center gap-1.5"
+                >
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                  Voltar
+                </button>
+                <button 
+                  onclick="goToCustomizerStep(3)"
+                  class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs flex items-center gap-2"
+                >
+                  <span>Próximo: Escolher Moldura</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 3: FRAMES -->
+            <div id="customizer-step-3" class="hidden space-y-6">
+              <div id="customizer-frames-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <!-- Dynamically generated frames -->
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-stone-900/60 border border-stone-800 text-xs text-stone-400 flex items-start gap-2.5">
+                <i data-lucide="info" class="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5"></i>
+                <span>Nossas molduras <strong>Filete Flutuante</strong> deixam um recuo de 8mm entre a tela e a moldura, proporcionando profundidade de galeria de luxo.</span>
+              </div>
+
+              <div class="flex justify-between pt-4">
+                <button 
+                  onclick="goToCustomizerStep(2)"
+                  class="px-5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-semibold flex items-center gap-1.5"
+                >
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                  Voltar
+                </button>
+                <button 
+                  onclick="goToCustomizerStep(4)"
+                  class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs flex items-center gap-2"
+                >
+                  <span>Próximo: Ambiente & Cores</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 4: ROOM & PALETTE -->
+            <div id="customizer-step-4" class="hidden space-y-6">
+              <div>
+                <label class="block text-xs font-semibold text-stone-400 mb-2 uppercase tracking-wider">
+                  Qual cômodo receberá a obra?
+                </label>
+                <div id="customizer-rooms-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  <!-- Dynamically generated rooms -->
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-stone-400 mb-2 uppercase tracking-wider">
+                  Paleta de Cores de Preferência:
+                </label>
+                <div id="customizer-palettes-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <!-- Dynamically generated palettes -->
+                </div>
+              </div>
+
+              <div class="flex justify-between pt-4">
+                <button 
+                  onclick="goToCustomizerStep(3)"
+                  class="px-5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-semibold flex items-center gap-1.5"
+                >
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                  Voltar
+                </button>
+                <button 
+                  onclick="goToCustomizerStep(5)"
+                  class="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs flex items-center gap-2"
+                >
+                  <span>Próximo: Finalizar e Enviar</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- STEP 5: CUSTOMER DATA & WHATSAPP SUBMIT -->
+            <div id="customizer-step-5" class="hidden space-y-5">
+              
+              <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200 flex items-center gap-3">
+                <i data-lucide="check-circle" class="w-5 h-5 text-amber-400 flex-shrink-0"></i>
+                <span>Tudo pronto! Seus dados serão enviados para o <strong>WhatsApp oficial (11) 95793-4714</strong> para iniciar a consultoria com o artista.</span>
+              </div>
+
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-xs font-semibold text-stone-300 mb-1">Seu Nome Completo *</label>
+                  <input 
+                    type="text" 
+                    id="cust-name" 
+                    placeholder="Ex: Fernanda Silveira" 
+                    required
+                    class="w-full px-4 py-3 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-sm focus:border-amber-500 focus:outline-none"
+                  />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-semibold text-stone-300 mb-1">WhatsApp / Telefone</label>
+                    <input 
+                      type="tel" 
+                      id="cust-phone" 
+                      placeholder="Ex: (11) 99999-9999" 
+                      class="w-full px-4 py-3 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-sm focus:border-amber-500 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-semibold text-stone-300 mb-1">Sua Cidade / Estado</label>
+                    <input 
+                      type="text" 
+                      id="cust-city" 
+                      placeholder="Ex: São Paulo / SP" 
+                      class="w-full px-4 py-3 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-sm focus:border-amber-500 focus:outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold text-stone-300 mb-1">Observações / Detalhes Adicionais</label>
+                  <textarea 
+                    id="cust-notes" 
+                    rows="3" 
+                    placeholder="Ex: Gostaria de tons mais voltados para o terracota e linho, e vou mandar a foto da minha sala no WhatsApp..."
+                    class="w-full px-4 py-3 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-sm focus:border-amber-500 focus:outline-none resize-none"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- Main WhatsApp Submit Button -->
+              <div class="pt-4 space-y-3">
+                <button 
+                  onclick="submitCustomizerToWhatsApp()"
+                  class="btn-shimmer w-full py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm tracking-wide shadow-2xl shadow-emerald-950/60 transition-all flex items-center justify-center gap-3"
+                >
+                  <i data-lucide="message-circle" class="w-6 h-6 fill-white/20"></i>
+                  <span>Enviar Orçamento para o WhatsApp (11) 95793-4714</span>
+                </button>
+
+                <div class="flex items-center justify-center gap-4 text-[11px] text-stone-400 text-center">
+                  <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> Sem compromisso</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-amber-400"></i> Resposta rápida</span>
+                </div>
+              </div>
+
+              <div class="flex justify-start pt-2">
+                <button 
+                  onclick="goToCustomizerStep(4)"
+                  class="px-5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs font-semibold flex items-center gap-1.5"
+                >
+                  <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                  Voltar e Ajustar
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Real-time Simulation Preview Card (5 cols) -->
+        <div class="lg:col-span-5 sticky top-28">
+          <div class="glass-panel-gold rounded-3xl p-6 border border-amber-500/40 shadow-2xl space-y-5">
+            
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                Prévia da Obra
+              </span>
+              <span id="simulator-preview-size-tag" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                150 x 90 cm
+              </span>
+            </div>
+
+            <!-- Frame Visual Container -->
+            <div class="p-6 rounded-2xl bg-stone-950 flex items-center justify-center min-h-[260px] border border-stone-800">
+              <div id="simulator-preview-frame" class="painting-frame-preview w-full max-w-xs aspect-[4/3] rounded-sm overflow-hidden flex items-center justify-center frame-filete-dourada">
+                <img 
+                  id="simulator-preview-img" 
+                  src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" 
+                  alt="Prévia Quadro" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            <!-- Live Summary Breakdown -->
+            <div class="space-y-2.5 text-xs">
+              <div class="flex justify-between py-1.5 border-b border-stone-800/80">
+                <span class="text-stone-400">Estilo:</span>
+                <span id="sim-summary-style" class="text-stone-200 font-semibold text-right">Texturizado 3D com Ouro</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-stone-800/80">
+                <span class="text-stone-400">Tamanho:</span>
+                <span id="sim-summary-size" class="text-stone-200 font-semibold text-right">150 x 90 cm</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-stone-800/80">
+                <span class="text-stone-400">Moldura:</span>
+                <span id="sim-summary-frame" class="text-stone-200 font-semibold text-right">Filete Flutuante Dourada</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-stone-800/80">
+                <span class="text-stone-400">Ambiente:</span>
+                <span id="sim-summary-room" class="text-stone-200 font-semibold text-right">Sala de Estar</span>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-stone-800/80">
+                <span class="text-stone-400">Paleta:</span>
+                <span id="sim-summary-palette" class="text-stone-200 font-semibold text-right text-xs line-clamp-1">Folha de Ouro + Areia</span>
+              </div>
+            </div>
+
+            <!-- Price Estimate Ancoring -->
+            <div class="p-4 rounded-2xl bg-stone-900/90 border border-amber-500/30 flex items-center justify-between">
+              <div>
+                <span class="block text-[11px] text-stone-400">Estimativa de Investimento:</span>
+                <span id="sim-summary-price" class="font-serif text-lg font-bold text-amber-400">R$ 890 - R$ 1.150</span>
+              </div>
+              <span class="text-[10px] text-stone-500 text-right">Em até 12x no cartão<br>ou Pix com desconto</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION: VIRTUAL ROOM WALL VISUALIZER ("VEJA NA SUA PAREDE")
+       ======================================================================== -->
+  <section id="visualizador-section" class="py-20 bg-charcoal-950 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3 mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+          <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+          Simulador de Parede Virtual
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100">
+          Veja a Arte no <span class="text-gold-gradient">Seu Ambiente</span>
+        </h2>
+        <p class="text-sm sm:text-base text-stone-400">
+          Troque a cor da parede de fundo, o tipo de mobília e a moldura para visualizar as proporções reais da obra.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Interactive Controls (4 cols) -->
+        <div class="lg:col-span-4 space-y-6">
+          
+          <!-- Wall Colors -->
+          <div class="glass-panel p-5 rounded-2xl border border-stone-800 space-y-3">
+            <span class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+              1. Cor da Parede de Fundo:
+            </span>
+            <div class="flex flex-wrap gap-2.5">
+              <button onclick="setWallColor('fendi', this)" class="wall-color-btn w-9 h-9 rounded-full bg-[#7D7569] ring-2 ring-amber-400 scale-110 shadow-lg transition-transform" title="Fendi / Areia"></button>
+              <button onclick="setWallColor('cimento', this)" class="wall-color-btn w-9 h-9 rounded-full bg-[#4A4E54] shadow-lg transition-transform" title="Cimento Queimado"></button>
+              <button onclick="setWallColor('offwhite', this)" class="wall-color-btn w-9 h-9 rounded-full bg-[#E7E3DC] shadow-lg transition-transform" title="Off-White / Linho"></button>
+              <button onclick="setWallColor('terracota', this)" class="wall-color-btn w-9 h-9 rounded-full bg-[#8C4836] shadow-lg transition-transform" title="Terracota Nobre"></button>
+              <button onclick="setWallColor('chumbo', this)" class="wall-color-btn w-9 h-9 rounded-full bg-[#27272A] shadow-lg transition-transform" title="Cinza Chumbo Escuro"></button>
+              <button onclick="setWallColor('marinho', this)" class="wall-color-btn w-9 h-9 rounded-full bg-[#1A2634] shadow-lg transition-transform" title="Azul Marinho"></button>
+              <button onclick="setWallColor('oliva', this)" class="wall-color-btn w-9 h-9 rounded-full bg-[#3F4A3C] shadow-lg transition-transform" title="Verde Oliva"></button>
+            </div>
+          </div>
+
+          <!-- Room Furniture -->
+          <div class="glass-panel p-5 rounded-2xl border border-stone-800 space-y-3">
+            <span class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+              2. Mobília / Posição:
+            </span>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="setWallFurniture('sofa', this)" class="wall-furniture-btn py-2.5 px-3 rounded-xl bg-amber-500 text-stone-950 font-bold text-xs transition-all flex flex-col items-center gap-1">
+                <i data-lucide="sofa" class="w-4 h-4"></i>
+                <span>Sofá</span>
+              </button>
+              <button onclick="setWallFurniture('aparador', this)" class="wall-furniture-btn py-2.5 px-3 rounded-xl bg-stone-800 text-stone-300 font-bold text-xs transition-all flex flex-col items-center gap-1">
+                <i data-lucide="utensils" class="w-4 h-4"></i>
+                <span>Aparador</span>
+              </button>
+              <button onclick="setWallFurniture('cama', this)" class="wall-furniture-btn py-2.5 px-3 rounded-xl bg-stone-800 text-stone-300 font-bold text-xs transition-all flex flex-col items-center gap-1">
+                <i data-lucide="bed" class="w-4 h-4"></i>
+                <span>Cabeceira</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Frame Finish -->
+          <div class="glass-panel p-5 rounded-2xl border border-stone-800 space-y-3">
+            <span class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
+              3. Acabamento da Moldura:
+            </span>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <button onclick="setWallFrame('frame-filete-dourada', this)" class="wall-frame-toggle-btn p-2.5 rounded-xl border border-amber-400 bg-amber-500/20 text-stone-100 font-medium text-left flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-full bg-[#D4AF37]"></span>
+                Filete Dourada
+              </button>
+              <button onclick="setWallFrame('frame-filete-preta', this)" class="wall-frame-toggle-btn p-2.5 rounded-xl border border-stone-700 bg-stone-900 text-stone-300 font-medium text-left flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-full bg-[#18181B]"></span>
+                Filete Preta
+              </button>
+              <button onclick="setWallFrame('frame-filete-amadeirada', this)" class="wall-frame-toggle-btn p-2.5 rounded-xl border border-stone-700 bg-stone-900 text-stone-300 font-medium text-left flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-full bg-[#8B5A2B]"></span>
+                Madeira Freijó
+              </button>
+              <button onclick="setWallFrame('frame-sem-moldura', this)" class="wall-frame-toggle-btn p-2.5 rounded-xl border border-stone-700 bg-stone-900 text-stone-300 font-medium text-left flex items-center gap-2">
+                <span class="w-3.5 h-3.5 rounded-full bg-stone-500"></span>
+                Borda Infinita
+              </button>
+            </div>
+          </div>
+
+          <!-- Order from visualizer -->
+          <button 
+            onclick="orderArtworkFromWallVisualizer()"
+            class="btn-shimmer w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-wide shadow-xl shadow-emerald-950/50 transition-all flex items-center justify-center gap-2"
+          >
+            <i data-lucide="message-circle" class="w-4 h-4"></i>
+            <span>Pedir Esta Composição no WhatsApp</span>
+          </button>
+
+        </div>
+
+        <!-- Room Visual Mockup Canvas (8 cols) -->
+        <div class="lg:col-span-8">
+          <div id="wall-room-scene" class="wall-scene wall-color-fendi shadow-2xl border border-stone-700/50">
+            
+            <!-- Ceiling lighting spot -->
+            <div class="wall-light-spot"></div>
+
+            <!-- Currently hanging painting -->
+            <div class="relative z-10 my-auto flex flex-col items-center">
+              <div id="wall-painting-frame" class="painting-frame-preview max-w-sm sm:max-w-md w-full aspect-[16/10] overflow-hidden rounded-sm frame-filete-dourada">
+                <img 
+                  id="wall-painting-img" 
+                  src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80" 
+                  alt="Obra na Parede" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <span id="wall-art-title" class="mt-4 px-3 py-1 rounded-full bg-stone-950/80 text-amber-300 text-xs font-semibold backdrop-blur-md border border-stone-800">
+                Aura Dourada & Concreto (150x90 cm)
+              </span>
+            </div>
+
+            <!-- Furniture in foreground -->
+            <div class="w-full flex flex-col items-center relative z-20">
+              <img 
+                id="wall-furniture-img" 
+                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80" 
+                alt="Sofá Sala" 
+                class="max-h-40 sm:max-h-48 object-contain -mb-2 filter drop-shadow-2xl"
+              />
+              <div class="wall-floor"></div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION: PRODUCT CATALOG / INSPIRATIONS GRID
+       ======================================================================== -->
+  <section id="catalogo-section" class="py-20 bg-charcoal-900 border-y border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title & Filters -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div class="space-y-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+            <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+            Galeria de Obras
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100">
+            Inspirações Prontas para <span class="text-gold-gradient">Reprodução Sob Medida</span>
+          </h2>
+          <p class="text-sm text-stone-400 max-w-xl">
+            Todas as artes abaixo podem ser pintadas nas medidas e cores exatas do seu ambiente.
+          </p>
+        </div>
+
+        <button 
+          onclick="openConsultationModal()"
+          class="px-5 py-3 rounded-xl bg-stone-800 hover:bg-stone-700 text-amber-300 font-semibold text-xs border border-amber-500/30 flex items-center gap-2 self-start md:self-auto"
+        >
+          <i data-lucide="camera" class="w-4 h-4 text-amber-400"></i>
+          <span>Enviar Foto da Minha Parede</span>
+        </button>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8">
+        <button onclick="filterCatalog('all', this)" class="catalog-filter-btn px-4 py-2.5 rounded-xl bg-amber-500 text-stone-950 font-bold text-xs whitespace-nowrap shadow-lg shadow-amber-500/20 transition-all">
+          Todas as Obras
+        </button>
+        <button onclick="filterCatalog('texturizado', this)" class="catalog-filter-btn px-4 py-2.5 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold text-xs whitespace-nowrap border border-stone-800 transition-all">
+          Texturizados 3D
+        </button>
+        <button onclick="filterCatalog('abstrato', this)" class="catalog-filter-btn px-4 py-2.5 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold text-xs whitespace-nowrap border border-stone-800 transition-all">
+          Abstratos Modernos
+        </button>
+        <button onclick="filterCatalog('minimalista', this)" class="catalog-filter-btn px-4 py-2.5 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold text-xs whitespace-nowrap border border-stone-800 transition-all">
+          Minimalistas & Neutros
+        </button>
+        <button onclick="filterCatalog('diptico', this)" class="catalog-filter-btn px-4 py-2.5 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold text-xs whitespace-nowrap border border-stone-800 transition-all">
+          Dípticos & Trípticos
+        </button>
+        <button onclick="filterCatalog('retrato', this)" class="catalog-filter-btn px-4 py-2.5 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold text-xs whitespace-nowrap border border-stone-800 transition-all">
+          Retratos Realistas
+        </button>
+        <button onclick="filterCatalog('personalizado', this)" class="catalog-filter-btn px-4 py-2.5 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold text-xs whitespace-nowrap border border-stone-800 transition-all">
+          Personalizados do Zero
+        </button>
+      </div>
+
+      <!-- Catalog Grid Container -->
+      <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+
+      <!-- Banner Instagram @arte.expresso -->
+      <div class="mt-16 p-8 rounded-3xl bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 border border-stone-700 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4 text-center md:text-left">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 flex items-center justify-center text-white shadow-xl flex-shrink-0">
+            <i data-lucide="instagram" class="w-8 h-8"></i>
+          </div>
+          <div>
+            <h4 class="font-serif text-xl font-bold text-stone-100">Siga nosso Ateliê no Instagram</h4>
+            <p class="text-xs text-stone-400 mt-1">Acompanhe os vídeos do processo de pintura, bastidores e telas dos clientes em <strong>@arte.expresso</strong></p>
+          </div>
+        </div>
+        <a 
+          href="https://www.instagram.com/arte.expresso/" 
+          target="_blank" 
+          class="px-6 py-3.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold text-xs transition-all flex items-center gap-2 shadow-lg shadow-pink-950/50"
+        >
+          <span>Ver Instagram @arte.expresso</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION: HOW IT WORKS / STEP BY STEP GUARANTEE
+       ======================================================================== -->
+  <section id="como-funciona-section" class="py-20 bg-charcoal-950 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3 mb-16">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+          <i data-lucide="check-check" class="w-3.5 h-3.5"></i>
+          Processo Seguro & Transparente
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100">
+          Como Funciona a Sua <span class="text-gold-gradient">Encomenda Sob Medida</span>
+        </h2>
+        <p class="text-sm sm:text-base text-stone-400">
+          Sem riscos: você acompanha cada detalhe e só tem a tela enviada após aprovar o vídeo final.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+        
+        <!-- Step 1 -->
+        <div class="glass-panel p-6 rounded-2xl border border-stone-800 space-y-3 relative">
+          <span class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 font-bold text-sm flex items-center justify-center border border-amber-500/30">1</span>
+          <h4 class="font-serif font-bold text-base text-stone-100">Briefing no WhatsApp</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Você nos envia a foto da sua parede ou medidas pelo WhatsApp <strong>(11) 95793-4714</strong>.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-panel p-6 rounded-2xl border border-stone-800 space-y-3 relative">
+          <span class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 font-bold text-sm flex items-center justify-center border border-amber-500/30">2</span>
+          <h4 class="font-serif font-bold text-base text-stone-100">Proposta Visual</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Apresentamos a simulação de tamanho ideal, harmonia de cores e orçamento formal sem compromisso.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-panel p-6 rounded-2xl border border-stone-800 space-y-3 relative">
+          <span class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 font-bold text-sm flex items-center justify-center border border-amber-500/30">3</span>
+          <h4 class="font-serif font-bold text-base text-stone-100">Pintura Artesanal</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            O artista pinta a obra com tintas importadas, relevo espatulado e aplicação manual de folha de ouro.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-panel p-6 rounded-2xl border border-stone-800 space-y-3 relative">
+          <span class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 font-bold text-sm flex items-center justify-center border border-emerald-500/30">4</span>
+          <h4 class="font-serif font-bold text-base text-stone-100">Aprovação por Vídeo</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Você recebe fotos e vídeos em altíssima resolução da tela pronta para validar cada pincelada antes do envio.
+          </p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="glass-panel p-6 rounded-2xl border border-stone-800 space-y-3 relative">
+          <span class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 font-bold text-sm flex items-center justify-center border border-amber-500/30">5</span>
+          <h4 class="font-serif font-bold text-base text-stone-100">Envio Seguro</h4>
+          <p class="text-xs text-stone-400 leading-relaxed">
+            Embalada em caixa reforçada com seguro total de transporte. Pronta para fixar na parede.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION: TESTIMONIALS & REVIEWS
+       ======================================================================== -->
+  <section id="depoimentos-section" class="py-20 bg-charcoal-900 border-y border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+          <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400 text-amber-400"></i>
+          Avaliações Verificadas
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100">
+          O Que Dizem Nossos <span class="text-gold-gradient">Clientes & Arquitetos</span>
+        </h2>
+        <p class="text-sm text-stone-400">
+          Mais de 1.500 casas e consultórios transformados em todo o Brasil.
+        </p>
+      </div>
+
+      <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION: FAQ (DÚVIDAS FREQUENTES)
+       ======================================================================== -->
+  <section id="faq-section" class="py-20 bg-charcoal-950">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center space-y-3 mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+          Tire Suas Dúvidas
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100">
+          Perguntas Frequentes
+        </h2>
+      </div>
+
+      <div id="faq-container" class="space-y-4">
+        <!-- Dynamically rendered by app.js -->
+      </div>
+
+      <!-- Still have questions CTA -->
+      <div class="mt-12 text-center p-8 rounded-2xl glass-panel border border-stone-800 space-y-4">
+        <h4 class="font-serif text-lg font-bold text-stone-100">Ainda tem alguma dúvida específica?</h4>
+        <p class="text-xs sm:text-sm text-stone-400 max-w-lg mx-auto">
+          Nosso artista e consultores estão online no WhatsApp prontos para te atender e calcular o frete para a sua região.
+        </p>
+        <a 
+          href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20as%20artes%20da%20Arte%20Expresso." 
+          target="_blank"
+          class="btn-shimmer inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-lg shadow-emerald-950/40"
+        >
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>Falar Agora no WhatsApp (11) 95793-4714</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="bg-charcoal-950 border-t border-stone-800/80 pt-16 pb-24 lg:pb-12 text-stone-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div class="space-y-4 md:col-span-2">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-amber-500 flex items-center justify-center text-stone-950 font-bold">
+              <i data-lucide="palette" class="w-5 h-5"></i>
+            </div>
+            <span class="font-serif text-xl font-bold text-stone-100">ARTE EXPRESSO</span>
+          </div>
+          <p class="text-stone-400 max-w-md leading-relaxed text-xs">
+            Ateliê especializado na criação de quadros sob medida, pinturas contemporâneas com relevo 3D, folha de ouro e retratos realistas sob encomenda.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="https://www.instagram.com/arte.expresso/" target="_blank" class="w-9 h-9 rounded-xl bg-stone-900 border border-stone-800 hover:border-pink-500 hover:text-pink-400 flex items-center justify-center transition-colors">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="https://wa.me/5511957934714" target="_blank" class="w-9 h-9 rounded-xl bg-stone-900 border border-stone-800 hover:border-emerald-500 hover:text-emerald-400 flex items-center justify-center transition-colors">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h5 class="font-serif font-bold text-stone-200 text-sm">Navegação Rápida</h5>
+          <ul class="space-y-2">
+            <li><button onclick="scrollToSection('simulador-section')" class="hover:text-amber-300">Simulador Sob Medida</button></li>
+            <li><button onclick="scrollToSection('catalogo-section')" class="hover:text-amber-300">Catálogo de Inspirações</button></li>
+            <li><button onclick="scrollToSection('visualizador-section')" class="hover:text-amber-300">Simulador na Parede</button></li>
+            <li><button onclick="scrollToSection('como-funciona-section')" class="hover:text-amber-300">Garantia & Processo</button></li>
+            <li><button onclick="scrollToSection('faq-section')" class="hover:text-amber-300">Perguntas Frequentes</button></li>
+          </ul>
+        </div>
+
+        <div class="space-y-3">
+          <h5 class="font-serif font-bold text-stone-200 text-sm">Atendimento Oficial</h5>
+          <ul class="space-y-2">
+            <li class="flex items-center gap-2 text-stone-300">
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+              <span>(11) 95793-4714</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i>
+              <a href="https://www.instagram.com/arte.expresso/" target="_blank" class="hover:text-pink-400">@arte.expresso</a>
+            </li>
+            <li class="flex items-center gap-2 text-stone-400">
+              <i data-lucide="clock" class="w-4 h-4 text-amber-400"></i>
+              <span>Seg a Sáb: 09h às 20h</span>
+            </li>
+            <li class="flex items-center gap-2 text-stone-400">
+              <i data-lucide="truck" class="w-4 h-4 text-amber-400"></i>
+              <span>Envio Seguro p/ Todo Brasil</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-stone-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <p>© 2026 Arte Expresso (@arte.expresso). Todos os direitos reservados.</p>
+        <div class="flex items-center gap-4 text-stone-500">
+          <span>Desenvolvido com foco em alta conversão no WhatsApp.</span>
+          <span>•</span>
+          <a href="admin.html" class="hover:text-amber-400 text-[11px] flex items-center gap-1 transition-colors">
+            <i data-lucide="lock" class="w-3 h-3"></i>
+            Área Administrativa
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       FLOATING WHATSAPP BUTTON (STICKY)
+       ======================================================================== -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <!-- Speech bubble on hover/desktop -->
+    <div class="hidden md:flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-stone-900/95 border border-stone-700 text-stone-200 text-xs font-semibold shadow-2xl backdrop-blur-md">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+      <span>Dúvidas com medidas? Fale no WhatsApp!</span>
+    </div>
+
+    <!-- Pulsing WhatsApp Button -->
+    <a 
+      href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Arte%20Expresso%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20quadro%20sob%20medida."
+      target="_blank"
+      class="animate-pulse-green w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-110"
+      title="Atendimento no WhatsApp (11) 95793-4714"
+    >
+      <i data-lucide="message-circle" class="w-7 h-7 fill-white/20"></i>
+    </a>
+  </div>
+
+  <!-- ========================================================================
+       ARTWORK DETAIL MODAL (LIGHTBOX)
+       ======================================================================== -->
+  <div id="artwork-detail-modal" class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-panel max-w-4xl w-full rounded-3xl border border-stone-700 shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto">
+      <button 
+        onclick="closeArtworkModal()"
+        class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-stone-900/80 hover:bg-stone-800 text-stone-300 hover:text-white flex items-center justify-center border border-stone-700 transition-colors"
+      >
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="artwork-modal-content">
+        <!-- Injected dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/catalog-data.js"></script>
+  <script src="js/whatsapp-service.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

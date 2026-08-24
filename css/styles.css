@@ -1,0 +1,283 @@
+/* ==========================================================================
+   ARTE EXPRESSO (@arte.expresso) — Luxury Design System & Custom Styles
+   WhatsApp: (11) 95793-4714
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --font-serif: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  
+  --color-gold-light: #F3E5AB;
+  --color-gold: #D4AF37;
+  --color-gold-dark: #997A15;
+  --color-gold-gradient: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA820A 100%);
+  --color-gold-glow: rgba(212, 175, 55, 0.25);
+  
+  --color-bg-light: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-card-border: rgba(212, 175, 55, 0.2);
+  
+  --color-dark-bg: #121214;
+  --color-dark-surface: #1A1A1E;
+  --color-dark-card: #222228;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #0d0d11;
+  color: #E2E8F0;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Gold Gradient Effects */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF0C2 0%, #D4AF37 50%, #E5C378 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+}
+
+.bg-gold-subtle {
+  background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.border-gold-glow {
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(26, 26, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-gold {
+  background: rgba(30, 27, 22, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121214;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #33333D;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4AF37;
+}
+
+/* Pulsing effect for WhatsApp elements */
+@keyframes pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(212, 175, 55, 0);
+  }
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2.5s infinite;
+}
+
+.animate-pulse-green {
+  animation: pulse-green 2s infinite;
+}
+
+/* Painting Frame Simulation Styles */
+.painting-frame-preview {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.frame-filete-dourada {
+  border: 12px solid #D4AF37;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  padding: 6px;
+  background: #111;
+}
+
+.frame-filete-preta {
+  border: 12px solid #18181B;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.8), 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  padding: 6px;
+  background: #09090b;
+}
+
+.frame-filete-amadeirada {
+  border: 12px solid #8B5A2B;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.6), 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  padding: 6px;
+  background: #3B220B;
+}
+
+.frame-filete-branca {
+  border: 12px solid #F3F4F6;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.3), 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  padding: 6px;
+  background: #e5e7eb;
+}
+
+.frame-filete-prata {
+  border: 12px solid #C0C0C0;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  padding: 6px;
+  background: #27272a;
+}
+
+.frame-sem-moldura {
+  border: none;
+  box-shadow: 12px 16px 32px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 0;
+}
+
+/* Wall Visualizer Room Container */
+.wall-scene {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 1.5rem 0 1.5rem;
+}
+
+/* Room Wall Color Presets */
+.wall-color-fendi { background-color: #7D7569; }
+.wall-color-cimento { background-color: #4A4E54; }
+.wall-color-offwhite { background-color: #E7E3DC; }
+.wall-color-terracota { background-color: #8C4836; }
+.wall-color-chumbo { background-color: #27272A; }
+.wall-color-marinho { background-color: #1A2634; }
+.wall-color-oliva { background-color: #3F4A3C; }
+
+/* Wall lighting vignette */
+.wall-light-spot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 60%;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wall-floor {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(180deg, #2c221a 0%, #17110c 100%);
+  border-top: 5px solid #0f0a07;
+  position: relative;
+  z-index: 2;
+}
+
+/* Step Wizard Navigation Dots */
+.step-dot.active {
+  background-color: #D4AF37;
+  border-color: #D4AF37;
+  color: #000;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.step-dot.completed {
+  background-color: #25D366;
+  border-color: #25D366;
+  color: #000;
+}
+
+/* Texture card zoom effect */
+.artwork-card {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.artwork-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.artwork-card .artwork-img {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.artwork-card:hover .artwork-img {
+  transform: scale(1.06);
+}
+
+/* Micro animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Shimmer shine effect for CTA buttons */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: rotate(30deg) translateX(-100%);
+  animation: shimmer 4s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: rotate(30deg) translateX(100%);
+  }
+}

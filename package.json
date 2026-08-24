@@ -1,0 +1,20 @@
+{
+  "name": "arte-expresso",
+  "version": "1.0.0",
+  "description": "E-commerce de Quadros Pintados Sob Medida — Arte Expresso (@arte.expresso) com Funil de Conversão WhatsApp e Painel de Gestão",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "quadros",
+    "arte-sob-medida",
+    "pintura-a-mao",
+    "arte-expresso",
+    "ecommerce-whatsapp",
+    "decoracao"
+  ],
+  "author": "Arte Expresso",
+  "license": "MIT"
+}
