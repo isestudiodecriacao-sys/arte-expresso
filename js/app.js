@@ -583,72 +583,62 @@ function updateSimulatorPreview() {
         previewFrame.classList.add("frame-filete-amadeirada");
         break;
       case "filete_branca":
-        previewFrame.classList.add("frame-filete-branca");
-        break;
-      case "filete_prata":
-        previewFrame.classList.add("frame-filete-prata");
-        break;
-      default:
-        previewFrame.classList.add("frame-sem-moldura");
-        break;
-    }
+function initCustomizer() {
+  renderCustomizerStyles();
+  updateSimulatorPreview();
+}
+
+function updateSimulatorPreview() {
+  const c = appState.customizer;
+
+  const previewImg = document.getElementById("simulator-preview-img");
+  const previewStyleLabel = document.getElementById("simulator-preview-style-tag");
+  const sumStyle = document.getElementById("sim-summary-style");
+
+  if (previewImg && c.styleImage) {
+    previewImg.src = c.styleImage;
   }
 
-  if (previewSizeLabel) previewSizeLabel.textContent = c.sizeLabel;
-  if (previewStyleLabel) previewStyleLabel.textContent = c.styleName;
+  if (previewStyleLabel) {
+    previewStyleLabel.textContent = c.styleName;
+  }
 
-  // Atualizar resumo lateral / review
-  const sumStyle = document.getElementById("sim-summary-style");
-  const sumSize = document.getElementById("sim-summary-size");
-  const sumFrame = document.getElementById("sim-summary-frame");
-  const sumRoom = document.getElementById("sim-summary-room");
-  const sumPalette = document.getElementById("sim-summary-palette");
-
-  if (sumStyle) sumStyle.textContent = c.styleName;
-  if (sumSize) sumSize.textContent = c.sizeLabel;
-  if (sumFrame) sumFrame.textContent = c.frameName;
-  if (sumRoom) sumRoom.textContent = c.roomName;
-  if (sumPalette) sumPalette.textContent = c.paletteName;
+  if (sumStyle) {
+    sumStyle.textContent = c.styleName;
+  }
 }
 
 function goToCustomizerStep(stepNumber) {
-  if (stepNumber < 1 || stepNumber > 5) return;
-  
-  appState.customizer.step = stepNumber;
+  const step1 = document.getElementById("customizer-step-1");
+  const step2 = document.getElementById("customizer-step-2");
+  const btn1 = document.getElementById("step-btn-1");
+  const btn2 = document.getElementById("step-btn-2");
 
-  // Atualiza painéis visíveis
-  for (let i = 1; i <= 5; i++) {
-    const stepPanel = document.getElementById(`customizer-step-${i}`);
-    if (stepPanel) {
-      if (i === stepNumber) {
-        stepPanel.classList.remove("hidden");
-      } else {
-        stepPanel.classList.add("hidden");
-      }
+  if (stepNumber === 1) {
+    if (step1) step1.classList.remove("hidden");
+    if (step2) step2.classList.add("hidden");
+    
+    if (btn1) {
+      btn1.className = "step-dot active flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold border border-amber-500/40 bg-amber-500/10 text-amber-300 transition-all";
+      btn1.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-amber-500 text-stone-950 flex items-center justify-center text-[11px] font-bold";
+    }
+    if (btn2) {
+      btn2.className = "step-dot flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold border border-stone-800 bg-stone-900/60 text-stone-400 transition-all";
+      btn2.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-stone-800 text-stone-300 flex items-center justify-center text-[11px] font-bold";
+    }
+  } else {
+    if (step1) step1.classList.add("hidden");
+    if (step2) step2.classList.remove("hidden");
+
+    if (btn1) {
+      btn1.className = "step-dot flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold border border-stone-800 bg-stone-900/60 text-stone-300 transition-all";
+      btn1.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-stone-800 text-stone-300 flex items-center justify-center text-[11px] font-bold";
+    }
+    if (btn2) {
+      btn2.className = "step-dot active flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 transition-all";
+      btn2.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-emerald-500 text-stone-950 flex items-center justify-center text-[11px] font-bold";
     }
   }
-
-  // Atualiza indicadores de progresso
-  const stepDots = document.querySelectorAll(".step-dot");
-  stepDots.forEach((dot, idx) => {
-    const dotStep = idx + 1;
-    dot.classList.remove("active", "completed");
-    if (dotStep === stepNumber) {
-      dot.classList.add("active");
-    } else if (dotStep < stepNumber) {
-      dot.classList.add("completed");
-    }
-  });
-
-  const stepTitle = document.getElementById("customizer-step-title");
-  const titles = [
-    "Passo 1 de 5: Escolha o Estilo Artístico",
-    "Passo 2 de 5: Defina o Tamanho e Formato",
-    "Passo 3 de 5: Escolha a Moldura Premium",
-    "Passo 4 de 5: Ambiente e Paleta de Cores",
-    "Passo 5 de 5: Seus Dados e Envio para WhatsApp"
-  ];
-  if (stepTitle) stepTitle.textContent = titles[stepNumber - 1];
 
   updateSimulatorPreview();
   initLucideIcons();
@@ -656,33 +646,33 @@ function goToCustomizerStep(stepNumber) {
 
 function submitCustomizerToWhatsApp() {
   const nameInput = document.getElementById("cust-name");
-  const phoneInput = document.getElementById("cust-phone");
+  const cityInput = document.getElementById("cust-city");
+  const sizeInput = document.getElementById("cust-size-pref");
+  const notesInput = document.getElementById("cust-notes");
   const photoInput = document.getElementById("cust-wall-photo");
+
+  const customerName = nameInput ? nameInput.value.trim() : "";
+  const customerCity = cityInput ? cityInput.value.trim() : "";
+  const sizePreference = sizeInput ? sizeInput.value.trim() : "";
   let customerNotes = notesInput ? notesInput.value.trim() : "";
+
   if (photoInput && photoInput.files && photoInput.files.length > 0) {
-    customerNotes = (customerNotes ? customerNotes + "\n" : "") + "📸 [O cliente selecionou uma foto da parede para enviar aqui na conversa]";
+    customerNotes = (customerNotes ? customerNotes + "\n" : "") + "📸 [Anexando foto da parede / ambiente aqui no WhatsApp]";
   }
-  appState.customizer.notes = customerNotes;
 
   // Validação simples
-  if (!appState.customizer.customerName) {
+  if (!customerName) {
     alert("Por favor, digite seu nome para que o artista possa te atender adequadamente.");
     if (nameInput) nameInput.focus();
     return;
   }
 
   WhatsAppService.sendCustomQuote({
-    name: appState.customizer.customerName,
-    phone: appState.customizer.customerPhone,
-    city: appState.customizer.customerCity,
-    notes: appState.customizer.notes,
+    name: customerName,
+    city: customerCity,
     styleName: appState.customizer.styleName,
-    dimensions: appState.customizer.sizeLabel,
-    orientation: appState.customizer.orientation,
-    frameName: appState.customizer.frameName,
-    roomName: appState.customizer.roomName,
-    paletteName: appState.customizer.paletteName,
-    estimatedPrice: appState.customizer.estimatedPrice
+    sizePreference: sizePreference,
+    notes: customerNotes
   });
 }
 

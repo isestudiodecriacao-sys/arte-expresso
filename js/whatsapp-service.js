@@ -35,37 +35,28 @@ const WhatsAppService = {
       minute: "2-digit"
     });
 
+  sendCustomQuote(data) {
     const lines = [
-      `🎨 *SOLICITAÇÃO DE QUADRO SOB MEDIDA — ARTE EXPRESSO* 🎨`,
-      `📅 *Data:* ${dateStr}`,
+      `🎨 *ENCOMENDA DE QUADRO SOB MEDIDA — ARTE EXPRESSO*`,
       ``,
-      `👤 *DADOS DO CLIENTE:*`,
-      `• *Nome:* ${data.name || "Não informado"}`,
-      `• *WhatsApp:* ${data.phone || "Não informado"}`,
-      `• *Cidade / UF:* ${data.city || "Não informada"}`,
+      `👤 *CLIENTE:*`,
+      `• *Nome:* ${data.name || "Cliente"}`,
+      data.city ? `• *Cidade/UF:* ${data.city}` : null,
       ``,
-      `🖼️ *ESPECIFICAÇÕES DA OBRA:*`,
+      `🖼️ *ESTILO ESCOLHIDO NO SITE:*`,
       `• *Estilo:* ${data.styleName || "Personalizado"}`,
-      `• *Dimensões:* ${data.dimensions || "A combinar"}`,
-      `• *Orientação:* ${data.orientation || "Horizontal"}`,
-      `• *Moldura:* ${data.frameName || "Filete Flutuante"}`,
-      `• *Ambiente:* ${data.roomName || "Sala de Estar"}`,
-      `• *Paleta de Cores:* ${data.paletteName || "A combinar com artista"}`,
+      data.sizePreference ? `• *Medida em mente:* ${data.sizePreference}` : `• *Medidas:* A combinar no chat`,
+      `• *Moldura & Acabamento:* A definir com o artista`,
       ``
-    ];
-
-    if (data.estimatedPrice && data.estimatedPrice.startsWith("R$")) {
-      lines.push(`💰 *Valor Inicial de Referência:* ${data.estimatedPrice}`);
-    }
+    ].filter(Boolean);
 
     if (data.notes && data.notes.trim()) {
-      lines.push(`📝 *Observações / Detalhes:*`);
+      lines.push(`📝 *Detalhes informados:*`);
       lines.push(`"${data.notes.trim()}"`);
       lines.push(``);
     }
 
-    lines.push(`✨ *Enviado pelo Simulador Oficial* (arte.expresso)`);
-    lines.push(`_Gostaria de receber a consultoria visual e o orçamento formal sem compromisso!_`);
+    lines.push(`💬 _Olá! Gostaria de conversar com o artista para definirmos as medidas ideais para a minha parede, cores e o orçamento sem compromisso!_`);
 
     const fullMessage = lines.join("\n");
     this.openWhatsApp(fullMessage);
