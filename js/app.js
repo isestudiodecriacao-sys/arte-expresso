@@ -251,14 +251,20 @@ function filterCatalog(category, buttonElement) {
 }
 
 function orderCatalogItem(artworkId) {
-  const item = getActiveCatalog().find(a => a.id === artworkId);
-  if (item) {
+  const item = getActiveCatalog().find(a => String(a.id) === String(artworkId));
+  if (item && typeof WhatsAppService !== "undefined" && WhatsAppService.sendCatalogArtworkQuote) {
     WhatsAppService.sendCatalogArtworkQuote(item);
+  } else {
+    const title = item ? item.title : "Quadro do Catálogo";
+    const cod = item ? item.id : artworkId;
+    const msg = `Olá! Gostaria de um orçamento para a obra "${title}" (Cód: ${cod}) com o ateliê Arte Expresso.`;
+    const url = `https://wa.me/5511957934714?text=${encodeURIComponent(msg)}`;
+    window.open(url, "_blank");
   }
 }
 
 function customizeFromCatalog(artworkId) {
-  const item = getActiveCatalog().find(a => a.id === artworkId);
+  const item = getActiveCatalog().find(a => String(a.id) === String(artworkId));
   if (item) {
     const ideaInput = document.getElementById("direct-cust-idea");
     if (ideaInput) {

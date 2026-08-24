@@ -24,17 +24,8 @@ const WhatsAppService = {
   },
 
   /**
-   * Formata e envia a solicitação do Simulador Sob Medida
+   * Formata e envia a solicitação do Formulário de Encomenda Sob Medida
    */
-  sendCustomQuote(data) {
-    const dateStr = new Date().toLocaleDateString("pt-BR", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
-    });
-
   sendCustomQuote(data) {
     const lines = [
       `🎨 *ENCOMENDA DE QUADRO SOB MEDIDA — ARTE EXPRESSO*`,
