@@ -278,12 +278,11 @@ function orderCatalogItem(artworkId) {
 function customizeFromCatalog(artworkId) {
   const item = getActiveCatalog().find(a => a.id === artworkId);
   if (item) {
-    // Procura estilo compatível
-    appState.customizer.styleName = item.title;
-    appState.customizer.styleImage = item.image;
-    updateSimulatorPreview();
-    scrollToSection("simulador-section");
-    goToCustomizerStep(2);
+    const ideaInput = document.getElementById("direct-cust-idea");
+    if (ideaInput) {
+      ideaInput.value = `Gostei da obra "${item.title}" (Cód: ${item.id}) e quero encomendar nas medidas do meu espaço.`;
+    }
+    scrollToSection("encomendas-section");
   }
 }
 
