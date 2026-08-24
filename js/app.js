@@ -125,7 +125,6 @@ const appState = {
 document.addEventListener("DOMContentLoaded", () => {
   initLucideIcons();
   renderCatalog("all");
-  initCustomizer();
   initWallVisualizer();
   initTestimonials();
   initFAQ();
@@ -295,384 +294,35 @@ function testOnWall(artworkId) {
 }
 
 /* ==========================================================================
-   2. INTERACTIVE CUSTOMIZER / SIMULATOR (STEP BY STEP)
+   2. ENCOMENDAS SOB MEDIDA VIA WHATSAPP (DIRETO E SEM ETAPAS)
    ========================================================================== */
 
-function initCustomizer() {
-  renderCustomizerStyles();
-  renderCustomizerSizes();
-  renderCustomizerFrames();
-  renderCustomizerRooms();
-  renderCustomizerPalettes();
-  updateSimulatorPreview();
-  calculatePriceEstimate();
-}
+function submitDirectWhatsAppOrder(e) {
+  if (e) e.preventDefault();
 
-function renderCustomizerStyles() {
-  const container = document.getElementById("customizer-styles-grid");
-  if (!container) return;
+  const nameInput = document.getElementById("direct-cust-name");
+  const cityInput = document.getElementById("direct-cust-city");
+  const ideaInput = document.getElementById("direct-cust-idea");
+  const photoInput = document.getElementById("direct-wall-photo");
 
-  const styles = getActiveStyles();
-  container.innerHTML = styles.map((style) => {
-    const isSelected = style.id === appState.customizer.styleId;
-    return `
-      <div 
-        onclick="selectCustomizerStyle('${style.id}')"
-        class="customizer-style-card relative rounded-2xl overflow-hidden cursor-pointer transition-all border ${
-          isSelected 
-            ? 'border-amber-400 ring-2 ring-amber-400/40 bg-stone-900' 
-            : 'border-stone-800 hover:border-stone-600 bg-stone-900/60'
-        } p-4 flex flex-col justify-between space-y-3 group"
-      >
-        <div class="relative aspect-video rounded-xl overflow-hidden bg-stone-950">
-          <img src="${style.image}" alt="${style.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-transparent"></div>
-          <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-semibold bg-stone-950/80 text-amber-300 border border-amber-500/30">
-            ${style.badge || 'Estilo'}
-          </span>
-          ${isSelected ? `
-            <div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-amber-500 text-stone-950 flex items-center justify-center shadow-lg">
-              <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
-            </div>
-          ` : ''}
-        </div>
-        <div>
-          <h4 class="font-serif font-bold text-sm text-stone-100 ${isSelected ? 'text-amber-300' : ''}">
-            ${style.name}
-          </h4>
-          <p class="text-xs text-stone-400 mt-1 leading-relaxed line-clamp-2">
-            ${style.desc}
-          </p>
-        </div>
-      </div>
-    `;
-  }).join('');
+  const name = nameInput ? nameInput.value.trim() : "";
+  const city = cityInput ? cityInput.value.trim() : "";
+  let idea = ideaInput ? ideaInput.value.trim() : "";
 
-  initLucideIcons();
-}
-
-function selectCustomizerStyle(styleId) {
-  const style = getActiveStyles().find(s => s.id === styleId);
-  if (style) {
-    appState.customizer.styleId = style.id;
-    appState.customizer.styleName = style.name;
-    appState.customizer.styleImage = style.image;
-    renderCustomizerStyles();
-    updateSimulatorPreview();
-    calculatePriceEstimate();
-  }
-}
-
-function renderCustomizerSizes() {
-  const container = document.getElementById("customizer-sizes-grid");
-  if (!container) return;
-
-  const sizes = getActiveSizes();
-  container.innerHTML = sizes.map((size) => {
-    const isSelected = appState.customizer.sizeLabel === size.label && !appState.customizer.isCustomSize;
-    return `
-      <div 
-        onclick="selectCustomizerSize(${size.width}, ${size.height}, '${size.label}', '${size.orient}')"
-        class="relative p-3.5 rounded-xl cursor-pointer transition-all border ${
-          isSelected 
-            ? 'border-amber-400 bg-amber-500/10 ring-1 ring-amber-400/40 text-stone-100' 
-            : 'border-stone-800 hover:border-stone-700 bg-stone-900/60 text-stone-300'
-        } flex flex-col justify-between"
-      >
-        <div class="flex items-center justify-between">
-          <span class="font-bold text-xs sm:text-sm text-stone-100">${size.label}</span>
-          ${size.isPopular ? `
-            <span class="px-1.5 py-0.5 rounded text-[9px] bg-amber-500/20 text-amber-300 font-medium">Popular</span>
-          ` : ''}
-        </div>
-        <p class="text-[11px] text-stone-400 mt-1">${size.desc || 'Tamanho sob encomenda'}</p>
-        <div class="mt-2.5 pt-2 border-t border-stone-800/80 flex items-center justify-between text-[11px]">
-          <span class="text-stone-500">Proporção:</span>
-          <span class="text-amber-400 font-medium capitalize">${size.orient}</span>
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-function selectCustomizerSize(width, height, label, orient) {
-  appState.customizer.width = width;
-  appState.customizer.height = height;
-  appState.customizer.sizeLabel = label;
-  appState.customizer.orientation = orient;
-  appState.customizer.isCustomSize = false;
-  
-  const customW = document.getElementById("custom-width-input");
-  const customH = document.getElementById("custom-height-input");
-  if (customW) customW.value = "";
-  if (customH) customH.value = "";
-
-  renderCustomizerSizes();
-  updateSimulatorPreview();
-  calculatePriceEstimate();
-}
-
-function handleCustomSizeInput() {
-  const customW = document.getElementById("custom-width-input");
-  const customH = document.getElementById("custom-height-input");
-  
-  const w = parseInt(customW?.value || 0, 10);
-  const h = parseInt(customH?.value || 0, 10);
-
-  if (w > 0 && h > 0) {
-    appState.customizer.width = w;
-    appState.customizer.height = h;
-    appState.customizer.sizeLabel = `${w} x ${h} cm (Medida Personalizada)`;
-    appState.customizer.orientation = w >= h ? "horizontal" : "vertical";
-    appState.customizer.isCustomSize = true;
-
-    renderCustomizerSizes();
-    updateSimulatorPreview();
-    calculatePriceEstimate();
-  }
-}
-
-function renderCustomizerFrames() {
-  const container = document.getElementById("customizer-frames-grid");
-  if (!container) return;
-
-  const frames = getActiveFrames();
-  container.innerHTML = frames.map((frame) => {
-    const isSelected = appState.customizer.frameId === frame.id;
-    return `
-      <div 
-        onclick="selectCustomizerFrame('${frame.id}')"
-        class="relative p-3.5 rounded-xl cursor-pointer transition-all border ${
-          isSelected 
-            ? 'border-amber-400 bg-amber-500/10 ring-1 ring-amber-400/40 text-stone-100' 
-            : 'border-stone-800 hover:border-stone-700 bg-stone-900/60 text-stone-300'
-        } flex items-start gap-3"
-      >
-        <div 
-          class="w-9 h-9 rounded-lg shadow-inner flex-shrink-0 border-2 border-stone-700 flex items-center justify-center"
-          style="background-color: ${frame.color};"
-        >
-          ${isSelected ? `<i data-lucide="check" class="w-4 h-4 text-stone-900 stroke-[3]"></i>` : ''}
-        </div>
-        <div class="flex-1">
-          <div class="flex items-center justify-between">
-            <h5 class="font-bold text-xs sm:text-sm text-stone-100">${frame.name}</h5>
-            <span class="text-[9px] px-1.5 py-0.5 rounded bg-stone-800 text-amber-400">${frame.tag || 'Moldura'}</span>
-          </div>
-          <p class="text-[11px] text-stone-400 mt-0.5 leading-relaxed">${frame.desc}</p>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  initLucideIcons();
-}
-
-function selectCustomizerFrame(frameId) {
-  const frame = getActiveFrames().find(f => f.id === frameId);
-  if (frame) {
-    appState.customizer.frameId = frame.id;
-    appState.customizer.frameName = frame.name;
-    appState.customizer.frameColor = frame.color;
-    renderCustomizerFrames();
-    updateSimulatorPreview();
-    calculatePriceEstimate();
-  }
-}
-
-function renderCustomizerRooms() {
-  const container = document.getElementById("customizer-rooms-grid");
-  if (!container) return;
-
-  const rooms = getActiveRooms();
-  container.innerHTML = rooms.map((room) => {
-    const isSelected = appState.customizer.roomId === room.id;
-    return `
-      <div 
-        onclick="selectCustomizerRoom('${room.id}', '${room.name}')"
-        class="p-3 rounded-xl cursor-pointer transition-all border text-center ${
-          isSelected 
-            ? 'border-amber-400 bg-amber-500/10 text-amber-300 font-semibold' 
-            : 'border-stone-800 hover:border-stone-700 bg-stone-900/60 text-stone-300'
-        }"
-      >
-        <div class="flex flex-col items-center gap-1.5">
-          <i data-lucide="${room.icon || 'home'}" class="w-4 h-4 ${isSelected ? 'text-amber-400' : 'text-stone-400'}"></i>
-          <span class="text-[11px]">${room.name}</span>
-        </div>
-      </div>
-    `;
-  }).join('');
-
-  initLucideIcons();
-}
-
-function selectCustomizerRoom(roomId, roomName) {
-  appState.customizer.roomId = roomId;
-  appState.customizer.roomName = roomName;
-  renderCustomizerRooms();
-  updateSimulatorPreview();
-}
-
-function renderCustomizerPalettes() {
-  const container = document.getElementById("customizer-palettes-grid");
-  if (!container) return;
-
-  const palettes = getActivePalettes();
-  container.innerHTML = palettes.map((pal) => {
-    const isSelected = appState.customizer.paletteId === pal.id;
-    return `
-      <div 
-        onclick="selectCustomizerPalette('${pal.id}', '${pal.name}')"
-        class="p-3 rounded-xl cursor-pointer transition-all border ${
-          isSelected 
-            ? 'border-amber-400 bg-amber-500/10 text-stone-100' 
-            : 'border-stone-800 hover:border-stone-700 bg-stone-900/60 text-stone-300'
-        } flex items-center justify-between gap-2.5"
-      >
-        <span class="text-xs font-medium">${pal.name}</span>
-        <div class="flex items-center gap-1">
-          ${(pal.colors || []).map(c => `<span class="w-3.5 h-3.5 rounded-full border border-white/20" style="background-color: ${c};"></span>`).join('')}
-        </div>
-      </div>
-    `;
-  }).join('');
-}
-
-function selectCustomizerPalette(paletteId, paletteName) {
-  appState.customizer.paletteId = paletteId;
-  appState.customizer.paletteName = paletteName;
-  renderCustomizerPalettes();
-  updateSimulatorPreview();
-}
-
-function calculatePriceEstimate() {
-  appState.customizer.estimatedPrice = "Orçamento Sob Medida no WhatsApp";
-
-  const priceDisplay = document.getElementById("sim-summary-price");
-  if (priceDisplay) {
-    priceDisplay.textContent = "Sob Medida";
-  }
-}
-
-function updateSimulatorPreview() {
-  const c = appState.customizer;
-
-  // Imagem & Moldura do Preview
-  const previewImg = document.getElementById("simulator-preview-img");
-  const previewFrame = document.getElementById("simulator-preview-frame");
-  const previewSizeLabel = document.getElementById("simulator-preview-size-tag");
-  const previewStyleLabel = document.getElementById("simulator-preview-style-tag");
-
-  if (previewImg) {
-    previewImg.src = c.styleImage;
-  }
-
-  if (previewFrame) {
-    // Remove classes anteriores de moldura
-    previewFrame.className = "painting-frame-preview w-full h-full rounded-sm overflow-hidden flex items-center justify-center";
-    
-    switch (c.frameId) {
-      case "filete_dourada":
-        previewFrame.classList.add("frame-filete-dourada");
-        break;
-      case "filete_preta":
-        previewFrame.classList.add("frame-filete-preta");
-        break;
-      case "filete_amadeirada":
-        previewFrame.classList.add("frame-filete-amadeirada");
-        break;
-      case "filete_branca":
-function initCustomizer() {
-  renderCustomizerStyles();
-  updateSimulatorPreview();
-}
-
-function updateSimulatorPreview() {
-  const c = appState.customizer;
-
-  const previewImg = document.getElementById("simulator-preview-img");
-  const previewStyleLabel = document.getElementById("simulator-preview-style-tag");
-  const sumStyle = document.getElementById("sim-summary-style");
-
-  if (previewImg && c.styleImage) {
-    previewImg.src = c.styleImage;
-  }
-
-  if (previewStyleLabel) {
-    previewStyleLabel.textContent = c.styleName;
-  }
-
-  if (sumStyle) {
-    sumStyle.textContent = c.styleName;
-  }
-}
-
-function goToCustomizerStep(stepNumber) {
-  const step1 = document.getElementById("customizer-step-1");
-  const step2 = document.getElementById("customizer-step-2");
-  const btn1 = document.getElementById("step-btn-1");
-  const btn2 = document.getElementById("step-btn-2");
-
-  if (stepNumber === 1) {
-    if (step1) step1.classList.remove("hidden");
-    if (step2) step2.classList.add("hidden");
-    
-    if (btn1) {
-      btn1.className = "step-dot active flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold border border-amber-500/40 bg-amber-500/10 text-amber-300 transition-all";
-      btn1.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-amber-500 text-stone-950 flex items-center justify-center text-[11px] font-bold";
-    }
-    if (btn2) {
-      btn2.className = "step-dot flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold border border-stone-800 bg-stone-900/60 text-stone-400 transition-all";
-      btn2.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-stone-800 text-stone-300 flex items-center justify-center text-[11px] font-bold";
-    }
-  } else {
-    if (step1) step1.classList.add("hidden");
-    if (step2) step2.classList.remove("hidden");
-
-    if (btn1) {
-      btn1.className = "step-dot flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold border border-stone-800 bg-stone-900/60 text-stone-300 transition-all";
-      btn1.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-stone-800 text-stone-300 flex items-center justify-center text-[11px] font-bold";
-    }
-    if (btn2) {
-      btn2.className = "step-dot active flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-lg text-xs font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 transition-all";
-      btn2.querySelector("span:first-child").className = "w-5 h-5 rounded-full bg-emerald-500 text-stone-950 flex items-center justify-center text-[11px] font-bold";
-    }
-  }
-
-  updateSimulatorPreview();
-  initLucideIcons();
-}
-
-function submitCustomizerToWhatsApp() {
-  const nameInput = document.getElementById("cust-name");
-  const cityInput = document.getElementById("cust-city");
-  const sizeInput = document.getElementById("cust-size-pref");
-  const notesInput = document.getElementById("cust-notes");
-  const photoInput = document.getElementById("cust-wall-photo");
-
-  const customerName = nameInput ? nameInput.value.trim() : "";
-  const customerCity = cityInput ? cityInput.value.trim() : "";
-  const sizePreference = sizeInput ? sizeInput.value.trim() : "";
-  let customerNotes = notesInput ? notesInput.value.trim() : "";
-
-  if (photoInput && photoInput.files && photoInput.files.length > 0) {
-    customerNotes = (customerNotes ? customerNotes + "\n" : "") + "📸 [Anexando foto da parede / ambiente aqui no WhatsApp]";
-  }
-
-  // Validação simples
-  if (!customerName) {
-    alert("Por favor, digite seu nome para que o artista possa te atender adequadamente.");
+  if (!name) {
+    alert("Por favor, informe seu nome para que o artista possa te atender.");
     if (nameInput) nameInput.focus();
     return;
   }
 
+  if (photoInput && photoInput.files && photoInput.files.length > 0) {
+    idea = (idea ? idea + "\n" : "") + "📸 [Anexando foto da parede / referência aqui no WhatsApp]";
+  }
+
   WhatsAppService.sendCustomQuote({
-    name: customerName,
-    city: customerCity,
-    styleName: appState.customizer.styleName,
-    sizePreference: sizePreference,
-    notes: customerNotes
+    name: name,
+    city: city,
+    notes: idea
   });
 }
 

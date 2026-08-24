@@ -42,21 +42,16 @@ const WhatsAppService = {
       `👤 *CLIENTE:*`,
       `• *Nome:* ${data.name || "Cliente"}`,
       data.city ? `• *Cidade/UF:* ${data.city}` : null,
-      ``,
-      `🖼️ *ESTILO ESCOLHIDO NO SITE:*`,
-      `• *Estilo:* ${data.styleName || "Personalizado"}`,
-      data.sizePreference ? `• *Medida em mente:* ${data.sizePreference}` : `• *Medidas:* A combinar no chat`,
-      `• *Moldura & Acabamento:* A definir com o artista`,
       ``
     ].filter(Boolean);
 
     if (data.notes && data.notes.trim()) {
-      lines.push(`📝 *Detalhes informados:*`);
+      lines.push(`📝 *O que tem em mente / Detalhes:*`);
       lines.push(`"${data.notes.trim()}"`);
       lines.push(``);
     }
 
-    lines.push(`💬 _Olá! Gostaria de conversar com o artista para definirmos as medidas ideais para a minha parede, cores e o orçamento sem compromisso!_`);
+    lines.push(`💬 _Olá! Gostaria de conversar com o artista para definirmos as medidas ideais para a minha parede, cores e o orçamento formal!_`);
 
     const fullMessage = lines.join("\n");
     this.openWhatsApp(fullMessage);
