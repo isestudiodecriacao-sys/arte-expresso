@@ -87,80 +87,85 @@ function renderCatalog(category = "all") {
         />
         <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
         
-        <div class="absolute top-3 left-3 flex flex-wrap gap-2">
-          <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-stone-950/80 text-amber-300 border border-amber-500/30 backdrop-blur-md">
+        <div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5">
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-stone-950/80 text-amber-300 border border-amber-500/30 backdrop-blur-md">
             ${item.categoryLabel}
           </span>
           ${item.tag ? `
-            <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/90 text-stone-950 font-medium">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/90 text-stone-950">
               ${item.tag}
+            </span>
+          ` : ''}
+          ${item.priceFrom && item.priceFrom.trim() ? `
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500 text-stone-950 shadow-md">
+              ${item.priceFrom}
             </span>
           ` : ''}
         </div>
 
-        <div class="absolute top-3 right-3">
+        <div class="absolute top-2.5 right-2.5">
           <button 
             onclick="event.stopPropagation(); testOnWall('${item.id}')"
             title="Ver na Parede Virtual"
-            class="p-2 rounded-xl bg-stone-900/80 hover:bg-amber-500 hover:text-stone-950 text-stone-300 transition-all border border-stone-700/60 backdrop-blur-md shadow-lg flex items-center gap-1.5 text-xs"
+            class="p-1.5 rounded-lg bg-stone-900/80 hover:bg-amber-500 hover:text-stone-950 text-stone-300 transition-all border border-stone-700/60 backdrop-blur-md shadow-lg flex items-center gap-1 text-[11px]"
           >
-            <i data-lucide="eye" class="w-4 h-4"></i>
+            <i data-lucide="eye" class="w-3.5 h-3.5"></i>
             <span class="hidden sm:inline">Simular</span>
           </button>
         </div>
 
-        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-stone-300">
+        <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] text-stone-300">
           <span class="flex items-center gap-1 text-stone-400">
-            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+            <i data-lucide="sparkles" class="w-3 h-3 text-amber-400"></i>
             100% Pintado à Mão
           </span>
-          <span class="text-amber-400 font-semibold">Cód: ${item.id}</span>
+          <span class="text-amber-400 font-semibold font-mono text-[10px]">Cód: ${item.id}</span>
         </div>
       </div>
 
-      <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+      <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
         <div>
-          <h3 class="font-serif text-lg font-bold text-stone-100 group-hover:text-amber-300 transition-colors">
+          <h3 class="font-serif text-base font-bold text-stone-100 group-hover:text-amber-300 transition-colors">
             ${item.title}
           </h3>
-          <p class="text-xs text-amber-400/90 mt-1 font-medium flex items-center gap-1">
+          <p class="text-[11px] text-amber-400/90 mt-0.5 font-medium flex items-center gap-1">
             <i data-lucide="brush" class="w-3 h-3"></i>
             ${item.technique}
           </p>
-          <p class="text-xs text-stone-400 mt-2.5 line-clamp-2 leading-relaxed">
+          <p class="text-[11px] text-stone-400 mt-2 line-clamp-2 leading-relaxed">
             ${item.description}
           </p>
         </div>
 
         <!-- Palette Preview -->
-        <div class="flex items-center gap-1.5 pt-1">
-          <span class="text-[11px] text-stone-500 mr-1">Tons:</span>
+        <div class="flex items-center gap-1.5 pt-0.5">
+          <span class="text-[10px] text-stone-500 mr-1">Tons:</span>
           ${item.palette ? item.palette.map(c => `
-            <span class="w-3.5 h-3.5 rounded-full border border-white/20 shadow-sm" style="background-color: ${c};"></span>
+            <span class="w-3 h-3 rounded-full border border-white/20 shadow-sm" style="background-color: ${c};"></span>
           `).join('') : ''}
         </div>
 
         <!-- Sizes & Quote Action -->
-        <div class="pt-3 border-t border-stone-800/80 space-y-3">
-          <div class="flex items-center justify-between text-xs">
-            <span class="text-stone-400">Tamanhos sugeridos:</span>
-            <span class="text-stone-300 font-medium">${item.popularSizes[0]} e mais</span>
+        <div class="pt-2.5 border-t border-stone-800/80 space-y-2.5">
+          <div class="flex items-center justify-between text-[11px]">
+            <span class="text-stone-400">Tamanho sugerido:</span>
+            <span class="text-stone-300 font-medium">${item.popularSizes ? item.popularSizes[0] : 'Sob medida'}</span>
           </div>
 
           <div class="flex items-center gap-2">
             <button 
               onclick="orderCatalogItem('${item.id}')"
-              class="btn-shimmer flex-1 py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40"
+              class="btn-shimmer flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md shadow-emerald-950/40"
             >
-              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
               <span>Pedir no WhatsApp</span>
             </button>
             <button 
               onclick="customizeFromCatalog('${item.id}')"
               title="Personalizar Medidas Deste Estilo"
-              class="p-2.5 rounded-xl bg-stone-800/80 hover:bg-stone-700 text-stone-300 hover:text-amber-300 transition-all border border-stone-700/60"
+              class="p-2 rounded-xl bg-stone-800/80 hover:bg-stone-700 text-stone-300 hover:text-amber-300 transition-all border border-stone-700/60"
             >
-              <i data-lucide="sliders" class="w-4 h-4"></i>
+              <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
             </button>
           </div>
         </div>
@@ -290,30 +295,30 @@ function renderCustomizerSizes() {
     const isSelected = appState.customizer.sizeLabel === size.label && !appState.customizer.isCustomSize;
     return `
       <div 
-        onclick="selectCustomizerSize(${size.width}, ${size.height}, '${size.label}', '${size.orient}', ${size.basePrice})"
-        class="relative p-4 rounded-xl cursor-pointer transition-all border ${
+        onclick="selectCustomizerSize(${size.width}, ${size.height}, '${size.label}', '${size.orient}')"
+        class="relative p-3.5 rounded-xl cursor-pointer transition-all border ${
           isSelected 
             ? 'border-amber-400 bg-amber-500/10 ring-1 ring-amber-400/40 text-stone-100' 
             : 'border-stone-800 hover:border-stone-700 bg-stone-900/60 text-stone-300'
         } flex flex-col justify-between"
       >
         <div class="flex items-center justify-between">
-          <span class="font-bold text-sm text-stone-100">${size.label}</span>
+          <span class="font-bold text-xs sm:text-sm text-stone-100">${size.label}</span>
           ${size.isPopular ? `
-            <span class="px-1.5 py-0.5 rounded text-[10px] bg-amber-500/20 text-amber-300 font-medium">Popular</span>
+            <span class="px-1.5 py-0.5 rounded text-[9px] bg-amber-500/20 text-amber-300 font-medium">Popular</span>
           ` : ''}
         </div>
-        <p class="text-xs text-stone-400 mt-1">${size.desc}</p>
-        <div class="mt-3 pt-2 border-t border-stone-800/80 flex items-center justify-between text-xs">
-          <span class="text-stone-500">Estimativa base:</span>
-          <span class="text-amber-400 font-semibold">a partir de R$ ${size.basePrice}</span>
+        <p class="text-[11px] text-stone-400 mt-1">${size.desc}</p>
+        <div class="mt-2.5 pt-2 border-t border-stone-800/80 flex items-center justify-between text-[11px]">
+          <span class="text-stone-500">Proporção:</span>
+          <span class="text-amber-400 font-medium capitalize">${size.orient}</span>
         </div>
       </div>
     `;
   }).join('');
 }
 
-function selectCustomizerSize(width, height, label, orient, basePrice) {
+function selectCustomizerSize(width, height, label, orient) {
   appState.customizer.width = width;
   appState.customizer.height = height;
   appState.customizer.sizeLabel = label;
@@ -463,25 +468,11 @@ function selectCustomizerPalette(paletteId, paletteName) {
 }
 
 function calculatePriceEstimate() {
-  const w = appState.customizer.width;
-  const h = appState.customizer.height;
-  const areaM2 = (w * h) / 10000;
-  
-  // Base calculation factor + frame factor
-  let baseMultiplier = 560;
-  if (appState.customizer.styleId === "texturizado_ouro") baseMultiplier = 640;
-  if (appState.customizer.styleId === "retrato_realista") baseMultiplier = 750;
-  if (appState.customizer.styleId === "diptico_triptico") baseMultiplier = 690;
-
-  const min = Math.round(areaM2 * baseMultiplier);
-  const max = Math.round(min * 1.28);
-
-  const priceFormatted = `R$ ${min.toLocaleString("pt-BR")} - R$ ${max.toLocaleString("pt-BR")}`;
-  appState.customizer.estimatedPrice = priceFormatted;
+  appState.customizer.estimatedPrice = "Orçamento Sob Medida no WhatsApp";
 
   const priceDisplay = document.getElementById("sim-summary-price");
   if (priceDisplay) {
-    priceDisplay.textContent = priceFormatted;
+    priceDisplay.textContent = "Sob Medida";
   }
 }
 
@@ -762,8 +753,12 @@ function openArtworkModal(artworkId) {
 
         <div class="pt-4 border-t border-stone-800 space-y-3">
           <div class="flex items-baseline justify-between">
-            <span class="text-xs text-stone-400">Investimento de referência:</span>
-            <span class="text-lg font-bold text-amber-400">${art.priceFrom}</span>
+            <span class="text-xs text-stone-400">Investimento:</span>
+            ${art.priceFrom && art.priceFrom.trim() ? `
+              <span class="text-base font-bold text-amber-400">${art.priceFrom}</span>
+            ` : `
+              <span class="text-xs font-semibold text-amber-400">Orçamento Sob Medida no WhatsApp</span>
+            `}
           </div>
 
           <div class="flex flex-col sm:flex-row gap-3">

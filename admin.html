@@ -296,12 +296,11 @@
           </div>
 
           <div>
-            <label class="block font-semibold text-stone-300 mb-1">Preço Inicial de Referência *</label>
+            <label class="block font-semibold text-stone-300 mb-1">Preço de Referência (Opcional — deixe em branco para Sob Consulta)</label>
             <input 
               type="text" 
               id="form-price" 
-              placeholder="Ex: R$ 690" 
-              required
+              placeholder="Ex: R$ 690 ou deixe em branco" 
               class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none"
             />
           </div>
@@ -482,7 +481,11 @@
             <div>
               <div class="flex items-center justify-between">
                 <h4 class="font-serif font-bold text-stone-100 text-sm">${art.title}</h4>
-                <span class="text-amber-400 font-bold text-xs">${art.priceFrom}</span>
+                ${art.priceFrom && art.priceFrom.trim() ? `
+                  <span class="text-emerald-400 font-bold text-xs">${art.priceFrom}</span>
+                ` : `
+                  <span class="text-stone-500 text-[10px] bg-stone-900 px-2 py-0.5 rounded border border-stone-800">Sob Consulta</span>
+                `}
               </div>
               <p class="text-[11px] text-amber-400/90 mt-0.5">${art.technique}</p>
               <p class="text-[11px] text-stone-400 mt-2 line-clamp-2 leading-relaxed">${art.description}</p>
@@ -547,7 +550,7 @@
       document.getElementById("form-title").value = art.title;
       document.getElementById("form-code").value = art.id;
       document.getElementById("form-category").value = art.category;
-      document.getElementById("form-price").value = art.priceFrom;
+      document.getElementById("form-price").value = art.priceFrom || "";
       document.getElementById("form-technique").value = art.technique;
       document.getElementById("form-description").value = art.description;
       document.getElementById("form-image").value = art.image;
@@ -611,7 +614,7 @@
         technique,
         description,
         popularSizes: popularSizes.length > 0 ? popularSizes : ["120x80 cm", "150x90 cm", "180x100 cm"],
-        priceFrom: price,
+        priceFrom: price || null,
         image,
         tag: tag || null,
         featured: true

@@ -1,6 +1,7 @@
 /**
  * Catálogo de Artes e Quadros Sob Medida - Arte Expresso (@arte.expresso)
  * WhatsApp Comercial: (11) 95793-4714
+ * Nota: Os valores aparecem apenas quando definidos pelo administrador no Painel de Gestão.
  */
 
 const CATALOG_DATA = [
@@ -12,7 +13,7 @@ const CATALOG_DATA = [
     technique: "Acrílico espátulado com relevo 3D e aplicação manual de Folha de Ouro 24k",
     description: "Composição com textura mineral marcante em tons neutros (areia, fendi e cimento) combinada com fendas orgânicas em folha de ouro. Ideal para salas de estar com iluminação direcionada.",
     popularSizes: ["120x80 cm", "150x90 cm", "180x100 cm", "200x120 cm"],
-    priceFrom: "R$ 690",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80",
     featured: true,
     tag: "Mais Pedido",
@@ -26,7 +27,7 @@ const CATALOG_DATA = [
     technique: "Pintura acrílica fluida e espatulada sobre tela 100% algodão de alta gramatura",
     description: "Paleta quente com terracota, ocre queimado, bege cru e toques de preto carvão. Traz acolhimento e sofisticação imediata para ambientes contemporâneos.",
     popularSizes: ["100x70 cm", "140x90 cm", "160x100 cm", "190x110 cm"],
-    priceFrom: "R$ 620",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=1200&q=80",
     featured: true,
     tag: "Destaque",
@@ -40,7 +41,7 @@ const CATALOG_DATA = [
     technique: "Técnica mista com massa acrílica de modelagem e pigmentos minerais naturais",
     description: "Trabalho sutil em tons de off-white, linho e fendi com relevo suave criando jogos de luz e sombra dinâmicos ao longo do dia.",
     popularSizes: ["90x60 cm", "120x80 cm", "150x100 cm", "180x120 cm"],
-    priceFrom: "R$ 580",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
     featured: false,
     tag: "Elegance",
@@ -54,7 +55,7 @@ const CATALOG_DATA = [
     technique: "Par de telas harmonizadas com relevo espatulado contínuo e folhas metálicas",
     description: "Conjunto de 2 quadros que se conectam visualmente. Perfeito para paredes amplas de sala de jantar ou cabeceiras de cama.",
     popularSizes: ["2x (80x100 cm)", "2x (90x120 cm)", "2x (100x140 cm)"],
-    priceFrom: "R$ 1.180",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1582561424760-0321d75e81fa?auto=format&fit=crop&w=1200&q=80",
     featured: true,
     tag: "Conjunto Luxo",
@@ -68,7 +69,7 @@ const CATALOG_DATA = [
     technique: "Desenho e pintura realista à mão livre (grafite, carvão ou tinta sobre tela)",
     description: "Eternize pessoas queridas, pets, casais ou figuras de destaque em uma obra de arte realista com riqueza extrema de detalhes expressivos.",
     popularSizes: ["50x70 cm", "60x80 cm", "80x100 cm", "100x120 cm"],
-    priceFrom: "R$ 750",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1578925518470-4def7a0f08bb?auto=format&fit=crop&w=1200&q=80",
     featured: true,
     tag: "Exclusivo",
@@ -82,7 +83,7 @@ const CATALOG_DATA = [
     technique: "Camadas translúcidas de azul marinho, turquesa escuro e folha de prata",
     description: "Inspirado nas profundezas marinhas e na calmaria das marés. Confere sensação de amplitude, tranquilidade e modernidade ao espaço.",
     popularSizes: ["120x80 cm", "150x90 cm", "180x100 cm", "200x100 cm"],
-    priceFrom: "R$ 650",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1518998053901-5348d3961a04?auto=format&fit=crop&w=1200&q=80",
     featured: false,
     tag: "Tendência",
@@ -96,7 +97,7 @@ const CATALOG_DATA = [
     technique: "Textura floral orgânica espatulada com acabamento acetinado",
     description: "Elementos da natureza traduzidos em formas orgânicas esculpidas sobre a tela. Proporciona leveza, frescor e estética natural chic.",
     popularSizes: ["100x100 cm", "120x120 cm", "140x90 cm", "160x100 cm"],
-    priceFrom: "R$ 690",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1200&q=80",
     featured: false,
     tag: "Design Orgânico",
@@ -110,7 +111,7 @@ const CATALOG_DATA = [
     technique: "Trio de telas com pigmentos nobres, grafite escovado e folha de ouro",
     description: "Composição tripla imponente para livings de pé direito duplo, escritórios de advocacia ou salas de reuniões corporativas de alto padrão.",
     popularSizes: ["3x (60x90 cm)", "3x (70x110 cm)", "3x (80x130 cm)"],
-    priceFrom: "R$ 1.650",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80",
     featured: false,
     tag: "Grandes Formatos",
@@ -124,7 +125,7 @@ const CATALOG_DATA = [
     technique: "Criamos a partir da foto do seu ambiente, amostra de tecidos ou referência do Pinterest",
     description: "Não encontrou exatamente o que sonhava? Nosso artista desenha e pinta uma obra sob medida exclusiva para combinar com as cores do seu tapete, sofá e iluminação.",
     popularSizes: ["Sob medida livre (qualquer tamanho)"],
-    priceFrom: "Orçamento sob medida",
+    priceFrom: null,
     image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&w=1200&q=80",
     featured: true,
     tag: "Consultoria Grátis",
@@ -229,17 +230,17 @@ const FRAMES_LIST = [
 ];
 
 const POPULAR_SIZES = [
-  { width: 120, height: 80, label: "120 x 80 cm", orient: "horizontal", desc: "Ideal para sofás de 2 a 3 lugares", basePrice: 690, isPopular: true },
-  { width: 150, height: 90, label: "150 x 90 cm", orient: "horizontal", desc: "Tamanho nobre para salas de estar e livings", basePrice: 890, isPopular: true },
-  { width: 180, height: 100, label: "180 x 100 cm", orient: "horizontal", desc: "Grandes formatos / Parede principal", basePrice: 1190, isPopular: true },
-  { width: 200, height: 100, label: "200 x 100 cm", orient: "horizontal", desc: "Formato imponente para livings amplos", basePrice: 1480, isPopular: false },
-  { width: 100, height: 70, label: "100 x 70 cm", orient: "horizontal", desc: "Compacto para corredores ou quartos", basePrice: 580, isPopular: false },
-  { width: 80, height: 120, label: "80 x 120 cm", orient: "vertical", desc: "Vertical para hall de entrada ou colunas", basePrice: 690, isPopular: false },
-  { width: 100, height: 150, label: "100 x 150 cm", orient: "vertical", desc: "Vertical imponente para pé direito duplo", basePrice: 950, isPopular: false },
-  { width: 100, height: 100, label: "100 x 100 cm", orient: "quadrado", desc: "Quadrado clássico e equilibrado", basePrice: 680, isPopular: false },
-  { width: 120, height: 120, label: "120 x 120 cm", orient: "quadrado", desc: "Quadrado amplo para sala de jantar", basePrice: 890, isPopular: false },
-  { width: 160, height: 100, label: "Díptico 2x (80x100 cm)", orient: "diptico", desc: "Conjunto de 2 quadros integrados", basePrice: 1250, isPopular: true },
-  { width: 210, height: 90, label: "Tríptico 3x (70x90 cm)", orient: "triptico", desc: "Conjunto triplo para grandes espaços", basePrice: 1680, isPopular: false }
+  { width: 120, height: 80, label: "120 x 80 cm", orient: "horizontal", desc: "Ideal para sofás de 2 a 3 lugares", isPopular: true },
+  { width: 150, height: 90, label: "150 x 90 cm", orient: "horizontal", desc: "Tamanho nobre para salas de estar e livings", isPopular: true },
+  { width: 180, height: 100, label: "180 x 100 cm", orient: "horizontal", desc: "Grandes formatos / Parede principal", isPopular: true },
+  { width: 200, height: 100, label: "200 x 100 cm", orient: "horizontal", desc: "Formato imponente para livings amplos", isPopular: false },
+  { width: 100, height: 70, label: "100 x 70 cm", orient: "horizontal", desc: "Compacto para corredores ou quartos", isPopular: false },
+  { width: 80, height: 120, label: "80 x 120 cm", orient: "vertical", desc: "Vertical para hall de entrada ou colunas", isPopular: false },
+  { width: 100, height: 150, label: "100 x 150 cm", orient: "vertical", desc: "Vertical imponente para pé direito duplo", isPopular: false },
+  { width: 100, height: 100, label: "100 x 100 cm", orient: "quadrado", desc: "Quadrado clássico e equilibrado", isPopular: false },
+  { width: 120, height: 120, label: "120 x 120 cm", orient: "quadrado", desc: "Quadrado amplo para sala de jantar", isPopular: false },
+  { width: 160, height: 100, label: "Díptico 2x (80x100 cm)", orient: "diptico", desc: "Conjunto de 2 quadros integrados", isPopular: true },
+  { width: 210, height: 90, label: "Tríptico 3x (70x90 cm)", orient: "triptico", desc: "Conjunto triplo para grandes espaços", isPopular: false }
 ];
 
 const ROOMS_LIST = [

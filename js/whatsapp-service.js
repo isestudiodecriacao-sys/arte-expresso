@@ -54,8 +54,8 @@ const WhatsAppService = {
       ``
     ];
 
-    if (data.estimatedPrice) {
-      lines.push(`💰 *Estimativa de Referência:* ${data.estimatedPrice}`);
+    if (data.estimatedPrice && data.estimatedPrice.startsWith("R$")) {
+      lines.push(`💰 *Valor Inicial de Referência:* ${data.estimatedPrice}`);
     }
 
     if (data.notes && data.notes.trim()) {
@@ -75,7 +75,7 @@ const WhatsAppService = {
    * Envia pedido de orçamento para uma obra específica do catálogo
    */
   sendCatalogArtworkQuote(artwork, customSize = null, customFrame = null) {
-    const sizeInfo = customSize || artwork.popularSizes[0] || "Tamanho padrão";
+    const sizeInfo = customSize || (artwork.popularSizes ? artwork.popularSizes[0] : "Tamanho sob medida");
     const frameInfo = customFrame || "Moldura Filete Flutuante Premium";
 
     const lines = [
@@ -85,11 +85,15 @@ const WhatsAppService = {
       `• *Estilo / Categoria:* ${artwork.categoryLabel}`,
       `• *Técnica:* ${artwork.technique}`,
       `• *Tamanho Desejado:* ${sizeInfo}`,
-      `• *Moldura Preferida:* ${frameInfo}`,
-      `• *Valor Inicial de Referência:* ${artwork.priceFrom}`,
-      ``,
-      `💬 _Olá! Amei essa obra e gostaria de saber o valor no meu tamanho e o prazo de entrega para minha cidade._`
+      `• *Moldura Preferida:* ${frameInfo}`
     ];
+
+    if (artwork.priceFrom && artwork.priceFrom.trim()) {
+      lines.push(`• *Valor de Referência:* ${artwork.priceFrom}`);
+    }
+
+    lines.push(``);
+    lines.push(`💬 _Olá! Amei essa obra e gostaria de saber o orçamento para meu tamanho e prazo de entrega para minha cidade._`);
 
     const fullMessage = lines.join("\n");
     this.openWhatsApp(fullMessage);
