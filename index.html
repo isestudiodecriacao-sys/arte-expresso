@@ -92,10 +92,7 @@
           Encomendar Sob Medida
         </button>
         <button onclick="scrollToSection('catalogo-section')" class="hover:text-amber-300 transition-colors whitespace-nowrap">
-          Catálogo
-        </button>
-        <button onclick="scrollToSection('visualizador-section')" class="hover:text-amber-300 transition-colors whitespace-nowrap">
-          Veja na Parede
+          Catálogo de Inspirações
         </button>
         <button onclick="scrollToSection('como-funciona-section')" class="hover:text-amber-300 transition-colors whitespace-nowrap">
           Como Funciona
@@ -145,9 +142,6 @@
       </button>
       <button onclick="scrollToSection('catalogo-section')" class="w-full text-left py-2 px-2 text-stone-200 hover:text-amber-300 font-medium">
         Catálogo de Inspirações
-      </button>
-      <button onclick="scrollToSection('visualizador-section')" class="w-full text-left py-2 px-2 text-stone-200 hover:text-amber-300 font-medium">
-        Simulador de Parede Virtual
       </button>
       <button onclick="scrollToSection('como-funciona-section')" class="w-full text-left py-2 px-2 text-stone-200 hover:text-amber-300 font-medium">
         Como Funciona o Processo
@@ -438,142 +432,7 @@
     </div>
   </section>
 
-  <!-- ========================================================================
-       SECTION: VIRTUAL ROOM WALL VISUALIZER ("VEJA NA SUA PAREDE")
-       ======================================================================== -->
-  <section id="visualizador-section" class="py-16 bg-charcoal-950 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-2xl mx-auto space-y-2 mb-8">
-        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-semibold">
-          <i data-lucide="eye" class="w-3 h-3"></i>
-          Simulador de Parede Virtual
-        </div>
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
-          Veja a Arte no <span class="text-gold-gradient">Seu Ambiente</span>
-        </h2>
-        <p class="text-xs sm:text-sm text-stone-400">
-          Troque a cor da parede de fundo, o tipo de mobília e a moldura para visualizar as proporções reais da obra.
-        </p>
-      </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        
-        <!-- Interactive Controls (4 cols) -->
-        <div class="lg:col-span-4 space-y-4">
-          
-          <!-- Wall Colors -->
-          <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2.5">
-            <span class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
-              1. Cor da Parede de Fundo:
-            </span>
-            <div class="flex flex-wrap gap-2">
-              <button onclick="setWallColor('fendi', this)" class="wall-color-btn w-8 h-8 rounded-full bg-[#7D7569] ring-2 ring-amber-400 scale-105 shadow-md transition-transform" title="Fendi / Areia"></button>
-              <button onclick="setWallColor('cimento', this)" class="wall-color-btn w-8 h-8 rounded-full bg-[#4A4E54] shadow-md transition-transform" title="Cimento Queimado"></button>
-              <button onclick="setWallColor('offwhite', this)" class="wall-color-btn w-8 h-8 rounded-full bg-[#E7E3DC] shadow-md transition-transform" title="Off-White / Linho"></button>
-              <button onclick="setWallColor('terracota', this)" class="wall-color-btn w-8 h-8 rounded-full bg-[#8C4836] shadow-md transition-transform" title="Terracota Nobre"></button>
-              <button onclick="setWallColor('chumbo', this)" class="wall-color-btn w-8 h-8 rounded-full bg-[#27272A] shadow-md transition-transform" title="Cinza Chumbo"></button>
-              <button onclick="setWallColor('marinho', this)" class="wall-color-btn w-8 h-8 rounded-full bg-[#1A2634] shadow-md transition-transform" title="Azul Marinho"></button>
-              <button onclick="setWallColor('oliva', this)" class="wall-color-btn w-8 h-8 rounded-full bg-[#3F4A3C] shadow-md transition-transform" title="Verde Oliva"></button>
-            </div>
-          </div>
-
-          <!-- Room Furniture -->
-          <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2.5">
-            <span class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
-              2. Mobília / Posição:
-            </span>
-            <div class="grid grid-cols-3 gap-2 text-xs">
-              <button onclick="setWallFurniture('sofa', this)" class="wall-furniture-btn py-2 px-2.5 rounded-lg bg-amber-500 text-stone-950 font-bold text-xs transition-all flex flex-col items-center gap-1">
-                <i data-lucide="sofa" class="w-3.5 h-3.5"></i>
-                <span>Sofá</span>
-              </button>
-              <button onclick="setWallFurniture('aparador', this)" class="wall-furniture-btn py-2 px-2.5 rounded-lg bg-stone-800 text-stone-300 font-bold text-xs transition-all flex flex-col items-center gap-1">
-                <i data-lucide="utensils" class="w-3.5 h-3.5"></i>
-                <span>Aparador</span>
-              </button>
-              <button onclick="setWallFurniture('cama', this)" class="wall-furniture-btn py-2 px-2.5 rounded-lg bg-stone-800 text-stone-300 font-bold text-xs transition-all flex flex-col items-center gap-1">
-                <i data-lucide="bed" class="w-3.5 h-3.5"></i>
-                <span>Cabeceira</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Frame Finish -->
-          <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2.5">
-            <span class="block text-xs font-bold text-stone-300 uppercase tracking-wider">
-              3. Acabamento da Moldura:
-            </span>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-              <button onclick="setWallFrame('frame-filete-dourada', this)" class="wall-frame-toggle-btn p-2 rounded-lg border border-amber-400 bg-amber-500/20 text-stone-100 font-medium text-left flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded-full bg-[#D4AF37]"></span>
-                Filete Dourada
-              </button>
-              <button onclick="setWallFrame('frame-filete-preta', this)" class="wall-frame-toggle-btn p-2 rounded-lg border border-stone-700 bg-stone-900 text-stone-300 font-medium text-left flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded-full bg-[#18181B]"></span>
-                Filete Preta
-              </button>
-              <button onclick="setWallFrame('frame-filete-amadeirada', this)" class="wall-frame-toggle-btn p-2 rounded-lg border border-stone-700 bg-stone-900 text-stone-300 font-medium text-left flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded-full bg-[#8B5A2B]"></span>
-                Madeira Freijó
-              </button>
-              <button onclick="setWallFrame('frame-sem-moldura', this)" class="wall-frame-toggle-btn p-2 rounded-lg border border-stone-700 bg-stone-900 text-stone-300 font-medium text-left flex items-center gap-1.5">
-                <span class="w-3 h-3 rounded-full bg-stone-500"></span>
-                Borda Infinita
-              </button>
-            </div>
-          </div>
-
-          <!-- Order from visualizer -->
-          <button 
-            onclick="orderArtworkFromWallVisualizer()"
-            class="btn-shimmer w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-wide shadow-lg shadow-emerald-950/40 transition-all flex items-center justify-center gap-2"
-          >
-            <i data-lucide="message-circle" class="w-4 h-4"></i>
-            <span>Pedir Esta Composição no WhatsApp</span>
-          </button>
-
-        </div>
-
-        <!-- Room Visual Mockup Canvas (8 cols) -->
-        <div class="lg:col-span-8">
-          <div id="wall-room-scene" class="wall-scene wall-color-fendi shadow-2xl border border-stone-700/50 min-h-[420px]">
-            
-            <div class="wall-light-spot"></div>
-
-            <!-- Currently hanging painting -->
-            <div class="relative z-10 my-auto flex flex-col items-center">
-              <div id="wall-painting-frame" class="painting-frame-preview max-w-xs sm:max-w-sm w-full aspect-[16/10] overflow-hidden rounded-sm frame-filete-dourada">
-                <img 
-                  id="wall-painting-img" 
-                  src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80" 
-                  alt="Obra na Parede" 
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <span id="wall-art-title" class="mt-3 px-3 py-0.5 rounded-full bg-stone-950/80 text-amber-300 text-[11px] font-semibold backdrop-blur-md border border-stone-800">
-                Aura Dourada & Concreto (150x90 cm)
-              </span>
-            </div>
-
-            <!-- Furniture in foreground -->
-            <div class="w-full flex flex-col items-center relative z-20">
-              <img 
-                id="wall-furniture-img" 
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80" 
-                alt="Sofá Sala" 
-                class="max-h-36 sm:max-h-44 object-contain -mb-2 filter drop-shadow-2xl"
-              />
-              <div class="wall-floor"></div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
 
   <!-- ========================================================================
        SECTION: PRODUCT CATALOG / INSPIRATIONS GRID
@@ -832,8 +691,8 @@
           <ul class="space-y-1.5 text-[11px]">
             <li><button onclick="scrollToSection('encomendas-section')" class="hover:text-amber-300 font-semibold text-amber-400">Encomendas Sob Medida</button></li>
             <li><button onclick="scrollToSection('catalogo-section')" class="hover:text-amber-300">Catálogo de Inspirações</button></li>
-            <li><button onclick="scrollToSection('visualizador-section')" class="hover:text-amber-300">Simulador na Parede</button></li>
             <li><button onclick="scrollToSection('como-funciona-section')" class="hover:text-amber-300">Como Funciona</button></li>
+            <li><button onclick="scrollToSection('depoimentos-section')" class="hover:text-amber-300">Depoimentos de Clientes</button></li>
             <li><button onclick="scrollToSection('faq-section')" class="hover:text-amber-300">Dúvidas Frequentes</button></li>
           </ul>
         </div>

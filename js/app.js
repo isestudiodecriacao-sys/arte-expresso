@@ -112,12 +112,6 @@ const appState = {
     notes: "",
     estimatedPrice: "Orçamento Sob Medida no WhatsApp"
   },
-  wallVisualizer: {
-    wallColor: "fendi",
-    furniture: "sofa",
-    currentArtworkId: "EXP-01",
-    currentFrame: "frame-filete-dourada"
-  },
   activeCatalogCategory: "all"
 };
 
@@ -125,7 +119,6 @@ const appState = {
 document.addEventListener("DOMContentLoaded", () => {
   initLucideIcons();
   renderCatalog("all");
-  initWallVisualizer();
   initTestimonials();
   initFAQ();
   initEventListeners();
@@ -175,17 +168,6 @@ function renderCatalog(category = "all") {
               ${item.priceFrom}
             </span>
           ` : ''}
-        </div>
-
-        <div class="absolute top-2.5 right-2.5">
-          <button 
-            onclick="event.stopPropagation(); testOnWall('${item.id}')"
-            title="Ver na Parede Virtual"
-            class="p-1.5 rounded-lg bg-stone-900/80 hover:bg-amber-500 hover:text-stone-950 text-stone-300 transition-all border border-stone-700/60 backdrop-blur-md shadow-lg flex items-center gap-1 text-[11px]"
-          >
-            <i data-lucide="eye" class="w-3.5 h-3.5"></i>
-            <span class="hidden sm:inline">Simular</span>
-          </button>
         </div>
 
         <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] text-stone-300">
@@ -286,12 +268,6 @@ function customizeFromCatalog(artworkId) {
   }
 }
 
-function testOnWall(artworkId) {
-  appState.wallVisualizer.currentArtworkId = artworkId;
-  updateWallVisualizer();
-  scrollToSection("visualizador-section");
-}
-
 /* ==========================================================================
    2. ENCOMENDAS SOB MEDIDA VIA WHATSAPP (DIRETO E SEM ETAPAS)
    ========================================================================== */
@@ -326,100 +302,7 @@ function submitDirectWhatsAppOrder(e) {
 }
 
 /* ==========================================================================
-   3. VIRTUAL ROOM WALL VISUALIZER ("VEJA NA SUA PAREDE")
-   ========================================================================== */
-
-function initWallVisualizer() {
-  updateWallVisualizer();
-}
-
-function setWallColor(colorPreset, el) {
-  appState.wallVisualizer.wallColor = colorPreset;
-
-  const colorButtons = document.querySelectorAll(".wall-color-btn");
-  colorButtons.forEach(b => b.classList.remove("ring-2", "ring-amber-400", "scale-110"));
-  if (el) el.classList.add("ring-2", "ring-amber-400", "scale-110");
-
-  const wallContainer = document.getElementById("wall-room-scene");
-  if (wallContainer) {
-    // Remove classes anteriores
-    wallContainer.className = "wall-scene relative";
-    wallContainer.classList.add(`wall-color-${colorPreset}`);
-  }
-}
-
-function setWallFurniture(furnitureType, el) {
-  appState.wallVisualizer.furniture = furnitureType;
-
-  const furnButtons = document.querySelectorAll(".wall-furniture-btn");
-  furnButtons.forEach(b => {
-    b.classList.remove("bg-amber-500", "text-stone-950");
-    b.classList.add("bg-stone-800", "text-stone-300");
-  });
-  if (el) {
-    el.classList.remove("bg-stone-800", "text-stone-300");
-    el.classList.add("bg-amber-500", "text-stone-950");
-  }
-
-  const furnImg = document.getElementById("wall-furniture-img");
-  if (furnImg) {
-    const furnitureMap = {
-      sofa: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80",
-      aparador: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1000&q=80",
-      cama: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1000&q=80"
-    };
-    furnImg.src = furnitureMap[furnitureType] || furnitureMap.sofa;
-  }
-}
-
-function setWallFrame(frameClass, el) {
-  appState.wallVisualizer.currentFrame = frameClass;
-
-  const frameBtns = document.querySelectorAll(".wall-frame-toggle-btn");
-  frameBtns.forEach(b => b.classList.remove("border-amber-400", "bg-amber-500/20"));
-  if (el) el.classList.add("border-amber-400", "bg-amber-500/20");
-
-  const wallPaintingFrame = document.getElementById("wall-painting-frame");
-  if (wallPaintingFrame) {
-    wallPaintingFrame.className = `painting-frame-preview max-w-sm sm:max-w-md w-full aspect-[16/10] overflow-hidden rounded-sm transition-all duration-300 ${frameClass}`;
-  }
-}
-
-function updateWallVisualizer() {
-  const catalog = getActiveCatalog();
-  const currentArt = catalog.find(a => a.id === appState.wallVisualizer.currentArtworkId) || catalog[0];
-  const wallPaintingImg = document.getElementById("wall-painting-img");
-  const wallArtTitle = document.getElementById("wall-art-title");
-
-  if (wallPaintingImg) {
-    wallPaintingImg.src = currentArt.image;
-    wallPaintingImg.alt = currentArt.title;
-  }
-
-  if (wallArtTitle) {
-    wallArtTitle.textContent = `${currentArt.title} (${currentArt.popularSizes[0]})`;
-  }
-}
-
-function orderArtworkFromWallVisualizer() {
-  const catalog = getActiveCatalog();
-  const currentArt = catalog.find(a => a.id === appState.wallVisualizer.currentArtworkId) || catalog[0];
-  const wallColor = appState.wallVisualizer.wallColor;
-  
-  const customMessage = `
-🎨 *PEDIDO VIA SIMULADOR DE PAREDE — ARTE EXPRESSO*
-🖼️ *Obra:* ${currentArt.title} (Cód: ${currentArt.id})
-• *Ambiente / Cor de Parede Testada:* Tom ${wallColor.toUpperCase()}
-• *Tamanho Sugerido:* ${currentArt.popularSizes[0]}
-
-💬 _Gostei muito da simulação no site e quero saber o valor final com moldura para entregar na minha casa!_
-  `.trim();
-
-  WhatsAppService.openWhatsApp(customMessage);
-}
-
-/* ==========================================================================
-   4. MODALS, LIGHTBOX & TESTIMONIALS
+   3. MODALS, LIGHTBOX & TESTIMONIALS
    ========================================================================== */
 
 function openArtworkModal(artworkId) {
@@ -481,17 +364,17 @@ function openArtworkModal(artworkId) {
           <div class="flex flex-col sm:flex-row gap-3">
             <button 
               onclick="orderCatalogItem('${art.id}'); closeArtworkModal();"
-              class="btn-shimmer flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50"
+              class="btn-shimmer flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50"
             >
               <i data-lucide="message-circle" class="w-4 h-4"></i>
               <span>Pedir Orçamento no WhatsApp</span>
             </button>
             <button 
-              onclick="testOnWall('${art.id}'); closeArtworkModal();"
-              class="py-3 px-4 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-sm transition-all flex items-center justify-center gap-2 border border-stone-700"
+              onclick="customizeFromCatalog('${art.id}'); closeArtworkModal();"
+              class="py-3 px-4 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 border border-stone-700"
             >
-              <i data-lucide="eye" class="w-4 h-4"></i>
-              <span>Simular na Parede</span>
+              <i data-lucide="sliders" class="w-4 h-4 text-amber-400"></i>
+              <span>Personalizar Medidas</span>
             </button>
           </div>
         </div>
