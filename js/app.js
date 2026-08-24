@@ -657,13 +657,12 @@ function goToCustomizerStep(stepNumber) {
 function submitCustomizerToWhatsApp() {
   const nameInput = document.getElementById("cust-name");
   const phoneInput = document.getElementById("cust-phone");
-  const cityInput = document.getElementById("cust-city");
-  const notesInput = document.getElementById("cust-notes");
-
-  appState.customizer.customerName = nameInput ? nameInput.value.trim() : "";
-  appState.customizer.customerPhone = phoneInput ? phoneInput.value.trim() : "";
-  appState.customizer.customerCity = cityInput ? cityInput.value.trim() : "";
-  appState.customizer.notes = notesInput ? notesInput.value.trim() : "";
+  const photoInput = document.getElementById("cust-wall-photo");
+  let customerNotes = notesInput ? notesInput.value.trim() : "";
+  if (photoInput && photoInput.files && photoInput.files.length > 0) {
+    customerNotes = (customerNotes ? customerNotes + "\n" : "") + "📸 [O cliente selecionou uma foto da parede para enviar aqui na conversa]";
+  }
+  appState.customizer.notes = customerNotes;
 
   // Validação simples
   if (!appState.customizer.customerName) {

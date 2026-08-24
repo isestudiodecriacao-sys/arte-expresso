@@ -552,6 +552,18 @@
                 </div>
 
                 <div>
+                  <label class="block text-xs font-semibold text-stone-300 mb-1">Foto da Parede / Ambiente (Opcional)</label>
+                  <label class="cursor-pointer py-2 px-3 rounded-xl bg-stone-900 border border-stone-700 hover:border-amber-500/50 flex items-center justify-between gap-2 text-stone-300 text-xs transition-all">
+                    <span id="cust-wall-photo-label" class="truncate flex items-center gap-1.5 text-stone-400">
+                      <i data-lucide="image" class="w-3.5 h-3.5 text-amber-400"></i>
+                      Anexar foto da minha parede (opcional)
+                    </span>
+                    <span class="px-2 py-0.5 rounded bg-stone-800 text-[10px] text-amber-400 font-semibold flex-shrink-0">Procurar</span>
+                    <input type="file" id="cust-wall-photo" accept="image/*" class="hidden" onchange="const f=this.files[0]; if(f){ document.getElementById('cust-wall-photo-label').textContent='Foto selecionada: ' + f.name; document.getElementById('cust-wall-photo-label').className='text-emerald-400 font-semibold truncate flex items-center gap-1.5'; }" />
+                  </label>
+                </div>
+
+                <div>
                   <label class="block text-xs font-semibold text-stone-300 mb-1">Observações / Detalhes</label>
                   <textarea 
                     id="cust-notes" 

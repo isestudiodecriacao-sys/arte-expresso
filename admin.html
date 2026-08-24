@@ -787,6 +787,73 @@
     }
 
     /* ======================================================================
+       IMAGE UPLOAD & COMPRESSION HELPERS
+       ====================================================================== */
+    function processImageUpload(fileInput, targetUrlInputId, previewContainerId, previewImgId) {
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      if (!file.type.startsWith("image/")) {
+        alert("Por favor, selecione um arquivo de imagem válido (JPG, PNG, WebP).");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const maxDim = 1400;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Salva como WebP/JPEG com qualidade balanceada
+          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.85);
+
+          const targetInput = document.getElementById(targetUrlInputId);
+          if (targetInput) targetInput.value = compressedDataUrl;
+
+          const previewImg = document.getElementById(previewImgId);
+          const previewContainer = document.getElementById(previewContainerId);
+          if (previewImg && previewContainer) {
+            previewImg.src = compressedDataUrl;
+            previewContainer.classList.remove("hidden");
+          }
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateImagePreviewFromUrl(url, previewContainerId, previewImgId) {
+      const previewImg = document.getElementById(previewImgId);
+      const previewContainer = document.getElementById(previewContainerId);
+      if (!previewImg || !previewContainer) return;
+
+      if (url && (url.startsWith("http") || url.startsWith("data:image/"))) {
+        previewImg.src = url;
+        previewContainer.classList.remove("hidden");
+      } else {
+        previewContainer.classList.add("hidden");
+      }
+    }
+
+    /* ======================================================================
        MODAL CONTROLLERS & OPENERS
        ====================================================================== */
     const modal = document.getElementById("admin-generic-modal");
@@ -848,13 +915,33 @@
             <input type="text" id="modal-art-technique" placeholder="Ex: Acrílico espatulado com Folha de Ouro 24k" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
           </div>
           <div>
-            <label class="block font-semibold mb-1">Descrição</label>
+            <label class="block font-semibold mb-1">Descrição Comercial</label>
             <textarea id="modal-art-desc" rows="2" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 resize-none"></textarea>
           </div>
-          <div>
-            <label class="block font-semibold mb-1">URL da Imagem *</label>
-            <input type="url" id="modal-art-image" required placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+
+          <!-- Upload de Imagem -->
+          <div class="p-3.5 rounded-xl bg-stone-900/90 border border-stone-700 space-y-2.5">
+            <label class="block font-semibold text-stone-200">Foto do Quadro *</label>
+            
+            <label class="cursor-pointer py-2.5 px-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md">
+              <i data-lucide="upload" class="w-4 h-4"></i>
+              <span>Fazer Upload da Foto (Celular / Computador)</span>
+              <input type="file" accept="image/*" class="hidden" onchange="processImageUpload(this, 'modal-art-image', 'art-preview-wrap', 'art-preview-img')" />
+            </label>
+
+            <div>
+              <span class="text-[10px] text-stone-400 block mb-1">Ou cole uma URL / link de imagem externo:</span>
+              <input type="text" id="modal-art-image" required placeholder="https://... ou imagem carregada via botão acima" oninput="updateImagePreviewFromUrl(this.value, 'art-preview-wrap', 'art-preview-img')" class="w-full px-3 py-2 rounded-lg bg-stone-950 border border-stone-800 text-stone-100 text-xs font-mono" />
+            </div>
+
+            <!-- Preview Box -->
+            <div id="art-preview-wrap" class="hidden relative aspect-video rounded-xl overflow-hidden bg-stone-950 border border-amber-500/40">
+              <img id="art-preview-img" src="" class="w-full h-full object-cover" />
+              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-600 text-white text-[10px] font-bold">Foto Carregada</span>
+              <button type="button" onclick="document.getElementById('modal-art-image').value=''; document.getElementById('art-preview-wrap').classList.add('hidden');" class="absolute top-2 right-2 px-2 py-1 rounded bg-stone-950/80 text-stone-300 hover:text-red-400 text-xs">Remover</button>
+            </div>
           </div>
+
           <div class="grid grid-cols-2 gap-3">
             <div>
               <label class="block font-semibold mb-1">Tamanhos Sugeridos</label>
@@ -889,6 +976,8 @@
       document.getElementById("modal-art-image").value = art.image;
       document.getElementById("modal-art-sizes").value = (art.popularSizes || []).join(", ");
       document.getElementById("modal-art-tag").value = art.tag || "";
+
+      updateImagePreviewFromUrl(art.image, 'art-preview-wrap', 'art-preview-img');
     }
 
     function saveArtworkForm(e) {
@@ -959,10 +1048,27 @@
             <label class="block font-semibold mb-1">Badge de Destaque</label>
             <input type="text" id="modal-style-badge" placeholder="Ex: Mais Procurado, Tendência" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
           </div>
-          <div>
-            <label class="block font-semibold mb-1">URL da Imagem de Exemplo *</label>
-            <input type="url" id="modal-style-image" required placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+
+          <!-- Upload de Imagem do Estilo -->
+          <div class="p-3 rounded-xl bg-stone-900 border border-stone-700 space-y-2">
+            <label class="block font-semibold text-stone-200">Foto de Exemplo do Estilo *</label>
+            
+            <label class="cursor-pointer py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
+              <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+              <span>Fazer Upload da Foto do Estilo</span>
+              <input type="file" accept="image/*" class="hidden" onchange="processImageUpload(this, 'modal-style-image', 'style-preview-wrap', 'style-preview-img')" />
+            </label>
+
+            <div>
+              <span class="text-[10px] text-stone-400 block mb-1">Ou cole uma URL:</span>
+              <input type="text" id="modal-style-image" required placeholder="https://... ou upload acima" oninput="updateImagePreviewFromUrl(this.value, 'style-preview-wrap', 'style-preview-img')" class="w-full px-3 py-1.5 rounded-lg bg-stone-950 border border-stone-800 text-stone-100 text-xs font-mono" />
+            </div>
+
+            <div id="style-preview-wrap" class="hidden relative aspect-video rounded-lg overflow-hidden bg-stone-950 border border-amber-500/40">
+              <img id="style-preview-img" src="" class="w-full h-full object-cover" />
+            </div>
           </div>
+
           <div>
             <label class="block font-semibold mb-1">Descrição</label>
             <textarea id="modal-style-desc" rows="2" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 resize-none"></textarea>
@@ -987,6 +1093,8 @@
       document.getElementById("modal-style-badge").value = style.badge || "";
       document.getElementById("modal-style-image").value = style.image;
       document.getElementById("modal-style-desc").value = style.desc;
+
+      updateImagePreviewFromUrl(style.image, 'style-preview-wrap', 'style-preview-img');
     }
 
     function saveStyleForm(e) {
@@ -1212,10 +1320,24 @@
               <input type="text" id="modal-test-city" placeholder="São Paulo, SP" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
             </div>
           </div>
-          <div>
-            <label class="block font-semibold mb-1">Foto / Avatar (URL)</label>
-            <input type="url" id="modal-test-avatar" placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          
+          <!-- Upload de Foto do Cliente -->
+          <div class="p-3 rounded-xl bg-stone-900 border border-stone-700 space-y-2">
+            <label class="block font-semibold text-stone-200">Foto do Cliente (Avatar)</label>
+            <label class="cursor-pointer py-2 px-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
+              <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+              <span>Fazer Upload da Foto</span>
+              <input type="file" accept="image/*" class="hidden" onchange="processImageUpload(this, 'modal-test-avatar', 'test-preview-wrap', 'test-preview-img')" />
+            </label>
+            <div>
+              <input type="text" id="modal-test-avatar" placeholder="https://... ou upload acima" oninput="updateImagePreviewFromUrl(this.value, 'test-preview-wrap', 'test-preview-img')" class="w-full px-3 py-1.5 rounded-lg bg-stone-950 border border-stone-800 text-stone-100 text-xs font-mono" />
+            </div>
+            <div id="test-preview-wrap" class="hidden flex items-center gap-2">
+              <img id="test-preview-img" src="" class="w-10 h-10 rounded-full object-cover border border-amber-500" />
+              <span class="text-[10px] text-emerald-400 font-semibold">Foto carregada!</span>
+            </div>
           </div>
+
           <div>
             <label class="block font-semibold mb-1">Comentário / Avaliação *</label>
             <textarea id="modal-test-comment" rows="3" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 resize-none"></textarea>
