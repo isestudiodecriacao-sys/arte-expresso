@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Painel de Gestão de Produtos — Arte Expresso (@arte.expresso)</title>
+  <title>Painel de Gestão Total (CMS) — Arte Expresso (@arte.expresso)</title>
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
@@ -52,9 +52,14 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
+    .tab-btn.active {
+      background-color: #D4AF37;
+      color: #0C0C0E;
+      font-weight: 700;
+    }
   </style>
 </head>
-<body class="bg-charcoal-950 text-stone-200 min-h-screen">
+<body class="bg-charcoal-950 text-stone-200 min-h-screen text-xs">
 
   <!-- ========================================================================
        LOGIN / PIN AUTHENTICATION OVERLAY
@@ -62,12 +67,12 @@
   <div id="admin-auth-overlay" class="fixed inset-0 z-50 bg-charcoal-950/95 flex items-center justify-center p-4">
     <div class="glass-panel max-w-md w-full p-8 rounded-3xl border border-stone-800 shadow-2xl text-center space-y-6">
       
-      <div class="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto shadow-lg">
-        <i data-lucide="lock" class="w-8 h-8"></i>
+      <div class="w-14 h-14 rounded-2xl bg-amber-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto shadow-lg">
+        <i data-lucide="lock" class="w-7 h-7"></i>
       </div>
 
       <div>
-        <h2 class="font-serif text-2xl font-bold text-stone-100">Painel de Gestão</h2>
+        <h2 class="font-serif text-2xl font-bold text-stone-100">Painel de Gestão Total</h2>
         <p class="text-xs text-stone-400 mt-1">Arte Expresso (@arte.expresso)</p>
       </div>
 
@@ -86,13 +91,13 @@
 
         <button 
           onclick="handleAdminLogin()" 
-          class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-sm shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
+          class="w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
         >
           <i data-lucide="key" class="w-4 h-4"></i>
           <span>Entrar no Painel</span>
         </button>
 
-        <p class="text-[11px] text-stone-500">PIN padrão de fábrica: <strong>123456</strong> (você pode alterar depois)</p>
+        <p class="text-[11px] text-stone-500">PIN padrão de fábrica: <strong>123456</strong></p>
       </div>
 
       <div class="pt-4 border-t border-stone-800">
@@ -112,31 +117,31 @@
     
     <!-- Top Nav -->
     <header class="glass-panel border-b border-stone-800 sticky top-0 z-30">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         
-        <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center text-stone-950 font-bold shadow-md">
-            <i data-lucide="palette" class="w-5 h-5"></i>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-stone-950 font-bold shadow-md">
+            <i data-lucide="sliders" class="w-5 h-5"></i>
           </div>
           <div>
-            <span class="font-serif text-lg font-bold text-stone-100">ARTE EXPRESSO — ADMIN</span>
-            <span class="block text-[10px] text-amber-400 uppercase tracking-wider font-semibold">Controle de Catálogo & Obras</span>
+            <span class="font-serif text-base sm:text-lg font-bold text-stone-100">ARTE EXPRESSO — CMS</span>
+            <span class="block text-[9px] text-amber-400 uppercase tracking-wider font-semibold">Controle Total do Site</span>
           </div>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.5">
           <a 
             href="index.html" 
             target="_blank"
-            class="px-4 py-2 rounded-xl bg-stone-900 hover:bg-stone-800 border border-stone-700 text-stone-300 text-xs font-semibold flex items-center gap-2 transition-all"
+            class="px-3.5 py-1.5 rounded-lg bg-stone-900 hover:bg-stone-800 border border-stone-700 text-stone-300 text-xs font-semibold flex items-center gap-1.5 transition-all"
           >
-            <i data-lucide="external-link" class="w-4 h-4 text-amber-400"></i>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-400"></i>
             <span class="hidden sm:inline">Ver Loja Ao Vivo</span>
           </a>
 
           <button 
             onclick="handleAdminLogout()"
-            class="p-2.5 rounded-xl bg-stone-900 hover:bg-red-950/60 border border-stone-800 text-stone-400 hover:text-red-400 transition-colors"
+            class="p-2 rounded-lg bg-stone-900 hover:bg-red-950/60 border border-stone-800 text-stone-400 hover:text-red-400 transition-colors"
             title="Sair do Painel"
           >
             <i data-lucide="log-out" class="w-4 h-4"></i>
@@ -144,261 +149,296 @@
         </div>
 
       </div>
+
+      <!-- Navigation Tabs Bar -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 overflow-x-auto pb-2 pt-1 border-t border-stone-800/40">
+        <button onclick="switchTab('artworks', this)" class="tab-btn active px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-stone-900 border border-stone-800 transition-all flex items-center gap-1.5">
+          <i data-lucide="image" class="w-3.5 h-3.5"></i>
+          <span>1. Obras / Catálogo</span>
+        </button>
+        <button onclick="switchTab('styles', this)" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-all flex items-center gap-1.5">
+          <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+          <span>2. Aba 1: Estilos</span>
+        </button>
+        <button onclick="switchTab('sizes', this)" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-all flex items-center gap-1.5">
+          <i data-lucide="ruler" class="w-3.5 h-3.5"></i>
+          <span>3. Aba 2: Tamanhos</span>
+        </button>
+        <button onclick="switchTab('frames', this)" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-all flex items-center gap-1.5">
+          <i data-lucide="square" class="w-3.5 h-3.5"></i>
+          <span>4. Aba 3: Molduras</span>
+        </button>
+        <button onclick="switchTab('rooms_palettes', this)" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-all flex items-center gap-1.5">
+          <i data-lucide="home" class="w-3.5 h-3.5"></i>
+          <span>5. Aba 4: Ambientes & Cores</span>
+        </button>
+        <button onclick="switchTab('testimonials', this)" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-all flex items-center gap-1.5">
+          <i data-lucide="star" class="w-3.5 h-3.5"></i>
+          <span>6. Depoimentos</span>
+        </button>
+        <button onclick="switchTab('faqs', this)" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-all flex items-center gap-1.5">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+          <span>7. FAQ (Dúvidas)</span>
+        </button>
+        <button onclick="switchTab('settings', this)" class="tab-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-all flex items-center gap-1.5">
+          <i data-lucide="settings" class="w-3.5 h-3.5"></i>
+          <span>8. Configurações</span>
+        </button>
+      </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       
-      <!-- Action Bar & Stats -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        
-        <div class="glass-panel p-5 rounded-2xl border border-stone-800 flex items-center justify-between">
+      <!-- ==================================================================
+           TAB 1: OBRAS DO CATÁLOGO
+           ================================================================== -->
+      <section id="tab-artworks" class="tab-content space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-charcoal-900 border border-stone-800">
           <div>
-            <span class="text-xs text-stone-400">Total de Obras</span>
-            <h3 id="stat-total-artworks" class="font-serif text-2xl font-bold text-amber-400">0</h3>
+            <h2 class="font-serif text-lg font-bold text-stone-100">Catálogo de Obras & Vitrine</h2>
+            <p class="text-xs text-stone-400 mt-0.5">Cadastre e edite os quadros exibidos na galeria principal. O preço é opcional (aparece somente se você preencher).</p>
           </div>
-          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
-            <i data-lucide="image" class="w-5 h-5"></i>
+          <div class="flex items-center gap-2.5">
+            <button onclick="openAddArtworkModal()" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md shadow-amber-500/20 transition-all flex items-center gap-1.5">
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              <span>Novo Quadro</span>
+            </button>
+            <button onclick="exportAllDatabaseToFile()" class="px-3.5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-xs border border-stone-700 transition-all flex items-center gap-1.5" title="Exportar catalog-data.js completo para commit no GitHub">
+              <i data-lucide="download" class="w-4 h-4 text-amber-400"></i>
+              <span>Exportar Backup</span>
+            </button>
           </div>
         </div>
 
-        <div class="glass-panel p-5 rounded-2xl border border-stone-800 flex items-center justify-between">
+        <div id="admin-artworks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           TAB 2: ESTILOS ARTÍSTICOS (ABA 1 DO SIMULADOR)
+           ================================================================== -->
+      <section id="tab-styles" class="tab-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-charcoal-900 border border-stone-800">
           <div>
-            <span class="text-xs text-stone-400">WhatsApp Comercial</span>
-            <h3 class="text-sm font-bold text-emerald-400">(11) 95793-4714</h3>
+            <h2 class="font-serif text-lg font-bold text-stone-100">Estilos Artísticos (Aba 1 do Simulador)</h2>
+            <p class="text-xs text-stone-400 mt-0.5">Cadastre, edite fotos de exemplo, títulos, descrições e badges dos estilos de quadros.</p>
           </div>
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-            <i data-lucide="message-circle" class="w-5 h-5"></i>
-          </div>
-        </div>
-
-        <div class="glass-panel p-5 rounded-2xl border border-stone-800 flex items-center justify-between">
-          <div>
-            <span class="text-xs text-stone-400">Instagram Oficial</span>
-            <h3 class="text-sm font-bold text-pink-400">@arte.expresso</h3>
-          </div>
-          <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-pink-400 flex items-center justify-center">
-            <i data-lucide="instagram" class="w-5 h-5"></i>
-          </div>
-        </div>
-
-        <div class="glass-panel p-5 rounded-2xl border border-stone-800 flex items-center justify-between">
-          <div>
-            <span class="text-xs text-stone-400">Status da Base</span>
-            <h3 id="stat-storage-status" class="text-sm font-bold text-amber-300">Sincronizado</h3>
-          </div>
-          <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
-            <i data-lucide="database" class="w-5 h-5"></i>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Controls & Actions -->
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-2xl bg-charcoal-900 border border-stone-800">
-        <div>
-          <h2 class="font-serif text-xl font-bold text-stone-100">Catálogo de Obras</h2>
-          <p class="text-xs text-stone-400 mt-0.5">Gerencie os quadros exibidos na galeria, simulador e botões do WhatsApp.</p>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-3">
-          <button 
-            onclick="openAddModal()" 
-            class="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2"
-          >
+          <button onclick="openAddStyleModal()" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md flex items-center gap-1.5">
             <i data-lucide="plus-circle" class="w-4 h-4"></i>
-            <span>Adicionar Novo Quadro</span>
-          </button>
-
-          <button 
-            onclick="exportCatalogToFile()" 
-            class="px-4 py-3 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-xs border border-stone-700 transition-all flex items-center gap-2"
-            title="Baixar arquivo catalog-data.js atualizado para salvar no GitHub"
-          >
-            <i data-lucide="download" class="w-4 h-4 text-amber-400"></i>
-            <span>Exportar JS / Backup</span>
-          </button>
-
-          <button 
-            onclick="resetCatalogToDefault()" 
-            class="px-3 py-3 rounded-xl bg-stone-900 hover:bg-stone-800 text-stone-400 hover:text-stone-200 text-xs border border-stone-800 transition-all"
-            title="Restaurar dados originais"
-          >
-            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+            <span>Novo Estilo</span>
           </button>
         </div>
-      </div>
 
-      <!-- Products Table / Grid View -->
-      <div id="admin-artworks-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Rendered dynamically -->
-      </div>
+        <div id="admin-styles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           TAB 3: TAMANHOS & DIMENSÕES (ABA 2 DO SIMULADOR)
+           ================================================================== -->
+      <section id="tab-sizes" class="tab-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-charcoal-900 border border-stone-800">
+          <div>
+            <h2 class="font-serif text-lg font-bold text-stone-100">Tamanhos e Formatos (Aba 2 do Simulador)</h2>
+            <p class="text-xs text-stone-400 mt-0.5">Defina as opções de medidas populares recomendadas (ex: 120x80cm, 150x90cm, dípticos, etc.).</p>
+          </div>
+          <button onclick="openAddSizeModal()" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md flex items-center gap-1.5">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span>Novo Tamanho</span>
+          </button>
+        </div>
+
+        <div id="admin-sizes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           TAB 4: MOLDURAS & ACABAMENTOS (ABA 3 DO SIMULADOR)
+           ================================================================== -->
+      <section id="tab-frames" class="tab-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-charcoal-900 border border-stone-800">
+          <div>
+            <h2 class="font-serif text-lg font-bold text-stone-100">Molduras & Acabamentos (Aba 3 do Simulador)</h2>
+            <p class="text-xs text-stone-400 mt-0.5">Cadastre tipos de molduras, cores hexadecimais, tags e descrições para os clientes escolherem.</p>
+          </div>
+          <button onclick="openAddFrameModal()" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md flex items-center gap-1.5">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span>Nova Moldura</span>
+          </button>
+        </div>
+
+        <div id="admin-frames-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           TAB 5: AMBIENTES & PALETAS (ABA 4 DO SIMULADOR)
+           ================================================================== -->
+      <section id="tab-rooms_palettes" class="tab-content hidden space-y-8">
+        <!-- Ambientes -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-4 rounded-xl bg-charcoal-900 border border-stone-800">
+            <h3 class="font-serif text-base font-bold text-stone-100">Ambientes Cadastrados</h3>
+            <button onclick="openAddRoomModal()" class="px-3.5 py-2 rounded-lg bg-amber-500 text-stone-950 font-bold text-xs flex items-center gap-1">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>Novo Ambiente</span>
+            </button>
+          </div>
+          <div id="admin-rooms-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3"></div>
+        </div>
+
+        <!-- Paletas -->
+        <div class="space-y-4 pt-4 border-t border-stone-800">
+          <div class="flex items-center justify-between p-4 rounded-xl bg-charcoal-900 border border-stone-800">
+            <h3 class="font-serif text-base font-bold text-stone-100">Paletas de Cores Cadastradas</h3>
+            <button onclick="openAddPaletteModal()" class="px-3.5 py-2 rounded-lg bg-amber-500 text-stone-950 font-bold text-xs flex items-center gap-1">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>Nova Paleta</span>
+            </button>
+          </div>
+          <div id="admin-palettes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           TAB 6: DEPOIMENTOS DE CLIENTES
+           ================================================================== -->
+      <section id="tab-testimonials" class="tab-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-charcoal-900 border border-stone-800">
+          <div>
+            <h2 class="font-serif text-lg font-bold text-stone-100">Depoimentos & Avaliações</h2>
+            <p class="text-xs text-stone-400 mt-0.5">Cadastre prints, fotos e comentários reais de clientes satisfeitos.</p>
+          </div>
+          <button onclick="openAddTestimonialModal()" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md flex items-center gap-1.5">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span>Novo Depoimento</span>
+          </button>
+        </div>
+
+        <div id="admin-testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           TAB 7: FAQ (DÚVIDAS FREQUENTES)
+           ================================================================== -->
+      <section id="tab-faqs" class="tab-content hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl bg-charcoal-900 border border-stone-800">
+          <div>
+            <h2 class="font-serif text-lg font-bold text-stone-100">Perguntas Frequentes (FAQ)</h2>
+            <p class="text-xs text-stone-400 mt-0.5">Cadastre e edite as respostas para as principais dúvidas dos clientes.</p>
+          </div>
+          <button onclick="openAddFAQModal()" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md flex items-center gap-1.5">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i>
+            <span>Nova Pergunta</span>
+          </button>
+        </div>
+
+        <div id="admin-faqs-list" class="space-y-3">
+          <!-- Rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- ==================================================================
+           TAB 8: CONFIGURAÇÕES GERAIS DO ATELIÊ
+           ================================================================== -->
+      <section id="tab-settings" class="tab-content hidden space-y-6">
+        <div class="glass-panel p-6 rounded-2xl border border-stone-800 max-w-2xl mx-auto space-y-5">
+          <h2 class="font-serif text-lg font-bold text-stone-100 flex items-center gap-2">
+            <i data-lucide="settings" class="w-5 h-5 text-amber-400"></i>
+            Configurações do Ateliê & Contatos
+          </h2>
+
+          <form onsubmit="handleSaveSettings(event)" class="space-y-4">
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1">WhatsApp Comercial (com DDD e DDI - somente números):</label>
+              <input type="text" id="setting-whatsapp" placeholder="5511957934714" required class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 font-mono focus:border-amber-500 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1">WhatsApp (Formato de Exibição):</label>
+              <input type="text" id="setting-whatsapp-display" placeholder="(11) 95793-4714" required class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1">Link do Instagram:</label>
+              <input type="url" id="setting-instagram" placeholder="https://www.instagram.com/arte.expresso/" required class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1">Texto da Barra Superior (Anúncio):</label>
+              <input type="text" id="setting-announcement" placeholder="Quadros 100% Pintados à Mão Sob Medida • Envio com Seguro Total para Todo o Brasil" required class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block font-semibold text-stone-300 mb-1">PIN de Acesso ao Painel Admin:</label>
+              <input type="text" id="setting-pin" placeholder="123456" required class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 font-mono focus:border-amber-500 focus:outline-none" />
+            </div>
+
+            <div class="pt-3 border-t border-stone-800 flex justify-end">
+              <button type="submit" class="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md">
+                Salvar Configurações
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
 
     </main>
   </div>
 
   <!-- ========================================================================
-       MODAL: ADICIONAR / EDITAR OBRA
+       MODAL GENÉRICO PARA CRUDS (OBRAS, ESTILOS, TAMANHOS, MOLDURAS, ETC.)
        ======================================================================== -->
-  <div id="admin-edit-modal" class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="glass-panel max-w-2xl w-full rounded-3xl border border-stone-700 shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-6">
-      
-      <div class="flex items-center justify-between border-b border-stone-800 pb-4">
-        <h3 id="modal-form-title" class="font-serif text-xl font-bold text-amber-300 flex items-center gap-2">
-          <i data-lucide="edit-3" class="w-5 h-5"></i>
-          Cadastrar Nova Obra
-        </h3>
-        <button onclick="closeEditModal()" class="p-2 rounded-xl bg-stone-900 text-stone-400 hover:text-white">
-          <i data-lucide="x" class="w-5 h-5"></i>
+  <div id="admin-generic-modal" class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-panel max-w-2xl w-full rounded-2xl border border-stone-700 shadow-2xl p-6 max-h-[90vh] overflow-y-auto space-y-5">
+      <div class="flex items-center justify-between border-b border-stone-800 pb-3">
+        <h3 id="generic-modal-title" class="font-serif text-lg font-bold text-amber-300">Item</h3>
+        <button onclick="closeGenericModal()" class="p-1.5 rounded-lg bg-stone-900 text-stone-400 hover:text-white">
+          <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
-
-      <form id="artwork-form" onsubmit="handleSaveArtwork(event)" class="space-y-4 text-xs">
-        
-        <input type="hidden" id="form-art-id" value="">
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="sm:col-span-2">
-            <label class="block font-semibold text-stone-300 mb-1">Título da Obra *</label>
-            <input 
-              type="text" 
-              id="form-title" 
-              placeholder="Ex: Sinfonia Dourada & Concreto" 
-              required
-              class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label class="block font-semibold text-stone-300 mb-1">Código (Ex: EXP-10)</label>
-            <input 
-              type="text" 
-              id="form-code" 
-              placeholder="EXP-10" 
-              required
-              class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 uppercase font-mono focus:border-amber-500 focus:outline-none"
-            />
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block font-semibold text-stone-300 mb-1">Categoria de Estilo *</label>
-            <select 
-              id="form-category" 
-              class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none"
-            >
-              <option value="texturizado">Texturizado 3D</option>
-              <option value="abstrato">Abstrato Moderno</option>
-              <option value="minimalista">Minimalista & Neutro</option>
-              <option value="diptico">Conjunto Díptico / Tríptico</option>
-              <option value="retrato">Retrato & Desenho Realista</option>
-              <option value="personalizado">Personalizado do Zero</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="block font-semibold text-stone-300 mb-1">Preço de Referência (Opcional — deixe em branco para Sob Consulta)</label>
-            <input 
-              type="text" 
-              id="form-price" 
-              placeholder="Ex: R$ 690 ou deixe em branco" 
-              class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label class="block font-semibold text-stone-300 mb-1">Técnica Utilizada *</label>
-          <input 
-            type="text" 
-            id="form-technique" 
-            placeholder="Ex: Acrílico espatulado com relevo 3D e Folha de Ouro 24k" 
-            required
-            class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none"
-          />
-        </div>
-
-        <div>
-          <label class="block font-semibold text-stone-300 mb-1">Descrição Comercial</label>
-          <textarea 
-            id="form-description" 
-            rows="3" 
-            placeholder="Descreva as características da obra, sensação que transmite e ambientes ideais..."
-            class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none resize-none"
-          ></textarea>
-        </div>
-
-        <div>
-          <label class="block font-semibold text-stone-300 mb-1">URL da Imagem da Obra (Alta Resolução) *</label>
-          <input 
-            type="url" 
-            id="form-image" 
-            placeholder="https://images.unsplash.com/... ou link direto da foto" 
-            required
-            oninput="previewFormImage(this.value)"
-            class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none"
-          />
-          <div id="form-img-preview-container" class="mt-2 hidden">
-            <img id="form-img-preview" src="" alt="Prévia" class="h-28 w-40 object-cover rounded-xl border border-stone-700" />
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div>
-            <label class="block font-semibold text-stone-300 mb-1">Tamanhos Populares (separados por vírgula)</label>
-            <input 
-              type="text" 
-              id="form-sizes" 
-              placeholder="120x80 cm, 150x90 cm, 180x100 cm" 
-              class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <label class="block font-semibold text-stone-300 mb-1">Tag de Destaque</label>
-            <input 
-              type="text" 
-              id="form-tag" 
-              placeholder="Ex: Mais Pedido, Exclusivo, Lançamento" 
-              class="w-full px-3 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none"
-            />
-          </div>
-        </div>
-
-        <div class="pt-4 border-t border-stone-800 flex items-center justify-end gap-3">
-          <button 
-            type="button" 
-            onclick="closeEditModal()" 
-            class="px-5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-300 font-semibold"
-          >
-            Cancelar
-          </button>
-
-          <button 
-            type="submit" 
-            class="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold flex items-center gap-2 shadow-lg shadow-amber-500/20"
-          >
-            <i data-lucide="check" class="w-4 h-4"></i>
-            <span>Salvar Obra no Catálogo</span>
-          </button>
-        </div>
-
-      </form>
-
+      <div id="generic-modal-body"></div>
     </div>
   </div>
 
-  <!-- Scripts -->
+  <!-- Base Scripts -->
   <script src="js/catalog-data.js"></script>
   <script>
-    const STORAGE_KEY = "arte_expresso_catalog_v1";
-    const PIN_KEY = "arte_expresso_admin_pin";
-    const DEFAULT_PIN = "123456";
+    // Storage Keys
+    const DB_KEYS = {
+      artworks: "arte_expresso_artworks_v2",
+      styles: "arte_expresso_styles_v2",
+      sizes: "arte_expresso_sizes_v2",
+      frames: "arte_expresso_frames_v2",
+      rooms: "arte_expresso_rooms_v2",
+      palettes: "arte_expresso_palettes_v2",
+      testimonials: "arte_expresso_testimonials_v2",
+      faqs: "arte_expresso_faqs_v2",
+      settings: "arte_expresso_settings_v2",
+      pin: "arte_expresso_admin_pin"
+    };
 
-    let currentArtworks = [];
+    let DB = {
+      artworks: [],
+      styles: [],
+      sizes: [],
+      frames: [],
+      rooms: [],
+      palettes: [],
+      testimonials: [],
+      faqs: [],
+      settings: {}
+    };
 
     document.addEventListener("DOMContentLoaded", () => {
       checkAuthStatus();
-      loadArtworks();
+      loadAllData();
       if (window.lucide) window.lucide.createIcons();
     });
 
@@ -419,13 +459,13 @@
     function handleAdminLogin() {
       const pinInput = document.getElementById("admin-pin-input");
       const errorMsg = document.getElementById("pin-error-msg");
-      const savedPin = localStorage.getItem(PIN_KEY) || DEFAULT_PIN;
+      const savedPin = localStorage.getItem(DB_KEYS.pin) || "123456";
 
       if (pinInput.value === savedPin) {
         sessionStorage.setItem("arte_admin_logged", "true");
         errorMsg.classList.add("hidden");
         checkAuthStatus();
-        renderAdminArtworks();
+        renderAllTabs();
       } else {
         errorMsg.classList.remove("hidden");
         pinInput.focus();
@@ -437,37 +477,75 @@
       checkAuthStatus();
     }
 
-    function loadArtworks() {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        try {
-          currentArtworks = JSON.parse(saved);
-        } catch (e) {
-          currentArtworks = [...CATALOG_DATA];
-        }
-      } else {
-        currentArtworks = [...CATALOG_DATA];
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(currentArtworks));
-      }
-      renderAdminArtworks();
+    function loadAllData() {
+      DB.artworks = JSON.parse(localStorage.getItem(DB_KEYS.artworks)) || [...CATALOG_DATA];
+      DB.styles = JSON.parse(localStorage.getItem(DB_KEYS.styles)) || [...STYLES_LIST];
+      DB.sizes = JSON.parse(localStorage.getItem(DB_KEYS.sizes)) || [...POPULAR_SIZES];
+      DB.frames = JSON.parse(localStorage.getItem(DB_KEYS.frames)) || [...FRAMES_LIST];
+      DB.rooms = JSON.parse(localStorage.getItem(DB_KEYS.rooms)) || [...ROOMS_LIST];
+      DB.palettes = JSON.parse(localStorage.getItem(DB_KEYS.palettes)) || [...PALETTES_LIST];
+      DB.testimonials = JSON.parse(localStorage.getItem(DB_KEYS.testimonials)) || [...TESTIMONIALS];
+      DB.faqs = JSON.parse(localStorage.getItem(DB_KEYS.faqs)) || [...FAQS];
+      
+      DB.settings = JSON.parse(localStorage.getItem(DB_KEYS.settings)) || {
+        whatsapp: "5511957934714",
+        displayPhone: "(11) 95793-4714",
+        instagram: "https://www.instagram.com/arte.expresso/",
+        announcement: "Quadros 100% Pintados à Mão Sob Medida • Envio com Seguro Total para Todo o Brasil",
+        pin: "123456"
+      };
+
+      saveAllData();
+      renderAllTabs();
     }
 
-    function saveArtworksToStorage() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(currentArtworks));
-      renderAdminArtworks();
+    function saveAllData() {
+      localStorage.setItem(DB_KEYS.artworks, JSON.stringify(DB.artworks));
+      localStorage.setItem(DB_KEYS.styles, JSON.stringify(DB.styles));
+      localStorage.setItem(DB_KEYS.sizes, JSON.stringify(DB.sizes));
+      localStorage.setItem(DB_KEYS.frames, JSON.stringify(DB.frames));
+      localStorage.setItem(DB_KEYS.rooms, JSON.stringify(DB.rooms));
+      localStorage.setItem(DB_KEYS.palettes, JSON.stringify(DB.palettes));
+      localStorage.setItem(DB_KEYS.testimonials, JSON.stringify(DB.testimonials));
+      localStorage.setItem(DB_KEYS.faqs, JSON.stringify(DB.faqs));
+      localStorage.setItem(DB_KEYS.settings, JSON.stringify(DB.settings));
     }
 
-    function renderAdminArtworks() {
-      const container = document.getElementById("admin-artworks-list");
-      const statTotal = document.getElementById("stat-total-artworks");
+    function switchTab(tabId, el) {
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.add("hidden"));
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      
+      const target = document.getElementById(`tab-${tabId}`);
+      if (target) target.classList.remove("hidden");
+      if (el) el.classList.add("active");
+      
+      if (window.lucide) window.lucide.createIcons();
+    }
 
-      if (statTotal) statTotal.textContent = currentArtworks.length;
+    function renderAllTabs() {
+      renderArtworksTab();
+      renderStylesTab();
+      renderSizesTab();
+      renderFramesTab();
+      renderRoomsAndPalettesTab();
+      renderTestimonialsTab();
+      renderFAQsTab();
+      renderSettingsTab();
+      if (window.lucide) window.lucide.createIcons();
+    }
 
+    /* ======================================================================
+       TAB RENDERS & CRUD FUNCTIONS
+       ====================================================================== */
+
+    // 1. OBRAS
+    function renderArtworksTab() {
+      const container = document.getElementById("admin-artworks-grid");
       if (!container) return;
 
-      container.innerHTML = currentArtworks.map(art => `
-        <div class="glass-panel rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between p-4 space-y-4 group">
-          <div class="space-y-3">
+      container.innerHTML = DB.artworks.map(art => `
+        <div class="glass-panel rounded-2xl overflow-hidden border border-stone-800 flex flex-col justify-between p-4 space-y-3">
+          <div class="space-y-2.5">
             <div class="relative aspect-video rounded-xl overflow-hidden bg-stone-950 border border-stone-800">
               <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover" />
               <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-semibold bg-stone-950/80 text-amber-300 border border-amber-500/30">
@@ -488,125 +566,355 @@
                 `}
               </div>
               <p class="text-[11px] text-amber-400/90 mt-0.5">${art.technique}</p>
-              <p class="text-[11px] text-stone-400 mt-2 line-clamp-2 leading-relaxed">${art.description}</p>
+              <p class="text-[11px] text-stone-400 mt-1.5 line-clamp-2 leading-relaxed">${art.description}</p>
             </div>
           </div>
 
-          <div class="pt-3 border-t border-stone-800/80 flex items-center justify-between gap-2">
+          <div class="pt-2.5 border-t border-stone-800/80 flex items-center justify-between gap-2">
             <span class="text-[10px] text-stone-500">${art.popularSizes ? art.popularSizes[0] : 'Sob medida'}</span>
-            
             <div class="flex items-center gap-1.5">
-              <button 
-                onclick="openEditModal('${art.id}')" 
-                class="px-3 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-medium transition-colors flex items-center gap-1"
-              >
+              <button onclick="openEditArtworkModal('${art.id}')" class="px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs flex items-center gap-1">
                 <i data-lucide="edit" class="w-3.5 h-3.5"></i>
                 <span>Editar</span>
               </button>
-              <button 
-                onclick="deleteArtwork('${art.id}')" 
-                class="p-1.5 rounded-lg bg-stone-900 hover:bg-red-950/80 text-stone-400 hover:text-red-400 transition-colors"
-                title="Excluir obra"
-              >
+              <button onclick="deleteItem('artworks', '${art.id}')" class="p-1.5 rounded-lg bg-stone-900 hover:bg-red-950/80 text-stone-400 hover:text-red-400" title="Excluir">
                 <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
               </button>
             </div>
           </div>
         </div>
       `).join('');
-
-      if (window.lucide) window.lucide.createIcons();
     }
 
-    function openAddModal() {
-      const modal = document.getElementById("admin-edit-modal");
-      const title = document.getElementById("modal-form-title");
-      const form = document.getElementById("artwork-form");
+    // 2. ESTILOS
+    function renderStylesTab() {
+      const container = document.getElementById("admin-styles-grid");
+      if (!container) return;
 
-      title.innerHTML = `<i data-lucide="plus-circle" class="w-5 h-5"></i> Cadastrar Nova Obra`;
-      form.reset();
-      document.getElementById("form-art-id").value = "";
+      container.innerHTML = DB.styles.map(style => `
+        <div class="glass-panel rounded-2xl overflow-hidden border border-stone-800 p-4 space-y-3 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="relative aspect-video rounded-xl overflow-hidden bg-stone-950 border border-stone-800">
+              <img src="${style.image}" alt="${style.name}" class="w-full h-full object-cover" />
+              <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-semibold bg-stone-950/80 text-amber-300 border border-amber-500/30">
+                ${style.badge || 'Estilo'}
+              </span>
+            </div>
+            <div>
+              <h4 class="font-serif font-bold text-stone-100 text-sm">${style.name}</h4>
+              <p class="text-[11px] text-stone-400 mt-1 leading-relaxed">${style.desc}</p>
+            </div>
+          </div>
+
+          <div class="pt-2.5 border-t border-stone-800/80 flex items-center justify-between">
+            <span class="font-mono text-[10px] text-stone-500">ID: ${style.id}</span>
+            <div class="flex items-center gap-1.5">
+              <button onclick="openEditStyleModal('${style.id}')" class="px-2.5 py-1.5 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs flex items-center gap-1">
+                <i data-lucide="edit" class="w-3.5 h-3.5"></i>
+                <span>Editar</span>
+              </button>
+              <button onclick="deleteItem('styles', '${style.id}')" class="p-1.5 rounded-lg bg-stone-900 hover:bg-red-950/80 text-stone-400 hover:text-red-400" title="Excluir">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 3. TAMANHOS
+    function renderSizesTab() {
+      const container = document.getElementById("admin-sizes-grid");
+      if (!container) return;
+
+      container.innerHTML = DB.sizes.map((sz, idx) => `
+        <div class="glass-panel p-4 rounded-xl border border-stone-800 flex items-center justify-between gap-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-stone-100 text-xs sm:text-sm">${sz.label}</span>
+              ${sz.isPopular ? `<span class="px-1.5 py-0.5 rounded text-[9px] bg-amber-500/20 text-amber-300">Popular</span>` : ''}
+            </div>
+            <p class="text-[10px] text-stone-400 mt-0.5">${sz.desc || 'Tamanho sob medida'}</p>
+            <span class="text-[10px] text-amber-400/90 capitalize">${sz.orient} (${sz.width}x${sz.height}cm)</span>
+          </div>
+
+          <div class="flex items-center gap-1">
+            <button onclick="openEditSizeModal(${idx})" class="p-1.5 rounded-lg bg-stone-800 text-stone-300 hover:text-white" title="Editar">
+              <i data-lucide="edit" class="w-3.5 h-3.5"></i>
+            </button>
+            <button onclick="deleteIndexItem('sizes', ${idx})" class="p-1.5 rounded-lg bg-stone-900 text-stone-400 hover:text-red-400" title="Excluir">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 4. MOLDURAS
+    function renderFramesTab() {
+      const container = document.getElementById("admin-frames-grid");
+      if (!container) return;
+
+      container.innerHTML = DB.frames.map((frame, idx) => `
+        <div class="glass-panel p-4 rounded-xl border border-stone-800 flex items-start gap-3 justify-between">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg border-2 border-stone-700 shadow-inner flex-shrink-0" style="background-color: ${frame.color};"></div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="font-bold text-stone-100 text-xs">${frame.name}</span>
+                <span class="text-[9px] px-1 py-0.5 rounded bg-stone-800 text-amber-400">${frame.tag || 'Acabamento'}</span>
+              </div>
+              <p class="text-[10px] text-stone-400 mt-0.5">${frame.desc}</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-1 flex-shrink-0">
+            <button onclick="openEditFrameModal(${idx})" class="p-1.5 rounded-lg bg-stone-800 text-stone-300 hover:text-white" title="Editar">
+              <i data-lucide="edit" class="w-3.5 h-3.5"></i>
+            </button>
+            <button onclick="deleteIndexItem('frames', ${idx})" class="p-1.5 rounded-lg bg-stone-900 text-stone-400 hover:text-red-400" title="Excluir">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 5. AMBIENTES & PALETAS
+    function renderRoomsAndPalettesTab() {
+      const roomContainer = document.getElementById("admin-rooms-grid");
+      const palContainer = document.getElementById("admin-palettes-grid");
+
+      if (roomContainer) {
+        roomContainer.innerHTML = DB.rooms.map((r, idx) => `
+          <div class="glass-panel p-3 rounded-xl border border-stone-800 flex flex-col items-center justify-between text-center gap-2">
+            <i data-lucide="${r.icon || 'home'}" class="w-5 h-5 text-amber-400"></i>
+            <span class="text-[11px] font-semibold text-stone-200">${r.name}</span>
+            <button onclick="deleteIndexItem('rooms', ${idx})" class="text-[10px] text-red-400 hover:underline">Excluir</button>
+          </div>
+        `).join('');
+      }
+
+      if (palContainer) {
+        palContainer.innerHTML = DB.palettes.map((p, idx) => `
+          <div class="glass-panel p-4 rounded-xl border border-stone-800 flex items-center justify-between gap-3">
+            <div>
+              <span class="text-xs font-semibold text-stone-200">${p.name}</span>
+              <div class="flex items-center gap-1 mt-1.5">
+                ${(p.colors || []).map(c => `<span class="w-3.5 h-3.5 rounded-full border border-white/20" style="background-color: ${c};"></span>`).join('')}
+              </div>
+            </div>
+            <button onclick="deleteIndexItem('palettes', ${idx})" class="p-1.5 rounded-lg bg-stone-900 text-stone-400 hover:text-red-400">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+
+    // 6. DEPOIMENTOS
+    function renderTestimonialsTab() {
+      const container = document.getElementById("admin-testimonials-grid");
+      if (!container) return;
+
+      container.innerHTML = DB.testimonials.map((t, idx) => `
+        <div class="glass-panel p-5 rounded-2xl border border-stone-800 space-y-3 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 text-amber-400 mb-2">
+              ${Array(t.rating || 5).fill(0).map(() => `<i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>`).join('')}
+            </div>
+            <p class="text-xs text-stone-300 italic">"${t.comment}"</p>
+          </div>
+
+          <div class="pt-3 border-t border-stone-800 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <img src="${t.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}" class="w-8 h-8 rounded-full object-cover border border-amber-500/30" />
+              <div>
+                <h5 class="text-xs font-bold text-stone-100">${t.name}</h5>
+                <p class="text-[10px] text-stone-400">${t.role} • ${t.city}</p>
+              </div>
+            </div>
+
+            <button onclick="deleteIndexItem('testimonials', ${idx})" class="p-1.5 rounded-lg bg-stone-900 text-stone-400 hover:text-red-400">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 7. FAQS
+    function renderFAQsTab() {
+      const container = document.getElementById("admin-faqs-list");
+      if (!container) return;
+
+      container.innerHTML = DB.faqs.map((faq, idx) => `
+        <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2">
+          <div class="flex items-start justify-between gap-3">
+            <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-100">${faq.q}</h4>
+            <div class="flex items-center gap-1">
+              <button onclick="deleteIndexItem('faqs', ${idx})" class="p-1.5 rounded-lg bg-stone-900 text-stone-400 hover:text-red-400" title="Excluir">
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+          <p class="text-xs text-stone-300 leading-relaxed">${faq.a}</p>
+        </div>
+      `).join('');
+    }
+
+    // 8. SETTINGS
+    function renderSettingsTab() {
+      document.getElementById("setting-whatsapp").value = DB.settings.whatsapp || "5511957934714";
+      document.getElementById("setting-whatsapp-display").value = DB.settings.displayPhone || "(11) 95793-4714";
+      document.getElementById("setting-instagram").value = DB.settings.instagram || "https://www.instagram.com/arte.expresso/";
+      document.getElementById("setting-announcement").value = DB.settings.announcement || "Quadros 100% Pintados à Mão Sob Medida • Envio com Seguro Total para Todo o Brasil";
+      document.getElementById("setting-pin").value = localStorage.getItem(DB_KEYS.pin) || "123456";
+    }
+
+    function handleSaveSettings(e) {
+      e.preventDefault();
+      DB.settings.whatsapp = document.getElementById("setting-whatsapp").value.trim();
+      DB.settings.displayPhone = document.getElementById("setting-whatsapp-display").value.trim();
+      DB.settings.instagram = document.getElementById("setting-instagram").value.trim();
+      DB.settings.announcement = document.getElementById("setting-announcement").value.trim();
       
-      // Auto gera próximo código
-      const nextNum = currentArtworks.length + 1;
-      document.getElementById("form-code").value = `EXP-${nextNum < 10 ? '0' + nextNum : nextNum}`;
-      document.getElementById("form-img-preview-container").classList.add("hidden");
+      const newPin = document.getElementById("setting-pin").value.trim();
+      if (newPin) localStorage.setItem(DB_KEYS.pin, newPin);
 
+      saveAllData();
+      alert("✅ Configurações salvas com sucesso!");
+    }
+
+    /* ======================================================================
+       MODAL CONTROLLERS & OPENERS
+       ====================================================================== */
+    const modal = document.getElementById("admin-generic-modal");
+    const modalTitle = document.getElementById("generic-modal-title");
+    const modalBody = document.getElementById("generic-modal-body");
+
+    function openGenericModal(titleHtml, bodyHtml) {
+      modalTitle.innerHTML = titleHtml;
+      modalBody.innerHTML = bodyHtml;
       modal.classList.remove("hidden");
       modal.classList.add("flex");
       if (window.lucide) window.lucide.createIcons();
     }
 
-    function openEditModal(artId) {
-      const art = currentArtworks.find(a => a.id === artId);
-      if (!art) return;
-
-      const modal = document.getElementById("admin-edit-modal");
-      const title = document.getElementById("modal-form-title");
-
-      title.innerHTML = `<i data-lucide="edit-3" class="w-5 h-5"></i> Editar Obra ${art.id}`;
-      
-      document.getElementById("form-art-id").value = art.id;
-      document.getElementById("form-title").value = art.title;
-      document.getElementById("form-code").value = art.id;
-      document.getElementById("form-category").value = art.category;
-      document.getElementById("form-price").value = art.priceFrom || "";
-      document.getElementById("form-technique").value = art.technique;
-      document.getElementById("form-description").value = art.description;
-      document.getElementById("form-image").value = art.image;
-      document.getElementById("form-sizes").value = (art.popularSizes || []).join(", ");
-      document.getElementById("form-tag").value = art.tag || "";
-
-      previewFormImage(art.image);
-
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
-      if (window.lucide) window.lucide.createIcons();
-    }
-
-    function closeEditModal() {
-      const modal = document.getElementById("admin-edit-modal");
+    function closeGenericModal() {
       modal.classList.add("hidden");
       modal.classList.remove("flex");
     }
 
-    function previewFormImage(url) {
-      const container = document.getElementById("form-img-preview-container");
-      const img = document.getElementById("form-img-preview");
-      if (url && url.startsWith("http")) {
-        img.src = url;
-        container.classList.remove("hidden");
-      } else {
-        container.classList.add("hidden");
-      }
+    // MODAL: OBRAS
+    function openAddArtworkModal() {
+      const nextNum = DB.artworks.length + 1;
+      const autoCode = `EXP-${nextNum < 10 ? '0' + nextNum : nextNum}`;
+
+      openGenericModal(
+        `<i data-lucide="plus-circle" class="w-4 h-4"></i> Cadastrar Novo Quadro`,
+        `
+        <form onsubmit="saveArtworkForm(event)" class="space-y-3.5">
+          <input type="hidden" id="modal-art-id" value="">
+          <div class="grid grid-cols-3 gap-3">
+            <div class="col-span-2">
+              <label class="block font-semibold mb-1">Título da Obra *</label>
+              <input type="text" id="modal-art-title" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Código</label>
+              <input type="text" id="modal-art-code" value="${autoCode}" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 font-mono uppercase" />
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold mb-1">Categoria *</label>
+              <select id="modal-art-category" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100">
+                <option value="texturizado">Texturizado 3D</option>
+                <option value="abstrato">Abstrato Moderno</option>
+                <option value="minimalista">Minimalista & Neutro</option>
+                <option value="diptico">Conjunto Díptico / Tríptico</option>
+                <option value="retrato">Retrato Realista</option>
+                <option value="personalizado">Personalizado do Zero</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Preço de Referência (Opcional)</label>
+              <input type="text" id="modal-art-price" placeholder="Ex: R$ 690 ou vazio" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Técnica Utilizada *</label>
+            <input type="text" id="modal-art-technique" placeholder="Ex: Acrílico espatulado com Folha de Ouro 24k" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Descrição</label>
+            <textarea id="modal-art-desc" rows="2" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 resize-none"></textarea>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">URL da Imagem *</label>
+            <input type="url" id="modal-art-image" required placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold mb-1">Tamanhos Sugeridos</label>
+              <input type="text" id="modal-art-sizes" placeholder="120x80 cm, 150x90 cm" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Tag de Destaque</label>
+              <input type="text" id="modal-art-tag" placeholder="Mais Pedido, Exclusivo" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+          </div>
+          <div class="pt-3 border-t border-stone-800 flex justify-end gap-2">
+            <button type="button" onclick="closeGenericModal()" class="px-4 py-2 rounded-xl bg-stone-800">Cancelar</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-amber-500 text-stone-950 font-bold">Salvar Quadro</button>
+          </div>
+        </form>
+        `
+      );
     }
 
-    function handleSaveArtwork(e) {
-      e.preventDefault();
+    function openEditArtworkModal(artId) {
+      const art = DB.artworks.find(a => a.id === artId);
+      if (!art) return;
 
-      const existingId = document.getElementById("form-art-id").value;
-      const code = document.getElementById("form-code").value.trim().toUpperCase();
-      const title = document.getElementById("form-title").value.trim();
-      const category = document.getElementById("form-category").value;
-      const price = document.getElementById("form-price").value.trim();
-      const technique = document.getElementById("form-technique").value.trim();
-      const description = document.getElementById("form-description").value.trim();
-      const image = document.getElementById("form-image").value.trim();
-      const sizesRaw = document.getElementById("form-sizes").value;
-      const tag = document.getElementById("form-tag").value.trim();
+      openAddArtworkModal();
+      document.getElementById("modal-art-id").value = art.id;
+      document.getElementById("modal-art-title").value = art.title;
+      document.getElementById("modal-art-code").value = art.id;
+      document.getElementById("modal-art-category").value = art.category;
+      document.getElementById("modal-art-price").value = art.priceFrom || "";
+      document.getElementById("modal-art-technique").value = art.technique;
+      document.getElementById("modal-art-desc").value = art.description;
+      document.getElementById("modal-art-image").value = art.image;
+      document.getElementById("modal-art-sizes").value = (art.popularSizes || []).join(", ");
+      document.getElementById("modal-art-tag").value = art.tag || "";
+    }
+
+    function saveArtworkForm(e) {
+      e.preventDefault();
+      const existingId = document.getElementById("modal-art-id").value;
+      const code = document.getElementById("modal-art-code").value.trim().toUpperCase();
+      const title = document.getElementById("modal-art-title").value.trim();
+      const category = document.getElementById("modal-art-category").value;
+      const price = document.getElementById("modal-art-price").value.trim();
+      const technique = document.getElementById("modal-art-technique").value.trim();
+      const description = document.getElementById("modal-art-desc").value.trim();
+      const image = document.getElementById("modal-art-image").value.trim();
+      const sizesRaw = document.getElementById("modal-art-sizes").value;
+      const tag = document.getElementById("modal-art-tag").value.trim();
 
       const popularSizes = sizesRaw.split(",").map(s => s.trim()).filter(Boolean);
-
       const categoryLabels = {
         texturizado: "Texturizado 3D",
         abstrato: "Abstrato Moderno",
         minimalista: "Minimalista & Neutro",
         diptico: "Conjunto Díptico / Tríptico",
-        retrato: "Retrato & Desenho Realista",
+        retrato: "Retrato Realista",
         personalizado: "Personalizado do Zero"
       };
 
-      const artworkObj = {
+      const artObj = {
         id: code || existingId || `EXP-${Date.now()}`,
         title,
         category,
@@ -621,36 +929,383 @@
       };
 
       if (existingId) {
-        const idx = currentArtworks.findIndex(a => a.id === existingId);
-        if (idx !== -1) {
-          currentArtworks[idx] = artworkObj;
-        }
+        const idx = DB.artworks.findIndex(a => a.id === existingId);
+        if (idx !== -1) DB.artworks[idx] = artObj;
       } else {
-        currentArtworks.unshift(artworkObj);
+        DB.artworks.unshift(artObj);
       }
 
-      saveArtworksToStorage();
-      closeEditModal();
-      alert("✅ Obra salva com sucesso no catálogo!");
+      saveAllData();
+      renderArtworksTab();
+      closeGenericModal();
     }
 
-    function deleteArtwork(artId) {
-      if (confirm(`Tem certeza que deseja remover a obra ${artId}?`)) {
-        currentArtworks = currentArtworks.filter(a => a.id !== artId);
-        saveArtworksToStorage();
+    // MODAL: ESTILOS
+    function openAddStyleModal() {
+      openGenericModal(
+        `<i data-lucide="plus-circle" class="w-4 h-4"></i> Cadastrar Novo Estilo`,
+        `
+        <form onsubmit="saveStyleForm(event)" class="space-y-3">
+          <input type="hidden" id="modal-style-id-hidden" value="">
+          <div>
+            <label class="block font-semibold mb-1">Identificador Único (ID sem espaços):</label>
+            <input type="text" id="modal-style-id" required placeholder="ex: estilo_textura_luxo" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 font-mono" />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Nome do Estilo *</label>
+            <input type="text" id="modal-style-name" required placeholder="Ex: Texturizado 3D Ouro" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Badge de Destaque</label>
+            <input type="text" id="modal-style-badge" placeholder="Ex: Mais Procurado, Tendência" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">URL da Imagem de Exemplo *</label>
+            <input type="url" id="modal-style-image" required placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Descrição</label>
+            <textarea id="modal-style-desc" rows="2" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 resize-none"></textarea>
+          </div>
+          <div class="pt-3 border-t border-stone-800 flex justify-end gap-2">
+            <button type="button" onclick="closeGenericModal()" class="px-4 py-2 rounded-xl bg-stone-800">Cancelar</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-amber-500 text-stone-950 font-bold">Salvar Estilo</button>
+          </div>
+        </form>
+        `
+      );
+    }
+
+    function openEditStyleModal(styleId) {
+      const style = DB.styles.find(s => s.id === styleId);
+      if (!style) return;
+
+      openAddStyleModal();
+      document.getElementById("modal-style-id-hidden").value = style.id;
+      document.getElementById("modal-style-id").value = style.id;
+      document.getElementById("modal-style-name").value = style.name;
+      document.getElementById("modal-style-badge").value = style.badge || "";
+      document.getElementById("modal-style-image").value = style.image;
+      document.getElementById("modal-style-desc").value = style.desc;
+    }
+
+    function saveStyleForm(e) {
+      e.preventDefault();
+      const existingId = document.getElementById("modal-style-id-hidden").value;
+      const id = document.getElementById("modal-style-id").value.trim().toLowerCase().replace(/\s+/g, "_");
+      const name = document.getElementById("modal-style-name").value.trim();
+      const badge = document.getElementById("modal-style-badge").value.trim();
+      const image = document.getElementById("modal-style-image").value.trim();
+      const desc = document.getElementById("modal-style-desc").value.trim();
+
+      const obj = { id, name, badge: badge || "Exclusivo", image, desc, icon: "sparkles" };
+
+      if (existingId) {
+        const idx = DB.styles.findIndex(s => s.id === existingId);
+        if (idx !== -1) DB.styles[idx] = obj;
+      } else {
+        DB.styles.push(obj);
+      }
+
+      saveAllData();
+      renderStylesTab();
+      closeGenericModal();
+    }
+
+    // MODAL: TAMANHOS
+    function openAddSizeModal() {
+      openGenericModal(
+        `<i data-lucide="plus-circle" class="w-4 h-4"></i> Cadastrar Tamanho / Formato`,
+        `
+        <form onsubmit="saveSizeForm(event)" class="space-y-3">
+          <input type="hidden" id="modal-size-idx" value="-1">
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold mb-1">Largura (cm) *</label>
+              <input type="number" id="modal-size-w" required placeholder="150" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Altura (cm) *</label>
+              <input type="number" id="modal-size-h" required placeholder="90" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Texto de Exibição (Label) *</label>
+            <input type="text" id="modal-size-label" required placeholder="Ex: 150 x 90 cm" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Orientação *</label>
+            <select id="modal-size-orient" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100">
+              <option value="horizontal">Horizontal</option>
+              <option value="vertical">Vertical</option>
+              <option value="quadrado">Quadrado</option>
+              <option value="diptico">Conjunto Díptico (2 telas)</option>
+              <option value="triptico">Conjunto Tríptico (3 telas)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Descrição Recomendada</label>
+            <input type="text" id="modal-size-desc" placeholder="Ex: Ideal para sofás de 2 ou 3 lugares" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="checkbox" id="modal-size-popular" class="rounded bg-stone-900 border-stone-700 text-amber-500" />
+            <label for="modal-size-popular" class="font-semibold text-stone-300">Marcar como "Popular"</label>
+          </div>
+          <div class="pt-3 border-t border-stone-800 flex justify-end gap-2">
+            <button type="button" onclick="closeGenericModal()" class="px-4 py-2 rounded-xl bg-stone-800">Cancelar</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-amber-500 text-stone-950 font-bold">Salvar Tamanho</button>
+          </div>
+        </form>
+        `
+      );
+    }
+
+    function openEditSizeModal(idx) {
+      const sz = DB.sizes[idx];
+      if (!sz) return;
+
+      openAddSizeModal();
+      document.getElementById("modal-size-idx").value = idx;
+      document.getElementById("modal-size-w").value = sz.width;
+      document.getElementById("modal-size-h").value = sz.height;
+      document.getElementById("modal-size-label").value = sz.label;
+      document.getElementById("modal-size-orient").value = sz.orient;
+      document.getElementById("modal-size-desc").value = sz.desc || "";
+      document.getElementById("modal-size-popular").checked = !!sz.isPopular;
+    }
+
+    function saveSizeForm(e) {
+      e.preventDefault();
+      const idx = parseInt(document.getElementById("modal-size-idx").value, 10);
+      const width = parseInt(document.getElementById("modal-size-w").value, 10);
+      const height = parseInt(document.getElementById("modal-size-h").value, 10);
+      const label = document.getElementById("modal-size-label").value.trim();
+      const orient = document.getElementById("modal-size-orient").value;
+      const desc = document.getElementById("modal-size-desc").value.trim();
+      const isPopular = document.getElementById("modal-size-popular").checked;
+
+      const obj = { width, height, label, orient, desc, isPopular };
+
+      if (idx >= 0) {
+        DB.sizes[idx] = obj;
+      } else {
+        DB.sizes.push(obj);
+      }
+
+      saveAllData();
+      renderSizesTab();
+      closeGenericModal();
+    }
+
+    // MODAL: MOLDURAS
+    function openAddFrameModal() {
+      openGenericModal(
+        `<i data-lucide="plus-circle" class="w-4 h-4"></i> Cadastrar Moldura`,
+        `
+        <form onsubmit="saveFrameForm(event)" class="space-y-3">
+          <input type="hidden" id="modal-frame-idx" value="-1">
+          <div>
+            <label class="block font-semibold mb-1">Nome da Moldura *</label>
+            <input type="text" id="modal-frame-name" required placeholder="Ex: Filete Flutuante Ouro Escovado" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold mb-1">Cor Hexadecimal *</label>
+              <input type="color" id="modal-frame-color" value="#D4AF37" class="w-full h-10 rounded-xl bg-stone-900 border border-stone-700 cursor-pointer" />
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Tag (Ex: Luxo, Clean)</label>
+              <input type="text" id="modal-frame-tag" placeholder="Premium" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Descrição</label>
+            <textarea id="modal-frame-desc" rows="2" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 resize-none"></textarea>
+          </div>
+          <div class="pt-3 border-t border-stone-800 flex justify-end gap-2">
+            <button type="button" onclick="closeGenericModal()" class="px-4 py-2 rounded-xl bg-stone-800">Cancelar</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-amber-500 text-stone-950 font-bold">Salvar Moldura</button>
+          </div>
+        </form>
+        `
+      );
+    }
+
+    function openEditFrameModal(idx) {
+      const f = DB.frames[idx];
+      if (!f) return;
+
+      openAddFrameModal();
+      document.getElementById("modal-frame-idx").value = idx;
+      document.getElementById("modal-frame-name").value = f.name;
+      document.getElementById("modal-frame-color").value = f.color || "#D4AF37";
+      document.getElementById("modal-frame-tag").value = f.tag || "";
+      document.getElementById("modal-frame-desc").value = f.desc || "";
+    }
+
+    function saveFrameForm(e) {
+      e.preventDefault();
+      const idx = parseInt(document.getElementById("modal-frame-idx").value, 10);
+      const name = document.getElementById("modal-frame-name").value.trim();
+      const color = document.getElementById("modal-frame-color").value;
+      const tag = document.getElementById("modal-frame-tag").value.trim();
+      const desc = document.getElementById("modal-frame-desc").value.trim();
+      const id = name.toLowerCase().replace(/[^a-z0-9]/g, "_");
+
+      const obj = { id, name, color, tag: tag || "Premium", desc };
+
+      if (idx >= 0) {
+        DB.frames[idx] = obj;
+      } else {
+        DB.frames.push(obj);
+      }
+
+      saveAllData();
+      renderFramesTab();
+      closeGenericModal();
+    }
+
+    // MODAL: AMBIENTE & PALETA
+    function openAddRoomModal() {
+      const roomName = prompt("Digite o nome do novo ambiente (ex: Varanda Gourmet, Lavabo):");
+      if (roomName && roomName.trim()) {
+        DB.rooms.push({
+          id: roomName.toLowerCase().replace(/[^a-z0-9]/g, "_"),
+          name: roomName.trim(),
+          icon: "home"
+        });
+        saveAllData();
+        renderRoomsAndPalettesTab();
       }
     }
 
-    function resetCatalogToDefault() {
-      if (confirm("Deseja restaurar todas as obras para o catálogo padrão original?")) {
-        currentArtworks = [...CATALOG_DATA];
-        saveArtworksToStorage();
-        alert("Catálogo restaurado com sucesso!");
+    function openAddPaletteModal() {
+      const palName = prompt("Digite o nome da Paleta de Cores (ex: Tons Terrosos & Cobre):");
+      if (palName && palName.trim()) {
+        DB.palettes.push({
+          id: palName.toLowerCase().replace(/[^a-z0-9]/g, "_"),
+          name: palName.trim(),
+          colors: ["#D4AF37", "#8C857B", "#3D3835", "#FAF8F5"]
+        });
+        saveAllData();
+        renderRoomsAndPalettesTab();
       }
     }
 
-    function exportCatalogToFile() {
-      const fileContent = `/**\n * Catálogo de Artes Atualizado - Arte Expresso (@arte.expresso)\n * Gerado pelo Painel de Gestão em ${new Date().toLocaleString("pt-BR")}\n */\n\nconst CATALOG_DATA = ${JSON.stringify(currentArtworks, null, 2)};\n\nconst STYLES_LIST = ${JSON.stringify(STYLES_LIST, null, 2)};\n\nconst FRAMES_LIST = ${JSON.stringify(FRAMES_LIST, null, 2)};\n\nconst POPULAR_SIZES = ${JSON.stringify(POPULAR_SIZES, null, 2)};\n\nconst ROOMS_LIST = ${JSON.stringify(ROOMS_LIST, null, 2)};\n\nconst PALETTES_LIST = ${JSON.stringify(PALETTES_LIST, null, 2)};\n\nconst TESTIMONIALS = ${JSON.stringify(TESTIMONIALS, null, 2)};\n\nconst FAQS = ${JSON.stringify(FAQS, null, 2)};\n`;
+    // MODAL: DEPOIMENTO
+    function openAddTestimonialModal() {
+      openGenericModal(
+        `<i data-lucide="plus-circle" class="w-4 h-4"></i> Cadastrar Depoimento de Cliente`,
+        `
+        <form onsubmit="saveTestimonialForm(event)" class="space-y-3">
+          <div>
+            <label class="block font-semibold mb-1">Nome do Cliente *</label>
+            <input type="text" id="modal-test-name" required placeholder="Ex: Dra. Carolina Mendonça" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold mb-1">Cargo / Profissão</label>
+              <input type="text" id="modal-test-role" placeholder="Proprietária / Arquiteta" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+            <div>
+              <label class="block font-semibold mb-1">Cidade / Estado</label>
+              <input type="text" id="modal-test-city" placeholder="São Paulo, SP" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+            </div>
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Foto / Avatar (URL)</label>
+            <input type="url" id="modal-test-avatar" placeholder="https://..." class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Comentário / Avaliação *</label>
+            <textarea id="modal-test-comment" rows="3" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 resize-none"></textarea>
+          </div>
+          <div class="pt-3 border-t border-stone-800 flex justify-end gap-2">
+            <button type="button" onclick="closeGenericModal()" class="px-4 py-2 rounded-xl bg-stone-800">Cancelar</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-amber-500 text-stone-950 font-bold">Salvar Depoimento</button>
+          </div>
+        </form>
+        `
+      );
+    }
+
+    function saveTestimonialForm(e) {
+      e.preventDefault();
+      const name = document.getElementById("modal-test-name").value.trim();
+      const role = document.getElementById("modal-test-role").value.trim();
+      const city = document.getElementById("modal-test-city").value.trim();
+      const avatar = document.getElementById("modal-test-avatar").value.trim();
+      const comment = document.getElementById("modal-test-comment").value.trim();
+
+      DB.testimonials.unshift({
+        name,
+        role: role || "Cliente",
+        city: city || "São Paulo, SP",
+        avatar: avatar || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+        comment,
+        rating: 5,
+        verified: true
+      });
+
+      saveAllData();
+      renderTestimonialsTab();
+      closeGenericModal();
+    }
+
+    // MODAL: FAQ
+    function openAddFAQModal() {
+      openGenericModal(
+        `<i data-lucide="plus-circle" class="w-4 h-4"></i> Cadastrar Pergunta no FAQ`,
+        `
+        <form onsubmit="saveFAQForm(event)" class="space-y-3">
+          <div>
+            <label class="block font-semibold mb-1">Pergunta *</label>
+            <input type="text" id="modal-faq-q" required placeholder="Ex: Qual o prazo de confecção?" class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100" />
+          </div>
+          <div>
+            <label class="block font-semibold mb-1">Resposta Detalhada *</label>
+            <textarea id="modal-faq-a" rows="4" required class="w-full px-3 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 resize-none"></textarea>
+          </div>
+          <div class="pt-3 border-t border-stone-800 flex justify-end gap-2">
+            <button type="button" onclick="closeGenericModal()" class="px-4 py-2 rounded-xl bg-stone-800">Cancelar</button>
+            <button type="submit" class="px-5 py-2 rounded-xl bg-amber-500 text-stone-950 font-bold">Salvar FAQ</button>
+          </div>
+        </form>
+        `
+      );
+    }
+
+    function saveFAQForm(e) {
+      e.preventDefault();
+      const q = document.getElementById("modal-faq-q").value.trim();
+      const a = document.getElementById("modal-faq-a").value.trim();
+
+      DB.faqs.push({ q, a });
+      saveAllData();
+      renderFAQsTab();
+      closeGenericModal();
+    }
+
+    // DELETE UTILITIES
+    function deleteItem(collectionKey, id) {
+      if (confirm(`Tem certeza que deseja excluir o item ${id}?`)) {
+        DB[collectionKey] = DB[collectionKey].filter(item => item.id !== id);
+        saveAllData();
+        renderAllTabs();
+      }
+    }
+
+    function deleteIndexItem(collectionKey, idx) {
+      if (confirm("Tem certeza que deseja excluir este item?")) {
+        DB[collectionKey].splice(idx, 1);
+        saveAllData();
+        renderAllTabs();
+      }
+    }
+
+    // EXPORT ALL DATA TO FILE (catalog-data.js)
+    function exportAllDatabaseToFile() {
+      const fileContent = `/**\n * Banco de Dados Oficial Completo - Arte Expresso (@arte.expresso)\n * Gerado pelo Painel de Gestão Total (CMS) em ${new Date().toLocaleString("pt-BR")}\n */\n\nconst CATALOG_DATA = ${JSON.stringify(DB.artworks, null, 2)};\n\nconst STYLES_LIST = ${JSON.stringify(DB.styles, null, 2)};\n\nconst FRAMES_LIST = ${JSON.stringify(DB.frames, null, 2)};\n\nconst POPULAR_SIZES = ${JSON.stringify(DB.sizes, null, 2)};\n\nconst ROOMS_LIST = ${JSON.stringify(DB.rooms, null, 2)};\n\nconst PALETTES_LIST = ${JSON.stringify(DB.palettes, null, 2)};\n\nconst TESTIMONIALS = ${JSON.stringify(DB.testimonials, null, 2)};\n\nconst FAQS = ${JSON.stringify(DB.faqs, null, 2)};\n`;
 
       const blob = new Blob([fileContent], { type: "application/javascript;charset=utf-8;" });
       const link = document.createElement("a");

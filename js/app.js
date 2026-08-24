@@ -1,16 +1,91 @@
-// Application State
-const STORAGE_KEY = "arte_expresso_catalog_v1";
+// Application State & CMS Dynamic Storage Connectors
+const DB_KEYS = {
+  artworks: "arte_expresso_artworks_v2",
+  styles: "arte_expresso_styles_v2",
+  sizes: "arte_expresso_sizes_v2",
+  frames: "arte_expresso_frames_v2",
+  rooms: "arte_expresso_rooms_v2",
+  palettes: "arte_expresso_palettes_v2",
+  testimonials: "arte_expresso_testimonials_v2",
+  faqs: "arte_expresso_faqs_v2",
+  settings: "arte_expresso_settings_v2"
+};
 
 function getActiveCatalog() {
-  const saved = localStorage.getItem(STORAGE_KEY);
+  const saved = localStorage.getItem(DB_KEYS.artworks) || localStorage.getItem("arte_expresso_catalog_v1");
   if (saved) {
-    try {
-      return JSON.parse(saved);
-    } catch (e) {
-      return CATALOG_DATA;
-    }
+    try { return JSON.parse(saved); } catch (e) {}
   }
-  return CATALOG_DATA;
+  return typeof CATALOG_DATA !== "undefined" ? CATALOG_DATA : [];
+}
+
+function getActiveStyles() {
+  const saved = localStorage.getItem(DB_KEYS.styles);
+  if (saved) {
+    try { return JSON.parse(saved); } catch (e) {}
+  }
+  return typeof STYLES_LIST !== "undefined" ? STYLES_LIST : [];
+}
+
+function getActiveSizes() {
+  const saved = localStorage.getItem(DB_KEYS.sizes);
+  if (saved) {
+    try { return JSON.parse(saved); } catch (e) {}
+  }
+  return typeof POPULAR_SIZES !== "undefined" ? POPULAR_SIZES : [];
+}
+
+function getActiveFrames() {
+  const saved = localStorage.getItem(DB_KEYS.frames);
+  if (saved) {
+    try { return JSON.parse(saved); } catch (e) {}
+  }
+  return typeof FRAMES_LIST !== "undefined" ? FRAMES_LIST : [];
+}
+
+function getActiveRooms() {
+  const saved = localStorage.getItem(DB_KEYS.rooms);
+  if (saved) {
+    try { return JSON.parse(saved); } catch (e) {}
+  }
+  return typeof ROOMS_LIST !== "undefined" ? ROOMS_LIST : [];
+}
+
+function getActivePalettes() {
+  const saved = localStorage.getItem(DB_KEYS.palettes);
+  if (saved) {
+    try { return JSON.parse(saved); } catch (e) {}
+  }
+  return typeof PALETTES_LIST !== "undefined" ? PALETTES_LIST : [];
+}
+
+function getActiveTestimonials() {
+  const saved = localStorage.getItem(DB_KEYS.testimonials);
+  if (saved) {
+    try { return JSON.parse(saved); } catch (e) {}
+  }
+  return typeof TESTIMONIALS !== "undefined" ? TESTIMONIALS : [];
+}
+
+function getActiveFAQs() {
+  const saved = localStorage.getItem(DB_KEYS.faqs);
+  if (saved) {
+    try { return JSON.parse(saved); } catch (e) {}
+  }
+  return typeof FAQS !== "undefined" ? FAQS : [];
+}
+
+function getActiveSettings() {
+  const saved = localStorage.getItem(DB_KEYS.settings);
+  if (saved) {
+    try { return JSON.parse(saved); } catch (e) {}
+  }
+  return {
+    whatsapp: "5511957934714",
+    displayPhone: "(11) 95793-4714",
+    instagram: "https://www.instagram.com/arte.expresso/",
+    announcement: "Quadros 100% Pintados à Mão Sob Medida • Envio com Seguro Total para Todo o Brasil"
+  };
 }
 
 const appState = {
@@ -35,7 +110,7 @@ const appState = {
     customerPhone: "",
     customerCity: "",
     notes: "",
-    estimatedPrice: "R$ 890 - R$ 1.150"
+    estimatedPrice: "Orçamento Sob Medida no WhatsApp"
   },
   wallVisualizer: {
     wallColor: "fendi",
@@ -237,7 +312,8 @@ function renderCustomizerStyles() {
   const container = document.getElementById("customizer-styles-grid");
   if (!container) return;
 
-  container.innerHTML = STYLES_LIST.map((style, idx) => {
+  const styles = getActiveStyles();
+  container.innerHTML = styles.map((style) => {
     const isSelected = style.id === appState.customizer.styleId;
     return `
       <div 
@@ -252,7 +328,7 @@ function renderCustomizerStyles() {
           <img src="${style.image}" alt="${style.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-transparent to-transparent"></div>
           <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-semibold bg-stone-950/80 text-amber-300 border border-amber-500/30">
-            ${style.badge}
+            ${style.badge || 'Estilo'}
           </span>
           ${isSelected ? `
             <div class="absolute top-2 right-2 w-6 h-6 rounded-full bg-amber-500 text-stone-950 flex items-center justify-center shadow-lg">
@@ -276,7 +352,7 @@ function renderCustomizerStyles() {
 }
 
 function selectCustomizerStyle(styleId) {
-  const style = STYLES_LIST.find(s => s.id === styleId);
+  const style = getActiveStyles().find(s => s.id === styleId);
   if (style) {
     appState.customizer.styleId = style.id;
     appState.customizer.styleName = style.name;
@@ -291,7 +367,8 @@ function renderCustomizerSizes() {
   const container = document.getElementById("customizer-sizes-grid");
   if (!container) return;
 
-  container.innerHTML = POPULAR_SIZES.map((size) => {
+  const sizes = getActiveSizes();
+  container.innerHTML = sizes.map((size) => {
     const isSelected = appState.customizer.sizeLabel === size.label && !appState.customizer.isCustomSize;
     return `
       <div 
@@ -308,7 +385,7 @@ function renderCustomizerSizes() {
             <span class="px-1.5 py-0.5 rounded text-[9px] bg-amber-500/20 text-amber-300 font-medium">Popular</span>
           ` : ''}
         </div>
-        <p class="text-[11px] text-stone-400 mt-1">${size.desc}</p>
+        <p class="text-[11px] text-stone-400 mt-1">${size.desc || 'Tamanho sob encomenda'}</p>
         <div class="mt-2.5 pt-2 border-t border-stone-800/80 flex items-center justify-between text-[11px]">
           <span class="text-stone-500">Proporção:</span>
           <span class="text-amber-400 font-medium capitalize">${size.orient}</span>
@@ -325,7 +402,6 @@ function selectCustomizerSize(width, height, label, orient) {
   appState.customizer.orientation = orient;
   appState.customizer.isCustomSize = false;
   
-  // Limpa campos customizados se houver
   const customW = document.getElementById("custom-width-input");
   const customH = document.getElementById("custom-height-input");
   if (customW) customW.value = "";
@@ -360,29 +436,30 @@ function renderCustomizerFrames() {
   const container = document.getElementById("customizer-frames-grid");
   if (!container) return;
 
-  container.innerHTML = FRAMES_LIST.map((frame) => {
+  const frames = getActiveFrames();
+  container.innerHTML = frames.map((frame) => {
     const isSelected = appState.customizer.frameId === frame.id;
     return `
       <div 
         onclick="selectCustomizerFrame('${frame.id}')"
-        class="relative p-4 rounded-xl cursor-pointer transition-all border ${
+        class="relative p-3.5 rounded-xl cursor-pointer transition-all border ${
           isSelected 
             ? 'border-amber-400 bg-amber-500/10 ring-1 ring-amber-400/40 text-stone-100' 
             : 'border-stone-800 hover:border-stone-700 bg-stone-900/60 text-stone-300'
-        } flex items-start gap-3.5"
+        } flex items-start gap-3"
       >
         <div 
-          class="w-10 h-10 rounded-lg shadow-inner flex-shrink-0 border-2 border-stone-700 flex items-center justify-center"
+          class="w-9 h-9 rounded-lg shadow-inner flex-shrink-0 border-2 border-stone-700 flex items-center justify-center"
           style="background-color: ${frame.color};"
         >
-          ${isSelected ? `<i data-lucide="check" class="w-5 h-5 text-stone-900 stroke-[3]"></i>` : ''}
+          ${isSelected ? `<i data-lucide="check" class="w-4 h-4 text-stone-900 stroke-[3]"></i>` : ''}
         </div>
         <div class="flex-1">
           <div class="flex items-center justify-between">
-            <h5 class="font-bold text-sm text-stone-100">${frame.name}</h5>
-            <span class="text-[10px] px-1.5 py-0.5 rounded bg-stone-800 text-amber-400">${frame.tag}</span>
+            <h5 class="font-bold text-xs sm:text-sm text-stone-100">${frame.name}</h5>
+            <span class="text-[9px] px-1.5 py-0.5 rounded bg-stone-800 text-amber-400">${frame.tag || 'Moldura'}</span>
           </div>
-          <p class="text-xs text-stone-400 mt-1 leading-relaxed">${frame.desc}</p>
+          <p class="text-[11px] text-stone-400 mt-0.5 leading-relaxed">${frame.desc}</p>
         </div>
       </div>
     `;
@@ -392,7 +469,7 @@ function renderCustomizerFrames() {
 }
 
 function selectCustomizerFrame(frameId) {
-  const frame = FRAMES_LIST.find(f => f.id === frameId);
+  const frame = getActiveFrames().find(f => f.id === frameId);
   if (frame) {
     appState.customizer.frameId = frame.id;
     appState.customizer.frameName = frame.name;
@@ -407,20 +484,21 @@ function renderCustomizerRooms() {
   const container = document.getElementById("customizer-rooms-grid");
   if (!container) return;
 
-  container.innerHTML = ROOMS_LIST.map((room) => {
+  const rooms = getActiveRooms();
+  container.innerHTML = rooms.map((room) => {
     const isSelected = appState.customizer.roomId === room.id;
     return `
       <div 
         onclick="selectCustomizerRoom('${room.id}', '${room.name}')"
-        class="p-3.5 rounded-xl cursor-pointer transition-all border text-center ${
+        class="p-3 rounded-xl cursor-pointer transition-all border text-center ${
           isSelected 
             ? 'border-amber-400 bg-amber-500/10 text-amber-300 font-semibold' 
             : 'border-stone-800 hover:border-stone-700 bg-stone-900/60 text-stone-300'
         }"
       >
-        <div class="flex flex-col items-center gap-2">
-          <i data-lucide="${room.icon}" class="w-5 h-5 ${isSelected ? 'text-amber-400' : 'text-stone-400'}"></i>
-          <span class="text-xs">${room.name}</span>
+        <div class="flex flex-col items-center gap-1.5">
+          <i data-lucide="${room.icon || 'home'}" class="w-4 h-4 ${isSelected ? 'text-amber-400' : 'text-stone-400'}"></i>
+          <span class="text-[11px]">${room.name}</span>
         </div>
       </div>
     `;
@@ -440,20 +518,21 @@ function renderCustomizerPalettes() {
   const container = document.getElementById("customizer-palettes-grid");
   if (!container) return;
 
-  container.innerHTML = PALETTES_LIST.map((pal) => {
+  const palettes = getActivePalettes();
+  container.innerHTML = palettes.map((pal) => {
     const isSelected = appState.customizer.paletteId === pal.id;
     return `
       <div 
         onclick="selectCustomizerPalette('${pal.id}', '${pal.name}')"
-        class="p-3.5 rounded-xl cursor-pointer transition-all border ${
+        class="p-3 rounded-xl cursor-pointer transition-all border ${
           isSelected 
             ? 'border-amber-400 bg-amber-500/10 text-stone-100' 
             : 'border-stone-800 hover:border-stone-700 bg-stone-900/60 text-stone-300'
-        } flex items-center justify-between gap-3"
+        } flex items-center justify-between gap-2.5"
       >
         <span class="text-xs font-medium">${pal.name}</span>
         <div class="flex items-center gap-1">
-          ${pal.colors.map(c => `<span class="w-4 h-4 rounded-full border border-white/20" style="background-color: ${c};"></span>`).join('')}
+          ${(pal.colors || []).map(c => `<span class="w-3.5 h-3.5 rounded-full border border-white/20" style="background-color: ${c};"></span>`).join('')}
         </div>
       </div>
     `;
@@ -799,26 +878,27 @@ function initTestimonials() {
   const container = document.getElementById("testimonials-grid");
   if (!container) return;
 
-  container.innerHTML = TESTIMONIALS.map(t => `
-    <div class="glass-panel p-6 rounded-2xl border border-stone-800/80 flex flex-col justify-between space-y-4 hover:border-amber-500/30 transition-all">
+  const testimonials = getActiveTestimonials();
+  container.innerHTML = testimonials.map(t => `
+    <div class="glass-panel p-5 rounded-2xl border border-stone-800/80 flex flex-col justify-between space-y-3 hover:border-amber-500/30 transition-all">
       <div>
-        <div class="flex items-center gap-1 text-amber-400 mb-3">
-          ${Array(t.rating).fill(0).map(() => `<i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>`).join('')}
+        <div class="flex items-center gap-1 text-amber-400 mb-2">
+          ${Array(t.rating || 5).fill(0).map(() => `<i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>`).join('')}
         </div>
-        <p class="text-sm text-stone-300 italic leading-relaxed">
+        <p class="text-xs text-stone-300 italic leading-relaxed">
           "${t.comment}"
         </p>
       </div>
 
-      <div class="pt-4 border-t border-stone-800/80 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img src="${t.avatar}" alt="${t.name}" class="w-10 h-10 rounded-full object-cover border border-amber-500/30" />
+      <div class="pt-3 border-t border-stone-800/80 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <img src="${t.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}" alt="${t.name}" class="w-8 h-8 rounded-full object-cover border border-amber-500/30" />
           <div>
-            <h5 class="text-sm font-bold text-stone-100 flex items-center gap-1.5">
+            <h5 class="text-xs font-bold text-stone-100 flex items-center gap-1">
               ${t.name}
-              <i data-lucide="badge-check" class="w-4 h-4 text-emerald-400"></i>
+              <i data-lucide="badge-check" class="w-3.5 h-3.5 text-emerald-400"></i>
             </h5>
-            <p class="text-xs text-stone-400">${t.role} • ${t.city}</p>
+            <p class="text-[10px] text-stone-400">${t.role} • ${t.city}</p>
           </div>
         </div>
       </div>
@@ -832,16 +912,17 @@ function initFAQ() {
   const container = document.getElementById("faq-container");
   if (!container) return;
 
-  container.innerHTML = FAQS.map((faq, idx) => `
+  const faqs = getActiveFAQs();
+  container.innerHTML = faqs.map((faq, idx) => `
     <div class="glass-panel rounded-xl border border-stone-800/80 overflow-hidden">
       <button 
         onclick="toggleFAQ(${idx})"
-        class="w-full p-5 text-left font-serif font-bold text-sm sm:text-base text-stone-100 flex items-center justify-between gap-4 hover:text-amber-300 transition-colors"
+        class="w-full p-4 text-left font-serif font-bold text-xs sm:text-sm text-stone-100 flex items-center justify-between gap-3 hover:text-amber-300 transition-colors"
       >
         <span>${faq.q}</span>
-        <i id="faq-icon-${idx}" data-lucide="chevron-down" class="w-5 h-5 text-amber-400 transition-transform duration-300"></i>
+        <i id="faq-icon-${idx}" data-lucide="chevron-down" class="w-4 h-4 text-amber-400 transition-transform duration-300"></i>
       </button>
-      <div id="faq-ans-${idx}" class="hidden px-5 pb-5 text-xs sm:text-sm text-stone-300 leading-relaxed border-t border-stone-800/40 pt-3">
+      <div id="faq-ans-${idx}" class="hidden px-4 pb-4 text-xs text-stone-300 leading-relaxed border-t border-stone-800/40 pt-2.5">
         ${faq.a}
       </div>
     </div>
