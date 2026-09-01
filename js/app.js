@@ -122,6 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initTestimonials();
   initFAQ();
   initEventListeners();
+  initScrollAnimations();
+  initCustomCursor();
+  initTiltEffects();
 });
 
 function initLucideIcons() {
@@ -242,6 +245,8 @@ function renderCatalog(category = "all") {
   `).join('');
 
   initLucideIcons();
+  if (typeof initTiltEffects === "function") initTiltEffects();
+  if (typeof initScrollAnimations === "function") initScrollAnimations();
 }
 
 function filterCatalog(category, buttonElement) {
@@ -566,4 +571,141 @@ function scrollToSection(sectionId) {
 function openConsultationModal() {
   const name = prompt("Qual o seu nome para o atendimento exclusivo no WhatsApp?") || "Cliente";
   WhatsAppService.sendConsultationRequest(name, "Ambiente Residencial / Comercial");
+}
+
+/* ==========================================================================
+   6. SCROLL ANIMATIONS (INTERSECTION OBSERVER)
+   ========================================================================== */
+
+function initScrollAnimations() {
+  // Elements to reveal
+  const elements = document.querySelectorAll(
+    ".reveal-on-scroll, section > div, .editorial-card, .product-reference-card, #encomendas-section .bg-gray-50, #como-funciona-section .grid > div"
+  );
+
+  elements.forEach((el, index) => {
+    if (!el.classList.contains("reveal-on-scroll")) {
+      el.classList.add("reveal-on-scroll");
+    }
+  });
+
+  const observerOptions = {
+    threshold: 0.08,
+    rootMargin: "0px 0px -30px 0px"
+  };
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-revealed");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll(".reveal-on-scroll").forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   7. LUXURY POINTER & MOUSE INTERACTIONS
+   ========================================================================== */
+
+function initCustomCursor() {
+  // Only activate on devices with fine pointer (mouse/trackpad), never on touch
+  if (!window.matchMedia("(pointer: fine) and (hover: hover)").matches) return;
+
+  // Create cursor elements
+  const dot = document.createElement("div");
+  dot.id = "custom-cursor-dot";
+
+  const ring = document.createElement("div");
+  ring.id = "custom-cursor-ring";
+
+  document.body.appendChild(dot);
+  document.body.appendChild(ring);
+  document.body.classList.add("has-custom-cursor");
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
+  let isMoving = false;
+
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    if (!isMoving) {
+      isMoving = true;
+      requestAnimationFrame(renderCursor);
+    }
+  }, { passive: true });
+
+  function renderCursor() {
+    // Smooth trailing interpolation
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+
+    if (Math.abs(mouseX - ringX) > 0.1 || Math.abs(mouseY - ringY) > 0.1) {
+      requestAnimationFrame(renderCursor);
+    } else {
+      isMoving = false;
+    }
+  }
+
+  // Interactive Target Detection
+  const interactiveSelector = "a, button, input, textarea, select, .product-reference-card, .editorial-card, [role='button'], .catalog-filter-btn";
+
+  document.addEventListener("mouseover", (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      document.body.classList.add("cursor-active");
+    }
+  });
+
+  document.addEventListener("mouseout", (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      document.body.classList.remove("cursor-active");
+    }
+  });
+
+  document.addEventListener("mousedown", () => {
+    document.body.classList.add("cursor-down");
+  });
+
+  document.addEventListener("mouseup", () => {
+    document.body.classList.remove("cursor-down");
+  });
+}
+
+/* ==========================================================================
+   8. TACTILE 3D CARD PARALLAX TILT
+   ========================================================================== */
+
+function initTiltEffects() {
+  if (!window.matchMedia("(pointer: fine) and (hover: hover)").matches) return;
+
+  const cards = document.querySelectorAll(".editorial-card, .product-reference-card");
+
+  cards.forEach(card => {
+    card.classList.add("interactive-tilt");
+
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -5;
+      const rotateY = ((x - centerX) / centerX) * 5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+    });
+  });
 }

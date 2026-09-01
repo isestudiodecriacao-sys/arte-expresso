@@ -245,6 +245,96 @@ p {
   background: #9CA3AF;
 }
 
+/* --------------------------------------------------------------------------
+   7. SCROLL ANIMATIONS (INTERSECTION OBSERVER REVEAL)
+   -------------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 80ms; }
+.delay-200 { transition-delay: 160ms; }
+.delay-300 { transition-delay: 240ms; }
+.delay-400 { transition-delay: 320ms; }
+.delay-500 { transition-delay: 400ms; }
+
+/* --------------------------------------------------------------------------
+   8. LUXURY POINTER & MOUSE INTERACTIONS (Desktop Only)
+   -------------------------------------------------------------------------- */
+@media (pointer: fine) and (hover: hover) {
+  /* Hide standard cursor only when active */
+  body.has-custom-cursor {
+    cursor: default;
+  }
+  
+  #custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #111827;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate3d(-50%, -50%, 0);
+    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  }
+
+  #custom-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgba(17, 24, 39, 0.25);
+    background: rgba(17, 24, 39, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate3d(-50%, -50%, 0);
+    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.22s ease,
+                background-color 0.22s ease,
+                transform 0.08s linear;
+  }
+
+  /* Hovering over interactive targets */
+  body.cursor-active #custom-cursor-ring {
+    width: 48px;
+    height: 48px;
+    border-color: rgba(16, 185, 129, 0.45);
+    background: rgba(16, 185, 129, 0.08);
+  }
+
+  body.cursor-active #custom-cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #059669;
+  }
+
+  body.cursor-down #custom-cursor-ring {
+    transform: translate3d(-50%, -50%, 0) scale(0.85);
+  }
+
+  /* 3D Interactive Card Tilt Container */
+  .interactive-tilt {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+}
+
 /* Pulsing effect for WhatsApp floating button */
 @keyframes pulse-emerald-subtle {
   0%, 100% {
@@ -258,3 +348,4 @@ p {
 .animate-pulse-green {
   animation: pulse-emerald-subtle 2.5s infinite;
 }
+
