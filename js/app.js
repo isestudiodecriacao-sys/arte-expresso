@@ -500,6 +500,16 @@ function initEventListeners() {
       }
     });
   }
+
+  // Teclado: Fechar modal ao pressionar ESC (Impeccable A11y)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeArtworkModal();
+      if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+      }
+    }
+  });
 }
 
 function scrollToSection(sectionId) {
