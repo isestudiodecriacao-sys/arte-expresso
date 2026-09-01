@@ -125,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initEventListeners();
   initScrollAnimations();
   initTiltEffects();
+  initSecretAdminTrigger();
 });
 
 /* ==========================================================================
@@ -662,4 +663,33 @@ function initTiltEffects() {
       card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
     });
   });
+}
+
+/* ==========================================================================
+   8. SECRET OWNER SHORTCUT ACCESS (DISGUISED ACCESS ONLY)
+   ========================================================================== */
+
+function initSecretAdminTrigger() {
+  // Atalho de teclado para o administrador: Ctrl + Shift + A (ou Cmd + Shift + A no Mac)
+  window.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "A" || e.key === "a")) {
+      e.preventDefault();
+      window.location.href = "admin.html?key=ae_gestao_2026";
+    }
+  });
+
+  // 5 cliques rápidos no copyright do rodapé
+  const trigger = document.getElementById("copyright-secret-trigger");
+  if (trigger) {
+    let clickCount = 0;
+    let timer = null;
+    trigger.addEventListener("click", () => {
+      clickCount++;
+      clearTimeout(timer);
+      timer = setTimeout(() => { clickCount = 0; }, 1800);
+      if (clickCount >= 5) {
+        window.location.href = "admin.html?key=ae_gestao_2026";
+      }
+    });
+  }
 }

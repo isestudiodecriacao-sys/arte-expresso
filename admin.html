@@ -5,6 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de Gestão Total (CMS) — Arte Expresso (@arte.expresso)</title>
   
+  <!-- ========================================================================
+       ANTI-INTRUSION ROUTE SHIELD & CRYPTOGRAPHIC ACCESS GATE
+       ======================================================================== -->
+  <script>
+    (function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const secretKey = urlParams.get("key") || urlParams.get("token") || urlParams.get("auth");
+      const hasActiveSession = sessionStorage.getItem("arte_admin_logged") === "true";
+
+      // Chaves secretas autorizadas (conhecidas exclusivamente pelo proprietário)
+      const AUTHORIZED_KEYS = [
+        "ae_gestao_2026",
+        "arte957934714",
+        "expresso_master_key"
+      ];
+
+      // Bloqueio instantâneo: se não houver sessão nem chave secreta, redireciona para a home
+      if (!hasActiveSession && (!secretKey || !AUTHORIZED_KEYS.includes(secretKey))) {
+        window.location.replace("index.html");
+      }
+    })();
+  </script>
+
   <!-- Official Favicons and Touch Icons -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -481,7 +504,7 @@
 
     function handleAdminLogout() {
       sessionStorage.removeItem("arte_admin_logged");
-      checkAuthStatus();
+      window.location.replace("index.html");
     }
 
     function loadAllData() {
