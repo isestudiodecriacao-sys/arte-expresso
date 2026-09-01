@@ -6,8 +6,8 @@
   <title>Arte Expresso — Quadros Pintados à Mão Sob Medida | Ateliê Oficial</title>
   <meta name="description" content="Ateliê de arte contemporânea e quadros exclusivos pintados à mão sob medida. Texturas 3D em relevo, folha de ouro e retratos sob encomenda. Atendimento no WhatsApp (11) 95793-4714.">
   
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
+  <!-- Responsive SVG Favicon with Theme Awareness (Rauno Standard) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><style>@media (prefers-color-scheme: dark) { text { fill: %23ffffff; } } @media (prefers-color-scheme: light) { text { fill: %23000000; } }</style><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -46,13 +46,13 @@
        ======================================================================== -->
   <div class="bg-[#0A0A0C] border-b border-white/10 py-1.5 px-3 text-center text-[10px] sm:text-xs text-neutral-400 font-medium">
     <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
-      <span class="inline-flex items-center gap-1.5 text-neutral-200 font-semibold tracking-wide uppercase text-[10px] sm:text-[11px] truncate">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="inline-flex items-center gap-1.5 text-neutral-200 font-semibold tracking-wide uppercase text-[10px] sm:text-[11px] truncate select-none">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse pointer-events-none"></span>
         <span>Ateliê Arte Expresso • Quadros 100% Pintados à Mão Sob Medida</span>
       </span>
-      <span class="opacity-30">•</span>
-      <a href="https://wa.me/5511957934714" target="_blank" class="text-white hover:text-neutral-300 font-semibold whitespace-nowrap flex items-center gap-1 shrink-0 transition-colors">
-        <i data-lucide="phone" class="w-3 h-3 text-emerald-400"></i>
+      <span class="opacity-30 select-none">•</span>
+      <a href="https://wa.me/5511957934714" target="_blank" aria-label="WhatsApp Ateliê Arte Expresso" class="text-white hover:text-neutral-300 font-semibold whitespace-nowrap flex items-center gap-1 shrink-0 transition-colors tabular-nums">
+        <i data-lucide="phone" class="w-3 h-3 text-emerald-400 pointer-events-none"></i>
         <span>(11) 95793-4714</span>
       </a>
     </div>
@@ -65,9 +65,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3">
       
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-2.5 group shrink-0">
+      <a href="#" aria-label="Arte Expresso - Página Inicial" class="flex items-center gap-2.5 group shrink-0 select-none">
         <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-neutral-900 border border-white/15 flex items-center justify-center text-white group-hover:border-white/40 transition-colors">
-          <i data-lucide="palette" class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]"></i>
+          <i data-lucide="palette" class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2] pointer-events-none"></i>
         </div>
         <div>
           <span class="font-display font-bold text-sm sm:text-base tracking-[0.18em] text-white group-hover:text-neutral-300 transition-colors">
@@ -81,20 +81,20 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-semibold tracking-wide text-neutral-300">
-        <button onclick="scrollToSection('encomendas-section')" class="text-white hover:text-neutral-300 transition-colors flex items-center gap-1.5 whitespace-nowrap font-bold">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <button onclick="scrollToSection('encomendas-section')" class="text-white hover:text-neutral-300 transition-colors flex items-center gap-1.5 whitespace-nowrap font-bold select-none">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 pointer-events-none"></span>
           Encomendar Sob Medida
         </button>
-        <button onclick="scrollToSection('catalogo-section')" class="hover:text-white transition-colors whitespace-nowrap">
+        <button onclick="scrollToSection('catalogo-section')" class="hover:text-white transition-colors whitespace-nowrap select-none">
           Catálogo de Obras
         </button>
-        <button onclick="scrollToSection('como-funciona-section')" class="hover:text-white transition-colors whitespace-nowrap">
+        <button onclick="scrollToSection('como-funciona-section')" class="hover:text-white transition-colors whitespace-nowrap select-none">
           Como Funciona
         </button>
-        <button onclick="scrollToSection('depoimentos-section')" class="hover:text-white transition-colors whitespace-nowrap">
+        <button onclick="scrollToSection('depoimentos-section')" class="hover:text-white transition-colors whitespace-nowrap select-none">
           Depoimentos
         </button>
-        <button onclick="scrollToSection('faq-section')" class="hover:text-white transition-colors whitespace-nowrap">
+        <button onclick="scrollToSection('faq-section')" class="hover:text-white transition-colors whitespace-nowrap select-none">
           Dúvidas
         </button>
       </nav>
@@ -105,10 +105,11 @@
         <a 
           href="https://www.instagram.com/arte.expresso/" 
           target="_blank" 
+          aria-label="Instagram @arte.expresso"
           title="Instagram @arte.expresso"
-          class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 hover:border-white/30 text-neutral-300 hover:text-white text-xs font-semibold transition-all group"
+          class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 hover:border-white/30 text-neutral-300 hover:text-white text-xs font-semibold transition-all group select-none"
         >
-          <svg class="w-3.5 h-3.5 text-neutral-300 group-hover:scale-110 transition-transform fill-current flex-shrink-0" viewBox="0 0 24 24">
+          <svg class="w-3.5 h-3.5 text-neutral-300 group-hover:scale-110 transition-transform fill-current flex-shrink-0 pointer-events-none" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
           <span class="text-[11px] text-neutral-300">@arte.expresso</span>
@@ -118,55 +119,58 @@
         <a 
           href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20um%20quadro%20sob%20medida%20com%20o%20ateli%C3%AA%20Arte%20Expresso." 
           target="_blank"
-          class="btn-shimmer flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white hover:bg-neutral-200 text-black font-bold text-xs tracking-wide shadow-lg transition-all whitespace-nowrap shrink-0"
+          aria-label="Pedir Orçamento no WhatsApp"
+          class="btn-luxury-white btn-shimmer flex items-center gap-1.5 px-3.5 py-2 rounded-lg font-bold text-xs tracking-wide shadow-lg transition-all whitespace-nowrap shrink-0 select-none"
         >
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600 fill-emerald-600"></i>
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-700 fill-emerald-700 pointer-events-none"></i>
           <span>Orçamento WhatsApp</span>
         </a>
 
         <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 hover:text-white" aria-label="Menu">
-          <i data-lucide="menu" class="w-5 h-5"></i>
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 hover:text-white" aria-label="Abrir Menu de Navegação">
+          <i data-lucide="menu" class="w-5 h-5 pointer-events-none"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Dropdown Menu -->
     <div id="mobile-menu-dropdown" class="hidden lg:hidden bg-[#0A0A0D] border-t border-white/10 px-4 py-5 space-y-3 text-xs">
-      <button onclick="scrollToSection('encomendas-section')" class="w-full text-left py-2.5 px-3 rounded-lg bg-white text-black font-bold flex items-center justify-between shadow-md">
+      <button onclick="scrollToSection('encomendas-section')" class="w-full text-left py-2.5 px-3 rounded-lg bg-white text-black font-bold flex items-center justify-between shadow-md select-none">
         <span class="flex items-center gap-2">
-          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600 pointer-events-none"></i>
           <span>Encomendar Quadro Sob Medida</span>
         </span>
-        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5 pointer-events-none"></i>
       </button>
-      <button onclick="scrollToSection('catalogo-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium">
+      <button onclick="scrollToSection('catalogo-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium select-none">
         Catálogo de Obras
       </button>
-      <button onclick="scrollToSection('como-funciona-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium">
+      <button onclick="scrollToSection('como-funciona-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium select-none">
         Como Funciona o Processo
       </button>
-      <button onclick="scrollToSection('depoimentos-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium">
+      <button onclick="scrollToSection('depoimentos-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium select-none">
         Depoimentos de Clientes
       </button>
-      <button onclick="scrollToSection('faq-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium">
+      <button onclick="scrollToSection('faq-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium select-none">
         Dúvidas Frequentes
       </button>
       <div class="pt-3 border-t border-white/10 flex flex-col gap-2">
         <a 
           href="https://wa.me/5511957934714" 
           target="_blank"
-          class="w-full py-2.5 rounded-lg bg-neutral-900 border border-emerald-500/30 text-emerald-400 font-bold text-center flex items-center justify-center gap-2"
+          aria-label="WhatsApp (11) 95793-4714"
+          class="w-full py-2.5 rounded-lg bg-neutral-900 border border-emerald-500/30 text-emerald-400 font-bold text-center flex items-center justify-center gap-2 tabular-nums select-none"
         >
-          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <i data-lucide="message-circle" class="w-4 h-4 pointer-events-none"></i>
           <span>WhatsApp (11) 95793-4714</span>
         </a>
         <a 
           href="https://www.instagram.com/arte.expresso/" 
           target="_blank"
-          class="w-full py-2.5 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 font-semibold text-center flex items-center justify-center gap-2"
+          aria-label="Instagram @arte.expresso"
+          class="w-full py-2.5 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 font-semibold text-center flex items-center justify-center gap-2 select-none"
         >
-          <svg class="w-4 h-4 text-neutral-400 fill-current" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-neutral-400 fill-current pointer-events-none" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
           <span>Instagram @arte.expresso</span>
@@ -190,13 +194,13 @@
         <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
           
           <!-- Badge -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-[10px] sm:text-xs font-semibold tracking-wider uppercase">
-            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-[10px] sm:text-xs font-semibold tracking-wider uppercase select-none">
+            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse pointer-events-none"></span>
             <span>Ateliê de Arte • Obras Originais Sob Medida</span>
           </div>
 
-          <!-- Main Title -->
-          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-normal tracking-tight text-white leading-[1.18]">
+          <!-- Main Title (Fluid Typography) -->
+          <h1 class="font-serif fluid-hero-title font-normal tracking-tight text-white">
             Arte Contemporânea & <br class="hidden sm:inline">
             <span class="italic font-light text-neutral-300">Pinturas Sob Medida</span> <br>
             para Espaços Exclusivos
@@ -215,7 +219,7 @@
               onclick="scrollToSection('encomendas-section')"
               class="btn-luxury-white btn-shimmer w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase shadow-2xl flex items-center justify-center gap-2.5"
             >
-              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-700 fill-emerald-700"></i>
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-700 fill-emerald-700 pointer-events-none"></i>
               <span>Fazer Encomenda Sob Medida</span>
             </button>
 
@@ -224,19 +228,19 @@
               target="_blank"
               class="btn-luxury-dark w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-xs tracking-wide transition-all flex items-center justify-center gap-2"
             >
-              <i data-lucide="phone" class="w-3.5 h-3.5 text-neutral-400"></i>
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-neutral-400 pointer-events-none"></i>
               <span>Consultoria no WhatsApp</span>
             </a>
           </div>
 
-          <!-- Trust Badges Strip (4 Minimalist Stats) -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-white/10">
+          <!-- Trust Badges Strip (4 Minimalist Stats with Tabular Numerals) -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-white/10 select-none">
             <div class="p-2.5 sm:p-3 rounded-xl bg-neutral-900/60 border border-white/10 text-center">
-              <span class="block font-serif text-base sm:text-lg font-bold text-white">+1.500</span>
+              <span class="block font-serif text-base sm:text-lg font-bold text-white tabular-nums">+1.500</span>
               <span class="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider uppercase">Obras Entregues</span>
             </div>
             <div class="p-2.5 sm:p-3 rounded-xl bg-neutral-900/60 border border-white/10 text-center">
-              <span class="block font-serif text-base sm:text-lg font-bold text-white">100%</span>
+              <span class="block font-serif text-base sm:text-lg font-bold text-white tabular-nums">100%</span>
               <span class="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider uppercase">Pintura Manual</span>
             </div>
             <div class="p-2.5 sm:p-3 rounded-xl bg-neutral-900/60 border border-white/10 text-center">
@@ -244,7 +248,7 @@
               <span class="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider uppercase">Aprovação Prévia</span>
             </div>
             <div class="p-2.5 sm:p-3 rounded-xl bg-neutral-900/60 border border-white/10 text-center">
-              <span class="block font-serif text-base sm:text-lg font-bold text-white">Até 12x</span>
+              <span class="block font-serif text-base sm:text-lg font-bold text-white tabular-nums">Até 12x</span>
               <span class="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider uppercase">Sem Burocracia</span>
             </div>
           </div>

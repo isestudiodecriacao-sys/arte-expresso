@@ -290,15 +290,35 @@ function submitDirectWhatsAppOrder(e) {
   const cityInput = document.getElementById("direct-cust-city");
   const ideaInput = document.getElementById("direct-cust-idea");
   const photoInput = document.getElementById("direct-wall-photo");
+  const submitBtn = e && e.target ? e.target.querySelector('button[type="submit"]') : null;
 
   const name = nameInput ? nameInput.value.trim() : "";
   const city = cityInput ? cityInput.value.trim() : "";
   let idea = ideaInput ? ideaInput.value.trim() : "";
 
   if (!name) {
-    alert("Por favor, informe seu nome para que o artista possa te atender.");
-    if (nameInput) nameInput.focus();
+    if (nameInput) {
+      nameInput.focus();
+      nameInput.classList.add("border-red-500");
+      setTimeout(() => nameInput.classList.remove("border-red-500"), 3000);
+    }
     return;
+  }
+
+  // Rauno Standard: Desativação do botão para evitar envio duplicado
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    const originalContent = submitBtn.innerHTML;
+    submitBtn.innerHTML = `
+      <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-emerald-700"></i>
+      <span>Abrindo WhatsApp do Artista...</span>
+    `;
+    initLucideIcons();
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalContent;
+      initLucideIcons();
+    }, 4000);
   }
 
   if (photoInput && photoInput.files && photoInput.files.length > 0) {
