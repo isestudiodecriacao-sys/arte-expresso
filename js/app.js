@@ -1,6 +1,6 @@
 // Application State & CMS Dynamic Storage Connectors
 const DB_KEYS = {
-  artworks: "arte_expresso_artworks_v2",
+  artworks: "arte_expresso_artworks_v3",
   styles: "arte_expresso_styles_v2",
   sizes: "arte_expresso_sizes_v2",
   frames: "arte_expresso_frames_v2",
@@ -12,7 +12,7 @@ const DB_KEYS = {
 };
 
 function getActiveCatalog() {
-  const saved = localStorage.getItem(DB_KEYS.artworks) || localStorage.getItem("arte_expresso_catalog_v1");
+  const saved = localStorage.getItem(DB_KEYS.artworks);
   if (saved) {
     try { return JSON.parse(saved); } catch (e) {}
   }
