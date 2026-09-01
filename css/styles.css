@@ -268,63 +268,53 @@ p {
 .delay-500 { transition-delay: 400ms; }
 
 /* --------------------------------------------------------------------------
-   8. LUXURY POINTER & MOUSE INTERACTIONS (Desktop Only)
+   8. ARTIST PAINTBRUSH CURSOR & PAINT TRAIL (Desktop Only)
    -------------------------------------------------------------------------- */
 @media (pointer: fine) and (hover: hover) {
-  /* Hide standard cursor only when active */
-  body.has-custom-cursor {
-    cursor: default;
+  /* Hide standard cursor only on fine pointer devices */
+  body.has-art-cursor,
+  body.has-art-cursor a,
+  body.has-art-cursor button,
+  body.has-art-cursor select,
+  body.has-art-cursor label,
+  body.has-art-cursor input,
+  body.has-art-cursor textarea {
+    cursor: none !important;
   }
   
-  #custom-cursor-dot {
+  #paint-trail-canvas {
     position: fixed;
     top: 0;
     left: 0;
-    width: 6px;
-    height: 6px;
-    background-color: #111827;
-    border-radius: 50%;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9990;
+  }
+
+  #art-brush-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 38px;
+    height: 38px;
     pointer-events: none;
     z-index: 9999;
-    transform: translate3d(-50%, -50%, 0);
-    transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+    transform-origin: 2px 2px;
+    transition: transform 0.08s ease-out, filter 0.2s ease;
+    will-change: transform;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
   }
 
-  #custom-cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    border: 1.5px solid rgba(17, 24, 39, 0.25);
-    background: rgba(17, 24, 39, 0.03);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate3d(-50%, -50%, 0);
-    transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                height 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.22s ease,
-                background-color 0.22s ease,
-                transform 0.08s linear;
+  /* Hovering over clickable interactive targets */
+  body.cursor-active #art-brush-cursor {
+    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.8)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
+    transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) rotate(-15deg) scale(1.1);
   }
 
-  /* Hovering over interactive targets */
-  body.cursor-active #custom-cursor-ring {
-    width: 48px;
-    height: 48px;
-    border-color: rgba(16, 185, 129, 0.45);
-    background: rgba(16, 185, 129, 0.08);
-  }
-
-  body.cursor-active #custom-cursor-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #059669;
-  }
-
-  body.cursor-down #custom-cursor-ring {
-    transform: translate3d(-50%, -50%, 0) scale(0.85);
+  /* Pressing mouse down */
+  body.cursor-down #art-brush-cursor {
+    transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) rotate(-45deg) scale(0.92);
   }
 
   /* 3D Interactive Card Tilt Container */

@@ -602,54 +602,227 @@ function initScrollAnimations() {
 }
 
 /* ==========================================================================
-   7. LUXURY POINTER & MOUSE INTERACTIONS
+   7. ARTIST PAINTBRUSH CURSOR & DYNAMIC PAINT TRAIL (CANVAS 60FPS)
    ========================================================================== */
 
 function initCustomCursor() {
-  // Only activate on devices with fine pointer (mouse/trackpad), never on touch
+  // Ativar apenas em desktops com ponteiro preciso (mouse/trackpad)
   if (!window.matchMedia("(pointer: fine) and (hover: hover)").matches) return;
 
-  // Create cursor elements
-  const dot = document.createElement("div");
-  dot.id = "custom-cursor-dot";
+  // 1. Canvas para o rastro fluido de pintura
+  const canvas = document.createElement("canvas");
+  canvas.id = "paint-trail-canvas";
+  document.body.appendChild(canvas);
 
-  const ring = document.createElement("div");
-  ring.id = "custom-cursor-ring";
+  const ctx = canvas.getContext("2d");
+  let width = (canvas.width = window.innerWidth);
+  let height = (canvas.height = window.innerHeight);
 
-  document.body.appendChild(dot);
-  document.body.appendChild(ring);
-  document.body.classList.add("has-custom-cursor");
+  window.addEventListener("resize", () => {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }, { passive: true });
 
+  // 2. Cursor de Pincel de Artista em SVG de Alta Fidelidade (Ponta alinhada em 0,0)
+  const brush = document.createElement("div");
+  brush.id = "art-brush-cursor";
+  brush.innerHTML = `
+    <svg viewBox="0 0 100 100" class="w-full h-full overflow-visible" style="transform: translate(-3px, -3px);">
+      <!-- Sombra e Cabo de Madeira Nobre -->
+      <path d="M4 4 L65 65 L72 58 L11 3 Z" fill="#18181B" stroke="#27272A" stroke-width="1.5" />
+      <path d="M12 4 L66 58 L68 56 L15 3 Z" fill="#3F3F46" />
+      
+      <!-- Virola Metálica Dourada/Prateada -->
+      <path d="M4 4 L22 22 L17 27 L2 6 Z" fill="#D4AF37" stroke="#AA820A" stroke-width="1" />
+      <line x1="8" y1="8" x2="14" y2="14" stroke="#FDF0CD" stroke-width="1.2" />
+      
+      <!-- Cerdas de Pincel Fino -->
+      <path d="M1 1 C1 1 5 10 9 14 C12 17 17 20 20 20 L2 2 Z" fill="#27272A" />
+      <path d="M1 1 C2 4 6 9 10 11 L3 3 Z" fill="#52525B" />
+      
+      <!-- Ponta Úmida com Tinta Dourada / Esmeralda -->
+      <path d="M0 0 C1 3 3 6 6 8 C5 5 3 2 0 0 Z" fill="#10B981" />
+      <circle cx="1.5" cy="1.5" r="1.8" fill="#34D399" filter="drop-shadow(0 0 2px #10B981)" />
+    </svg>
+  `;
+  document.body.appendChild(brush);
+  document.body.classList.add("has-art-cursor");
+
+  // Estados e física do cursor
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
-  let isMoving = false;
+  let prevX = mouseX;
+  let prevY = mouseY;
+  let currentAngle = -25;
+  let targetAngle = -25;
 
+  // Coleção de partículas e rastro de tinta
+  const paintPoints = [];
+  const splatters = [];
+  const paletteColors = [
+    { r: 212, g: 175, b: 55 },  // Ouro Clássico
+    { r: 16, g: 185, b: 129 },  // Esmeralda Ateliê
+    { r: 243, g: 229, b: 171 }, // Folha de Ouro Champagne
+    { r: 24, g: 24, b: 27 }     // Tinta Acrílica Preta Nobre
+  ];
+  let colorIndex = 0;
+
+  // Rastreamento do mouse
   window.addEventListener("mousemove", (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-    if (!isMoving) {
-      isMoving = true;
-      requestAnimationFrame(renderCursor);
+
+    const dx = mouseX - prevX;
+    const dy = mouseY - prevY;
+    const speed = Math.sqrt(dx * dx + dy * dy);
+
+    // Calcular ângulo dinâmico natural do pincel
+    if (speed > 1.5) {
+      const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+      targetAngle = angle - 45;
     }
+
+    // Adicionar ponto ao rastro de tinta
+    if (speed > 0.5) {
+      colorIndex = (colorIndex + 0.05) % paletteColors.length;
+      const c = paletteColors[Math.floor(colorIndex)];
+      
+      paintPoints.push({
+        x: mouseX,
+        y: mouseY,
+        vx: dx * 0.1,
+        vy: dy * 0.1,
+        radius: Math.min(7, Math.max(2.5, 9 - speed * 0.15)),
+        color: c,
+        alpha: 0.65,
+        maxLife: 35,
+        life: 35
+      });
+
+      // Micro respingos de aquarela em movimentos rápidos
+      if (speed > 12 && Math.random() < 0.4) {
+        splatters.push({
+          x: mouseX + (Math.random() - 0.5) * 16,
+          y: mouseY + (Math.random() - 0.5) * 16,
+          vx: (Math.random() - 0.5) * 2 + dx * 0.1,
+          vy: (Math.random() - 0.5) * 2 + dy * 0.1,
+          radius: Math.random() * 2 + 1,
+          color: c,
+          alpha: 0.8,
+          life: 25,
+          maxLife: 25
+        });
+      }
+    }
+
+    prevX = mouseX;
+    prevY = mouseY;
   }, { passive: true });
 
-  function renderCursor() {
-    // Smooth trailing interpolation
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+  // Pincelada introdutória no carregamento da página ("Intro Brush Sweep")
+  function triggerIntroBrushSweep() {
+    const startX = width * 0.15;
+    const startY = height * 0.35;
+    const endX = width * 0.85;
+    const endY = height * 0.65;
+    const steps = 60;
+    let step = 0;
 
-    if (Math.abs(mouseX - ringX) > 0.1 || Math.abs(mouseY - ringY) > 0.1) {
-      requestAnimationFrame(renderCursor);
-    } else {
-      isMoving = false;
-    }
+    const introTimer = setInterval(() => {
+      if (step >= steps) {
+        clearInterval(introTimer);
+        return;
+      }
+      const t = step / steps;
+      // Curva suave de Bezier
+      const currentX = (1 - t) * (1 - t) * startX + 2 * (1 - t) * t * (width * 0.5) + t * t * endX;
+      const currentY = (1 - t) * (1 - t) * startY + 2 * (1 - t) * t * (height * 0.15) + t * t * endY;
+      
+      const c = paletteColors[step % paletteColors.length];
+      paintPoints.push({
+        x: currentX,
+        y: currentY,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        radius: Math.sin(t * Math.PI) * 14 + 3,
+        color: c,
+        alpha: 0.7,
+        life: 55,
+        maxLife: 55
+      });
+
+      step++;
+    }, 16);
   }
 
-  // Interactive Target Detection
+  // Disparar o rastro inicial ao abrir o site
+  setTimeout(triggerIntroBrushSweep, 400);
+
+  // Loop de Renderização a 60 FPS com Interpolação Orgânica
+  function renderPaintCanvas() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Suavizar rotação do pincel
+    currentAngle += (targetAngle - currentAngle) * 0.15;
+    brush.style.setProperty("--cursor-x", `${mouseX}px`);
+    brush.style.setProperty("--cursor-y", `${mouseY}px`);
+    brush.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) rotate(${currentAngle}deg)`;
+
+    // 1. Desenhar fita de tinta contínua conectando os pontos
+    if (paintPoints.length > 1) {
+      for (let i = 0; i < paintPoints.length - 1; i++) {
+        const p1 = paintPoints[i];
+        const p2 = paintPoints[i + 1];
+
+        const progress = p1.life / p1.maxLife;
+        ctx.beginPath();
+        ctx.moveTo(p1.x, p1.y);
+        ctx.lineTo(p2.x, p2.y);
+        ctx.strokeStyle = `rgba(${p1.color.r}, ${p1.color.g}, ${p1.color.b}, ${p1.alpha * progress})`;
+        ctx.lineWidth = p1.radius * progress;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        ctx.stroke();
+
+        // Efeito aveludado de pigmento artístico
+        ctx.beginPath();
+        ctx.arc(p1.x, p1.y, (p1.radius * 0.6) * progress, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${p1.color.r}, ${p1.color.g}, ${p1.color.b}, ${p1.alpha * 0.5 * progress})`;
+        ctx.fill();
+
+        p1.life--;
+        p1.x += p1.vx;
+        p1.y += p1.vy;
+      }
+    }
+
+    // 2. Desenhar micro respingos
+    for (let i = splatters.length - 1; i >= 0; i--) {
+      const s = splatters[i];
+      const progress = s.life / s.maxLife;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.radius * progress, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${s.color.r}, ${s.color.g}, ${s.color.b}, ${s.alpha * progress})`;
+      ctx.fill();
+
+      s.x += s.vx;
+      s.y += s.vy;
+      s.life--;
+
+      if (s.life <= 0) splatters.splice(i, 1);
+    }
+
+    // Limpar pontos mortos
+    while (paintPoints.length > 0 && paintPoints[0].life <= 0) {
+      paintPoints.shift();
+    }
+
+    requestAnimationFrame(renderPaintCanvas);
+  }
+
+  requestAnimationFrame(renderPaintCanvas);
+
+  // Interatividade com botões e links
   const interactiveSelector = "a, button, input, textarea, select, .product-reference-card, .editorial-card, [role='button'], .catalog-filter-btn";
 
   document.addEventListener("mouseover", (e) => {
@@ -664,8 +837,26 @@ function initCustomCursor() {
     }
   });
 
-  document.addEventListener("mousedown", () => {
+  document.addEventListener("mousedown", (e) => {
     document.body.classList.add("cursor-down");
+
+    // Respingos de tinta ao clicar
+    const c = paletteColors[0];
+    for (let i = 0; i < 6; i++) {
+      const angle = (Math.PI * 2 * i) / 6 + Math.random();
+      const dist = Math.random() * 8 + 4;
+      splatters.push({
+        x: e.clientX,
+        y: e.clientY,
+        vx: Math.cos(angle) * (Math.random() * 2 + 1),
+        vy: Math.sin(angle) * (Math.random() * 2 + 1),
+        radius: Math.random() * 3 + 1.5,
+        color: c,
+        alpha: 0.9,
+        life: 30,
+        maxLife: 30
+      });
+    }
   });
 
   document.addEventListener("mouseup", () => {
