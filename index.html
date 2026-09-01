@@ -139,77 +139,32 @@
         </div>
       </div>
 
-      <!-- Monumental Central Title (Reference Travel Style: "ARTE") -->
-      <div class="relative z-10 text-center max-w-4xl mx-auto my-auto py-12 space-y-4">
+      <!-- Monumental Central Title -->
+      <div class="relative z-10 text-center max-w-4xl mx-auto my-auto py-16 sm:py-24 space-y-6">
         <h1 class="fluid-hero-title font-sans font-extrabold tracking-tighter text-white">
           Arte
         </h1>
         <p class="text-sm sm:text-base lg:text-lg text-white/90 max-w-xl mx-auto font-medium leading-relaxed">
           Pinturas autorais feitas à mão sob medida. Descubra texturas em relevo 3D, folha de ouro e telas personalizadas para o seu espaço.
         </p>
-      </div>
 
-      <!-- Integrated Quick-Search Strip (The Signature Reference Component) -->
-      <div class="relative z-10 max-w-5xl mx-auto w-full">
-        <div class="hero-search-bar rounded-2xl p-2.5 sm:p-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 items-center shadow-2xl">
-          
-          <!-- Column 1: Estilo / Técnica -->
-          <div class="px-3.5 py-2 rounded-xl bg-black/30 border border-white/10 text-left">
-            <label class="block text-[10px] font-bold text-white/70 uppercase tracking-wider">Estilo / Técnica</label>
-            <select id="hero-search-style" class="hero-search-input w-full text-xs font-semibold focus:outline-none cursor-pointer bg-transparent">
-              <option value="Texturizado 3D" class="bg-gray-900 text-white">Texturizado 3D</option>
-              <option value="Abstrato Moderno" class="bg-gray-900 text-white">Abstrato Moderno</option>
-              <option value="Minimalista & Neutro" class="bg-gray-900 text-white">Minimalista & Neutro</option>
-              <option value="Díptico / Tríptico" class="bg-gray-900 text-white">Dípticos & Conjuntos</option>
-              <option value="Retrato Realista" class="bg-gray-900 text-white">Retrato Realista</option>
-            </select>
-          </div>
+        <!-- Clean CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+          <button 
+            onclick="scrollToSection('encomendas-section')"
+            class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white hover:bg-gray-100 text-gray-950 font-bold text-xs uppercase tracking-wider shadow-2xl flex items-center justify-center gap-2 transition-all"
+          >
+            <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600 fill-emerald-600"></i>
+            <span>Fazer Encomenda Sob Medida</span>
+          </button>
 
-          <!-- Column 2: Ambiente -->
-          <div class="px-3.5 py-2 rounded-xl bg-black/30 border border-white/10 text-left">
-            <label class="block text-[10px] font-bold text-white/70 uppercase tracking-wider">Ambiente</label>
-            <select id="hero-search-room" class="hero-search-input w-full text-xs font-semibold focus:outline-none cursor-pointer bg-transparent">
-              <option value="Sala de Estar / Living" class="bg-gray-900 text-white">Sala de Estar / Living</option>
-              <option value="Quarto de Casal" class="bg-gray-900 text-white">Quarto de Casal</option>
-              <option value="Escritório / Consultório" class="bg-gray-900 text-white">Escritório</option>
-              <option value="Hall de Entrada" class="bg-gray-900 text-white">Hall de Entrada</option>
-              <option value="Sala de Jantar" class="bg-gray-900 text-white">Sala de Jantar</option>
-            </select>
-          </div>
-
-          <!-- Column 3: Dimensões -->
-          <div class="px-3.5 py-2 rounded-xl bg-black/30 border border-white/10 text-left">
-            <label class="block text-[10px] font-bold text-white/70 uppercase tracking-wider">Tamanho Sugerido</label>
-            <select id="hero-search-size" class="hero-search-input w-full text-xs font-semibold focus:outline-none cursor-pointer bg-transparent">
-              <option value="150 x 90 cm" class="bg-gray-900 text-white">150 x 90 cm (Médio)</option>
-              <option value="180 x 100 cm" class="bg-gray-900 text-white">180 x 100 cm (Grande)</option>
-              <option value="200 x 120 cm" class="bg-gray-900 text-white">200 x 120 cm (Monumental)</option>
-              <option value="Sob Medida Exata" class="bg-gray-900 text-white">Sob Medida Exata</option>
-            </select>
-          </div>
-
-          <!-- Column 4: Moldura -->
-          <div class="px-3.5 py-2 rounded-xl bg-black/30 border border-white/10 text-left">
-            <label class="block text-[10px] font-bold text-white/70 uppercase tracking-wider">Moldura</label>
-            <select id="hero-search-frame" class="hero-search-input w-full text-xs font-semibold focus:outline-none cursor-pointer bg-transparent">
-              <option value="Filete Flutuante Dourada" class="bg-gray-900 text-white">Filete Dourada</option>
-              <option value="Filete Flutuante Preta" class="bg-gray-900 text-white">Filete Preta</option>
-              <option value="Madeira Carvalho Natural" class="bg-gray-900 text-white">Carvalho Natural</option>
-              <option value="Sem Moldura (Borda Infinita)" class="bg-gray-900 text-white">Borda Infinita</option>
-            </select>
-          </div>
-
-          <!-- Column 5: Explore CTA Button -->
-          <div class="h-full">
-            <button 
-              onclick="handleHeroSearchOrder()"
-              class="w-full h-full py-3.5 px-4 rounded-xl bg-white hover:bg-gray-100 text-gray-950 font-bold text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 transition-all"
-            >
-              <span>Explorar</span>
-              <i data-lucide="arrow-right" class="w-4 h-4 text-gray-900"></i>
-            </button>
-          </div>
-
+          <button 
+            onclick="scrollToSection('catalogo-section')"
+            class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-black/40 hover:bg-black/60 border border-white/25 text-white font-semibold text-xs tracking-wide backdrop-blur-md flex items-center justify-center gap-2 transition-all"
+          >
+            <i data-lucide="palette" class="w-4 h-4 text-white"></i>
+            <span>Ver Catálogo de Obras</span>
+          </button>
         </div>
       </div>
 
