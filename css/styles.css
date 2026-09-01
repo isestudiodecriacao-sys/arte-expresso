@@ -268,56 +268,9 @@ p {
 .delay-500 { transition-delay: 400ms; }
 
 /* --------------------------------------------------------------------------
-   8. ARTIST PAINTBRUSH CURSOR & PAINT TRAIL (Desktop Only)
+   8. TACTILE 3D CARD PARALLAX TILT (Desktop Only)
    -------------------------------------------------------------------------- */
 @media (pointer: fine) and (hover: hover) {
-  /* Hide standard cursor only on fine pointer devices */
-  body.has-art-cursor,
-  body.has-art-cursor a,
-  body.has-art-cursor button,
-  body.has-art-cursor select,
-  body.has-art-cursor label,
-  body.has-art-cursor input,
-  body.has-art-cursor textarea {
-    cursor: none !important;
-  }
-  
-  #paint-trail-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 9990;
-  }
-
-  #art-brush-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 38px;
-    height: 38px;
-    pointer-events: none;
-    z-index: 9999;
-    transform-origin: 2px 2px;
-    transition: transform 0.08s ease-out, filter 0.2s ease;
-    will-change: transform;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
-  }
-
-  /* Hovering over clickable interactive targets */
-  body.cursor-active #art-brush-cursor {
-    filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.8)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
-    transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) rotate(-15deg) scale(1.1);
-  }
-
-  /* Pressing mouse down */
-  body.cursor-down #art-brush-cursor {
-    transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) rotate(-45deg) scale(0.92);
-  }
-
-  /* 3D Interactive Card Tilt Container */
   .interactive-tilt {
     transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
     transform-style: preserve-3d;
