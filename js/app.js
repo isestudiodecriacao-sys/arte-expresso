@@ -144,93 +144,100 @@ function renderCatalog(category = "all") {
     : catalog.filter(item => item.category === category);
 
   container.innerHTML = filteredData.map(item => `
-    <div class="glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group transition-all">
+    <div class="product-reference-card flex flex-col justify-between group">
       
-      <!-- Artwork Visual Presentation Frame -->
-      <div class="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-neutral-950 cursor-pointer" onclick="openArtworkModal('${item.id}')">
-        <img 
-          src="${item.image}" 
-          alt="${item.title}" 
-          class="artwork-img w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
-        
-        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-black/80 text-neutral-200 border border-white/15 backdrop-blur-md tracking-wider uppercase">
+      <!-- Card Header (Reference Style: Title + Location + Badge) -->
+      <div class="flex items-start justify-between gap-2 mb-3">
+        <div>
+          <h3 
+            onclick="openArtworkModal('${item.id}')"
+            class="font-sans font-bold text-base text-gray-900 group-hover:text-black transition-colors cursor-pointer"
+          >
+            ${item.title}
+          </h3>
+          <p class="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
+            <span>Ateliê Sob Medida</span>
+            <span>•</span>
+            <span class="font-mono text-[11px] text-gray-400">Cód: ${item.id}</span>
+          </p>
+        </div>
+
+        <div class="flex items-center gap-1.5 shrink-0">
+          <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-gray-100 text-gray-700 border border-gray-200">
             ${item.categoryLabel}
           </span>
-          ${item.tag ? `
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-white text-black tracking-wider uppercase">
-              ${item.tag}
-            </span>
-          ` : ''}
           ${item.priceFrom && item.priceFrom.trim() ? `
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-neutral-900 border border-white/20 text-white shadow-md">
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
               ${item.priceFrom}
             </span>
           ` : ''}
         </div>
+      </div>
 
-        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-neutral-300">
-          <span class="flex items-center gap-1.5 text-neutral-400">
-            <i data-lucide="sparkles" class="w-3 h-3 text-white"></i>
+      <!-- Artwork Image with Floating Meta Badges -->
+      <div class="relative aspect-[16/11] rounded-xl overflow-hidden bg-gray-100 cursor-pointer mb-3.5" onclick="openArtworkModal('${item.id}')">
+        <img 
+          src="${item.image}" 
+          alt="${item.title}" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-75 transition-opacity"></div>
+        
+        <!-- Top Floating Status Badge -->
+        <div class="absolute top-2.5 right-2.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-gray-900 shadow-sm backdrop-blur-md">
             100% Pintura Manual
           </span>
-          <span class="text-neutral-400 font-semibold font-mono text-[10px] uppercase">Cód: ${item.id}</span>
+        </div>
+
+        <!-- Bottom Meta Bar (Reference Style) -->
+        <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] text-white font-medium">
+          <span class="flex items-center gap-1 bg-black/60 px-2 py-0.5 rounded-md backdrop-blur-md">
+            <i data-lucide="sparkles" class="w-3 h-3 text-amber-300"></i>
+            <span>${item.technique}</span>
+          </span>
+          <span class="flex items-center gap-1 bg-black/60 px-2 py-0.5 rounded-md backdrop-blur-md">
+            <i data-lucide="truck" class="w-3 h-3 text-emerald-300"></i>
+            <span>Envio Seguro</span>
+          </span>
         </div>
       </div>
 
-      <div class="p-5 flex-1 flex flex-col justify-between space-y-3.5">
-        <div>
-          <h3 
-            onclick="openArtworkModal('${item.id}')"
-            class="font-serif text-base sm:text-lg font-normal text-white group-hover:text-neutral-300 transition-colors cursor-pointer"
-          >
-            ${item.title}
-          </h3>
-          <p class="text-[11px] text-neutral-400 mt-1 font-medium flex items-center gap-1.5">
-            <i data-lucide="brush" class="w-3 h-3 text-neutral-300"></i>
-            ${item.technique}
-          </p>
-          <p class="text-xs text-neutral-400 mt-2 line-clamp-2 leading-relaxed">
-            ${item.description}
-          </p>
+      <!-- Sub-footer Attributes in 3 Columns (Reference Style) -->
+      <div class="grid grid-cols-3 gap-2 py-2.5 border-t border-gray-100 text-center mb-3.5">
+        <div class="text-left">
+          <span class="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold">Tamanho Sugerido</span>
+          <span class="text-xs font-semibold text-gray-800 truncate block">${item.popularSizes ? item.popularSizes[0] : 'Sob Medida'}</span>
         </div>
-
-        <!-- Palette Preview -->
-        <div class="flex items-center gap-2 pt-1">
-          <span class="text-[10px] text-neutral-500 uppercase tracking-wider">Tons:</span>
-          ${item.palette ? item.palette.map(c => `
-            <span class="w-3 h-3 rounded-full border border-white/20 shadow-sm" style="background-color: ${c};"></span>
-          `).join('') : ''}
+        <div class="text-center">
+          <span class="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold">Estrutura</span>
+          <span class="text-xs font-semibold text-gray-800 block">Chassi Imunizado</span>
         </div>
-
-        <!-- Sizes & Quote Action -->
-        <div class="pt-3 border-t border-white/10 space-y-3">
-          <div class="flex items-center justify-between text-xs">
-            <span class="text-neutral-400">Tamanho sugerido:</span>
-            <span class="text-white font-medium">${item.popularSizes ? item.popularSizes[0] : 'Sob medida'}</span>
-          </div>
-
-          <div class="flex items-center gap-2.5">
-            <button 
-              onclick="orderCatalogItem('${item.id}')"
-              class="btn-luxury-white btn-shimmer flex-1 py-2.5 px-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-lg"
-            >
-              <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-700 fill-emerald-700"></i>
-              <span>Pedir no WhatsApp</span>
-            </button>
-            <button 
-              onclick="customizeFromCatalog('${item.id}')"
-              title="Personalizar Medidas Deste Estilo"
-              class="btn-luxury-dark p-2.5 rounded-xl transition-all"
-            >
-              <i data-lucide="sliders" class="w-4 h-4 text-white"></i>
-            </button>
-          </div>
+        <div class="text-right">
+          <span class="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold">Garantia</span>
+          <span class="text-xs font-semibold text-emerald-600 block">Aprovação Vídeo</span>
         </div>
       </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2">
+        <button 
+          onclick="orderCatalogItem('${item.id}')"
+          class="btn-solid-black flex-1 py-2.5 px-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2 shadow-sm"
+        >
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400 fill-emerald-400"></i>
+          <span>Pedir no WhatsApp</span>
+        </button>
+        <button 
+          onclick="customizeFromCatalog('${item.id}')"
+          title="Personalizar Medidas"
+          class="btn-outline-clean p-2.5 rounded-xl transition-all"
+        >
+          <i data-lucide="sliders" class="w-4 h-4 text-gray-700"></i>
+        </button>
+      </div>
+
     </div>
   `).join('');
 
@@ -243,16 +250,33 @@ function filterCatalog(category, buttonElement) {
   // Atualiza classes ativas nos botões
   const buttons = document.querySelectorAll(".catalog-filter-btn");
   buttons.forEach(btn => {
-    btn.classList.remove("bg-white", "text-black", "shadow-lg");
-    btn.classList.add("bg-neutral-900", "text-neutral-300", "border", "border-white/10");
+    btn.classList.remove("bg-black", "text-white", "shadow-sm");
+    btn.classList.add("bg-gray-100", "text-gray-700", "border", "border-gray-200");
   });
 
   if (buttonElement) {
-    buttonElement.classList.remove("bg-neutral-900", "text-neutral-300", "border", "border-white/10");
-    buttonElement.classList.add("bg-white", "text-black", "shadow-lg");
+    buttonElement.classList.remove("bg-gray-100", "text-gray-700", "border", "border-gray-200");
+    buttonElement.classList.add("bg-black", "text-white", "shadow-sm");
   }
 
   renderCatalog(category);
+}
+
+function handleHeroSearchOrder() {
+  const style = document.getElementById("hero-search-style") ? document.getElementById("hero-search-style").value : "Texturizado 3D";
+  const room = document.getElementById("hero-search-room") ? document.getElementById("hero-search-room").value : "Sala de Estar";
+  const size = document.getElementById("hero-search-size") ? document.getElementById("hero-search-size").value : "Sob Medida";
+  const frame = document.getElementById("hero-search-frame") ? document.getElementById("hero-search-frame").value : "Filete Flutuante";
+
+  const msg = `Olá! Vim pelo site da Arte Expresso e montei uma proposta pelo buscador:\n\n` +
+              `• Estilo: ${style}\n` +
+              `• Ambiente: ${room}\n` +
+              `• Tamanho aproximado: ${size}\n` +
+              `• Moldura: ${frame}\n\n` +
+              `Gostaria de falar com o artista para ver valores e prazos!`;
+
+  const url = `https://wa.me/5511957934714?text=${encodeURIComponent(msg)}`;
+  window.open(url, "_blank");
 }
 
 function orderCatalogItem(artworkId) {
@@ -346,35 +370,35 @@ function openArtworkModal(artworkId) {
   if (!modal || !modalContent) return;
 
   modalContent.innerHTML = `
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 sm:p-9 bg-[#0c0c0e]">
-      <div class="relative rounded-xl overflow-hidden bg-neutral-950 border border-white/15">
-        <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover max-h-[500px]" />
-        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-[11px] font-semibold bg-black/85 text-neutral-200 border border-white/20 tracking-wider uppercase backdrop-blur-md">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8 bg-white">
+      <div class="relative rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
+        <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover max-h-[480px]" />
+        <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-white/95 text-gray-900 shadow-sm">
           ${art.categoryLabel}
         </span>
       </div>
 
-      <div class="flex flex-col justify-between space-y-6">
-        <div>
+      <div class="flex flex-col justify-between space-y-5">
+        <div class="space-y-4">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono text-neutral-400 uppercase tracking-wider">CÓDIGO: ${art.id}</span>
-            <span class="px-3 py-0.5 rounded-full text-xs bg-white/10 text-white font-medium border border-white/15">100% Pintura Manual</span>
+            <span class="text-xs font-mono font-semibold text-gray-400 uppercase">CÓDIGO: ${art.id}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">100% Pintura Manual</span>
           </div>
 
-          <h2 class="font-serif text-2xl sm:text-3xl font-normal text-white mt-3">${art.title}</h2>
+          <h2 class="font-sans text-2xl font-bold text-gray-900">${art.title}</h2>
           
-          <div class="mt-4 p-4 rounded-xl bg-neutral-900 border border-white/10 text-xs text-neutral-300 space-y-2">
-            <p><strong class="text-white uppercase tracking-wider text-[11px]">Técnica:</strong> ${art.technique}</p>
-            <p><strong class="text-white uppercase tracking-wider text-[11px]">Materiais:</strong> Tela 100% algodão, tintas importadas com proteção UV e chassi em madeira imunizada.</p>
+          <div class="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700 space-y-1.5">
+            <p><strong class="text-gray-900">Técnica:</strong> ${art.technique}</p>
+            <p><strong class="text-gray-900">Materiais:</strong> Tela 100% algodão, pigmentos importados com proteção UV e chassi em madeira nobre imunizada.</p>
           </div>
 
-          <p class="text-xs sm:text-sm text-neutral-400 mt-4 leading-relaxed">${art.description}</p>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">${art.description}</p>
 
-          <div class="mt-6 space-y-2.5">
-            <span class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Dimensões Sugeridas:</span>
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-gray-900 uppercase tracking-wider text-[11px]">Dimensões Sugeridas:</span>
             <div class="flex flex-wrap gap-2">
               ${(art.popularSizes || []).map(s => `
-                <span class="px-3 py-1.5 rounded-lg bg-neutral-900 text-xs text-neutral-200 border border-white/10 font-medium">
+                <span class="px-3 py-1 rounded-lg bg-gray-100 text-xs text-gray-800 font-semibold border border-gray-200">
                   ${s}
                 </span>
               `).join('')}
@@ -382,29 +406,29 @@ function openArtworkModal(artworkId) {
           </div>
         </div>
 
-        <div class="pt-5 border-t border-white/10 space-y-4">
+        <div class="pt-4 border-t border-gray-200 space-y-3">
           <div class="flex items-baseline justify-between">
-            <span class="text-xs text-neutral-400 uppercase tracking-wider">Investimento:</span>
+            <span class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Investimento:</span>
             ${art.priceFrom && art.priceFrom.trim() ? `
-              <span class="text-base font-bold text-white">${art.priceFrom}</span>
+              <span class="text-base font-bold text-emerald-700">${art.priceFrom}</span>
             ` : `
-              <span class="text-xs font-semibold text-neutral-300">Orçamento Sob Medida no WhatsApp</span>
+              <span class="text-xs font-semibold text-gray-700">Orçamento Sob Medida no WhatsApp</span>
             `}
           </div>
 
-          <div class="flex flex-col sm:flex-row gap-3">
+          <div class="flex flex-col sm:flex-row gap-2.5">
             <button 
               onclick="orderCatalogItem('${art.id}'); closeArtworkModal();"
-              class="btn-luxury-white btn-shimmer flex-1 py-3.5 px-4 rounded-xl font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-xl"
+              class="btn-solid-black flex-1 py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
             >
-              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-700 fill-emerald-700"></i>
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400 fill-emerald-400"></i>
               <span>Pedir Orçamento no WhatsApp</span>
             </button>
             <button 
               onclick="customizeFromCatalog('${art.id}'); closeArtworkModal();"
-              class="btn-luxury-dark py-3.5 px-4 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2"
+              class="btn-outline-clean py-3 px-4 rounded-xl font-semibold text-xs flex items-center justify-center gap-2"
             >
-              <i data-lucide="sliders" class="w-4 h-4 text-white"></i>
+              <i data-lucide="sliders" class="w-4 h-4 text-gray-700"></i>
               <span>Personalizar Medidas</span>
             </button>
           </div>
@@ -432,26 +456,24 @@ function initTestimonials() {
 
   const testimonials = getActiveTestimonials();
   container.innerHTML = testimonials.map(t => `
-    <div class="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-white/25 transition-all">
-      <div>
-        <div class="flex items-center gap-1 text-white mb-3">
-          ${Array(t.rating || 5).fill(0).map(() => `<i data-lucide="star" class="w-3.5 h-3.5 fill-white text-white"></i>`).join('')}
+    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 flex flex-col justify-between space-y-4 hover:shadow-md transition-all">
+      <div class="space-y-2">
+        <div class="flex items-center gap-1 text-amber-500">
+          ${Array(t.rating || 5).fill(0).map(() => `<i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500 text-amber-500"></i>`).join('')}
         </div>
-        <p class="text-xs sm:text-sm text-neutral-300 italic leading-relaxed">
+        <p class="text-xs sm:text-sm text-gray-700 italic leading-relaxed">
           "${t.comment}"
         </p>
       </div>
 
-      <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img src="${t.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}" alt="${t.name}" class="w-9 h-9 rounded-full object-cover border border-white/20" />
-          <div>
-            <h5 class="text-xs font-bold text-white flex items-center gap-1.5">
-              ${t.name}
-              <i data-lucide="badge-check" class="w-3.5 h-3.5 text-emerald-400"></i>
-            </h5>
-            <p class="text-[10px] text-neutral-400">${t.role} • ${t.city}</p>
-          </div>
+      <div class="pt-3 border-t border-gray-200 flex items-center gap-3">
+        <img src="${t.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}" alt="${t.name}" class="w-9 h-9 rounded-full object-cover border border-gray-300" />
+        <div>
+          <h5 class="text-xs font-bold text-gray-900 flex items-center gap-1">
+            ${t.name}
+            <i data-lucide="badge-check" class="w-3.5 h-3.5 text-emerald-500"></i>
+          </h5>
+          <p class="text-[10px] text-gray-500 font-medium">${t.role} • ${t.city}</p>
         </div>
       </div>
     </div>
@@ -466,15 +488,15 @@ function initFAQ() {
 
   const faqs = getActiveFAQs();
   container.innerHTML = faqs.map((faq, idx) => `
-    <div class="glass-card rounded-xl border border-white/10 overflow-hidden transition-colors">
+    <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm transition-colors">
       <button 
         onclick="toggleFAQ(${idx})"
-        class="w-full p-4 sm:p-5 text-left font-serif font-medium text-xs sm:text-sm text-white flex items-center justify-between gap-3 hover:text-neutral-300 transition-colors"
+        class="w-full p-4 sm:p-5 text-left font-sans font-semibold text-xs sm:text-sm text-gray-900 flex items-center justify-between gap-3 hover:text-black transition-colors"
       >
         <span>${faq.q}</span>
-        <i id="faq-icon-${idx}" data-lucide="chevron-down" class="w-4 h-4 text-neutral-400 transition-transform duration-300"></i>
+        <i id="faq-icon-${idx}" data-lucide="chevron-down" class="w-4 h-4 text-gray-500 transition-transform duration-200"></i>
       </button>
-      <div id="faq-ans-${idx}" class="hidden px-4 sm:px-5 pb-5 text-xs text-neutral-400 leading-relaxed border-t border-white/10 pt-3">
+      <div id="faq-ans-${idx}" class="hidden px-4 sm:px-5 pb-5 text-xs text-gray-600 leading-relaxed border-t border-gray-100 pt-3">
         ${faq.a}
       </div>
     </div>

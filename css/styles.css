@@ -1,27 +1,27 @@
 /* ==========================================================================
-   ARTE EXPRESSO (@arte.expresso) — Interface Craftsmanship Design System
-   Based on Rauno Freiberg's "Interfaces" Manifesto
+   ARTE EXPRESSO (@arte.expresso) — Contemporary Editorial Design System
+   Inspired by Minimalist Travel & Art Reference UI
    WhatsApp: (11) 95793-4714
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap');
 
 :root {
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-display: 'Cinzel', serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
   
-  --color-bg-base: #050505;
-  --color-bg-surface: #0a0a0a;
-  --color-bg-card: #111111;
-  --color-bg-card-hover: #171717;
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8F9FA;
+  --bg-tertiary: #F1F3F5;
+  --bg-dark: #0F0F12;
+  --bg-dark-card: #18181C;
   
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
-  --color-border-hover: rgba(255, 255, 255, 0.22);
+  --text-main: #111827;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
   
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #D4D4D4;
-  --color-text-muted: #8E8E93;
+  --border-light: #E5E7EB;
+  --border-subtle: #F3F4F6;
 }
 
 html {
@@ -33,10 +33,10 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #050505;
-  color: #E5E5E5;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
   overflow-x: hidden;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -44,190 +44,186 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   1. TYPOGRAPHY & TABULAR NUMERALS (Rauno Standard)
+   1. TYPOGRAPHY & FLUID HEADINGS (Reference Style)
    -------------------------------------------------------------------------- */
+.font-sans {
+  font-family: var(--font-sans);
+}
+
 .font-serif {
   font-family: var(--font-serif);
 }
 
-.font-display {
-  font-family: var(--font-display);
-}
-
 h1, h2, h3, h4, h5 {
   text-wrap: balance;
-  font-weight: 500;
+  letter-spacing: -0.03em;
 }
 
 p {
   text-wrap: pretty;
 }
 
-/* Tabular numbers for prices, codes, counters, and statistics */
-.tabular-nums,
-[data-code],
-.price-tag,
-.stat-number {
+.fluid-hero-title {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.fluid-section-title {
+  font-size: clamp(2rem, 4.5vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Fluid Heading using CSS clamp() */
-.fluid-hero-title {
-  font-size: clamp(2rem, 3.5vw + 1rem, 3.25rem);
-  line-height: 1.15;
-}
-
 /* --------------------------------------------------------------------------
-   2. ACCESSIBLE SELECTION & FOCUS RINGS (Box-Shadow over Outline)
+   2. ACCESSIBLE SELECTION & FOCUS
    -------------------------------------------------------------------------- */
 ::selection {
-  background: #FFFFFF;
-  color: #000000;
-  -webkit-text-fill-color: #000000;
+  background: #111827;
+  color: #FFFFFF;
 }
 
-/* Box-shadow focus rings respect border-radius across Safari, Chrome and Firefox */
 :focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #050505, 0 0 0 4px #FFFFFF;
+  box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #111827;
 }
 
-/* --------------------------------------------------------------------------
-   3. MOBILE RESILIENCE & 16px INPUT ZOOM PREVENTION (iOS Safari Fix)
-   -------------------------------------------------------------------------- */
 @media (max-width: 640px) {
   input, 
   textarea, 
   select {
-    font-size: 16px !important; /* Prevents auto-zoom on iOS */
+    font-size: 16px !important;
   }
 }
 
 /* --------------------------------------------------------------------------
-   4. INTERACTIVITY, TOUCH & USER-SELECT
+   3. HERO PANORAMIC & INTEGRATED SEARCH BAR (Exact Reference Pattern)
    -------------------------------------------------------------------------- */
-button,
-.btn-luxury-white,
-.btn-luxury-dark,
-.catalog-filter-btn,
-.tab-btn {
-  user-select: none;
-  -webkit-user-select: none;
-  cursor: pointer;
-  touch-action: manipulation;
-}
-
-/* Disable pointer events on purely decorative elements */
-.gallery-spotlight,
-.btn-shimmer::after,
-.decorative-glow {
-  pointer-events: none;
-}
-
-/* Luxury Monochrome Gradients with Selection Fix */
-.text-luxury-gradient {
-  background: linear-gradient(180deg, #FFFFFF 0%, #B8B8B8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* --------------------------------------------------------------------------
-   5. FAST, PROPORTIONAL MOTION (≤ 200ms Limit)
-   -------------------------------------------------------------------------- */
-.glass-panel {
-  background: rgba(13, 13, 16, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transform: translateZ(0);
-}
-
-.glass-card {
-  background: #0d0d0f;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.18s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateZ(0);
-}
-
-/* Isolated Desktop Hover (Never sticks on touch screens) */
-@media (hover: hover) {
-  .glass-card:hover {
-    background: #141418;
-    border-color: rgba(255, 255, 255, 0.22);
-    transform: translateY(-2px);
-    box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.08);
-  }
-}
-
-/* High-Contrast Luxury Buttons (Tactile Feedback with Scale 0.98) */
-.btn-luxury-white {
-  background: #FFFFFF;
-  color: #000000;
-  font-weight: 700;
-  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-  transform: translateZ(0);
-}
-
-.btn-luxury-white:active {
-  transform: scale(0.98);
-}
-
-@media (hover: hover) {
-  .btn-luxury-white:hover {
-    background: #EAEAEA;
-    box-shadow: 0 8px 20px -4px rgba(255, 255, 255, 0.18);
-  }
-}
-
-.btn-luxury-dark {
-  background: #121215;
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
-  transform: translateZ(0);
-}
-
-.btn-luxury-dark:active {
-  transform: scale(0.98);
-}
-
-@media (hover: hover) {
-  .btn-luxury-dark:hover {
-    background: #1c1c22;
-    border-color: rgba(255, 255, 255, 0.3);
-  }
-}
-
-/* Shimmer shine effect for CTA buttons */
-.btn-shimmer {
-  position: relative;
+.hero-panoramic-container {
+  border-radius: 0 0 2.5rem 2.5rem;
   overflow: hidden;
+  position: relative;
 }
 
-.btn-shimmer::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    60deg,
-    rgba(255, 255, 255, 0) 20%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0) 80%
-  );
-  transform: rotate(30deg) translateX(-100%);
-  animation: shimmer 5s infinite;
-}
-
-@keyframes shimmer {
-  100% {
-    transform: rotate(30deg) translateX(100%);
+@media (max-width: 768px) {
+  .hero-panoramic-container {
+    border-radius: 0 0 1.5rem 1.5rem;
   }
+}
+
+.hero-search-bar {
+  background: rgba(45, 30, 20, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-search-input {
+  background: transparent;
+  color: #FFFFFF;
+}
+
+.hero-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   4. ASYMMETRIC EDITORIAL GALLERY CARDS (Reference Pattern)
+   -------------------------------------------------------------------------- */
+.editorial-card {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.12);
+}
+
+@media (hover: hover) {
+  .editorial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. CATALOG PRODUCT CARDS (Reference "Pick the Place" Pattern)
+   -------------------------------------------------------------------------- */
+.product-reference-card {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1px solid #E5E7EB;
+  padding: 1rem;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) {
+  .product-reference-card:hover {
+    border-color: #D1D5DB;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+  }
+}
+
+/* Filter Strip in Reference Layout */
+.reference-filter-bar {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 25px -4px rgba(0, 0, 0, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   6. BUTTONS & MICRO-INTERACTIONS
+   -------------------------------------------------------------------------- */
+.btn-solid-black {
+  background: #0F0F12;
+  color: #FFFFFF;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.btn-solid-black:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .btn-solid-black:hover {
+    background: #27272A;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.btn-outline-clean {
+  background: #FFFFFF;
+  color: #111827;
+  border: 1px solid #E5E7EB;
+  font-weight: 600;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.btn-outline-clean:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) {
+  .btn-outline-clean:hover {
+    background: #F9FAFB;
+    border-color: #D1D5DB;
+  }
+}
+
+/* Decorative Dotted Line & Target Icon */
+.dotted-accent-line {
+  background-image: radial-gradient(#9CA3AF 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
 }
 
 /* Custom Minimalist Scrollbar */
@@ -237,16 +233,16 @@ button,
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #F3F4F6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #262626;
+  background: #D1D5DB;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+  background: #9CA3AF;
 }
 
 /* Pulsing effect for WhatsApp floating button */
@@ -255,16 +251,10 @@ button,
     box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 12px rgba(16, 185, 129, 0);
   }
 }
 
 .animate-pulse-green {
   animation: pulse-emerald-subtle 2.5s infinite;
 }
-
-/* Museum Lighting Spot */
-.gallery-spotlight {
-  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-}
-
