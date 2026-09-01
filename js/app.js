@@ -179,38 +179,39 @@ function renderCatalog(category = "all") {
     : catalog.filter(item => item.category === category);
 
   container.innerHTML = filteredData.map(item => `
-    <div class="product-reference-card flex flex-col justify-between group">
+    <div class="product-reference-card flex flex-col justify-between group p-3.5 sm:p-4">
       
       <!-- Card Header (Reference Style: Title + Location + Badge) -->
-      <div class="flex items-start justify-between gap-2 mb-3">
-        <div>
+      <div class="flex items-start justify-between gap-2 mb-2.5">
+        <div class="min-w-0 flex-1">
           <h3 
             onclick="openArtworkModal('${item.id}')"
-            class="font-sans font-bold text-base text-gray-900 group-hover:text-black transition-colors cursor-pointer"
+            class="font-sans font-bold text-sm sm:text-base text-gray-900 group-hover:text-black transition-colors cursor-pointer leading-snug truncate"
+            title="${item.title}"
           >
             ${item.title}
           </h3>
-          <p class="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
-            <span>Ateliê Sob Medida</span>
-            <span>•</span>
-            <span class="font-mono text-[11px] text-gray-400">Cód: ${item.id}</span>
+          <p class="text-[11px] sm:text-xs text-gray-500 flex items-center gap-1.5 mt-0.5 truncate">
+            <span class="truncate">Ateliê Sob Medida</span>
+            <span class="text-gray-300">•</span>
+            <span class="font-mono text-[10px] sm:text-[11px] text-gray-400 shrink-0">Cód: ${item.id}</span>
           </p>
         </div>
 
-        <div class="flex items-center gap-1.5 shrink-0">
-          <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-gray-100 text-gray-700 border border-gray-200">
+        <div class="flex items-center gap-1 shrink-0 pt-0.5">
+          <span class="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-semibold bg-gray-100 text-gray-700 border border-gray-200 whitespace-nowrap">
             ${item.categoryLabel}
           </span>
           ${item.priceFrom && item.priceFrom.trim() ? `
-            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span class="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 whitespace-nowrap">
               ${item.priceFrom}
             </span>
           ` : ''}
         </div>
       </div>
 
-      <!-- Artwork Image with Floating Meta Badges -->
-      <div class="relative aspect-[16/11] rounded-xl overflow-hidden bg-gray-100 cursor-pointer mb-3.5" onclick="openArtworkModal('${item.id}')">
+      <!-- Artwork Image with Clean Meta Badges -->
+      <div class="relative aspect-[16/11] rounded-xl overflow-hidden bg-gray-100 cursor-pointer mb-3" onclick="openArtworkModal('${item.id}')">
         <img 
           src="${item.image}" 
           alt="${item.title}" 
@@ -220,38 +221,38 @@ function renderCatalog(category = "all") {
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-75 transition-opacity"></div>
         
         <!-- Top Floating Status Badge -->
-        <div class="absolute top-2.5 right-2.5">
-          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/90 text-gray-900 shadow-sm backdrop-blur-md">
+        <div class="absolute top-2 right-2">
+          <span class="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-white/95 text-gray-900 shadow-sm backdrop-blur-md">
             100% Pintura Manual
           </span>
         </div>
 
-        <!-- Bottom Meta Bar (Reference Style) -->
-        <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] text-white font-medium">
-          <span class="flex items-center gap-1 bg-black/60 px-2 py-0.5 rounded-md backdrop-blur-md">
-            <i data-lucide="sparkles" class="w-3 h-3 text-amber-300"></i>
-            <span>${item.technique}</span>
+        <!-- Bottom Meta Bar (Compact & Clean) -->
+        <div class="absolute bottom-2 left-2 right-2 flex items-center justify-between text-[10px] sm:text-[11px] text-white font-medium">
+          <span class="flex items-center gap-1 bg-black/70 px-2 py-0.5 rounded-md backdrop-blur-md truncate max-w-[60%]">
+            <i data-lucide="sparkles" class="w-3 h-3 text-amber-300 shrink-0"></i>
+            <span class="truncate">${item.tag || 'Obra Original'}</span>
           </span>
-          <span class="flex items-center gap-1 bg-black/60 px-2 py-0.5 rounded-md backdrop-blur-md">
-            <i data-lucide="truck" class="w-3 h-3 text-emerald-300"></i>
+          <span class="flex items-center gap-1 bg-black/70 px-2 py-0.5 rounded-md backdrop-blur-md shrink-0">
+            <i data-lucide="truck" class="w-3 h-3 text-emerald-300 shrink-0"></i>
             <span>Envio Seguro</span>
           </span>
         </div>
       </div>
 
       <!-- Sub-footer Attributes in 3 Columns (Reference Style) -->
-      <div class="grid grid-cols-3 gap-2 py-2.5 border-t border-gray-100 text-center mb-3.5">
-        <div class="text-left">
-          <span class="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold">Tamanho Sugerido</span>
-          <span class="text-xs font-semibold text-gray-800 truncate block">${item.popularSizes ? item.popularSizes[0] : 'Sob Medida'}</span>
+      <div class="grid grid-cols-3 gap-1.5 sm:gap-2 py-2 border-t border-gray-100 text-center mb-3">
+        <div class="text-left overflow-hidden">
+          <span class="block text-[8px] sm:text-[9px] uppercase tracking-wider text-gray-400 font-bold truncate">Tamanho</span>
+          <span class="text-[11px] sm:text-xs font-semibold text-gray-800 truncate block tabular-nums">${item.popularSizes ? item.popularSizes[0] : 'Sob Medida'}</span>
         </div>
-        <div class="text-center">
-          <span class="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold">Estrutura</span>
-          <span class="text-xs font-semibold text-gray-800 block">Chassi Imunizado</span>
+        <div class="text-center overflow-hidden">
+          <span class="block text-[8px] sm:text-[9px] uppercase tracking-wider text-gray-400 font-bold truncate">Estrutura</span>
+          <span class="text-[11px] sm:text-xs font-semibold text-gray-800 block truncate">Chassi Imunizado</span>
         </div>
-        <div class="text-right">
-          <span class="block text-[9px] uppercase tracking-wider text-gray-400 font-semibold">Garantia</span>
-          <span class="text-xs font-semibold text-emerald-600 block">Aprovação Vídeo</span>
+        <div class="text-right overflow-hidden">
+          <span class="block text-[8px] sm:text-[9px] uppercase tracking-wider text-gray-400 font-bold truncate">Garantia</span>
+          <span class="text-[11px] sm:text-xs font-semibold text-emerald-600 block truncate">Aprovação Vídeo</span>
         </div>
       </div>
 
@@ -402,35 +403,35 @@ function openArtworkModal(artworkId) {
   if (!modal || !modalContent) return;
 
   modalContent.innerHTML = `
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8 bg-white">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 p-4 sm:p-6 lg:p-8 bg-white">
       <div class="relative rounded-2xl overflow-hidden bg-gray-100 border border-gray-200">
-        <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover max-h-[480px]" />
-        <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-white/95 text-gray-900 shadow-sm">
+        <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover max-h-[360px] sm:max-h-[480px]" />
+        <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-white/95 text-gray-900 shadow-sm">
           ${art.categoryLabel}
         </span>
       </div>
 
-      <div class="flex flex-col justify-between space-y-5">
-        <div class="space-y-4">
+      <div class="flex flex-col justify-between space-y-4 sm:space-y-5">
+        <div class="space-y-3 sm:space-y-4">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono font-semibold text-gray-400 uppercase">CÓDIGO: ${art.id}</span>
-            <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">100% Pintura Manual</span>
+            <span class="text-[11px] sm:text-xs font-mono font-semibold text-gray-400 uppercase">CÓDIGO: ${art.id}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">100% Pintura Manual</span>
           </div>
 
-          <h2 class="font-sans text-2xl font-bold text-gray-900">${art.title}</h2>
+          <h2 class="font-sans text-xl sm:text-2xl font-bold text-gray-900 leading-snug">${art.title}</h2>
           
-          <div class="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700 space-y-1.5">
+          <div class="p-3.5 sm:p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700 space-y-1.5">
             <p><strong class="text-gray-900">Técnica:</strong> ${art.technique}</p>
-            <p><strong class="text-gray-900">Materiais:</strong> Tela 100% algodão, pigmentos importados com proteção UV e chassi em madeira nobre imunizada.</p>
+            <p><strong class="text-gray-900">Materiais:</strong> Tela 100% algodão, pigmentos nobres com proteção UV e chassi em madeira nobre imunizada.</p>
           </div>
 
           <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">${art.description}</p>
 
           <div class="space-y-2">
-            <span class="text-xs font-bold text-gray-900 uppercase tracking-wider text-[11px]">Dimensões Sugeridas:</span>
-            <div class="flex flex-wrap gap-2">
+            <span class="text-[10px] sm:text-xs font-bold text-gray-900 uppercase tracking-wider">Dimensões Sugeridas:</span>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2">
               ${(art.popularSizes || []).map(s => `
-                <span class="px-3 py-1 rounded-lg bg-gray-100 text-xs text-gray-800 font-semibold border border-gray-200">
+                <span class="px-2.5 py-1 rounded-lg bg-gray-100 text-[11px] sm:text-xs text-gray-800 font-semibold border border-gray-200 tabular-nums">
                   ${s}
                 </span>
               `).join('')}
@@ -438,17 +439,17 @@ function openArtworkModal(artworkId) {
           </div>
         </div>
 
-        <div class="pt-4 border-t border-gray-200 space-y-3">
+        <div class="pt-3.5 sm:pt-4 border-t border-gray-200 space-y-3">
           <div class="flex items-baseline justify-between">
-            <span class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Investimento:</span>
+            <span class="text-[11px] sm:text-xs text-gray-500 uppercase tracking-wider font-semibold">Investimento:</span>
             ${art.priceFrom && art.priceFrom.trim() ? `
-              <span class="text-base font-bold text-emerald-700">${art.priceFrom}</span>
+              <span class="text-sm sm:text-base font-bold text-emerald-700">${art.priceFrom}</span>
             ` : `
               <span class="text-xs font-semibold text-gray-700">Orçamento Sob Medida no WhatsApp</span>
             `}
           </div>
 
-          <div class="flex flex-col sm:flex-row gap-2.5">
+          <div class="flex flex-col sm:flex-row gap-2">
             <button 
               onclick="orderCatalogItem('${art.id}'); closeArtworkModal();"
               class="btn-solid-black flex-1 py-3 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md"
