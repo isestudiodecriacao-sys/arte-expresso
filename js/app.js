@@ -144,84 +144,89 @@ function renderCatalog(category = "all") {
     : catalog.filter(item => item.category === category);
 
   container.innerHTML = filteredData.map(item => `
-    <div class="artwork-card glass-panel rounded-2xl overflow-hidden border border-stone-800/80 flex flex-col group" data-category="${item.category}">
-      <div class="relative overflow-hidden aspect-[4/3] bg-stone-900 cursor-pointer" onclick="openArtworkModal('${item.id}')">
+    <div class="glass-card rounded-2xl overflow-hidden border border-white/10 flex flex-col justify-between group transition-all">
+      
+      <!-- Artwork Visual Presentation Frame -->
+      <div class="relative aspect-[4/3] sm:aspect-[16/11] overflow-hidden bg-neutral-950 cursor-pointer" onclick="openArtworkModal('${item.id}')">
         <img 
           src="${item.image}" 
           alt="${item.title}" 
           class="artwork-img w-full h-full object-cover"
           loading="lazy"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
         
-        <div class="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5">
-          <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-stone-950/80 text-amber-300 border border-amber-500/30 backdrop-blur-md">
+        <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-black/80 text-neutral-200 border border-white/15 backdrop-blur-md tracking-wider uppercase">
             ${item.categoryLabel}
           </span>
           ${item.tag ? `
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/90 text-stone-950">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-white text-black tracking-wider uppercase">
               ${item.tag}
             </span>
           ` : ''}
           ${item.priceFrom && item.priceFrom.trim() ? `
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500 text-stone-950 shadow-md">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-neutral-900 border border-white/20 text-white shadow-md">
               ${item.priceFrom}
             </span>
           ` : ''}
         </div>
 
-        <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] text-stone-300">
-          <span class="flex items-center gap-1 text-stone-400">
-            <i data-lucide="sparkles" class="w-3 h-3 text-amber-400"></i>
-            100% Pintado à Mão
+        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] text-neutral-300">
+          <span class="flex items-center gap-1.5 text-neutral-400">
+            <i data-lucide="sparkles" class="w-3 h-3 text-white"></i>
+            100% Pintura Manual
           </span>
-          <span class="text-amber-400 font-semibold font-mono text-[10px]">Cód: ${item.id}</span>
+          <span class="text-neutral-400 font-semibold font-mono text-[10px] uppercase">Cód: ${item.id}</span>
         </div>
       </div>
 
-      <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+      <div class="p-5 flex-1 flex flex-col justify-between space-y-3.5">
         <div>
-          <h3 class="font-serif text-base font-bold text-stone-100 group-hover:text-amber-300 transition-colors">
+          <h3 
+            onclick="openArtworkModal('${item.id}')"
+            class="font-serif text-base sm:text-lg font-normal text-white group-hover:text-neutral-300 transition-colors cursor-pointer"
+          >
             ${item.title}
           </h3>
-          <p class="text-[11px] text-amber-400/90 mt-0.5 font-medium flex items-center gap-1">
-            <i data-lucide="brush" class="w-3 h-3"></i>
+          <p class="text-[11px] text-neutral-400 mt-1 font-medium flex items-center gap-1.5">
+            <i data-lucide="brush" class="w-3 h-3 text-neutral-300"></i>
             ${item.technique}
           </p>
-          <p class="text-[11px] text-stone-400 mt-2 line-clamp-2 leading-relaxed">
+          <p class="text-xs text-neutral-400 mt-2 line-clamp-2 leading-relaxed">
             ${item.description}
           </p>
         </div>
 
         <!-- Palette Preview -->
-        <div class="flex items-center gap-1.5 pt-0.5">
-          <span class="text-[10px] text-stone-500 mr-1">Tons:</span>
+        <div class="flex items-center gap-2 pt-1">
+          <span class="text-[10px] text-neutral-500 uppercase tracking-wider">Tons:</span>
           ${item.palette ? item.palette.map(c => `
             <span class="w-3 h-3 rounded-full border border-white/20 shadow-sm" style="background-color: ${c};"></span>
           `).join('') : ''}
         </div>
 
         <!-- Sizes & Quote Action -->
-        <div class="pt-2.5 border-t border-stone-800/80 space-y-2.5">
-          <div class="flex items-center justify-between text-[11px]">
-            <span class="text-stone-400">Tamanho sugerido:</span>
-            <span class="text-stone-300 font-medium">${item.popularSizes ? item.popularSizes[0] : 'Sob medida'}</span>
+        <div class="pt-3 border-t border-white/10 space-y-3">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-neutral-400">Tamanho sugerido:</span>
+            <span class="text-white font-medium">${item.popularSizes ? item.popularSizes[0] : 'Sob medida'}</span>
           </div>
 
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2.5">
             <button 
               onclick="orderCatalogItem('${item.id}')"
-              class="btn-shimmer flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all flex items-center justify-center gap-1.5 shadow-md shadow-emerald-950/40"
+              class="btn-luxury-white btn-shimmer flex-1 py-2.5 px-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-lg"
             >
-              <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+              <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-700 fill-emerald-700"></i>
               <span>Pedir no WhatsApp</span>
             </button>
             <button 
               onclick="customizeFromCatalog('${item.id}')"
               title="Personalizar Medidas Deste Estilo"
-              class="p-2 rounded-xl bg-stone-800/80 hover:bg-stone-700 text-stone-300 hover:text-amber-300 transition-all border border-stone-700/60"
+              class="btn-luxury-dark p-2.5 rounded-xl transition-all"
             >
-              <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+              <i data-lucide="sliders" class="w-4 h-4 text-white"></i>
             </button>
           </div>
         </div>
@@ -238,13 +243,13 @@ function filterCatalog(category, buttonElement) {
   // Atualiza classes ativas nos botões
   const buttons = document.querySelectorAll(".catalog-filter-btn");
   buttons.forEach(btn => {
-    btn.classList.remove("bg-amber-500", "text-stone-950", "shadow-amber-500/20");
-    btn.classList.add("bg-stone-900/80", "text-stone-300");
+    btn.classList.remove("bg-white", "text-black", "shadow-lg");
+    btn.classList.add("bg-neutral-900", "text-neutral-300", "border", "border-white/10");
   });
 
   if (buttonElement) {
-    buttonElement.classList.remove("bg-stone-900/80", "text-stone-300");
-    buttonElement.classList.add("bg-amber-500", "text-stone-950", "shadow-amber-500/20");
+    buttonElement.classList.remove("bg-neutral-900", "text-neutral-300", "border", "border-white/10");
+    buttonElement.classList.add("bg-white", "text-black", "shadow-lg");
   }
 
   renderCatalog(category);
@@ -312,7 +317,7 @@ function submitDirectWhatsAppOrder(e) {
    ========================================================================== */
 
 function openArtworkModal(artworkId) {
-  const art = getActiveCatalog().find(a => a.id === artworkId);
+  const art = getActiveCatalog().find(a => String(a.id) === String(artworkId));
   if (!art) return;
 
   const modal = document.getElementById("artwork-detail-modal");
@@ -321,35 +326,35 @@ function openArtworkModal(artworkId) {
   if (!modal || !modalContent) return;
 
   modalContent.innerHTML = `
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 sm:p-8">
-      <div class="relative rounded-2xl overflow-hidden bg-stone-950 border border-stone-800">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 sm:p-9 bg-[#0c0c0e]">
+      <div class="relative rounded-xl overflow-hidden bg-neutral-950 border border-white/15">
         <img src="${art.image}" alt="${art.title}" class="w-full h-full object-cover max-h-[500px]" />
-        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-stone-950/80 text-amber-300 border border-amber-500/30">
+        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-[11px] font-semibold bg-black/85 text-neutral-200 border border-white/20 tracking-wider uppercase backdrop-blur-md">
           ${art.categoryLabel}
         </span>
       </div>
 
-      <div class="flex flex-col justify-between space-y-5">
+      <div class="flex flex-col justify-between space-y-6">
         <div>
           <div class="flex items-center justify-between">
-            <span class="text-xs font-mono text-amber-400">CÓDIGO: ${art.id}</span>
-            <span class="px-2.5 py-0.5 rounded text-xs bg-emerald-500/20 text-emerald-300 font-medium">100% Artesanal</span>
+            <span class="text-xs font-mono text-neutral-400 uppercase tracking-wider">CÓDIGO: ${art.id}</span>
+            <span class="px-3 py-0.5 rounded-full text-xs bg-white/10 text-white font-medium border border-white/15">100% Pintura Manual</span>
           </div>
 
-          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100 mt-2">${art.title}</h2>
+          <h2 class="font-serif text-2xl sm:text-3xl font-normal text-white mt-3">${art.title}</h2>
           
-          <div class="mt-3 p-3.5 rounded-xl bg-stone-900/80 border border-stone-800 text-xs text-stone-300 space-y-1.5">
-            <p><strong class="text-amber-400">Técnica:</strong> ${art.technique}</p>
-            <p><strong class="text-amber-400">Materiais:</strong> Tela 100% algodão, tintas importadas de alta durabilidade, chassi de madeira imunizada.</p>
+          <div class="mt-4 p-4 rounded-xl bg-neutral-900 border border-white/10 text-xs text-neutral-300 space-y-2">
+            <p><strong class="text-white uppercase tracking-wider text-[11px]">Técnica:</strong> ${art.technique}</p>
+            <p><strong class="text-white uppercase tracking-wider text-[11px]">Materiais:</strong> Tela 100% algodão, tintas importadas com proteção UV e chassi em madeira imunizada.</p>
           </div>
 
-          <p class="text-sm text-stone-300 mt-4 leading-relaxed">${art.description}</p>
+          <p class="text-xs sm:text-sm text-neutral-400 mt-4 leading-relaxed">${art.description}</p>
 
-          <div class="mt-5 space-y-2">
-            <span class="text-xs font-semibold text-stone-400 uppercase tracking-wider">Tamanhos Populares:</span>
+          <div class="mt-6 space-y-2.5">
+            <span class="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Dimensões Sugeridas:</span>
             <div class="flex flex-wrap gap-2">
-              ${art.popularSizes.map(s => `
-                <span class="px-3 py-1.5 rounded-lg bg-stone-800 text-xs text-stone-200 border border-stone-700">
+              ${(art.popularSizes || []).map(s => `
+                <span class="px-3 py-1.5 rounded-lg bg-neutral-900 text-xs text-neutral-200 border border-white/10 font-medium">
                   ${s}
                 </span>
               `).join('')}
@@ -357,29 +362,29 @@ function openArtworkModal(artworkId) {
           </div>
         </div>
 
-        <div class="pt-4 border-t border-stone-800 space-y-3">
+        <div class="pt-5 border-t border-white/10 space-y-4">
           <div class="flex items-baseline justify-between">
-            <span class="text-xs text-stone-400">Investimento:</span>
+            <span class="text-xs text-neutral-400 uppercase tracking-wider">Investimento:</span>
             ${art.priceFrom && art.priceFrom.trim() ? `
-              <span class="text-base font-bold text-amber-400">${art.priceFrom}</span>
+              <span class="text-base font-bold text-white">${art.priceFrom}</span>
             ` : `
-              <span class="text-xs font-semibold text-amber-400">Orçamento Sob Medida no WhatsApp</span>
+              <span class="text-xs font-semibold text-neutral-300">Orçamento Sob Medida no WhatsApp</span>
             `}
           </div>
 
           <div class="flex flex-col sm:flex-row gap-3">
             <button 
               onclick="orderCatalogItem('${art.id}'); closeArtworkModal();"
-              class="btn-shimmer flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/50"
+              class="btn-luxury-white btn-shimmer flex-1 py-3.5 px-4 rounded-xl font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 shadow-xl"
             >
-              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-700 fill-emerald-700"></i>
               <span>Pedir Orçamento no WhatsApp</span>
             </button>
             <button 
               onclick="customizeFromCatalog('${art.id}'); closeArtworkModal();"
-              class="py-3 px-4 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 border border-stone-700"
+              class="btn-luxury-dark py-3.5 px-4 rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-2"
             >
-              <i data-lucide="sliders" class="w-4 h-4 text-amber-400"></i>
+              <i data-lucide="sliders" class="w-4 h-4 text-white"></i>
               <span>Personalizar Medidas</span>
             </button>
           </div>
@@ -407,25 +412,25 @@ function initTestimonials() {
 
   const testimonials = getActiveTestimonials();
   container.innerHTML = testimonials.map(t => `
-    <div class="glass-panel p-5 rounded-2xl border border-stone-800/80 flex flex-col justify-between space-y-3 hover:border-amber-500/30 transition-all">
+    <div class="glass-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between space-y-4 hover:border-white/25 transition-all">
       <div>
-        <div class="flex items-center gap-1 text-amber-400 mb-2">
-          ${Array(t.rating || 5).fill(0).map(() => `<i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>`).join('')}
+        <div class="flex items-center gap-1 text-white mb-3">
+          ${Array(t.rating || 5).fill(0).map(() => `<i data-lucide="star" class="w-3.5 h-3.5 fill-white text-white"></i>`).join('')}
         </div>
-        <p class="text-xs text-stone-300 italic leading-relaxed">
+        <p class="text-xs sm:text-sm text-neutral-300 italic leading-relaxed">
           "${t.comment}"
         </p>
       </div>
 
-      <div class="pt-3 border-t border-stone-800/80 flex items-center justify-between">
-        <div class="flex items-center gap-2.5">
-          <img src="${t.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}" alt="${t.name}" class="w-8 h-8 rounded-full object-cover border border-amber-500/30" />
+      <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="${t.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'}" alt="${t.name}" class="w-9 h-9 rounded-full object-cover border border-white/20" />
           <div>
-            <h5 class="text-xs font-bold text-stone-100 flex items-center gap-1">
+            <h5 class="text-xs font-bold text-white flex items-center gap-1.5">
               ${t.name}
               <i data-lucide="badge-check" class="w-3.5 h-3.5 text-emerald-400"></i>
             </h5>
-            <p class="text-[10px] text-stone-400">${t.role} • ${t.city}</p>
+            <p class="text-[10px] text-neutral-400">${t.role} • ${t.city}</p>
           </div>
         </div>
       </div>
@@ -441,15 +446,15 @@ function initFAQ() {
 
   const faqs = getActiveFAQs();
   container.innerHTML = faqs.map((faq, idx) => `
-    <div class="glass-panel rounded-xl border border-stone-800/80 overflow-hidden">
+    <div class="glass-card rounded-xl border border-white/10 overflow-hidden transition-colors">
       <button 
         onclick="toggleFAQ(${idx})"
-        class="w-full p-4 text-left font-serif font-bold text-xs sm:text-sm text-stone-100 flex items-center justify-between gap-3 hover:text-amber-300 transition-colors"
+        class="w-full p-4 sm:p-5 text-left font-serif font-medium text-xs sm:text-sm text-white flex items-center justify-between gap-3 hover:text-neutral-300 transition-colors"
       >
         <span>${faq.q}</span>
-        <i id="faq-icon-${idx}" data-lucide="chevron-down" class="w-4 h-4 text-amber-400 transition-transform duration-300"></i>
+        <i id="faq-icon-${idx}" data-lucide="chevron-down" class="w-4 h-4 text-neutral-400 transition-transform duration-300"></i>
       </button>
-      <div id="faq-ans-${idx}" class="hidden px-4 pb-4 text-xs text-stone-300 leading-relaxed border-t border-stone-800/40 pt-2.5">
+      <div id="faq-ans-${idx}" class="hidden px-4 sm:px-5 pb-5 text-xs text-neutral-400 leading-relaxed border-t border-white/10 pt-3">
         ${faq.a}
       </div>
     </div>

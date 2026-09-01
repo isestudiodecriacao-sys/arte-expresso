@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arte Expresso — Quadros Pintados à Mão Sob Medida | Ateliê Oficial</title>
-  <meta name="description" content="Quadros exclusivos pintados à mão sob medida para seu ambiente. Texturas 3D, folha de ouro, abstratos e retratos sob encomenda. Consultoria e orçamento no WhatsApp (11) 95793-4714.">
+  <meta name="description" content="Ateliê de arte contemporânea e quadros exclusivos pintados à mão sob medida. Texturas 3D em relevo, folha de ouro e retratos sob encomenda. Atendimento no WhatsApp (11) 95793-4714.">
   
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
@@ -17,22 +17,16 @@
       theme: {
         extend: {
           colors: {
-            gold: {
-              300: '#F3E5AB',
-              400: '#E5C378',
-              500: '#D4AF37',
-              600: '#AA820A',
-              700: '#856304'
-            },
-            charcoal: {
-              800: '#1F1F24',
-              900: '#141418',
-              950: '#0C0C0E'
+            neutral: {
+              850: '#141417',
+              900: '#0F0F12',
+              950: '#050505'
             }
           },
           fontFamily: {
-            serif: ['Cinzel', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            display: ['Cinzel', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'sans-serif']
           }
         }
       }
@@ -45,118 +39,124 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-charcoal-950 text-stone-200 antialiased selection:bg-amber-500 selection:text-black">
+<body class="bg-[#050505] text-[#E5E5E5] antialiased selection:bg-white selection:text-black">
 
   <!-- ========================================================================
-       TOP ANNOUNCEMENT BAR (CLEAN 1-LINE RESPONSIVE)
+       TOP ANNOUNCEMENT BAR (CLEAN 1-LINE MONOCHROME)
        ======================================================================== -->
-  <div class="bg-gradient-to-r from-stone-950 via-amber-950/80 to-stone-950 border-b border-amber-500/20 py-1.5 px-3 text-center text-[10px] sm:text-xs text-amber-200/90 font-medium">
+  <div class="bg-[#0A0A0C] border-b border-white/10 py-1.5 px-3 text-center text-[10px] sm:text-xs text-neutral-400 font-medium">
     <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
-      <span class="inline-flex items-center gap-1 text-amber-400 font-semibold truncate">
-        <i data-lucide="sparkles" class="w-3 h-3 text-amber-400 shrink-0"></i>
-        <span>Quadros 100% Pintados à Mão Sob Medida</span>
+      <span class="inline-flex items-center gap-1.5 text-neutral-200 font-semibold tracking-wide uppercase text-[10px] sm:text-[11px] truncate">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Ateliê Arte Expresso • Quadros 100% Pintados à Mão Sob Medida</span>
       </span>
       <span class="opacity-30">•</span>
-      <a href="https://wa.me/5511957934714" target="_blank" class="text-amber-300 hover:text-amber-200 font-bold whitespace-nowrap flex items-center gap-1 shrink-0">
-        <i data-lucide="phone" class="w-3 h-3"></i>
+      <a href="https://wa.me/5511957934714" target="_blank" class="text-white hover:text-neutral-300 font-semibold whitespace-nowrap flex items-center gap-1 shrink-0 transition-colors">
+        <i data-lucide="phone" class="w-3 h-3 text-emerald-400"></i>
         <span>(11) 95793-4714</span>
       </a>
     </div>
   </div>
 
   <!-- ========================================================================
-       HEADER / NAVBAR (CLEAN & PERFECT ON MOBILE)
+       HEADER / NAVBAR (MINIMALIST LUXURY GALLERY)
        ======================================================================== -->
-  <header class="sticky top-0 z-40 glass-panel border-b border-stone-800/80">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-2 sm:gap-4">
+  <header class="sticky top-0 z-40 bg-[#08080A]/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-3">
       
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-2 group shrink-0">
-        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-stone-950 shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
-          <i data-lucide="palette" class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.2]"></i>
+      <a href="#" class="flex items-center gap-2.5 group shrink-0">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-neutral-900 border border-white/15 flex items-center justify-center text-white group-hover:border-white/40 transition-colors">
+          <i data-lucide="palette" class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]"></i>
         </div>
         <div>
-          <span class="font-display font-bold text-sm sm:text-base tracking-wider text-stone-100 group-hover:text-amber-300 transition-colors">
+          <span class="font-display font-bold text-sm sm:text-base tracking-[0.18em] text-white group-hover:text-neutral-300 transition-colors">
             ARTE EXPRESSO
           </span>
-          <span class="block text-[8px] sm:text-[9px] tracking-widest text-amber-400 uppercase font-medium">
+          <span class="block text-[8px] sm:text-[9px] tracking-[0.25em] text-neutral-400 uppercase font-medium">
             Ateliê Sob Medida
           </span>
         </div>
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex items-center gap-5 xl:gap-7 text-xs font-semibold text-stone-300">
-        <button onclick="scrollToSection('encomendas-section')" class="hover:text-amber-300 transition-colors flex items-center gap-1.5 whitespace-nowrap text-amber-300 font-bold">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-xs font-semibold tracking-wide text-neutral-300">
+        <button onclick="scrollToSection('encomendas-section')" class="text-white hover:text-neutral-300 transition-colors flex items-center gap-1.5 whitespace-nowrap font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
           Encomendar Sob Medida
         </button>
-        <button onclick="scrollToSection('catalogo-section')" class="hover:text-amber-300 transition-colors whitespace-nowrap">
-          Catálogo de Inspirações
+        <button onclick="scrollToSection('catalogo-section')" class="hover:text-white transition-colors whitespace-nowrap">
+          Catálogo de Obras
         </button>
-        <button onclick="scrollToSection('como-funciona-section')" class="hover:text-amber-300 transition-colors whitespace-nowrap">
+        <button onclick="scrollToSection('como-funciona-section')" class="hover:text-white transition-colors whitespace-nowrap">
           Como Funciona
         </button>
-        <button onclick="scrollToSection('depoimentos-section')" class="hover:text-amber-300 transition-colors whitespace-nowrap">
+        <button onclick="scrollToSection('depoimentos-section')" class="hover:text-white transition-colors whitespace-nowrap">
           Depoimentos
+        </button>
+        <button onclick="scrollToSection('faq-section')" class="hover:text-white transition-colors whitespace-nowrap">
+          Dúvidas
         </button>
       </nav>
 
       <!-- Right Header Actions (Responsive) -->
-      <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center gap-2.5 shrink-0">
         <!-- Instagram Link (Desktop / Tablet) -->
         <a 
           href="https://www.instagram.com/arte.expresso/" 
           target="_blank" 
           title="Instagram @arte.expresso"
-          class="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-stone-900 border border-stone-800 hover:border-pink-500/60 text-stone-200 hover:text-pink-400 text-xs font-semibold transition-all group"
+          class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-neutral-900 border border-white/10 hover:border-white/30 text-neutral-300 hover:text-white text-xs font-semibold transition-all group"
         >
-          <svg class="w-3.5 h-3.5 text-pink-500 group-hover:scale-110 transition-transform fill-current flex-shrink-0" viewBox="0 0 24 24">
+          <svg class="w-3.5 h-3.5 text-neutral-300 group-hover:scale-110 transition-transform fill-current flex-shrink-0" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
-          <span class="text-[11px] text-pink-400">@arte.expresso</span>
+          <span class="text-[11px] text-neutral-300">@arte.expresso</span>
         </a>
 
-        <!-- WhatsApp CTA Button (Compact on Mobile, Full on Desktop) -->
+        <!-- WhatsApp CTA Button (High-Contrast White on Black) -->
         <a 
           href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Gostaria%20de%20um%20or%C3%A7amento%20para%20um%20quadro%20sob%20medida%20com%20o%20ateli%C3%AA%20Arte%20Expresso." 
           target="_blank"
-          class="btn-shimmer flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-wide shadow-md shadow-emerald-950/40 transition-all whitespace-nowrap shrink-0"
+          class="btn-shimmer flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white hover:bg-neutral-200 text-black font-bold text-xs tracking-wide shadow-lg transition-all whitespace-nowrap shrink-0"
         >
-          <i data-lucide="message-circle" class="w-3.5 h-3.5 fill-white/20"></i>
-          <span>WhatsApp</span>
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600 fill-emerald-600"></i>
+          <span>Orçamento WhatsApp</span>
         </a>
 
         <!-- Mobile Menu Toggle -->
-        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg bg-stone-900 border border-stone-800 text-stone-300 hover:text-white" aria-label="Menu">
+        <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 hover:text-white" aria-label="Menu">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu-dropdown" class="hidden lg:hidden glass-panel border-t border-stone-800/80 px-4 py-5 space-y-3 text-xs">
-      <button onclick="scrollToSection('encomendas-section')" class="w-full text-left py-2.5 px-3 rounded-lg bg-amber-500/10 text-amber-300 font-bold flex items-center gap-2 border border-amber-500/20">
-        <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-        <span>Encomendar Quadro Sob Medida</span>
+    <div id="mobile-menu-dropdown" class="hidden lg:hidden bg-[#0A0A0D] border-t border-white/10 px-4 py-5 space-y-3 text-xs">
+      <button onclick="scrollToSection('encomendas-section')" class="w-full text-left py-2.5 px-3 rounded-lg bg-white text-black font-bold flex items-center justify-between shadow-md">
+        <span class="flex items-center gap-2">
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-600"></i>
+          <span>Encomendar Quadro Sob Medida</span>
+        </span>
+        <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
       </button>
-      <button onclick="scrollToSection('catalogo-section')" class="w-full text-left py-2 px-2 text-stone-200 hover:text-amber-300 font-medium">
-        Catálogo de Inspirações
+      <button onclick="scrollToSection('catalogo-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium">
+        Catálogo de Obras
       </button>
-      <button onclick="scrollToSection('como-funciona-section')" class="w-full text-left py-2 px-2 text-stone-200 hover:text-amber-300 font-medium">
+      <button onclick="scrollToSection('como-funciona-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium">
         Como Funciona o Processo
       </button>
-      <button onclick="scrollToSection('depoimentos-section')" class="w-full text-left py-2 px-2 text-stone-200 hover:text-amber-300 font-medium">
+      <button onclick="scrollToSection('depoimentos-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium">
         Depoimentos de Clientes
       </button>
-      <button onclick="scrollToSection('faq-section')" class="w-full text-left py-2 px-2 text-stone-200 hover:text-amber-300 font-medium">
+      <button onclick="scrollToSection('faq-section')" class="w-full text-left py-2 px-2 text-neutral-300 hover:text-white font-medium">
         Dúvidas Frequentes
       </button>
-      <div class="pt-3 border-t border-stone-800 flex flex-col gap-2">
+      <div class="pt-3 border-t border-white/10 flex flex-col gap-2">
         <a 
           href="https://wa.me/5511957934714" 
           target="_blank"
-          class="w-full py-2.5 rounded-lg bg-emerald-600 text-white font-bold text-center flex items-center justify-center gap-2 shadow-md shadow-emerald-950/40"
+          class="w-full py-2.5 rounded-lg bg-neutral-900 border border-emerald-500/30 text-emerald-400 font-bold text-center flex items-center justify-center gap-2"
         >
           <i data-lucide="message-circle" class="w-4 h-4"></i>
           <span>WhatsApp (11) 95793-4714</span>
@@ -164,9 +164,9 @@
         <a 
           href="https://www.instagram.com/arte.expresso/" 
           target="_blank"
-          class="w-full py-2.5 rounded-lg bg-gradient-to-r from-purple-900/60 via-pink-900/60 to-red-900/60 border border-pink-500/40 text-pink-300 font-semibold text-center flex items-center justify-center gap-2 shadow-sm"
+          class="w-full py-2.5 rounded-lg bg-neutral-900 border border-white/10 text-neutral-300 font-semibold text-center flex items-center justify-center gap-2"
         >
-          <svg class="w-4 h-4 text-pink-400 fill-current" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-neutral-400 fill-current" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
           </svg>
           <span>Instagram @arte.expresso</span>
@@ -176,126 +176,121 @@
   </header>
 
   <!-- ========================================================================
-       HERO SECTION (LUXURY, HARMONIOUS & MOBILE OPTIMIZED)
+       HERO SECTION (LUXURY EDITORIAL BLACK & WHITE)
        ======================================================================== -->
-  <section class="relative min-h-fit lg:min-h-[85vh] flex items-center justify-center pt-6 sm:pt-14 pb-10 sm:pb-16 overflow-hidden">
+  <section class="relative min-h-fit lg:min-h-[85vh] flex items-center justify-center pt-8 sm:pt-16 pb-12 sm:pb-20 overflow-hidden bg-[#050505]">
     
-    <!-- Ambient Background Lighting -->
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[320px] sm:w-[600px] h-[300px] bg-amber-500/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-10 right-10 w-[300px] h-[250px] bg-emerald-500/5 rounded-full blur-3xl"></div>
-    </div>
+    <!-- Ambient Gallery Lighting -->
+    <div class="absolute inset-0 pointer-events-none gallery-spotlight"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
         
         <!-- Left Hero Content (7 cols) -->
-        <div class="lg:col-span-7 space-y-4 sm:space-y-5 text-center lg:text-left">
+        <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
           
           <!-- Badge -->
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[10px] sm:text-xs font-semibold">
-            <i data-lucide="sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-amber-400"></i>
-            <span>Arte Contemporânea Exclusiva & Retratos</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-[10px] sm:text-xs font-semibold tracking-wider uppercase">
+            <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+            <span>Ateliê de Arte • Obras Originais Sob Medida</span>
           </div>
 
           <!-- Main Title -->
-          <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold tracking-tight text-stone-100 leading-[1.25]">
-            Quadros Exclusivos <br class="hidden sm:inline">
-            <span class="text-gold-gradient">Pintados à Mão</span> <br>
-            Sob Medida para Seu Espaço
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[46px] font-normal tracking-tight text-white leading-[1.18]">
+            Arte Contemporânea & <br class="hidden sm:inline">
+            <span class="italic font-light text-neutral-300">Pinturas Sob Medida</span> <br>
+            para Espaços Exclusivos
           </h1>
 
           <!-- Subtitle -->
-          <p class="text-xs sm:text-sm text-stone-300 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
-            Transforme seu ambiente com obras originais criadas por artistas. 
-            <strong>Texturas 3D em relevo, folha de ouro 24k e molduras flutuantes premium</strong> 
-            feitas nas medidas exatas da sua parede.
+          <p class="text-xs sm:text-sm text-neutral-400 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            Obras autorais pintadas à mão sob encomenda. 
+            <strong class="text-neutral-200 font-semibold">Texturas em relevo 3D, folha de ouro e molduras de alta precisão</strong> 
+            feitas exatamente nas dimensões da sua parede.
           </p>
 
           <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-1">
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
             <button 
               onclick="scrollToSection('encomendas-section')"
-              class="btn-shimmer w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-stone-950 font-bold text-xs tracking-wide shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
+              class="btn-luxury-white btn-shimmer w-full sm:w-auto px-7 py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase shadow-2xl flex items-center justify-center gap-2.5"
             >
-              <i data-lucide="message-circle" class="w-4 h-4 stroke-[2.5]"></i>
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-700 fill-emerald-700"></i>
               <span>Fazer Encomenda Sob Medida</span>
             </button>
 
             <a 
               href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Gostaria%20de%20uma%20consultoria%20de%20medidas%20para%20minha%20parede%20com%20a%20Arte%20Expresso."
               target="_blank"
-              class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-stone-900/90 hover:bg-stone-800 text-stone-200 font-semibold text-xs border border-stone-700/80 transition-all flex items-center justify-center gap-2"
+              class="btn-luxury-dark w-full sm:w-auto px-6 py-3.5 rounded-xl font-semibold text-xs tracking-wide transition-all flex items-center justify-center gap-2"
             >
-              <i data-lucide="phone" class="w-3.5 h-3.5 text-emerald-400"></i>
+              <i data-lucide="phone" class="w-3.5 h-3.5 text-neutral-400"></i>
               <span>Consultoria no WhatsApp</span>
             </a>
           </div>
 
-          <!-- Trust Badges Strip (4 Compact Stats) -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 sm:pt-4 border-t border-stone-800/80">
-            <div class="p-2 sm:p-2.5 rounded-xl bg-stone-900/60 border border-stone-800 text-center">
-              <span class="block font-serif text-sm sm:text-base font-bold text-amber-400">+1.500</span>
-              <span class="text-[9px] sm:text-[10px] text-stone-400">Quadros Entregues</span>
+          <!-- Trust Badges Strip (4 Minimalist Stats) -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-5 border-t border-white/10">
+            <div class="p-2.5 sm:p-3 rounded-xl bg-neutral-900/60 border border-white/10 text-center">
+              <span class="block font-serif text-base sm:text-lg font-bold text-white">+1.500</span>
+              <span class="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider uppercase">Obras Entregues</span>
             </div>
-            <div class="p-2 sm:p-2.5 rounded-xl bg-stone-900/60 border border-stone-800 text-center">
-              <span class="block font-serif text-sm sm:text-base font-bold text-amber-400">100%</span>
-              <span class="text-[9px] sm:text-[10px] text-stone-400">Pintado à Mão</span>
+            <div class="p-2.5 sm:p-3 rounded-xl bg-neutral-900/60 border border-white/10 text-center">
+              <span class="block font-serif text-base sm:text-lg font-bold text-white">100%</span>
+              <span class="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider uppercase">Pintura Manual</span>
             </div>
-            <div class="p-2 sm:p-2.5 rounded-xl bg-stone-900/60 border border-stone-800 text-center">
-              <span class="block font-serif text-sm sm:text-base font-bold text-amber-400">Vídeo</span>
-              <span class="text-[9px] sm:text-[10px] text-stone-400">Aprovação Prévia</span>
+            <div class="p-2.5 sm:p-3 rounded-xl bg-neutral-900/60 border border-white/10 text-center">
+              <span class="block font-serif text-base sm:text-lg font-bold text-white">Vídeo</span>
+              <span class="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider uppercase">Aprovação Prévia</span>
             </div>
-            <div class="p-2 sm:p-2.5 rounded-xl bg-stone-900/60 border border-stone-800 text-center">
-              <span class="block font-serif text-sm sm:text-base font-bold text-amber-400">Até 12x</span>
-              <span class="text-[9px] sm:text-[10px] text-stone-400">Sem Burocracia</span>
+            <div class="p-2.5 sm:p-3 rounded-xl bg-neutral-900/60 border border-white/10 text-center">
+              <span class="block font-serif text-base sm:text-lg font-bold text-white">Até 12x</span>
+              <span class="text-[9px] sm:text-[10px] text-neutral-400 tracking-wider uppercase">Sem Burocracia</span>
             </div>
           </div>
 
         </div>
 
         <!-- Right Hero Visual Showcase -->
-        <div class="lg:col-span-5 relative mt-2 lg:mt-0">
+        <div class="lg:col-span-5 relative mt-3 lg:mt-0">
           <div class="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
             
-            <div class="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-amber-300/10 rounded-3xl filter blur-2xl"></div>
-
-            <div class="relative glass-panel rounded-2xl p-3 sm:p-4 border border-amber-500/30 shadow-2xl space-y-3">
+            <div class="relative glass-card rounded-2xl p-3 sm:p-4 border border-white/15 shadow-2xl space-y-3">
               
               <!-- Featured Artwork Showcase Frame with Real Artist Photo -->
-              <div class="relative aspect-square rounded-2xl overflow-hidden shadow-2xl bg-stone-950 border-2 border-amber-500/80 group">
+              <div class="relative aspect-square rounded-xl overflow-hidden bg-neutral-950 border border-white/20 group">
                 <img 
                   src="assets/images/artista-arte-expresso.png" 
                   alt="Artista Arte Expresso com Quadro Pintado à Mão" 
                   class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 />
-                <div class="absolute inset-0 bg-gradient-to-t from-stone-950/85 via-transparent to-transparent"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent"></div>
                 
-                <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] sm:text-[11px]">
-                  <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-stone-950/90 border border-stone-800 text-stone-200 backdrop-blur-md">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="font-semibold">Pintado à Mão Sob Medida</span>
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[10px] sm:text-[11px]">
+                  <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/80 border border-white/20 text-white backdrop-blur-md">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span class="font-medium tracking-wide">Pintado à Mão Sob Medida</span>
                   </div>
-                  <span class="px-2 py-0.5 rounded-full bg-amber-500 text-stone-950 font-bold text-[10px] shadow-md">
+                  <span class="px-2.5 py-1 rounded-full bg-white text-black font-bold text-[10px] shadow-lg">
                     @arte.expresso
                   </span>
                 </div>
               </div>
 
               <!-- Floating Mini Action Card -->
-              <div class="p-2.5 sm:p-3 rounded-xl bg-stone-900/90 border border-stone-800 flex items-center justify-between gap-2.5">
-                <div class="flex items-center gap-2">
-                  <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center flex-shrink-0">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+              <div class="p-3 rounded-xl bg-neutral-900/90 border border-white/10 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-8 h-8 rounded-lg bg-white/10 border border-white/15 text-white flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
                   </div>
                   <div class="text-left">
-                    <h6 class="text-[10px] sm:text-[11px] font-bold text-stone-100">Pinturas & Retratos Exclusivos</h6>
-                    <p class="text-[9px] sm:text-[10px] text-stone-400">Pintamos sua ideia nas suas medidas</p>
+                    <h6 class="text-[11px] font-bold text-white tracking-wide">Pinturas & Retratos Exclusivos</h6>
+                    <p class="text-[10px] text-neutral-400">Pintamos sua ideia nas medidas exatas</p>
                   </div>
                 </div>
                 <button 
                   onclick="scrollToSection('encomendas-section')"
-                  class="px-2.5 sm:px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-[10px] sm:text-[11px] transition-all whitespace-nowrap shrink-0 shadow-sm"
+                  class="px-3 py-1.5 rounded-lg bg-white hover:bg-neutral-200 text-black font-bold text-[11px] transition-all whitespace-nowrap shrink-0 shadow-md"
                 >
                   Encomendar
                 </button>
@@ -311,118 +306,118 @@
   </section>
 
   <!-- ========================================================================
-       SECTION: ENCOMENDAS SOB MEDIDA VIA WHATSAPP (DIRETO E SEM ETAPAS)
+       SECTION: ENCOMENDAS SOB MEDIDA VIA WHATSAPP (BESPOKE ATELIER STUDIO)
        ======================================================================== -->
-  <section id="encomendas-section" class="py-14 bg-charcoal-900 border-y border-stone-800 relative">
+  <section id="encomendas-section" class="py-16 sm:py-20 bg-[#0A0A0D] border-y border-white/10 relative">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto space-y-2 mb-8">
-        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-semibold">
-          <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+      <div class="text-center max-w-2xl mx-auto space-y-2.5 mb-10">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-0.5 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-[11px] font-semibold uppercase tracking-wider">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
           Atendimento Direto no WhatsApp
         </div>
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
-          Encomendas <span class="text-gold-gradient">Sob Medida</span>
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-normal text-white">
+          Encomendas <span class="italic font-light text-neutral-300">Sob Medida</span>
         </h2>
-        <p class="text-xs sm:text-sm text-stone-400">
-          Diga o que você deseja ou envie a foto da sua parede. O artista alinha todas as medidas, cores e molduras diretamente com você no WhatsApp!
+        <p class="text-xs sm:text-sm text-neutral-400 max-w-lg mx-auto">
+          Diga o que você deseja ou envie a foto da sua parede. O artista alinha medidas, paleta de cores e molduras diretamente no WhatsApp.
         </p>
       </div>
 
       <!-- Main Direct Order Card -->
-      <div class="glass-panel p-6 sm:p-8 rounded-3xl border border-stone-800 shadow-2xl space-y-6">
+      <div class="glass-card p-6 sm:p-9 rounded-2xl border border-white/15 shadow-2xl space-y-7">
         
-        <!-- Luxury Highlights Banner -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 rounded-2xl bg-stone-950/70 border border-stone-800">
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
+        <!-- Luxury Highlights Banner (3 Minimalist Pillars) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 p-4 rounded-xl bg-neutral-950 border border-white/10">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-neutral-900 border border-white/15 text-white flex items-center justify-center flex-shrink-0">
               <i data-lucide="ruler" class="w-4 h-4"></i>
             </div>
             <div>
-              <span class="block font-bold text-stone-200 text-xs">Medida da Parede</span>
-              <span class="text-[10px] text-stone-400">Pintamos no tamanho ideal</span>
+              <span class="block font-bold text-white text-xs tracking-wide">Medida da Parede</span>
+              <span class="text-[10px] text-neutral-400">Pintamos no tamanho exato</span>
             </div>
           </div>
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center flex-shrink-0">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-neutral-900 border border-white/15 text-white flex items-center justify-center flex-shrink-0">
+              <i data-lucide="video" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <span class="block font-bold text-white text-xs tracking-wide">Aprovação em Vídeo</span>
+              <span class="text-[10px] text-neutral-400">Veja fotos e vídeos antes do envio</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-neutral-900 border border-white/15 text-white flex items-center justify-center flex-shrink-0">
               <i data-lucide="shield-check" class="w-4 h-4"></i>
             </div>
             <div>
-              <span class="block font-bold text-stone-200 text-xs">Aprovação em Vídeo</span>
-              <span class="text-[10px] text-stone-400">Veja a obra antes do envio</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center flex-shrink-0">
-              <i data-lucide="truck" class="w-4 h-4"></i>
-            </div>
-            <div>
-              <span class="block font-bold text-stone-200 text-xs">Seguro Total</span>
-              <span class="text-[10px] text-stone-400">Envio seguro p/ todo o Brasil</span>
+              <span class="block font-bold text-white text-xs tracking-wide">Seguro Total</span>
+              <span class="text-[10px] text-neutral-400">Envio seguro p/ todo o Brasil</span>
             </div>
           </div>
         </div>
 
         <!-- Direct Form -->
         <form onsubmit="submitDirectWhatsAppOrder(event)" class="space-y-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-stone-300 mb-1">Seu Nome *</label>
+              <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase tracking-wider text-[11px]">Seu Nome *</label>
               <input 
                 type="text" 
                 id="direct-cust-name" 
                 placeholder="Ex: Fernanda Silveira" 
                 required
-                class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-xs focus:border-amber-500 focus:outline-none"
+                class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-neutral-500 text-xs focus:border-white focus:outline-none transition-colors"
               />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-stone-300 mb-1">Sua Cidade / Estado (Opcional)</label>
+              <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase tracking-wider text-[11px]">Sua Cidade / Estado (Opcional)</label>
               <input 
                 type="text" 
                 id="direct-cust-city" 
                 placeholder="Ex: São Paulo, SP" 
-                class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-xs focus:border-amber-500 focus:outline-none"
+                class="w-full px-4 py-3 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-neutral-500 text-xs focus:border-white focus:outline-none transition-colors"
               />
             </div>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-stone-300 mb-1">O que você tem em mente? (Opcional)</label>
+            <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase tracking-wider text-[11px]">O que você tem em mente? (Opcional)</label>
             <textarea 
               id="direct-cust-idea" 
               rows="2" 
-              placeholder="Ex: Gostaria de um quadro texturizado com tons dourados para colocar em cima do sofá da sala, aprox. 160x90cm..."
-              class="w-full px-3.5 py-2 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 text-xs focus:border-amber-500 focus:outline-none resize-none"
+              placeholder="Ex: Gostaria de um quadro texturizado em tons neutros e preto para colocar em cima do sofá da sala, aprox. 180x100cm..."
+              class="w-full px-4 py-2.5 rounded-xl bg-neutral-900 border border-white/15 text-white placeholder-neutral-500 text-xs focus:border-white focus:outline-none resize-none transition-colors"
             ></textarea>
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-stone-300 mb-1">Foto da sua parede ou referência (Opcional)</label>
-            <label class="cursor-pointer py-2.5 px-3.5 rounded-xl bg-stone-900 border border-stone-700 hover:border-amber-500/50 flex items-center justify-between gap-2 text-stone-300 text-xs transition-all">
-              <span id="direct-wall-photo-label" class="truncate flex items-center gap-1.5 text-stone-400">
-                <i data-lucide="image" class="w-3.5 h-3.5 text-amber-400"></i>
+            <label class="block text-xs font-semibold text-neutral-300 mb-1.5 uppercase tracking-wider text-[11px]">Foto da sua parede ou referência (Opcional)</label>
+            <label class="cursor-pointer py-3 px-4 rounded-xl bg-neutral-900 border border-white/15 hover:border-white/40 flex items-center justify-between gap-2 text-neutral-300 text-xs transition-all">
+              <span id="direct-wall-photo-label" class="truncate flex items-center gap-2 text-neutral-400">
+                <i data-lucide="image" class="w-4 h-4 text-neutral-300"></i>
                 Anexar foto da parede ou quadro de referência
               </span>
-              <span class="px-2.5 py-0.5 rounded bg-stone-800 text-[10px] text-amber-400 font-semibold flex-shrink-0">Procurar Foto</span>
+              <span class="px-3 py-1 rounded bg-neutral-800 border border-white/10 text-[10px] text-white font-semibold flex-shrink-0">Procurar Foto</span>
               <input type="file" id="direct-wall-photo" accept="image/*" class="hidden" onchange="const f=this.files[0]; if(f){ document.getElementById('direct-wall-photo-label').textContent='Foto selecionada: ' + f.name; document.getElementById('direct-wall-photo-label').className='text-emerald-400 font-semibold truncate flex items-center gap-1.5'; }" />
             </label>
           </div>
 
           <!-- Big WhatsApp CTA -->
-          <div class="pt-2 space-y-2">
+          <div class="pt-3 space-y-2.5">
             <button 
               type="submit"
-              class="btn-shimmer w-full py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs tracking-wide shadow-xl shadow-emerald-950/60 transition-all flex items-center justify-center gap-2.5"
+              class="btn-luxury-white btn-shimmer w-full py-4 px-5 rounded-xl font-bold text-xs tracking-wider uppercase shadow-2xl flex items-center justify-center gap-2.5"
             >
-              <i data-lucide="message-circle" class="w-4 h-4 fill-white/20"></i>
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-700 fill-emerald-700"></i>
               <span>Fazer Encomenda no WhatsApp (11) 95793-4714</span>
             </button>
 
-            <div class="flex items-center justify-center gap-4 text-[10px] text-stone-400 text-center">
+            <div class="flex items-center justify-center gap-5 text-[10px] text-neutral-400 text-center pt-1">
               <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-3 h-3 text-emerald-400"></i> Consultoria 100% Gratuita</span>
-              <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-amber-400"></i> Resposta rápida do artista</span>
+              <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3 text-neutral-300"></i> Resposta rápida do artista</span>
             </div>
           </div>
         </form>
@@ -437,54 +432,54 @@
   <!-- ========================================================================
        SECTION: PRODUCT CATALOG / INSPIRATIONS GRID
        ======================================================================== -->
-  <section id="catalogo-section" class="py-16 bg-charcoal-900 border-y border-stone-800">
+  <section id="catalogo-section" class="py-16 sm:py-20 bg-[#050505] border-y border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Section Title & Filters -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-        <div class="space-y-2">
-          <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-semibold">
-            <i data-lucide="palette" class="w-3 h-3"></i>
-            Galeria de Obras
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-10">
+        <div class="space-y-2.5">
+          <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-[11px] font-semibold uppercase tracking-wider">
+            <i data-lucide="palette" class="w-3.5 h-3.5"></i>
+            Galeria & Curadoria de Obras
           </div>
-          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
-            Inspirações Prontas para <span class="text-gold-gradient">Reprodução Sob Medida</span>
+          <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-normal text-white">
+            Inspirações para <span class="italic font-light text-neutral-300">Pintura Sob Medida</span>
           </h2>
-          <p class="text-xs text-stone-400 max-w-xl">
-            Todas as artes abaixo podem ser pintadas nas medidas e cores exatas do seu ambiente.
+          <p class="text-xs sm:text-sm text-neutral-400 max-w-xl">
+            Todas as artes do ateliê podem ser pintadas nas medidas, proporções e paleta de cores do seu espaço.
           </p>
         </div>
 
         <button 
           onclick="openConsultationModal()"
-          class="px-4 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-amber-300 font-semibold text-xs border border-amber-500/30 flex items-center gap-2 self-start md:self-auto shrink-0"
+          class="btn-luxury-dark px-4 py-2.5 rounded-xl font-semibold text-xs flex items-center gap-2 self-start md:self-auto shrink-0 transition-all"
         >
-          <i data-lucide="camera" class="w-3.5 h-3.5 text-amber-400"></i>
+          <i data-lucide="camera" class="w-3.5 h-3.5 text-white"></i>
           <span>Enviar Foto da Minha Parede</span>
         </button>
       </div>
 
-      <!-- Category Filter Tabs -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 text-xs">
-        <button onclick="filterCatalog('all', this)" class="catalog-filter-btn px-3.5 py-2 rounded-xl bg-amber-500 text-stone-950 font-bold whitespace-nowrap shadow-md shadow-amber-500/20 transition-all">
+      <!-- Category Filter Tabs (Minimalist Luxury Pills) -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-8 text-xs scrollbar-none">
+        <button onclick="filterCatalog('all', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-white text-black font-bold whitespace-nowrap shadow-lg transition-all">
           Todas as Obras
         </button>
-        <button onclick="filterCatalog('texturizado', this)" class="catalog-filter-btn px-3.5 py-2 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold whitespace-nowrap border border-stone-800 transition-all">
+        <button onclick="filterCatalog('texturizado', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-neutral-900 text-neutral-300 hover:text-white font-semibold whitespace-nowrap border border-white/10 hover:border-white/30 transition-all">
           Texturizados 3D
         </button>
-        <button onclick="filterCatalog('abstrato', this)" class="catalog-filter-btn px-3.5 py-2 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold whitespace-nowrap border border-stone-800 transition-all">
+        <button onclick="filterCatalog('abstrato', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-neutral-900 text-neutral-300 hover:text-white font-semibold whitespace-nowrap border border-white/10 hover:border-white/30 transition-all">
           Abstratos Modernos
         </button>
-        <button onclick="filterCatalog('minimalista', this)" class="catalog-filter-btn px-3.5 py-2 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold whitespace-nowrap border border-stone-800 transition-all">
+        <button onclick="filterCatalog('minimalista', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-neutral-900 text-neutral-300 hover:text-white font-semibold whitespace-nowrap border border-white/10 hover:border-white/30 transition-all">
           Minimalistas & Neutros
         </button>
-        <button onclick="filterCatalog('diptico', this)" class="catalog-filter-btn px-3.5 py-2 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold whitespace-nowrap border border-stone-800 transition-all">
+        <button onclick="filterCatalog('diptico', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-neutral-900 text-neutral-300 hover:text-white font-semibold whitespace-nowrap border border-white/10 hover:border-white/30 transition-all">
           Dípticos & Trípticos
         </button>
-        <button onclick="filterCatalog('retrato', this)" class="catalog-filter-btn px-3.5 py-2 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold whitespace-nowrap border border-stone-800 transition-all">
+        <button onclick="filterCatalog('retrato', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-neutral-900 text-neutral-300 hover:text-white font-semibold whitespace-nowrap border border-white/10 hover:border-white/30 transition-all">
           Retratos Realistas
         </button>
-        <button onclick="filterCatalog('personalizado', this)" class="catalog-filter-btn px-3.5 py-2 rounded-xl bg-stone-900/80 text-stone-300 hover:text-white font-semibold whitespace-nowrap border border-stone-800 transition-all">
+        <button onclick="filterCatalog('personalizado', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-neutral-900 text-neutral-300 hover:text-white font-semibold whitespace-nowrap border border-white/10 hover:border-white/30 transition-all">
           Personalizados do Zero
         </button>
       </div>
@@ -494,23 +489,23 @@
         <!-- Dynamically rendered by app.js -->
       </div>
 
-      <!-- Banner Instagram @arte.expresso -->
-      <div class="mt-12 p-6 rounded-2xl bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 border border-stone-700 flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="flex items-center gap-3.5 text-center md:text-left">
-          <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 flex items-center justify-center text-white shadow-xl shadow-pink-950/50 flex-shrink-0">
+      <!-- Banner Instagram @arte.expresso (Minimalist Luxury) -->
+      <div class="mt-14 p-6 sm:p-8 rounded-2xl glass-card border border-white/15 flex flex-col md:flex-row items-center justify-between gap-5">
+        <div class="flex items-center gap-4 text-center md:text-left">
+          <div class="w-12 h-12 rounded-xl bg-neutral-900 border border-white/15 flex items-center justify-center text-white shadow-xl flex-shrink-0">
             <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
           </div>
           <div>
-            <h4 class="font-serif text-base font-bold text-stone-100">Siga nosso Ateliê no Instagram</h4>
-            <p class="text-[11px] text-stone-400 mt-0.5">Acompanhe vídeos do processo de pintura e bastidores em <strong>@arte.expresso</strong></p>
+            <h4 class="font-serif text-base font-bold text-white">Acompanhe o Ateliê no Instagram</h4>
+            <p class="text-xs text-neutral-400 mt-0.5">Assista aos bastidores e gravações do processo de pintura em <strong>@arte.expresso</strong></p>
           </div>
         </div>
         <a 
           href="https://www.instagram.com/arte.expresso/" 
           target="_blank" 
-          class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 hover:opacity-90 text-white font-bold text-xs transition-all flex items-center gap-2 shadow-lg shadow-pink-950/60 shrink-0"
+          class="btn-luxury-white px-5 py-3 rounded-xl font-bold text-xs transition-all flex items-center gap-2 shadow-lg shrink-0"
         >
           <span>Ver @arte.expresso no Instagram</span>
           <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
@@ -523,66 +518,66 @@
   <!-- ========================================================================
        SECTION: HOW IT WORKS / STEP BY STEP GUARANTEE
        ======================================================================== -->
-  <section id="como-funciona-section" class="py-16 bg-charcoal-950 relative">
+  <section id="como-funciona-section" class="py-16 sm:py-20 bg-[#0A0A0D] border-y border-white/10 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto space-y-2 mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-semibold">
-          <i data-lucide="check-check" class="w-3 h-3"></i>
+      <div class="text-center max-w-2xl mx-auto space-y-2.5 mb-14">
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-0.5 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-[11px] font-semibold uppercase tracking-wider">
+          <i data-lucide="check-check" class="w-3.5 h-3.5"></i>
           Processo Seguro & Transparente
         </div>
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
-          Como Funciona a Sua <span class="text-gold-gradient">Encomenda Sob Medida</span>
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-normal text-white">
+          Como Funciona a Sua <span class="italic font-light text-neutral-300">Encomenda Sob Medida</span>
         </h2>
-        <p class="text-xs sm:text-sm text-stone-400">
-          Sem riscos: você acompanha cada detalhe e só tem a tela enviada após aprovar o vídeo final.
+        <p class="text-xs sm:text-sm text-neutral-400">
+          Sem riscos: você participa da criação e a tela só é despachada após sua aprovação formal por vídeo.
         </p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
         
         <!-- Step 1 -->
-        <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2">
-          <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center border border-amber-500/30">1</span>
-          <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-100">Briefing no WhatsApp</h4>
-          <p class="text-[11px] text-stone-400 leading-relaxed">
-            Você nos envia a foto da sua parede ou medidas pelo WhatsApp <strong>(11) 95793-4714</strong>.
+        <div class="glass-card p-5 rounded-2xl border border-white/10 space-y-3">
+          <span class="w-8 h-8 rounded-lg bg-white/10 border border-white/15 text-white font-bold text-xs flex items-center justify-center">01</span>
+          <h4 class="font-serif font-bold text-sm text-white">Briefing no WhatsApp</h4>
+          <p class="text-[11px] text-neutral-400 leading-relaxed">
+            Você nos envia a foto da sua parede ou ideias pelo WhatsApp <strong>(11) 95793-4714</strong>.
           </p>
         </div>
 
         <!-- Step 2 -->
-        <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2">
-          <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center border border-amber-500/30">2</span>
-          <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-100">Proposta Visual</h4>
-          <p class="text-[11px] text-stone-400 leading-relaxed">
-            Apresentamos a simulação de tamanho ideal, harmonia de cores e orçamento formal.
+        <div class="glass-card p-5 rounded-2xl border border-white/10 space-y-3">
+          <span class="w-8 h-8 rounded-lg bg-white/10 border border-white/15 text-white font-bold text-xs flex items-center justify-center">02</span>
+          <h4 class="font-serif font-bold text-sm text-white">Proposta & Medidas</h4>
+          <p class="text-[11px] text-neutral-400 leading-relaxed">
+            Alinhamos a dimensão ideal, paleta de cores e o orçamento formal sem burocracia.
           </p>
         </div>
 
         <!-- Step 3 -->
-        <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2">
-          <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center border border-amber-500/30">3</span>
-          <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-100">Pintura Artesanal</h4>
-          <p class="text-[11px] text-stone-400 leading-relaxed">
-            O artista pinta a obra com relevo espatulado e aplicação manual de folha de ouro.
+        <div class="glass-card p-5 rounded-2xl border border-white/10 space-y-3">
+          <span class="w-8 h-8 rounded-lg bg-white/10 border border-white/15 text-white font-bold text-xs flex items-center justify-center">03</span>
+          <h4 class="font-serif font-bold text-sm text-white">Pintura Artesanal</h4>
+          <p class="text-[11px] text-neutral-400 leading-relaxed">
+            O artista pinta a obra à mão com relevo espatulado e acabamentos especiais.
           </p>
         </div>
 
         <!-- Step 4 -->
-        <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2">
-          <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold text-xs flex items-center justify-center border border-emerald-500/30">4</span>
-          <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-100">Aprovação por Vídeo</h4>
-          <p class="text-[11px] text-stone-400 leading-relaxed">
-            Você recebe fotos e vídeos da tela pronta para validar antes do envio.
+        <div class="glass-card p-5 rounded-2xl border border-white/10 space-y-3">
+          <span class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-bold text-xs flex items-center justify-center">04</span>
+          <h4 class="font-serif font-bold text-sm text-white">Validação em Vídeo</h4>
+          <p class="text-[11px] text-neutral-400 leading-relaxed">
+            Você recebe fotos em alta definição e vídeo da tela pronta antes do envio.
           </p>
         </div>
 
         <!-- Step 5 -->
-        <div class="glass-panel p-4 rounded-xl border border-stone-800 space-y-2">
-          <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 font-bold text-xs flex items-center justify-center border border-amber-500/30">5</span>
-          <h4 class="font-serif font-bold text-xs sm:text-sm text-stone-100">Envio Seguro</h4>
-          <p class="text-[11px] text-stone-400 leading-relaxed">
-            Embalada em caixa reforçada com seguro total de transporte para todo o Brasil.
+        <div class="glass-card p-5 rounded-2xl border border-white/10 space-y-3">
+          <span class="w-8 h-8 rounded-lg bg-white/10 border border-white/15 text-white font-bold text-xs flex items-center justify-center">05</span>
+          <h4 class="font-serif font-bold text-sm text-white">Envio com Seguro</h4>
+          <p class="text-[11px] text-neutral-400 leading-relaxed">
+            Embalagem reforçada de exportação com seguro total para qualquer cidade do Brasil.
           </p>
         </div>
 
@@ -594,23 +589,23 @@
   <!-- ========================================================================
        SECTION: TESTIMONIALS & REVIEWS
        ======================================================================== -->
-  <section id="depoimentos-section" class="py-16 bg-charcoal-900 border-y border-stone-800">
+  <section id="depoimentos-section" class="py-16 sm:py-20 bg-[#050505] border-y border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center max-w-2xl mx-auto space-y-2 mb-10">
-        <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-semibold">
-          <i data-lucide="star" class="w-3 h-3 fill-amber-400 text-amber-400"></i>
+      <div class="text-center max-w-2xl mx-auto space-y-2.5 mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-[11px] font-semibold uppercase tracking-wider">
+          <i data-lucide="star" class="w-3.5 h-3.5 text-white fill-white"></i>
           Avaliações Verificadas
         </div>
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
-          O Que Dizem Nossos <span class="text-gold-gradient">Clientes & Arquitetos</span>
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-normal text-white">
+          O Que Dizem Nossos <span class="italic font-light text-neutral-300">Clientes & Arquitetos</span>
         </h2>
-        <p class="text-xs text-stone-400">
-          Mais de 1.500 casas e consultórios transformados em todo o Brasil.
+        <p class="text-xs sm:text-sm text-neutral-400">
+          Mais de 1.500 casas e escritórios transformados em todo o Brasil.
         </p>
       </div>
 
-      <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div id="testimonials-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Dynamically rendered by app.js -->
       </div>
 
@@ -620,35 +615,35 @@
   <!-- ========================================================================
        SECTION: FAQ (DÚVIDAS FREQUENTES)
        ======================================================================== -->
-  <section id="faq-section" class="py-16 bg-charcoal-950">
+  <section id="faq-section" class="py-16 sm:py-20 bg-[#0A0A0D]">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="text-center space-y-2 mb-10">
-        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-semibold">
-          <i data-lucide="help-circle" class="w-3 h-3"></i>
+      <div class="text-center space-y-2.5 mb-12">
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-white/5 border border-white/15 text-neutral-300 text-[11px] font-semibold uppercase tracking-wider">
+          <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
           Tire Suas Dúvidas
         </div>
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-100">
+        <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl font-normal text-white">
           Perguntas Frequentes
         </h2>
       </div>
 
-      <div id="faq-container" class="space-y-3">
+      <div id="faq-container" class="space-y-3.5">
         <!-- Dynamically rendered by app.js -->
       </div>
 
       <!-- Still have questions CTA -->
-      <div class="mt-10 text-center p-6 rounded-2xl glass-panel border border-stone-800 space-y-3">
-        <h4 class="font-serif text-base font-bold text-stone-100">Ainda tem alguma dúvida específica?</h4>
-        <p class="text-xs text-stone-400 max-w-md mx-auto">
-          Nosso artista e consultores estão online no WhatsApp para te atender e calcular o frete.
+      <div class="mt-12 text-center p-7 sm:p-9 rounded-2xl glass-card border border-white/15 space-y-3.5">
+        <h4 class="font-serif text-lg font-bold text-white">Ainda tem alguma dúvida específica?</h4>
+        <p class="text-xs sm:text-sm text-neutral-400 max-w-md mx-auto">
+          Nosso artista está online no WhatsApp para te atender, tirar dúvidas de medidas e calcular o frete.
         </p>
         <a 
           href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20as%20artes%20da%20Arte%20Expresso." 
           target="_blank"
-          class="btn-shimmer inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-950/40"
+          class="btn-luxury-white btn-shimmer inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase shadow-xl"
         >
-          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-700 fill-emerald-700"></i>
           <span>Falar Agora no WhatsApp (11) 95793-4714</span>
         </a>
       </div>
@@ -659,59 +654,59 @@
   <!-- ========================================================================
        FOOTER (WITH SAFE BOTTOM SPACING SO NO BUTTONS OVERLAP)
        ======================================================================== -->
-  <footer class="bg-charcoal-950 border-t border-stone-800/80 pt-12 pb-24 sm:pb-16 text-stone-400 text-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+  <footer class="bg-[#050505] border-t border-white/10 pt-14 pb-24 sm:pb-16 text-neutral-400 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
       
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         
-        <div class="space-y-3 md:col-span-2">
+        <div class="space-y-3.5 md:col-span-2">
           <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-stone-950 font-bold">
+            <div class="w-8 h-8 rounded-lg bg-neutral-900 border border-white/15 flex items-center justify-center text-white font-bold">
               <i data-lucide="palette" class="w-4 h-4"></i>
             </div>
-            <span class="font-serif text-lg font-bold text-stone-100">ARTE EXPRESSO</span>
+            <span class="font-display font-bold text-base tracking-[0.18em] text-white">ARTE EXPRESSO</span>
           </div>
-          <p class="text-stone-400 max-w-md leading-relaxed text-[11px]">
-            Ateliê especializado na criação de quadros sob medida, pinturas contemporâneas com relevo 3D, folha de ouro e retratos realistas sob encomenda.
+          <p class="text-neutral-400 max-w-md leading-relaxed text-xs">
+            Ateliê especializado na criação de quadros sob medida, pinturas contemporâneas em relevo 3D, folha de ouro e retratos realistas sob encomenda.
           </p>
-          <div class="flex items-center gap-2.5 pt-1">
-            <a href="https://www.instagram.com/arte.expresso/" target="_blank" class="w-9 h-9 rounded-xl bg-stone-900 border border-stone-800 hover:border-pink-500 hover:bg-pink-950/30 text-pink-400 flex items-center justify-center transition-all shadow-sm group" title="Instagram @arte.expresso">
-              <svg class="w-4 h-4 text-pink-400 group-hover:scale-110 transition-transform fill-current" viewBox="0 0 24 24">
+          <div class="flex items-center gap-3 pt-1">
+            <a href="https://www.instagram.com/arte.expresso/" target="_blank" class="w-9 h-9 rounded-xl bg-neutral-900 border border-white/10 hover:border-white/30 text-white flex items-center justify-center transition-all shadow-sm group" title="Instagram @arte.expresso">
+              <svg class="w-4 h-4 text-white group-hover:scale-110 transition-transform fill-current" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
             </a>
-            <a href="https://wa.me/5511957934714" target="_blank" class="w-9 h-9 rounded-xl bg-stone-900 border border-stone-800 hover:border-emerald-500 hover:bg-emerald-950/30 text-emerald-400 flex items-center justify-center transition-all shadow-sm" title="WhatsApp (11) 95793-4714">
+            <a href="https://wa.me/5511957934714" target="_blank" class="w-9 h-9 rounded-xl bg-neutral-900 border border-white/10 hover:border-white/30 text-emerald-400 flex items-center justify-center transition-all shadow-sm" title="WhatsApp (11) 95793-4714">
               <i data-lucide="message-circle" class="w-4 h-4"></i>
             </a>
           </div>
         </div>
 
-        <div class="space-y-2.5">
-          <h5 class="font-serif font-bold text-stone-200 text-xs">Navegação</h5>
-          <ul class="space-y-1.5 text-[11px]">
-            <li><button onclick="scrollToSection('encomendas-section')" class="hover:text-amber-300 font-semibold text-amber-400">Encomendas Sob Medida</button></li>
-            <li><button onclick="scrollToSection('catalogo-section')" class="hover:text-amber-300">Catálogo de Inspirações</button></li>
-            <li><button onclick="scrollToSection('como-funciona-section')" class="hover:text-amber-300">Como Funciona</button></li>
-            <li><button onclick="scrollToSection('depoimentos-section')" class="hover:text-amber-300">Depoimentos de Clientes</button></li>
-            <li><button onclick="scrollToSection('faq-section')" class="hover:text-amber-300">Dúvidas Frequentes</button></li>
+        <div class="space-y-3">
+          <h5 class="font-serif font-bold text-white text-xs tracking-wider uppercase">Navegação</h5>
+          <ul class="space-y-2 text-xs">
+            <li><button onclick="scrollToSection('encomendas-section')" class="hover:text-white font-semibold text-neutral-200 transition-colors">Encomendas Sob Medida</button></li>
+            <li><button onclick="scrollToSection('catalogo-section')" class="hover:text-white transition-colors">Catálogo de Obras</button></li>
+            <li><button onclick="scrollToSection('como-funciona-section')" class="hover:text-white transition-colors">Como Funciona</button></li>
+            <li><button onclick="scrollToSection('depoimentos-section')" class="hover:text-white transition-colors">Depoimentos</button></li>
+            <li><button onclick="scrollToSection('faq-section')" class="hover:text-white transition-colors">Dúvidas Frequentes</button></li>
           </ul>
         </div>
 
-        <div class="space-y-2.5">
-          <h5 class="font-serif font-bold text-stone-200 text-xs">Atendimento</h5>
-          <ul class="space-y-1.5 text-[11px]">
-            <li class="flex items-center gap-1.5 text-stone-300">
+        <div class="space-y-3">
+          <h5 class="font-serif font-bold text-white text-xs tracking-wider uppercase">Atendimento</h5>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-2 text-neutral-200">
               <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
               <span>(11) 95793-4714</span>
             </li>
-            <li class="flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5 text-pink-400 fill-current" viewBox="0 0 24 24">
+            <li class="flex items-center gap-2">
+              <svg class="w-3.5 h-3.5 text-neutral-300 fill-current" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
               </svg>
-              <a href="https://www.instagram.com/arte.expresso/" target="_blank" class="hover:text-pink-400 text-stone-300">@arte.expresso</a>
+              <a href="https://www.instagram.com/arte.expresso/" target="_blank" class="hover:text-white text-neutral-300 transition-colors">@arte.expresso</a>
             </li>
-            <li class="flex items-center gap-1.5 text-stone-400">
-              <i data-lucide="truck" class="w-3.5 h-3.5 text-amber-400"></i>
+            <li class="flex items-center gap-2 text-neutral-400">
+              <i data-lucide="truck" class="w-3.5 h-3.5 text-neutral-300"></i>
               <span>Envio Seguro p/ Todo Brasil</span>
             </li>
           </ul>
@@ -719,12 +714,12 @@
 
       </div>
 
-      <div class="pt-6 border-t border-stone-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-[11px]">
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs">
         <p>© 2026 Arte Expresso (@arte.expresso). Todos os direitos reservados.</p>
-        <div class="flex items-center gap-3 text-stone-500">
-          <span>Conversão via WhatsApp</span>
+        <div class="flex items-center gap-3 text-neutral-500">
+          <span>Conversão Oficial via WhatsApp</span>
           <span>•</span>
-          <a href="admin.html" class="hover:text-amber-400 text-[11px] flex items-center gap-1 transition-colors">
+          <a href="admin.html" class="hover:text-white text-xs flex items-center gap-1 transition-colors">
             <i data-lucide="lock" class="w-3 h-3"></i>
             Área Administrativa
           </a>
@@ -739,30 +734,30 @@
        ======================================================================== -->
   <div class="fixed bottom-5 right-5 z-40 flex items-center gap-2 group">
     <!-- Hover Tooltip (Only on hover, never blocks content) -->
-    <div class="hidden md:group-hover:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-stone-900/95 border border-stone-700 text-stone-200 text-[11px] font-medium shadow-xl backdrop-blur-md transition-opacity">
+    <div class="hidden md:group-hover:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-neutral-900/95 border border-white/15 text-white text-xs font-medium shadow-2xl backdrop-blur-md transition-opacity">
       <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-      <span>Tire dúvidas no WhatsApp!</span>
+      <span>Fale com o Artista no WhatsApp</span>
     </div>
 
     <!-- Pulsing WhatsApp Button -->
     <a 
       href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Arte%20Expresso%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20quadro%20sob%20medida."
       target="_blank"
-      class="animate-pulse-green w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-105"
+      class="animate-pulse-green w-13 h-13 p-3 rounded-full bg-white hover:bg-neutral-200 text-black flex items-center justify-center shadow-2xl transition-transform hover:scale-105"
       title="Atendimento no WhatsApp (11) 95793-4714"
     >
-      <i data-lucide="message-circle" class="w-6 h-6 fill-white/20"></i>
+      <i data-lucide="message-circle" class="w-6 h-6 text-emerald-700 fill-emerald-700"></i>
     </a>
   </div>
 
   <!-- ========================================================================
        ARTWORK DETAIL MODAL (LIGHTBOX)
        ======================================================================== -->
-  <div id="artwork-detail-modal" class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-md hidden items-center justify-center p-4">
-    <div class="glass-panel max-w-4xl w-full rounded-2xl border border-stone-700 shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto">
+  <div id="artwork-detail-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="glass-card max-w-4xl w-full rounded-2xl border border-white/20 shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto">
       <button 
         onclick="closeArtworkModal()"
-        class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-stone-900/80 hover:bg-stone-800 text-stone-300 hover:text-white flex items-center justify-center border border-stone-700 transition-colors"
+        class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-neutral-900/90 hover:bg-neutral-800 text-neutral-300 hover:text-white flex items-center justify-center border border-white/15 transition-colors"
       >
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
