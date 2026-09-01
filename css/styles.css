@@ -279,55 +279,64 @@ p {
 }
 
 /* --------------------------------------------------------------------------
-   9. SITE PRELOADER ANIMATION (PULSING WHITE LOGO ON PURE BLACK)
+   9. SITE PRELOADER (MONOCHROME BLACK & WHITE WITH BLUR PULSE)
    -------------------------------------------------------------------------- */
 #site-preloader {
-  background-color: #050505;
+  background-color: #000000;
 }
 
 #site-preloader.preloader-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.75s ease;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+}
+
+.preloader-blur-glow {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 45%, transparent 70%);
+  filter: blur(50px);
+  animation: blurAuraPulse 2s ease-in-out infinite alternate;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes blurAuraPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.3;
+    filter: blur(40px);
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+    filter: blur(65px);
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0.55;
+    filter: blur(75px);
+  }
 }
 
 .preloader-logo-pulse {
-  animation: logoBreathPulse 1.6s ease-in-out infinite alternate;
+  animation: logoBreathPulse 2s ease-in-out infinite alternate;
   will-change: transform, opacity, filter;
 }
 
 @keyframes logoBreathPulse {
   0% {
-    transform: scale(0.93);
-    opacity: 0.55;
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+    transform: scale(0.92);
+    opacity: 0.4;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2)) blur(0.4px);
   }
   50% {
+    transform: scale(1.04);
     opacity: 1;
-    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.75)) drop-shadow(0 0 12px rgba(16, 185, 129, 0.45));
+    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 75px rgba(255, 255, 255, 0.5)) blur(0px);
   }
   100% {
-    transform: scale(1.07);
-    opacity: 0.85;
-    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5));
-  }
-}
-
-.preloader-progress-bar {
-  width: 100%;
-  animation: preloaderProgress 1.4s ease-in-out infinite;
-}
-
-@keyframes preloaderProgress {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(100%);
+    transform: scale(1.08);
+    opacity: 0.7;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) blur(0.2px);
   }
 }
 

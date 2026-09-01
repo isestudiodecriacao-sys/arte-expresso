@@ -43,25 +43,19 @@
 <body class="bg-white text-gray-900 antialiased selection:bg-gray-900 selection:text-white">
 
   <!-- ========================================================================
-       PRELOADER / LOADING SCREEN (PULSING WHITE LOGO ON PURE BLACK)
+       PRELOADER / LOADING SCREEN (PURE BLACK & WHITE MONOCHROME WITH BLUR)
        ======================================================================== -->
-  <div id="site-preloader" class="fixed inset-0 z-[100000] bg-[#050505] flex flex-col items-center justify-center p-6 select-none">
-    <div class="relative flex flex-col items-center space-y-6">
-      <!-- Glow Aura & Pulsing White Logo -->
-      <div class="relative flex items-center justify-center">
-        <div class="absolute inset-0 w-48 h-48 bg-white/10 rounded-full blur-3xl animate-pulse pointer-events-none"></div>
-        <img 
-          src="assets/images/logo-arte-expresso-white.png" 
-          alt="Arte Expresso Ateliê" 
-          class="relative z-10 w-52 sm:w-64 md:w-80 h-auto object-contain preloader-logo-pulse" 
-        />
-      </div>
-
-      <!-- Minimalist Progress Bar -->
-      <div class="w-40 h-0.5 bg-neutral-900 rounded-full overflow-hidden relative">
-        <div class="preloader-progress-bar h-full bg-gradient-to-r from-emerald-400 via-amber-300 to-emerald-400"></div>
-      </div>
-      <span class="text-[10px] uppercase tracking-[0.3em] text-neutral-400 font-semibold">Ateliê Autoral</span>
+  <div id="site-preloader" class="fixed inset-0 z-[100000] bg-black flex items-center justify-center p-6 select-none">
+    <div class="relative flex items-center justify-center">
+      <!-- Soft White Ambient Blur Glow -->
+      <div class="preloader-blur-glow absolute w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 rounded-full pointer-events-none"></div>
+      
+      <!-- Pulsing Pure White Logo -->
+      <img 
+        src="assets/images/logo-arte-expresso-white.png" 
+        alt="Arte Expresso Ateliê" 
+        class="relative z-10 w-56 sm:w-72 md:w-96 max-w-[85vw] h-auto object-contain preloader-logo-pulse" 
+      />
     </div>
   </div>
 
