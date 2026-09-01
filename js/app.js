@@ -318,12 +318,11 @@ function submitDirectWhatsAppOrder(e) {
   const nameInput = document.getElementById("direct-cust-name");
   const cityInput = document.getElementById("direct-cust-city");
   const ideaInput = document.getElementById("direct-cust-idea");
-  const photoInput = document.getElementById("direct-wall-photo");
   const submitBtn = e && e.target ? e.target.querySelector('button[type="submit"]') : null;
 
   const name = nameInput ? nameInput.value.trim() : "";
   const city = cityInput ? cityInput.value.trim() : "";
-  let idea = ideaInput ? ideaInput.value.trim() : "";
+  const idea = ideaInput ? ideaInput.value.trim() : "";
 
   if (!name) {
     if (nameInput) {
@@ -334,12 +333,12 @@ function submitDirectWhatsAppOrder(e) {
     return;
   }
 
-  // Rauno Standard: Desativação do botão para evitar envio duplicado
+  // Rauno Standard: Desativação temporária do botão para evitar envio duplicado
   if (submitBtn) {
     submitBtn.disabled = true;
     const originalContent = submitBtn.innerHTML;
     submitBtn.innerHTML = `
-      <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-emerald-700"></i>
+      <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-emerald-400"></i>
       <span>Abrindo WhatsApp do Artista...</span>
     `;
     initLucideIcons();
@@ -348,10 +347,6 @@ function submitDirectWhatsAppOrder(e) {
       submitBtn.innerHTML = originalContent;
       initLucideIcons();
     }, 4000);
-  }
-
-  if (photoInput && photoInput.files && photoInput.files.length > 0) {
-    idea = (idea ? idea + "\n" : "") + "📸 [Anexando foto da parede / referência aqui no WhatsApp]";
   }
 
   WhatsAppService.sendCustomQuote({
