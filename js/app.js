@@ -117,6 +117,7 @@ const appState = {
 
 // Initialize Application
 document.addEventListener("DOMContentLoaded", () => {
+  initPreloader();
   initLucideIcons();
   renderCatalog("all");
   initTestimonials();
@@ -126,6 +127,37 @@ document.addEventListener("DOMContentLoaded", () => {
   initCustomCursor();
   initTiltEffects();
 });
+
+/* ==========================================================================
+   0. PRELOADER & LOADING EXPERIENCE
+   ========================================================================== */
+
+function initPreloader() {
+  const preloader = document.getElementById("site-preloader");
+  if (!preloader) return;
+
+  const minDisplayTime = 900;
+  const startTime = Date.now();
+
+  function dismiss() {
+    const elapsed = Date.now() - startTime;
+    const remaining = Math.max(0, minDisplayTime - elapsed);
+
+    setTimeout(() => {
+      preloader.classList.add("preloader-hidden");
+      setTimeout(() => {
+        preloader.style.display = "none";
+      }, 750);
+    }, remaining);
+  }
+
+  if (document.readyState === "complete") {
+    dismiss();
+  } else {
+    window.addEventListener("load", dismiss);
+    setTimeout(dismiss, 3000); // Fallback de segurança
+  }
+}
 
 function initLucideIcons() {
   if (window.lucide) {

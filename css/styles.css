@@ -325,6 +325,59 @@ p {
   }
 }
 
+/* --------------------------------------------------------------------------
+   9. SITE PRELOADER ANIMATION (PULSING WHITE LOGO ON PURE BLACK)
+   -------------------------------------------------------------------------- */
+#site-preloader {
+  background-color: #050505;
+}
+
+#site-preloader.preloader-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.75s ease;
+}
+
+.preloader-logo-pulse {
+  animation: logoBreathPulse 1.6s ease-in-out infinite alternate;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes logoBreathPulse {
+  0% {
+    transform: scale(0.93);
+    opacity: 0.55;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.75)) drop-shadow(0 0 12px rgba(16, 185, 129, 0.45));
+  }
+  100% {
+    transform: scale(1.07);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.5));
+  }
+}
+
+.preloader-progress-bar {
+  width: 100%;
+  animation: preloaderProgress 1.4s ease-in-out infinite;
+}
+
+@keyframes preloaderProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /* Pulsing effect for WhatsApp floating button */
 @keyframes pulse-emerald-subtle {
   0%, 100% {
