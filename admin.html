@@ -233,15 +233,20 @@
             <h2 class="font-serif text-lg font-bold text-stone-100">Catálogo de Obras & Vitrine</h2>
             <p class="text-xs text-stone-400 mt-0.5">Cadastre e edite os quadros exibidos na galeria principal. O preço é opcional (aparece somente se você preencher).</p>
           </div>
-          <div class="flex items-center gap-2.5">
+          <div class="flex items-center gap-2.5 flex-wrap">
             <button onclick="openAddArtworkModal()" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs shadow-md shadow-amber-500/20 transition-all flex items-center gap-1.5">
               <i data-lucide="plus-circle" class="w-4 h-4"></i>
               <span>Novo Quadro</span>
             </button>
-            <button onclick="exportAllDatabaseToFile()" class="px-3.5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-xs border border-stone-700 transition-all flex items-center gap-1.5" title="Exportar catalog-data.js completo para commit no GitHub">
+            <button onclick="exportAllDatabaseToFile()" class="px-3.5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-xs border border-stone-700 transition-all flex items-center gap-1.5" title="Exportar backup completo">
               <i data-lucide="download" class="w-4 h-4 text-amber-400"></i>
               <span>Exportar Backup</span>
             </button>
+            <button onclick="openImportBackupDialog()" class="px-3.5 py-2.5 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 font-semibold text-xs border border-stone-700 transition-all flex items-center gap-1.5" title="Importar backup de outro domínio ou arquivo">
+              <i data-lucide="upload" class="w-4 h-4 text-emerald-400"></i>
+              <span>Importar Backup</span>
+            </button>
+            <input type="file" id="admin-backup-file-input" accept=".json,.js" class="hidden" onchange="handleBackupFileImport(event)" />
           </div>
         </div>
 
@@ -1731,15 +1736,87 @@
       }
     }
 
-    // EXPORT ALL DATA TO FILE (catalog-data.js)
+    // EXPORT ALL DATA TO FILE (catalog-data.js e JSON)
     function exportAllDatabaseToFile() {
+      const backupObj = {
+        exportedAt: new Date().toISOString(),
+        customDomain: "https://www.arteexpresso.com.br",
+        categories: DB.categories,
+        artworks: DB.artworks,
+        styles: DB.styles,
+        frames: DB.frames,
+        sizes: DB.sizes,
+        rooms: DB.rooms,
+        palettes: DB.palettes,
+        testimonials: DB.testimonials,
+        faqs: DB.faqs,
+        settings: DB.settings
+      };
+
       const fileContent = `/**\n * Banco de Dados Oficial Completo - Arte Expresso (@arte.expresso)\n * Gerado pelo Painel de Gestão Total (CMS) em ${new Date().toLocaleString("pt-BR")}\n */\n\nconst DEFAULT_CATEGORIES = ${JSON.stringify(DB.categories, null, 2)};\n\nconst CATALOG_DATA = ${JSON.stringify(DB.artworks, null, 2)};\n\nconst STYLES_LIST = ${JSON.stringify(DB.styles, null, 2)};\n\nconst FRAMES_LIST = ${JSON.stringify(DB.frames, null, 2)};\n\nconst POPULAR_SIZES = ${JSON.stringify(DB.sizes, null, 2)};\n\nconst ROOMS_LIST = ${JSON.stringify(DB.rooms, null, 2)};\n\nconst PALETTES_LIST = ${JSON.stringify(DB.palettes, null, 2)};\n\nconst TESTIMONIALS = ${JSON.stringify(DB.testimonials, null, 2)};\n\nconst FAQS = ${JSON.stringify(DB.faqs, null, 2)};\n`;
 
+      // Download catalog-data.js
       const blob = new Blob([fileContent], { type: "application/javascript;charset=utf-8;" });
       const link = document.createElement("a");
       link.href = URL.createObjectURL(blob);
       link.download = "catalog-data.js";
       link.click();
+
+      // Also save backup JSON
+      setTimeout(() => {
+        const jsonBlob = new Blob([JSON.stringify(backupObj, null, 2)], { type: "application/json;charset=utf-8;" });
+        const jsonLink = document.createElement("a");
+        jsonLink.href = URL.createObjectURL(jsonBlob);
+        jsonLink.download = "backup-arte-expresso.json";
+        jsonLink.click();
+      }, 500);
+    }
+
+    function openImportBackupDialog() {
+      const fileInput = document.getElementById("admin-backup-file-input");
+      if (fileInput) fileInput.click();
+    }
+
+    function handleBackupFileImport(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        try {
+          const content = evt.target.result;
+          let data = null;
+          if (file.name.endsWith('.json')) {
+            data = JSON.parse(content);
+          } else {
+            alert("Por favor selecione um arquivo de backup .json válido.");
+            return;
+          }
+
+          if (data) {
+            if (data.artworks && Array.isArray(data.artworks)) DB.artworks = data.artworks;
+            if (data.categories && Array.isArray(data.categories)) DB.categories = data.categories;
+            if (data.styles && Array.isArray(data.styles)) DB.styles = data.styles;
+            if (data.frames && Array.isArray(data.frames)) DB.frames = data.frames;
+            if (data.sizes && Array.isArray(data.sizes)) DB.sizes = data.sizes;
+            if (data.rooms && Array.isArray(data.rooms)) DB.rooms = data.rooms;
+            if (data.palettes && Array.isArray(data.palettes)) DB.palettes = data.palettes;
+            if (data.testimonials && Array.isArray(data.testimonials)) DB.testimonials = data.testimonials;
+            if (data.faqs && Array.isArray(data.faqs)) DB.faqs = data.faqs;
+            if (data.settings) {
+              DB.settings = Object.assign({}, DB.settings, data.settings);
+            }
+            DB.settings.customDomain = "https://www.arteexpresso.com.br";
+            saveAllData();
+            updateLiveStoreLinks();
+            renderAllTabs();
+            alert("✅ Backup importado com sucesso para www.arteexpresso.com.br!");
+          }
+        } catch(err) {
+          alert("Erro ao importar arquivo: " + err.message);
+        }
+      };
+      reader.readAsText(file);
     }
   </script>
 </body>
