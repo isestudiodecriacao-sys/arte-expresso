@@ -8,6 +8,8 @@ const WHATSAPP_CONFIG = {
   displayPhone: "(11) 95793-4714",
   instagram: "https://www.instagram.com/arte.expresso/",
   instagramHandle: "@arte.expresso",
+  tiktok: "https://www.tiktok.com/@arte.expresso",
+  tiktokHandle: "@arte.expresso",
   businessHours: "Segunda a Sábado, das 09h às 20h"
 };
 

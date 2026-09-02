@@ -3,6 +3,7 @@
 > **Plataforma de alta conversão para ateliê e galeria de arte com fechamento direto no WhatsApp e Painel de Gestão Administrativo.**
 
 - **Instagram Oficial:** [@arte.expresso](https://www.instagram.com/arte.expresso/)
+- **TikTok Oficial:** [@arte.expresso](https://www.tiktok.com/@arte.expresso)
 - **WhatsApp Comercial:** `(11) 95793-4714` (`5511957934714`)
 
 ---

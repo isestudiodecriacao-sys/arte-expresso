@@ -434,6 +434,11 @@
             </div>
 
             <div>
+              <label class="block font-semibold text-stone-300 mb-1">Link do TikTok Oficial:</label>
+              <input type="url" id="setting-tiktok" placeholder="https://www.tiktok.com/@arte.expresso" class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none" />
+            </div>
+
+            <div>
               <label class="block font-semibold text-stone-300 mb-1">Texto da Barra Superior (Anúncio):</label>
               <input type="text" id="setting-announcement" placeholder="Quadros 100% Pintados à Mão Sob Medida • Envio com Seguro Total para Todo o Brasil" required class="w-full px-3.5 py-2.5 rounded-xl bg-stone-900 border border-stone-700 text-stone-100 focus:border-amber-500 focus:outline-none" />
             </div>
@@ -565,13 +570,17 @@
         whatsapp: "5511957934714",
         displayPhone: "(11) 95793-4714",
         instagram: "https://www.instagram.com/arte.expresso/",
+        tiktok: "https://www.tiktok.com/@arte.expresso",
         announcement: "Quadros 100% Pintados à Mão Sob Medida • Envio com Seguro Total para Todo o Brasil",
-        customDomain: (window.location.origin && window.location.origin.startsWith('http')) ? window.location.origin : "",
+        customDomain: "https://www.arteexpresso.com.br",
         pin: "123456"
       };
 
-      if (!DB.settings.customDomain && window.location.origin && window.location.origin.startsWith('http')) {
-        DB.settings.customDomain = window.location.origin;
+      if (!DB.settings.customDomain || DB.settings.customDomain.includes("vercel.app")) {
+        DB.settings.customDomain = "https://www.arteexpresso.com.br";
+      }
+      if (!DB.settings.tiktok) {
+        DB.settings.tiktok = "https://www.tiktok.com/@arte.expresso";
       }
 
       saveAllData();
@@ -903,6 +912,10 @@
       document.getElementById("setting-whatsapp").value = DB.settings.whatsapp || "5511957934714";
       document.getElementById("setting-whatsapp-display").value = DB.settings.displayPhone || "(11) 95793-4714";
       document.getElementById("setting-instagram").value = DB.settings.instagram || "https://www.instagram.com/arte.expresso/";
+      
+      const tiktokInput = document.getElementById("setting-tiktok");
+      if (tiktokInput) tiktokInput.value = DB.settings.tiktok || "https://www.tiktok.com/@arte.expresso";
+
       document.getElementById("setting-announcement").value = DB.settings.announcement || "Quadros 100% Pintados à Mão Sob Medida • Envio com Seguro Total para Todo o Brasil";
       document.getElementById("setting-pin").value = localStorage.getItem(DB_KEYS.pin) || "123456";
       updateLiveStoreLinks();
@@ -917,6 +930,10 @@
       DB.settings.whatsapp = document.getElementById("setting-whatsapp").value.trim();
       DB.settings.displayPhone = document.getElementById("setting-whatsapp-display").value.trim();
       DB.settings.instagram = document.getElementById("setting-instagram").value.trim();
+      
+      const tiktokInput = document.getElementById("setting-tiktok");
+      if (tiktokInput) DB.settings.tiktok = tiktokInput.value.trim();
+
       DB.settings.announcement = document.getElementById("setting-announcement").value.trim();
       
       const newPin = document.getElementById("setting-pin").value.trim();
