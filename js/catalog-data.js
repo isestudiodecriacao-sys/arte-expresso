@@ -90,8 +90,8 @@ const CATALOG_DATA = [
     title: "Quadro 100% Personalizado do Zero",
     category: "personalizado",
     categoryLabel: "Sob Encomenda Exclusiva",
-    technique: "Pintado à mão pelo artista sob medida com as cores, medidas e tema do seu ambiente",
-    description: "Tem uma ideia, uma foto de referência ou gostaria de uma pintura exclusiva para combinar com as cores do seu espaço? Nosso artista desenha e pinta sob medida especialmente para você.",
+    technique: "Pintado à mão por mim sob medida com as cores, medidas e tema do seu ambiente",
+    description: "Tem uma ideia, uma foto de referência ou gostaria de uma pintura exclusiva para combinar com as cores do seu espaço? Eu desenho e pinto sob medida especialmente para você.",
     popularSizes: ["Sob Medida Livre (Qualquer Tamanho)"],
     priceFrom: null,
     image: "assets/images/hero-banner-artista.jpg",
@@ -265,19 +265,19 @@ const TESTIMONIALS = [
 const FAQS = [
   {
     q: "Como funciona a encomenda de um quadro sob medida?",
-    a: "É muito simples e transparente! 1º Você escolhe o estilo e informa as medidas aproximadas aqui no site ou no WhatsApp. 2º Nossa equipe alinha a proposta de cores e o tamanho ideal para sua parede. 3º O artista produz a pintura 100% à mão. 4º Antes de enviar, mandamos fotos e vídeos em alta resolução da tela pronta para sua aprovação final. 5º Enviamos em embalagem de madeira reforçada com seguro total até a sua porta."
+    a: "É muito simples e transparente! 1º Você escolhe o estilo e informa as medidas aproximadas aqui no site ou no WhatsApp. 2º Alinhamos juntos a proposta de cores e o tamanho ideal para sua parede. 3º Eu produzo a pintura 100% à mão. 4º Antes de enviar, mando fotos e vídeos em alta resolução da tela pronta para sua aprovação final. 5º Enviamos em embalagem de madeira reforçada com seguro total até a sua porta."
   },
   {
     q: "O quadro já vem pronto para pendurar na parede?",
-    a: "Sim! Todos os nossos quadros vão prontos para pendurar, com chassi de madeira tratada, suporte traseiro reforçado e a moldura filete flutuante de sua escolha já instalada com precisão milimétrica."
+    a: "Sim! Todos os quadros vão prontos para pendurar, com chassi de madeira tratada, suporte traseiro reforçado e a moldura filete flutuante de sua escolha já instalada com precisão milimétrica."
   },
   {
     q: "Qual o prazo de confecção e entrega?",
-    a: "O prazo médio de pintura artesanal, secagem e emolduramento é de 7 a 12 dias úteis. O prazo de transporte varia conforme a sua cidade (geralmente de 2 a 6 dias úteis para a Grande SP e capitais). Se você tiver urgência, nos avise no WhatsApp para priorizarmos seu pedido."
+    a: "O prazo médio de pintura artesanal, secagem e emolduramento é de 7 a 12 dias úteis. O prazo de transporte varia conforme a sua cidade (geralmente de 2 a 6 dias úteis para a Grande SP e capitais). Se você tiver urgência, me avise no WhatsApp para priorizarmos seu pedido."
   },
   {
     q: "Vocês enviam para todo o Brasil? Como é feita a embalagem?",
-    a: "Sim, enviamos com segurança total para todo o território nacional. Desenvolvemos uma embalagem especial com cantoneiras de alta densidade, plástico bolha reforçado e caixa externa de madeira/compensado para garantir que a obra chegue 100% intacta."
+    a: "Sim, envio com segurança total para todo o território nacional. Desenvolvemos uma embalagem especial com cantoneiras de alta densidade, plástico bolha reforçado e caixa externa de madeira reforçada para garantir que a obra chegue 100% intacta."
   },
   {
     q: "Como posso pagar pelo meu quadro?",

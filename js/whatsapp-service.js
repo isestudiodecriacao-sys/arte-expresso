@@ -42,7 +42,7 @@ const WhatsAppService = {
       lines.push(``);
     }
 
-    lines.push(`💬 _Olá! Gostaria de conversar com o artista para definirmos as medidas ideais para a minha parede, cores e o orçamento formal!_`);
+    lines.push(`💬 _Olá! Gostaria de conversar diretamente com você para definirmos as medidas ideais para a minha parede, cores e o orçamento formal!_`);
 
     const fullMessage = lines.join("\n");
     this.openWhatsApp(fullMessage);
@@ -97,7 +97,7 @@ const WhatsAppService = {
    * Conversa direta / Dúvidas gerais
    */
   sendGeneralChat(messageTopic = "Dúvidas sobre quadros sob medida") {
-    const message = `Olá! Gostaria de tirar dúvidas com o artista da *Arte Expresso* sobre quadros sob encomenda e prazos.`;
+    const message = `Olá! Gostaria de tirar dúvidas diretamente com você sobre quadros sob encomenda e prazos.`;
     this.openWhatsApp(message);
   }
 };

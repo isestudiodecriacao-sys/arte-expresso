@@ -309,12 +309,12 @@ function orderCatalogItem(artworkId) {
   const art = artworks.find(a => a.id === artworkId);
   if (!art) return;
 
-  const msg = `Olá! Vim pelo Catálogo da Arte Expresso e me interessei pela seguinte obra:\n\n` +
+  const msg = `Olá! Vim pelo seu Catálogo da Arte Expresso e me interessei pela seguinte obra:\n\n` +
               `• Obra: ${art.title} (${art.id})\n` +
               `• Categoria: ${art.categoryLabel || art.category}\n` +
               `• Técnica: ${art.technique}\n` +
               (art.priceFrom ? `• Valor de Referência: ${art.priceFrom}\n` : '') +
-              `\nGostaria de consultar opções de tamanhos, prazos e simulação para o meu ambiente!`;
+              `\nGostaria de consultar opções de tamanhos, prazos e simulação diretamente com você!`;
 
   const url = `https://wa.me/5511957934714?text=${encodeURIComponent(msg)}`;
   window.open(url, "_blank");
@@ -358,7 +358,7 @@ function openArtworkModal(artworkId) {
 
   const waLink = document.getElementById("modal-artwork-whatsapp-link");
   if (waLink) {
-    const msg = `Olá! Gostaria de encomendar a obra "${art.title}" (${art.id}) vista no Catálogo da Arte Expresso.`;
+    const msg = `Olá! Gostaria de encomendar diretamente com você a obra "${art.title}" (${art.id}) do seu Catálogo.`;
     waLink.href = `https://wa.me/5511957934714?text=${encodeURIComponent(msg)}`;
   }
 

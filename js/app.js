@@ -364,7 +364,7 @@ function handleHeroSearchOrder() {
               `• Ambiente: ${room}\n` +
               `• Tamanho aproximado: ${size}\n` +
               `• Moldura: ${frame}\n\n` +
-              `Gostaria de falar com o artista para ver valores e prazos!`;
+              `Gostaria de falar com você para vermos valores e prazos!`;
 
   const url = `https://wa.me/5511957934714?text=${encodeURIComponent(msg)}`;
   window.open(url, "_blank");
@@ -377,7 +377,7 @@ function orderCatalogItem(artworkId) {
   } else {
     const title = item ? item.title : "Quadro do Catálogo";
     const cod = item ? item.id : artworkId;
-    const msg = `Olá! Gostaria de um orçamento para a obra "${title}" (Cód: ${cod}) com o ateliê Arte Expresso.`;
+    const msg = `Olá! Gostaria de um orçamento para a obra "${title}" (Cód: ${cod}) diretamente com você.`;
     const url = `https://wa.me/5511957934714?text=${encodeURIComponent(msg)}`;
     window.open(url, "_blank");
   }
@@ -425,7 +425,7 @@ function submitDirectWhatsAppOrder(e) {
     const originalContent = submitBtn.innerHTML;
     submitBtn.innerHTML = `
       <i data-lucide="loader-2" class="w-4 h-4 animate-spin text-emerald-400"></i>
-      <span>Abrindo WhatsApp do Artista...</span>
+      <span>Abrindo conversa no WhatsApp...</span>
     `;
     initLucideIcons();
     setTimeout(() => {
