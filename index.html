@@ -593,50 +593,57 @@
   </section>
 
   <!-- ========================================================================
-       SECTION 5: PROCESS (HOW IT WORKS 01-05)
+       SECTION 5: PROCESS (HOW IT WORKS 01-05 - SCROLL-DRIVEN ILLUMINATED CARDS)
        ======================================================================== -->
-  <section id="como-funciona-section" class="py-16 sm:py-24 bg-gray-50 border-y border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+  <section id="como-funciona-section" class="py-16 sm:py-24 bg-gray-50 border-y border-gray-200 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
       
-      <div class="text-center max-w-2xl mx-auto space-y-2">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
         <h2 class="fluid-section-title font-sans font-bold text-gray-950">
           Como Funciona
         </h2>
         <p class="text-xs sm:text-sm text-gray-600">
           Você participa da criação e o quadro só é enviado após sua aprovação formal por vídeo.
         </p>
+
+        <!-- Dynamic Scroll Progress Track -->
+        <div class="max-w-xs mx-auto pt-2">
+          <div class="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+            <div id="process-progress-fill" class="h-full bg-emerald-500 rounded-full w-1/5 transition-all duration-300 ease-out"></div>
+          </div>
+        </div>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
         
-        <div class="bg-white p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm">
-          <span class="w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">01</span>
-          <h4 class="font-bold text-sm text-gray-900">Briefing</h4>
-          <p class="text-[11px] text-gray-600 leading-relaxed">Você nos envia a foto da sua parede ou ideias pelo WhatsApp.</p>
+        <div class="process-step-card is-illuminated is-current p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm cursor-pointer" data-step="0">
+          <span class="step-badge w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">01</span>
+          <h4 class="font-bold text-sm text-gray-900 transition-colors">Briefing</h4>
+          <p class="text-[11px] text-gray-600 leading-relaxed transition-colors">Você nos envia a foto da sua parede ou ideias pelo WhatsApp.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm">
-          <span class="w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">02</span>
-          <h4 class="font-bold text-sm text-gray-900">Medidas & Cores</h4>
-          <p class="text-[11px] text-gray-600 leading-relaxed">Alinhamos as dimensões exatas e a paleta de cores ideal.</p>
+        <div class="process-step-card p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm cursor-pointer" data-step="1">
+          <span class="step-badge w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">02</span>
+          <h4 class="font-bold text-sm text-gray-900 transition-colors">Medidas & Cores</h4>
+          <p class="text-[11px] text-gray-600 leading-relaxed transition-colors">Alinhamos as dimensões exatas e a paleta de cores ideal.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm">
-          <span class="w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">03</span>
-          <h4 class="font-bold text-sm text-gray-900">Pintura Manual</h4>
-          <p class="text-[11px] text-gray-600 leading-relaxed">O artista pinta a obra à mão com texturas e relevo 3D.</p>
+        <div class="process-step-card p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm cursor-pointer" data-step="2">
+          <span class="step-badge w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">03</span>
+          <h4 class="font-bold text-sm text-gray-900 transition-colors">Pintura Manual</h4>
+          <p class="text-[11px] text-gray-600 leading-relaxed transition-colors">O artista pinta a obra à mão com texturas e relevo 3D.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm">
-          <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 font-bold text-xs flex items-center justify-center">04</span>
-          <h4 class="font-bold text-sm text-gray-900">Aprovação em Vídeo</h4>
-          <p class="text-[11px] text-gray-600 leading-relaxed">Você recebe vídeo em alta definição antes do despacho.</p>
+        <div class="process-step-card p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm cursor-pointer" data-step="3">
+          <span class="step-badge w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">04</span>
+          <h4 class="font-bold text-sm text-gray-900 transition-colors">Aprovação em Vídeo</h4>
+          <p class="text-[11px] text-gray-600 leading-relaxed transition-colors">Você recebe vídeo em alta definição antes do despacho.</p>
         </div>
 
-        <div class="bg-white p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm">
-          <span class="w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">05</span>
-          <h4 class="font-bold text-sm text-gray-900">Envio com Seguro</h4>
-          <p class="text-[11px] text-gray-600 leading-relaxed">Embalagem reforçada de exportação para todo o Brasil.</p>
+        <div class="process-step-card p-5 rounded-2xl border border-gray-200 space-y-3 shadow-sm cursor-pointer" data-step="4">
+          <span class="step-badge w-8 h-8 rounded-lg bg-gray-100 text-gray-900 font-bold text-xs flex items-center justify-center">05</span>
+          <h4 class="font-bold text-sm text-gray-900 transition-colors">Envio com Seguro</h4>
+          <p class="text-[11px] text-gray-600 leading-relaxed transition-colors">Embalagem reforçada de exportação para todo o Brasil.</p>
         </div>
 
       </div>

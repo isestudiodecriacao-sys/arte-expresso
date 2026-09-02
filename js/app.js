@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSecretAdminTrigger();
   initVerticalCutReveal();
   initTextFadeIn();
+  initScrollStepProgression();
 });
 
 /* ==========================================================================
@@ -832,4 +833,80 @@ function initTextFadeIn() {
   });
 
   document.querySelectorAll(".text-fade-in-container").forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   11. SCROLL-DRIVEN PROCESS STEP ILLUMINATION (Como Funciona 01-05)
+   ========================================================================== */
+
+function initScrollStepProgression() {
+  const section = document.getElementById("como-funciona-section");
+  const cards = document.querySelectorAll(".process-step-card");
+  const progressBar = document.getElementById("process-progress-fill");
+  if (!section || cards.length === 0) return;
+
+  function updateStepsOnScroll() {
+    const rect = section.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Trigger window
+    const startY = windowHeight * 0.75;
+    const endY = windowHeight * 0.25;
+
+    const totalDistance = rect.height + (startY - endY);
+    const scrolledDistance = startY - rect.top;
+    let progress = scrolledDistance / totalDistance;
+    progress = Math.max(0, Math.min(1, progress));
+
+    if (rect.top > windowHeight || rect.bottom < 0) {
+      return;
+    }
+
+    const totalSteps = cards.length;
+    const stepIndex = Math.min(totalSteps - 1, Math.floor(progress * totalSteps * 1.08));
+
+    cards.forEach((card, idx) => {
+      if (idx <= stepIndex && progress > 0.04) {
+        card.classList.add("is-illuminated");
+        if (idx < stepIndex) {
+          card.classList.add("is-completed");
+          card.classList.remove("is-current");
+        } else {
+          card.classList.add("is-current");
+          card.classList.remove("is-completed");
+        }
+      } else {
+        card.classList.remove("is-illuminated", "is-current", "is-completed");
+      }
+    });
+
+    if (progressBar) {
+      const percentage = Math.max(20, Math.min(100, ((stepIndex + 1) / totalSteps) * 100));
+      progressBar.style.width = `${percentage}%`;
+    }
+  }
+
+  // Hover/touch interaction
+  cards.forEach((card, idx) => {
+    card.addEventListener("mouseenter", () => {
+      cards.forEach((c, i) => {
+        if (i < idx) {
+          c.classList.add("is-illuminated", "is-completed");
+          c.classList.remove("is-current");
+        } else if (i === idx) {
+          c.classList.add("is-illuminated", "is-current");
+          c.classList.remove("is-completed");
+        } else {
+          c.classList.remove("is-illuminated", "is-current", "is-completed");
+        }
+      });
+      if (progressBar) {
+        progressBar.style.width = `${((idx + 1) / cards.length) * 100}%`;
+      }
+    });
+  });
+
+  window.addEventListener("scroll", updateStepsOnScroll, { passive: true });
+  window.addEventListener("resize", updateStepsOnScroll, { passive: true });
+  updateStepsOnScroll();
 }

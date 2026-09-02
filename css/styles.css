@@ -394,3 +394,65 @@ p {
   transform: translateY(0);
 }
 
+/* --------------------------------------------------------------------------
+   12. PROCESS STEP CARDS (Scroll-Driven Interactive Illumination)
+   -------------------------------------------------------------------------- */
+.process-step-card {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow, background-color, border-color;
+}
+
+.process-step-card:not(.is-illuminated) {
+  opacity: 0.55;
+  transform: translateY(0) scale(0.97);
+  background-color: #ffffff;
+  border-color: #e5e7eb;
+}
+
+.process-step-card.is-illuminated {
+  opacity: 0.9;
+  background-color: #ffffff;
+  border-color: #10b981;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.12), 0 8px 10px -6px rgba(16, 185, 129, 0.08);
+}
+
+.process-step-card.is-current {
+  opacity: 1;
+  transform: translateY(-8px) scale(1.03);
+  background-color: #09090b !important;
+  border-color: rgba(16, 185, 129, 0.9) !important;
+  box-shadow: 0 20px 40px -6px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(16, 185, 129, 0.5) !important;
+}
+
+.process-step-card.is-current h4 {
+  color: #ffffff !important;
+}
+
+.process-step-card.is-current p {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.process-step-card.is-current .step-badge {
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.8);
+  transform: scale(1.15);
+}
+
+.process-step-card.is-completed {
+  opacity: 1;
+  transform: translateY(-2px) scale(1);
+  background-color: #f0fdf4;
+  border-color: #86efac;
+}
+
+.process-step-card.is-completed .step-badge {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.process-step-card .step-badge {
+  transition: all 0.35s ease;
+}
+
