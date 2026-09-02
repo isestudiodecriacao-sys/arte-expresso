@@ -455,25 +455,10 @@
         </p>
       </div>
 
-      <!-- Minimalist Category Filter Pills -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" role="tablist">
+      <!-- Dynamic Category Filter Pills (Rendered dynamically by app.js from Categories DB) -->
+      <div id="catalog-category-filters" class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none" role="tablist">
         <button onclick="filterCatalog('all', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-black text-white font-bold text-xs whitespace-nowrap shadow-sm transition-all">
           Todas as Obras
-        </button>
-        <button onclick="filterCatalog('texturizado', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-gray-100 text-gray-700 font-semibold text-xs whitespace-nowrap border border-gray-200 hover:bg-gray-200 transition-all">
-          Texturizados 3D
-        </button>
-        <button onclick="filterCatalog('abstrato', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-gray-100 text-gray-700 font-semibold text-xs whitespace-nowrap border border-gray-200 hover:bg-gray-200 transition-all">
-          Abstratos Modernos
-        </button>
-        <button onclick="filterCatalog('minimalista', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-gray-100 text-gray-700 font-semibold text-xs whitespace-nowrap border border-gray-200 hover:bg-gray-200 transition-all">
-          Minimalistas & Neutros
-        </button>
-        <button onclick="filterCatalog('diptico', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-gray-100 text-gray-700 font-semibold text-xs whitespace-nowrap border border-gray-200 hover:bg-gray-200 transition-all">
-          Dípticos & Trípticos
-        </button>
-        <button onclick="filterCatalog('retrato', this)" class="catalog-filter-btn px-4 py-2 rounded-xl bg-gray-100 text-gray-700 font-semibold text-xs whitespace-nowrap border border-gray-200 hover:bg-gray-200 transition-all">
-          Retratos Realistas
         </button>
       </div>
 

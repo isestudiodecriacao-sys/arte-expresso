@@ -4,6 +4,16 @@
  * Nota: Os valores aparecem apenas quando definidos pelo administrador no Painel de Gestão.
  */
 
+const DEFAULT_CATEGORIES = [
+  { id: "all", name: "Todas as Obras" },
+  { id: "popart", name: "Pop Art & Street" },
+  { id: "contemporaneo", name: "Contemporâneos & Conceituais" },
+  { id: "texturizado", name: "Texturizados 3D" },
+  { id: "abstrato", name: "Abstratos Modernos" },
+  { id: "minimalista", name: "Minimalistas & Neutros" },
+  { id: "personalizado", name: "Sob Medida & Personalizados" }
+];
+
 const CATALOG_DATA = [
   {
     id: "EXP-01",

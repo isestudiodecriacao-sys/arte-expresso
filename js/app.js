@@ -1,6 +1,7 @@
 // Application State & CMS Dynamic Storage Connectors
 const DB_KEYS = {
   artworks: "arte_expresso_artworks_v3",
+  categories: "arte_expresso_categories_v1",
   styles: "arte_expresso_styles_v2",
   sizes: "arte_expresso_sizes_v2",
   frames: "arte_expresso_frames_v2",
@@ -17,6 +18,25 @@ function getActiveCatalog() {
     try { return JSON.parse(saved); } catch (e) {}
   }
   return typeof CATALOG_DATA !== "undefined" ? CATALOG_DATA : [];
+}
+
+function getActiveCategories() {
+  const saved = localStorage.getItem(DB_KEYS.categories);
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+    } catch (e) {}
+  }
+  return typeof DEFAULT_CATEGORIES !== "undefined" ? DEFAULT_CATEGORIES : [
+    { id: "all", name: "Todas as Obras" },
+    { id: "popart", name: "Pop Art & Street" },
+    { id: "contemporaneo", name: "Contemporâneos & Conceituais" },
+    { id: "texturizado", name: "Texturizados 3D" },
+    { id: "abstrato", name: "Abstratos Modernos" },
+    { id: "minimalista", name: "Minimalistas & Neutros" },
+    { id: "personalizado", name: "Sob Medida & Personalizados" }
+  ];
 }
 
 function getActiveStyles() {
@@ -119,6 +139,7 @@ const appState = {
 document.addEventListener("DOMContentLoaded", () => {
   initPreloader();
   initLucideIcons();
+  renderCategoryFilters("all");
   renderCatalog("all");
   initTestimonials();
   initFAQ();
@@ -285,20 +306,49 @@ function renderCatalog(category = "all") {
   if (typeof initScrollAnimations === "function") initScrollAnimations();
 }
 
+function renderCategoryFilters(activeCategory = "all") {
+  const container = document.getElementById("catalog-category-filters");
+  if (!container) return;
+
+  const categories = getActiveCategories();
+  let list = [...categories];
+  if (!list.some(c => c.id === "all")) {
+    list.unshift({ id: "all", name: "Todas as Obras" });
+  }
+
+  container.innerHTML = list.map(cat => {
+    const isActive = cat.id === activeCategory;
+    const activeClass = isActive 
+      ? "bg-black text-white font-bold shadow-sm" 
+      : "bg-gray-100 text-gray-700 font-semibold border border-gray-200 hover:bg-gray-200";
+
+    return `
+      <button 
+        onclick="filterCatalog('${cat.id}', this)" 
+        class="catalog-filter-btn px-4 py-2 rounded-xl ${activeClass} text-xs whitespace-nowrap transition-all"
+        data-category="${cat.id}"
+      >
+        ${cat.name}
+      </button>
+    `;
+  }).join('');
+}
+
 function filterCatalog(category, buttonElement) {
   appState.activeCatalogCategory = category;
   
   // Atualiza classes ativas nos botões
   const buttons = document.querySelectorAll(".catalog-filter-btn");
   buttons.forEach(btn => {
-    btn.classList.remove("bg-black", "text-white", "shadow-sm");
-    btn.classList.add("bg-gray-100", "text-gray-700", "border", "border-gray-200");
+    const isThisActive = (btn === buttonElement) || (btn.getAttribute("data-category") === category);
+    if (isThisActive) {
+      btn.classList.remove("bg-gray-100", "text-gray-700", "border", "border-gray-200", "font-semibold");
+      btn.classList.add("bg-black", "text-white", "font-bold", "shadow-sm");
+    } else {
+      btn.classList.remove("bg-black", "text-white", "font-bold", "shadow-sm");
+      btn.classList.add("bg-gray-100", "text-gray-700", "border", "border-gray-200", "font-semibold");
+    }
   });
-
-  if (buttonElement) {
-    buttonElement.classList.remove("bg-gray-100", "text-gray-700", "border", "border-gray-200");
-    buttonElement.classList.add("bg-black", "text-white", "shadow-sm");
-  }
 
   renderCatalog(category);
 }
