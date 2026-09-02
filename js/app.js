@@ -126,6 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollAnimations();
   initTiltEffects();
   initSecretAdminTrigger();
+  initVerticalCutReveal();
 });
 
 /* ==========================================================================
@@ -709,4 +710,85 @@ function initSecretAdminTrigger() {
       }
     });
   }
+}
+
+/* ==========================================================================
+   9. VERTICAL CUT REVEAL (Character & Word Staggered Typography Reveal)
+   ========================================================================== */
+
+function initVerticalCutReveal() {
+  const titles = document.querySelectorAll(
+    ".fluid-section-title, section h2.font-bold, #como-funciona-section h2, #catalogo-section h2, #encomendas-section h2, #depoimentos-section h2, #faq-section h2"
+  );
+
+  titles.forEach(title => {
+    if (title.dataset.cutRevealInit) return;
+    title.dataset.cutRevealInit = "true";
+
+    const childNodes = Array.from(title.childNodes);
+    let outputHTML = "";
+
+    childNodes.forEach(node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent;
+        const words = text.split(/(\s+)/);
+        const nonSpaceWords = words.filter(w => w.trim().length > 0);
+        const total = nonSpaceWords.length;
+        const center = (total - 1) / 2;
+        let wordCount = 0;
+
+        words.forEach(chunk => {
+          if (chunk.trim().length === 0) {
+            outputHTML += chunk;
+          } else {
+            const delay = (Math.abs(wordCount - center) * 0.04 + 0.05).toFixed(2);
+            outputHTML += `<span class="cut-reveal-word"><span class="cut-reveal-inner" style="transition-delay: ${delay}s">${chunk}</span></span>`;
+            wordCount++;
+          }
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName.toLowerCase() === "br") {
+          outputHTML += node.outerHTML;
+        } else {
+          const text = node.textContent;
+          const words = text.split(/(\s+)/);
+          const nonSpaceWords = words.filter(w => w.trim().length > 0);
+          const total = nonSpaceWords.length;
+          const center = (total - 1) / 2;
+          let wordCount = 0;
+
+          let innerSpans = "";
+          words.forEach(chunk => {
+            if (chunk.trim().length === 0) {
+              innerSpans += chunk;
+            } else {
+              const delay = (Math.abs(wordCount - center) * 0.04 + 0.05).toFixed(2);
+              innerSpans += `<span class="cut-reveal-word"><span class="cut-reveal-inner" style="transition-delay: ${delay}s">${chunk}</span></span>`;
+              wordCount++;
+            }
+          });
+          const clone = node.cloneNode(false);
+          clone.innerHTML = innerSpans;
+          outputHTML += clone.outerHTML;
+        }
+      }
+    });
+
+    title.innerHTML = outputHTML;
+    title.classList.add("cut-reveal-container");
+  });
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("cut-reveal-revealed");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: "0px 0px -30px 0px"
+  });
+
+  document.querySelectorAll(".cut-reveal-container").forEach(el => observer.observe(el));
 }
