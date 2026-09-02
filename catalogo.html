@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Catálogo de Obras & Pinturas Exclusivas — Arte Expresso (@arte.expresso)</title>
+  
+  <meta name="description" content="Explore o catálogo completo de quadros contemporâneos pintados à mão sob medida pela Arte Expresso. Texturizados 3D, pop art, abstratos e obras autorais sob encomenda.">
+  <meta name="keywords" content="catalogo de quadros, arte contemporanea, quadros sob medida, pinturas a oleo, arte express, quadros texturizados">
+  <meta name="author" content="Arte Expresso Ateliê">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Catálogo de Obras & Pinturas Exclusivas — Arte Expresso">
+  <meta property="og:description" content="Galeria completa de quadros autorais pintados à mão sob encomenda. Encomende sob medida pelo WhatsApp com aprovação em vídeo.">
+  <meta property="og:image" content="assets/images/obras/obra-pop-cinema-david.png">
+  <meta property="og:url" content="https://arteexpresso.com.br/catalogo.html">
+  <meta property="og:type" content="website">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#F9FAFB',
+              100: '#F3F4F6',
+              900: '#111827',
+              950: '#0B0F17'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-[#0B0F17] text-gray-100 min-h-screen antialiased flex flex-col justify-between selection:bg-white selection:text-black">
+
+  <!-- ========================================================================
+       TOP NOTIFICATION BAR
+       ======================================================================== -->
+  <div class="bg-gradient-to-r from-neutral-900 via-neutral-950 to-neutral-900 text-white text-[11px] sm:text-xs py-2 px-4 border-b border-white/10 text-center font-medium tracking-wide flex items-center justify-center gap-2">
+    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+    <span id="top-announcement-text">Galeria Oficial Arte Expresso • Quadros 100% Pintados à Mão Sob Medida</span>
+    <a href="https://wa.me/5511957934714" target="_blank" class="underline underline-offset-2 hover:text-emerald-400 ml-1 hidden sm:inline font-semibold">Fale com o Artista</a>
+  </div>
+
+  <!-- ========================================================================
+       HEADER NAVIGATION
+       ======================================================================== -->
+  <header class="sticky top-0 z-40 bg-neutral-950/90 backdrop-blur-xl border-b border-white/10 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo (Monograma AE) -->
+      <a href="index.html" class="flex items-center gap-3 group select-none shrink-0" title="Voltar para a Página Inicial">
+        <img 
+          src="assets/images/logo-ae-white.png" 
+          alt="Arte Expresso Ateliê" 
+          class="h-9 sm:h-11 w-auto object-contain drop-shadow-md group-hover:scale-105 transition-transform" 
+        />
+        <div class="hidden sm:block">
+          <span class="font-extrabold text-sm tracking-tight text-white block leading-none">ARTE EXPRESSO</span>
+          <span class="text-[10px] text-gray-400 font-medium tracking-wider uppercase">Galeria de Obras</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-xs font-semibold text-gray-300">
+        <a href="index.html" class="hover:text-white transition-colors">Início</a>
+        <a href="catalogo.html" class="text-white border-b-2 border-white pb-0.5 font-bold">Catálogo de Obras</a>
+        <a href="index.html#encomendas-section" class="hover:text-white transition-colors">Sob Medida</a>
+        <a href="index.html#como-funciona-section" class="hover:text-white transition-colors">Como Funciona</a>
+        <a href="index.html#depoimentos-section" class="hover:text-white transition-colors">Depoimentos</a>
+        <a href="index.html#faq-section" class="hover:text-white transition-colors">Dúvidas</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <a 
+          href="https://www.instagram.com/arte.expresso/" 
+          target="_blank"
+          aria-label="Instagram @arte.expresso"
+          class="hidden lg:flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-medium backdrop-blur-md transition-all"
+        >
+          <svg class="w-3.5 h-3.5 fill-current text-rose-400" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>@arte.expresso</span>
+        </a>
+
+        <a 
+          href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Vim%20pelo%20Cat%C3%A1logo%20da%20Arte%20Expresso%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20quadro%20sob%20medida." 
+          target="_blank"
+          class="px-4 py-2 rounded-xl bg-white text-gray-950 font-bold text-xs shadow-lg hover:bg-gray-100 transition-all flex items-center gap-2"
+        >
+          <svg class="w-4 h-4 fill-emerald-600 shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-all active:scale-95" aria-label="Abrir Menu">
+          <i id="mobile-menu-icon" data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu-dropdown" class="hidden md:hidden fixed top-20 left-3.5 right-3.5 z-50 bg-neutral-950/95 backdrop-blur-2xl border border-white/20 rounded-3xl p-5 shadow-2xl space-y-3.5 text-xs">
+    <a 
+      href="index.html#encomendas-section" 
+      class="w-full text-left py-3 px-4 rounded-2xl bg-white text-gray-950 font-bold text-xs uppercase tracking-wider flex items-center justify-between shadow-lg active:scale-[0.98] transition-all"
+    >
+      <span>Encomendar Sob Medida</span>
+      <i data-lucide="arrow-right" class="w-4 h-4 text-emerald-600"></i>
+    </a>
+
+    <div class="space-y-1 py-1">
+      <a href="index.html" class="w-full text-left py-2.5 px-3 rounded-xl text-white/90 hover:text-white hover:bg-white/10 font-semibold flex items-center justify-between transition-colors">
+        <span>Início</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/40"></i>
+      </a>
+      <a href="catalogo.html" class="w-full text-left py-2.5 px-3 rounded-xl bg-white/15 text-white font-bold flex items-center justify-between transition-colors">
+        <span>Catálogo de Obras</span>
+        <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i>
+      </a>
+      <a href="index.html#como-funciona-section" class="w-full text-left py-2.5 px-3 rounded-xl text-white/90 hover:text-white hover:bg-white/10 font-semibold flex items-center justify-between transition-colors">
+        <span>Como Funciona o Ateliê</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/40"></i>
+      </a>
+      <a href="index.html#depoimentos-section" class="w-full text-left py-2.5 px-3 rounded-xl text-white/90 hover:text-white hover:bg-white/10 font-semibold flex items-center justify-between transition-colors">
+        <span>Depoimentos de Clientes</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/40"></i>
+      </a>
+      <a href="index.html#faq-section" class="w-full text-left py-2.5 px-3 rounded-xl text-white/90 hover:text-white hover:bg-white/10 font-semibold flex items-center justify-between transition-colors">
+        <span>Dúvidas Frequentes</span>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-white/40"></i>
+      </a>
+    </div>
+
+    <div class="pt-3 border-t border-white/10 grid grid-cols-2 gap-2">
+      <a 
+        href="https://www.instagram.com/arte.expresso/" 
+        target="_blank"
+        class="py-2.5 px-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-semibold text-center flex items-center justify-center gap-1.5 transition-all"
+      >
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <span>Instagram</span>
+      </a>
+      <a 
+        href="https://wa.me/5511957934714" 
+        target="_blank" 
+        class="py-2.5 px-3 rounded-xl bg-white hover:bg-gray-100 text-gray-950 text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-sm transition-all"
+      >
+        <svg class="w-3.5 h-3.5 fill-emerald-600 shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       CATALOG HERO SECTION
+       ======================================================================== -->
+  <section class="relative pt-12 pb-8 sm:pt-16 sm:pb-12 bg-gradient-to-b from-[#0B0F17] via-neutral-950 to-neutral-900 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      
+      <!-- Breadcrumb & Tag -->
+      <div class="flex items-center gap-2 text-xs text-gray-400 font-medium">
+        <a href="index.html" class="hover:text-white transition-colors">Início</a>
+        <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-40"></i>
+        <span class="text-white font-semibold">Catálogo de Obras</span>
+      </div>
+
+      <!-- Main Headline -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+        <div class="space-y-3 max-w-3xl">
+          <h1 class="fluid-section-title font-sans font-extrabold text-white tracking-tight">
+            Catálogo de Obras
+          </h1>
+          <p class="text-sm sm:text-base text-gray-300 leading-relaxed max-w-2xl font-normal">
+            Explore nossa galeria de pinturas contemporâneas, texturizados 3D, pop art e criações autorais. Cada obra é pintada à mão e pode ser personalizada nas medidas exatas do seu ambiente.
+          </p>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap items-center gap-3 text-xs text-gray-300 shrink-0">
+          <div class="px-3.5 py-2 rounded-xl bg-white/[0.05] border border-white/10 flex items-center gap-2">
+            <i data-lucide="palette" class="w-4 h-4 text-amber-400"></i>
+            <span>100% Pintado à Mão</span>
+          </div>
+          <div class="px-3.5 py-2 rounded-xl bg-white/[0.05] border border-white/10 flex items-center gap-2">
+            <i data-lucide="video" class="w-4 h-4 text-emerald-400"></i>
+            <span>Aprovação por Vídeo</span>
+          </div>
+          <div class="px-3.5 py-2 rounded-xl bg-white/[0.05] border border-white/10 flex items-center gap-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-sky-400"></i>
+            <span>Envio com Seguro Total</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       INTERACTIVE SEARCH & DYNAMIC FILTER BAR
+       ======================================================================== -->
+  <section class="sticky top-[69px] z-30 bg-neutral-950/95 backdrop-blur-xl py-4 border-b border-white/10 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3.5">
+      
+      <div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3.5">
+        
+        <!-- Search Input -->
+        <div class="relative flex-1 max-w-lg">
+          <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            id="catalog-search-input" 
+            placeholder="Buscar por título, técnica, tema ou código..." 
+            oninput="handleCatalogSearch(this.value)"
+            class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-white/[0.07] border border-white/15 hover:border-white/30 focus:border-white text-white text-xs placeholder:text-gray-500 focus:outline-none transition-colors"
+          />
+          <button 
+            id="search-clear-btn" 
+            onclick="clearCatalogSearch()" 
+            class="hidden absolute right-3 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-white"
+          >
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Counter & Order By -->
+        <div class="flex items-center justify-between md:justify-end gap-3 text-xs text-gray-400">
+          <span id="catalog-count-badge" class="px-3 py-1.5 rounded-lg bg-white/10 text-white font-semibold">
+            Carregando obras...
+          </span>
+
+          <select 
+            id="catalog-sort-select" 
+            onchange="handleCatalogSort(this.value)"
+            class="px-3 py-2 rounded-xl bg-white/[0.07] border border-white/15 text-white text-xs focus:outline-none focus:border-white cursor-pointer"
+          >
+            <option value="default" class="bg-neutral-900 text-white">Mais Recentes</option>
+            <option value="title_asc" class="bg-neutral-900 text-white">Título (A-Z)</option>
+            <option value="code_asc" class="bg-neutral-900 text-white">Código (EXP)</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Category Filter Pills (Dynamically populated from Categories DB) -->
+      <div id="catalog-category-filters" class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none" role="tablist">
+        <!-- Rendered dynamically -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       GALLERY GRID CONTAINER
+       ======================================================================== -->
+  <main class="flex-grow bg-[#0B0F17] py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <!-- Product Catalog Grid -->
+      <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Rendered dynamically by js/catalogo.js -->
+      </div>
+
+      <!-- Empty Search State -->
+      <div id="catalog-empty-state" class="hidden text-center py-16 px-4 space-y-4 max-w-md mx-auto">
+        <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto text-gray-400">
+          <i data-lucide="image-off" class="w-8 h-8"></i>
+        </div>
+        <h3 class="font-bold text-lg text-white">Nenhuma obra encontrada</h3>
+        <p class="text-xs text-gray-400 leading-relaxed">
+          Não encontramos nenhuma pintura com os termos buscados. Experimente buscar por outro nome ou fale diretamente com nosso artista para criar uma sob medida.
+        </p>
+        <button 
+          onclick="clearCatalogSearch()" 
+          class="px-4 py-2 rounded-xl bg-white text-gray-950 font-bold text-xs hover:bg-gray-200 transition-all"
+        >
+          Limpar Filtros de Busca
+        </button>
+      </div>
+
+      <!-- ====================================================================
+           CUSTOM ARTWORK CONVERSION BANNER (Sob Medida)
+           ==================================================================== -->
+      <div class="rounded-3xl bg-gradient-to-r from-neutral-900 via-neutral-950 to-neutral-900 border border-white/15 p-8 sm:p-12 text-center space-y-6 shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -top-20 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+        
+        <div class="relative z-10 max-w-2xl mx-auto space-y-3">
+          <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold uppercase tracking-wider">
+            Criação Exclusiva Sob Medida
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Não encontrou o que procura? Nós pintamos sua ideia do zero.
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-400 leading-relaxed">
+            Envie sua foto de referência, medidas da sua parede ou a paleta de cores do seu ambiente. Nosso artista desenvolve a proposta personalizada especialmente para você.
+          </p>
+        </div>
+
+        <div class="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a 
+            href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20quadro%20100%25%20personalizado%20sob%20medida%20do%20zero%20para%20minha%20parede." 
+            target="_blank"
+            class="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white hover:bg-gray-100 text-gray-950 font-bold text-xs shadow-xl transition-all flex items-center justify-center gap-2 hover:scale-105"
+          >
+            <svg class="w-4 h-4 fill-emerald-600 shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <span>Falar com o Artista no WhatsApp</span>
+          </a>
+          <a 
+            href="index.html#encomendas-section" 
+            class="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-xs transition-all"
+          >
+            Abrir Simulador de Medidas
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       ARTWORK DETAIL MODAL (LIGHTBOX)
+       ======================================================================== -->
+  <div id="artwork-detail-modal" role="dialog" aria-modal="true" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-neutral-900 border border-white/15 max-w-4xl w-full rounded-3xl shadow-2xl relative overflow-hidden max-h-[90vh] overflow-y-auto">
+      
+      <button 
+        onclick="closeArtworkModal()"
+        class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center border border-white/20 transition-all"
+        aria-label="Fechar Detalhes"
+      >
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="relative bg-black flex items-center justify-center p-4 min-h-[300px] md:min-h-[460px]">
+          <img 
+            id="modal-artwork-image" 
+            src="" 
+            alt="" 
+            class="w-full h-full object-contain max-h-[460px] rounded-xl"
+          />
+          <div id="modal-artwork-tag" class="absolute top-4 left-4 px-3 py-1 rounded-full text-[10px] font-bold bg-white text-black">
+            Destaque
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 space-y-5 flex flex-col justify-between">
+          <div class="space-y-3">
+            <span id="modal-artwork-category" class="text-xs font-bold text-amber-400 uppercase tracking-wider">
+              Categoria
+            </span>
+            <h3 id="modal-artwork-title" class="text-2xl font-bold text-white tracking-tight">
+              Título da Obra
+            </h3>
+            <p id="modal-artwork-technique" class="text-xs text-gray-300 font-medium">
+              Técnica utilizada
+            </p>
+            <p id="modal-artwork-desc" class="text-xs text-gray-400 leading-relaxed pt-1">
+              Descrição detalhada da obra.
+            </p>
+
+            <div class="pt-2">
+              <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1.5">Tamanhos Populares Recomendados:</span>
+              <div id="modal-artwork-sizes" class="flex flex-wrap gap-1.5">
+                <!-- Sizes pills -->
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-white/10 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-400">Investimento:</span>
+              <span id="modal-artwork-price" class="text-sm font-bold text-emerald-400">Sob Consulta no WhatsApp</span>
+            </div>
+
+            <a 
+              id="modal-artwork-whatsapp-link" 
+              href="#" 
+              target="_blank"
+              class="w-full py-3.5 px-4 rounded-xl bg-white hover:bg-gray-100 text-gray-950 font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all"
+            >
+              <svg class="w-4 h-4 fill-emerald-600 shrink-0" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <span>Solicitar Orçamento no WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       FLOATING WHATSAPP BUTTON
+       ======================================================================== -->
+  <div class="fixed bottom-5 right-5 z-40 flex items-center gap-2 group">
+    <div class="hidden md:group-hover:flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-gray-900 text-white text-xs font-medium shadow-xl backdrop-blur-md">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+      <span>Fale com o Artista no WhatsApp</span>
+    </div>
+
+    <a 
+      href="https://wa.me/5511957934714?text=Ol%C3%A1%21%20Vim%20pelo%20Cat%C3%A1logo%20da%20Arte%20Expresso%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20quadro%20sob%20medida."
+      target="_blank"
+      aria-label="Falar no WhatsApp"
+      class="animate-pulse-green w-13 h-13 p-3.5 rounded-full bg-gray-950 hover:bg-black text-white flex items-center justify-center shadow-2xl transition-transform hover:scale-105 border border-white/20"
+      title="Atendimento no WhatsApp"
+    >
+      <svg class="w-6 h-6 fill-emerald-400" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+  </div>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="bg-black text-gray-400 pt-14 pb-24 sm:pb-16 text-xs border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        
+        <div class="space-y-4 md:col-span-2">
+          <div class="flex items-center">
+            <img 
+              src="assets/images/logo-arte-expresso-white.png" 
+              alt="Arte Expresso Ateliê" 
+              class="h-10 sm:h-12 w-auto object-contain" 
+            />
+          </div>
+          <p class="text-gray-400 max-w-md leading-relaxed text-xs">
+            Ateliê especializado em quadros sob medida, pinturas contemporâneas com relevo 3D, folha de ouro e retratos realistas.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="https://www.instagram.com/arte.expresso/" target="_blank" aria-label="Instagram @arte.expresso" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://wa.me/5511957934714" target="_blank" aria-label="WhatsApp Ateliê Arte Expresso" class="w-9 h-9 rounded-xl bg-white/10 hover:bg-white/20 text-emerald-400 flex items-center justify-center transition-all">
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                <span>Atendimento no WhatsApp</span>
+              </a>
+            </li>
+            <li class="flex items-center gap-2">
+              <a href="https://www.instagram.com/arte.expresso/" target="_blank" class="hover:text-white transition-colors">@arte.expresso</a>
+            </li>
+            <li class="flex items-center gap-2 text-gray-400">
+              <i data-lucide="truck" class="w-3.5 h-3.5"></i>
+              <span>Envio Seguro para Todo Brasil</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-gray-500">
+        <p>© 2026 Arte Expresso (@arte.expresso). Todos os direitos reservados.</p>
+        
+        <!-- Web Designer Signature & WhatsApp Direct Link -->
+        <a 
+          href="https://wa.me/5544997269943?text=Ol%C3%A1%2C%20vim%20pelo%20site%20Arte%20Expresso%2C%20gostaria%20de%20ter%20um%20site%21" 
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Desenvolvido por Ian Vitor Web Designer - Solicitar Orçamento"
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 text-gray-400 hover:text-white transition-all group"
+        >
+          <span class="text-[11px] text-gray-400">Desenvolvido por</span>
+          <img 
+            src="assets/images/logo-ian-vitor.png" 
+            alt="Ian Vitor Web Designer" 
+            class="h-4 w-auto object-contain opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all" 
+          />
+          <span class="font-bold text-white text-[11px] group-hover:text-emerald-400 transition-colors">Ian Vitor</span>
+          <span class="text-[10px] text-gray-500 font-medium">Web Designer</span>
+          <svg class="w-3.5 h-3.5 fill-emerald-500 opacity-80 group-hover:opacity-100 transition-opacity" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Base Scripts -->
+  <script src="js/catalog-data.js"></script>
+  <script src="js/catalogo.js"></script>
+</body>
+</html>
