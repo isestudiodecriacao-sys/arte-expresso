@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTiltEffects();
   initSecretAdminTrigger();
   initVerticalCutReveal();
+  initTextFadeIn();
 });
 
 /* ==========================================================================
@@ -791,4 +792,44 @@ function initVerticalCutReveal() {
   });
 
   document.querySelectorAll(".cut-reveal-container").forEach(el => observer.observe(el));
+}
+
+/* ==========================================================================
+   10. TEXT FADE IN (Subtitles & Descriptive Text Word-by-Word Animation)
+   ========================================================================== */
+
+function initTextFadeIn() {
+  const paragraphs = document.querySelectorAll(
+    "section p.leading-relaxed, section p.text-gray-600, section p.text-gray-500, section p.text-gray-400"
+  );
+
+  paragraphs.forEach(p => {
+    if (p.closest("#artwork-detail-modal") || p.closest("#admin-panel-container") || p.dataset.textFadeInit) return;
+    p.dataset.textFadeInit = "true";
+
+    const text = p.textContent.trim();
+    if (!text || text.length < 5) return;
+
+    const words = text.split(/\s+/);
+    p.innerHTML = words.map((word, idx) => {
+      const delay = (idx * 0.022 + 0.04).toFixed(3);
+      return `<span class="text-fade-in-word" style="transition-delay: ${delay}s">${word}</span>`;
+    }).join("&nbsp;");
+
+    p.classList.add("text-fade-in-container");
+  });
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("text-fade-in-revealed");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: "0px 0px -20px 0px"
+  });
+
+  document.querySelectorAll(".text-fade-in-container").forEach(el => observer.observe(el));
 }

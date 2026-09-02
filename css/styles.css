@@ -378,3 +378,19 @@ p {
   opacity: 1;
 }
 
+/* --------------------------------------------------------------------------
+   11. TEXT FADE IN (Graceful word-by-word opacity motion)
+   -------------------------------------------------------------------------- */
+.text-fade-in-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.text-fade-in-revealed .text-fade-in-word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
